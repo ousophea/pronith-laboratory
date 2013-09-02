@@ -46,3 +46,25 @@ define('TEMPLATE', 'templates/win8');
 define('CSS','templates/win8/css/');
 define('JS','templates/win8/js/');
 define('FONT','templates/win8/font-awesome/');
+
+// prefex password
+define('PASSWORD_PREFEX', 'LaBo$');
+
+
+// TABLE and field name
+define('TBL_PREFEX', 'tbl_');
+define('USERS', TBL_PREFEX.'users');
+define('USE_ID', 'use_id');
+define('USE_USERNAME', 'use_username');
+define('USE_PASSWORD', 'use_password');
+define('USE_FIRSTNAME', 'use_firstname');
+define('USE_LASTNAME', 'use_lastname');
+define('USE_FULLNAME', 'use_fullname');
+define('USE_STATUS', 'use_status');
+define('USE_GROUPID', 'use_gro_id');
+
+define('GROUPS', TBL_PREFEX.'users_groups');
+define('GRO_ID', 'gro_id');
+define('GRO_NAME', 'gro_name');
+define('GRO_DES', 'gro_description');
+define('GRO_STATUS', 'gro_status');

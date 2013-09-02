@@ -223,8 +223,7 @@
                     <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
                         <img class="nav-user-photo" src="images/user.png" alt="Jason's Photo" />
                         <span id="user_info">
-                            <small>Welcome,</small>
-                            Jason
+                            <small><?php echo $this->session->userdata(USE_USERNAME); ?></small>
                         </span>
 
                         <i class="icon-caret-down"></i>
@@ -239,7 +238,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a class="ajax" href="<?php echo base_url(); ?>users/profile">
                                 <i class="icon-user"></i>
                                 Profile
                             </a>
@@ -248,7 +247,7 @@
                         <li class="divider"></li>
 
                         <li>
-                            <a href="#">
+                            <a href="<?php echo base_url().'users/loginout' ?>">
                                 <i class="icon-off"></i>
                                 Logout
                             </a>
