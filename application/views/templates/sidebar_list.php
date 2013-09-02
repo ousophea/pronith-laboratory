@@ -21,7 +21,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>quiz/list">
+                <a href="<?php echo base_url(); ?>quiz/lists">
                     <i class="icon-double-angle-right"></i>
                     List quiz
                 </a>
@@ -46,7 +46,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>courses/list">
+                <a href="<?php echo base_url(); ?>courses/lists">
                     <i class="icon-double-angle-right"></i>
                     List courses
                 </a>
@@ -71,7 +71,7 @@
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>categories/list">
+                <a href="<?php echo base_url(); ?>categories/lists">
                     <i class="icon-double-angle-right"></i>
                     List categories
                 </a>
@@ -88,16 +88,47 @@
 
         <ul class="submenu">
             <li>
-                <a href="<?php echo base_url(); ?>users/new">
+                <a href="<?php echo base_url(); ?>users/add">
                     <i class="icon-double-angle-right"></i>
                     New user
                 </a>
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>users/list">
+                <a href="<?php echo base_url(); ?>users/lists">
                     <i class="icon-double-angle-right"></i>
                     List users
+                </a>
+            </li>
+            <li>
+                <a href="<?php echo base_url(); ?>users/profile">
+                    <i class="icon-double-angle-right"></i>
+                    Profile
+                </a>
+            </li>
+        </ul>
+    </li>
+    </li>
+    <li>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-group"></i>
+            <span>User Groups</span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+
+        <ul class="submenu">
+            <li>
+                <a href="<?php echo base_url(); ?>users/new">
+                    <i class="icon-double-angle-right"></i>
+                    New user group
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo base_url(); ?>users/lists">
+                    <i class="icon-double-angle-right"></i>
+                    List user groups
                 </a>
             </li>
         </ul>

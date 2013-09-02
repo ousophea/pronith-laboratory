@@ -1,0 +1,1 @@
+ALTER TABLE `tbl_users`  ADD COLUMN `use_firstname` VARCHAR(50) NULL DEFAULT NULL AFTER `use_status`,  ADD COLUMN `use_lastname` VARCHAR(50) NULL DEFAULT NULL AFTER `use_firstname`;
