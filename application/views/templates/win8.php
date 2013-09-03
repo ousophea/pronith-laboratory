@@ -117,7 +117,7 @@
                     </div><!--#nav-search-->
                 </div>
 
-                <div class="loader" style="">
+                <div class="loader" style="display: none;">
                     <div class="progress progress-mini progress-success progress-striped active" data-percent="0%"><div class="bar" style="width: 0%;"></div></div>
                     <!--<p style="padding-left: 20px">Loading...</p>-->
                 </div>

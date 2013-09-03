@@ -71,7 +71,7 @@ class users extends CI_Controller{
     }
     
     function profile(){
-        allows(array('Admind'));
+        allows(array('Admin'));
         if($this->input->post('data'))
             $this->load->view('users/profile',  $this->data);
         else{
