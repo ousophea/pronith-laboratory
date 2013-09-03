@@ -5,8 +5,51 @@
             <span>Dashboard</span>
         </a>
     </li>
+	<li <?php echo (segment(1) == 'doctors')?'class="active"':'' ?>>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span>Doctors</span>
+            <b class="arrow icon-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'add_new')?'class="active"':'' ?>>
+                <a href="<?php echo site_url('doctors/add_new'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    New Doctor
+                </a>
+            </li>
 
-    <li class="active">
+            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'lists')?'class="active"':'' ?>>
+                <a href="<?php echo site_url('doctors/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    Doctor Lists
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li <?php echo (segment(1) == 'patients')?'class="active"':'' ?>>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span>Patients</span>
+            <b class="arrow icon-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li <?php echo (segment(1) == 'patients' && segment(2) == 'add_new')?'class="active"':'' ?>>
+                <a href="<?php echo site_url('patients/add_new'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    New Patient
+                </a>
+            </li>
+
+            <li <?php echo (segment(1) == 'patients' && segment(2) == 'view')?'class="active"':'' ?>>
+                <a href="<?php echo site_url('doctors/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    Patient Lists
+                </a>
+            </li>
+        </ul>
+    </li>
+    <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-text-width"></i>
             <span>Quiz</span>

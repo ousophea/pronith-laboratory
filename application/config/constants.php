@@ -53,6 +53,9 @@ define('PASSWORD_PREFEX', 'LaBo$');
 
 // TABLE and field name
 define('TBL_PREFEX', 'tbl_');
+define('VIE_PREFEX', 'vie_');
+define('PRO_PREFEX', 'pro_');
+define('FUN_PREFEX', 'fun_');
 define('USERS', TBL_PREFEX.'users');
 define('USE_ID', 'use_id');
 define('USE_USERNAME', 'use_username');

@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('.submenu a, .ajax').on('click', function() {
+    $('.submenu a.ajax, .ajax').on('click', function() {
         $('.message').html('');
         $.post(
                 this.href,
