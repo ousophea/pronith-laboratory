@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo (!empty($title)) ? $title : 'Welcome'; ?></title>
+        <title><?php echo (!empty($title)) ? $title : 'Welcome'; ?> | Pronith Laboratory</title>
         <meta name="description" content="This is page-header (.page-header &gt; h1)" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
