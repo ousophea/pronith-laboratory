@@ -19,8 +19,14 @@ class users extends CI_Controller{
     }
     
     function index(){
-        
-        redirect('users/profile');
+        allows(array('Admin'));
+        if($this->input->post('data'))
+            $this->load->view('users/profile',  $this->data);
+        else{
+            $this->data['title'] = 'Welcome';
+            $this->load->view(TEMPLATE,  $this->data);
+        }
+        //redirect('users/profile');
     }
     
     function login(){

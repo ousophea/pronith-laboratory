@@ -109,20 +109,20 @@
 
         <ul class="submenu">
             <li>
-                <a href="<?php echo base_url(); ?>users/add">
+                <a class="ajax" href="<?php echo base_url(); ?>users/add">
                     <i class="icon-double-angle-right"></i>
                     New user
                 </a>
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>users/lists">
+                <a class="ajax" href="<?php echo base_url(); ?>users/lists">
                     <i class="icon-double-angle-right"></i>
                     List users
                 </a>
             </li>
             <li>
-                <a href="<?php echo base_url(); ?>users/profile">
+                <a class="ajax" href="<?php echo base_url(); ?>users/profile">
                     <i class="icon-double-angle-right"></i>
                     Profile
                 </a>

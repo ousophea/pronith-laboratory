@@ -33,7 +33,7 @@
                     foreach ($data->result_array() as $row) {
                         ?>
 
-                        <tr class="odd">
+                        <tr class="odd" data-object='<?php echo json_encode(array('data' => $row)); ?>'>
                             <td class="center  sorting_1">
                                 <label>
                                     <input type="checkbox" name="id[]" value="<?php echo $row[ILG_ID]; ?>" class="ace">
@@ -50,11 +50,11 @@
                             
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue ajax" href="<?php echo base_url(); ?>ill_groups/view">
+                                    <a class="blue view" href="<?php echo base_url(); ?>ill_groups/view">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
-                                    <a class="green ajax" data-ill_group='<?php echo json_encode(array('data' => $row)); ?>' href="<?php echo base_url(); ?>ill_groups/edit">
+                                    <a class="green ajax" href="<?php echo base_url(); ?>ill_groups/edit">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
 
@@ -85,13 +85,14 @@
 
         // action ajax
         $('.ajax').on('click', function() {
-            var ill_group = $(this).data('ill_group');
-            console.log(ill_group)
+            var parent = $(this).parent().parent().parent();
+            var data = $(parent).data('object');
+            console.log(data)
             $('.message').html('');
             $.ajax({
                 type: "POST",
                 url: this.href,
-                data: ill_group
+                data: data
             }).done(function(data) {
                 content_loader(data);
             });
@@ -103,7 +104,8 @@
                     //bootbox.alert("You are sure!");
             var base_url = $('[name="base_url"]').val();
             go_loader();
-            var data = $(this).data('status');
+            var parent = $(this).parent().parent().parent();
+            var data = $(parent).data('object');
             console.log(data)
             $.ajax({
                    url:base_url+'ill_groups/status',
@@ -183,6 +185,16 @@
                 }
 
             });
+            return false;
+        });
+        
+        // view
+        $('.view').click(function(){
+            bootbox.alert("Data view");
+            var parent = $(this).parent().parent().parent();
+            var data = $(parent).data('object');
+            console.log(data)
+            
             return false;
         });
 
