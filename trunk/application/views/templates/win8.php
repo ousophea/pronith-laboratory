@@ -123,7 +123,14 @@
                 </div>
                 <div class="message"></div>
                 <div id="page-content" class="clearfix">
-                    <?php $this->load->view($this->uri->segment(1) . '/' . $this->uri->segment(2)); ?>
+                    <?php 
+                        if($this->uri->segment(1)==''){
+                            $this->load->view('users/profile');
+                        }
+                        else{
+                            $this->load->view($this->uri->segment(1) . '/' . $this->uri->segment(2));
+                        }
+                    ?>
                 </div><!--/#page-content-->
 
 <!--                <div id="ace-settings-container">
