@@ -49,53 +49,6 @@
             </li>
         </ul>
     </li>
-    <li>
-        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-text-width"></i>
-            <span>Quiz</span>
-            <b class="arrow icon-angle-down"></b>
-        </a>
-        <ul class="submenu">
-            <li class="active">
-                <a href="<?php echo base_url(); ?>quiz/new">
-                    <i class="icon-double-angle-right"></i>
-                    New quiz
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo base_url(); ?>quiz/lists">
-                    <i class="icon-double-angle-right"></i>
-                    List quiz
-                </a>
-            </li>
-        </ul>
-    </li>
-
-    <li>
-        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-desktop"></i>
-            <span>Courses</span>
-
-            <b class="arrow icon-angle-down"></b>
-        </a>
-
-        <ul class="submenu">
-            <li>
-                <a href="<?php echo base_url(); ?>courses/new">
-                    <i class="icon-double-angle-right"></i>
-                    New course
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo base_url(); ?>courses/lists">
-                    <i class="icon-double-angle-right"></i>
-                    List courses
-                </a>
-            </li>
-        </ul>
-    </li>
     
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
@@ -107,14 +60,14 @@
 
         <ul class="submenu">
             <li>
-                <a href="<?php echo base_url(); ?>ill_groups/add">
+                <a class="ajax" href="<?php echo base_url(); ?>ill_groups/add">
                     <i class="icon-double-angle-right"></i>
                     New ill group
                 </a>
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>ill_groups/lists">
+                <a class="ajax" href="<?php echo base_url(); ?>ill_groups/lists">
                     <i class="icon-double-angle-right"></i>
                     List ill group
                 </a>
