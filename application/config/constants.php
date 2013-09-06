@@ -71,3 +71,35 @@ define('GRO_ID', 'gro_id');
 define('GRO_NAME', 'gro_name');
 define('GRO_DES', 'gro_description');
 define('GRO_STATUS', 'gro_status');
+
+define('ILLGROUPS', TBL_PREFEX.'ills_groups');
+define('ILG_ID', 'ill_gro_id');
+define('ILG_NAME', 'ill_gro_name');
+define('ILG_DESCRIPTION', 'ill_gro_description');
+define('ILG_DATECREATED', 'ill_gro_date_created');
+define('ILG_DATEMODIFIED', 'ill_gro_date_modified');
+define('ILG_STATUS', TBL_PREFEX.'ills_groups.status');
+
+define('ILLS', TBL_PREFEX.'ills');
+define('ILL_ID', 'ill_id');
+define('ILL_GROUPID', 'ill_ill_gro_id');
+define('ILL_NAME', 'ill_name');
+define('ILL_DATECREATED', 'ill_date_created');
+define('ILL_DATAMODIFIED', 'ill_date_modified');
+define('ILL_STATUS', TBL_PREFEX.'ills.status');
+
+define('ILLITEMS', TBL_PREFEX.'ills_items');
+define('ILI_ID', 'ill_ite_id');
+define('ILI_ILLID', 'ill_ite_ill_id');
+define('ILI_NAME', 'ill_ite_name');
+define('ILI_DESCRIPTION', 'ill_ite_description');
+define('ILI_DIMENTION', 'ill_ite_dimention');
+define('ILI_VALUEMALE', 'ill_ite_value_male');
+define('ILI_VALUEFEMALE', 'ill_ite_value_female');
+define('ILI_DATECREATED', 'ill_ite_date_created');
+define('ILI_DATEMODIFIED', 'ill_ite_date_modified');
+define('ILI_STATUS', TBL_PREFEX.'ills_items.status');
+
+// Global worlds
+define('DROPDOWN_DEFAULT', '-- Select --');
+define('STATUS', 'status');

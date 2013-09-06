@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List users
+        List ill group
         <small>
             <i class="icon-double-angle-right"></i>
-            List all users information who registered in system
+            List all ill group information
         </small>
     </h1>
 </div>
@@ -18,10 +18,10 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">First name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Last name</th>
-                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Email</th>
-                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Group</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">Name</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Description</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Create</th>
+                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Modifier</th>
                     <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">Status</th>
                     <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 161px;">Action</th>
                 </tr>
@@ -31,35 +31,34 @@
                 <?php
                 if ($data->num_rows()) {
                     foreach ($data->result_array() as $row) {
-                        unset($row[USE_PASSWORD]); // remove password
                         ?>
 
                         <tr class="odd">
                             <td class="center  sorting_1">
                                 <label>
-                                    <input type="checkbox" class="ace">
+                                    <input type="checkbox" name="id[]" value="<?php echo $row[ILG_ID]; ?>" class="ace">
                                     <span class="lbl"></span>
                                 </label>
-                                <?php echo form_hidden(USERS . USE_ID, json_encode(array('data' => $row))); ?>
+                                <?php echo form_hidden(ILLGROUPS . ILG_ID, json_encode(array('data' => $row))); ?>
                             </td>
 
-                            <td class=" "><?php echo $row[USE_FIRSTNAME]; ?></td>
-                            <td class=" "><?php echo $row[USE_LASTNAME]; ?></td>
-                            <td class=" "><?php echo $row[USE_USERNAME]; ?></td>
-                            <td class=" "><?php echo $row[GRO_NAME]; ?></td>
-                            <td class=" "><input data-status='<?php echo json_encode(array('data' => $row)); ?>' name="<?php echo USE_STATUS; ?>" <?php echo ($row[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
-
+                            <td class=" "><?php echo $row[ILG_NAME]; ?></td>
+                            <td class=" "><?php echo $row[ILG_DESCRIPTION]; ?></td>
+                            <td class=" "><?php echo $row[ILG_DATECREATED]; ?></td>
+                            <td class=" "><?php echo $row[ILG_DATEMODIFIED]; ?></td>
+                            <td class=" "><input data-status='<?php echo json_encode(array('data' => $row)); ?>' name="<?php echo STATUS; ?>" <?php echo ($row[STATUS])?'checked':''; ?> type="checkbox" id="<?php echo STATUS; ?>" placeholder="Status" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
+                            
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue ajax" href="<?php echo base_url(); ?>users/view">
+                                    <a class="blue ajax" href="<?php echo base_url(); ?>ill_groups/view">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
-                                    <a class="green ajax" data-user='<?php echo json_encode(array('data' => $row)); ?>' href="<?php echo base_url(); ?>users/edit">
+                                    <a class="green ajax" data-ill_group='<?php echo json_encode(array('data' => $row)); ?>' href="<?php echo base_url(); ?>ill_groups/edit">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red delete" href="<?php echo base_url(); ?>users/delete/<?php echo $row[USE_ID]; ?>">
+                                    <a class="red delete" href="<?php echo base_url(); ?>ill_groups/delete/<?php echo $row[ILG_ID]; ?>">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
                                 </div>
@@ -86,30 +85,29 @@
 
         // action ajax
         $('.ajax').on('click', function() {
-            var user = $(this).data('user');
-            console.log(user)
+            var ill_group = $(this).data('ill_group');
+            console.log(ill_group)
             $('.message').html('');
             $.ajax({
                 type: "POST",
                 url: this.href,
-                data: user
+                data: ill_group
             }).done(function(data) {
                 content_loader(data);
             });
             return false;
         });
 
-
         // status
         $(".status").on('click', function() {
                     //bootbox.alert("You are sure!");
             var base_url = $('[name="base_url"]').val();
             go_loader();
-            var user = $(this).data('status');
-            console.log(user)
+            var data = $(this).data('status');
+            console.log(data)
             $.ajax({
-                   url:base_url+'users/status',
-                   data:user,
+                   url:base_url+'ill_groups/status',
+                   data:data,
                    type:"POST",
                    dataType:'json'
                }).done(function(data) {
@@ -166,17 +164,17 @@
                                 }
                                 else if (data.result == 0) {
                                     // call notification
-                                    notify('Fail!', 'Could not delete user, please try again.', 'gritter-error');
+                                    notify('Fail!', 'Could not delete ill group, please try again.', 'gritter-error');
                                     back_loader();
                                     //bootbox.alert('Could not delete user');
                                 }
                                 else if (data.result == 2) {
-                                    notify('Fail!', data.result + ': System not allow to delete user, please contact to system administrator', 'gritter-error');
+                                    notify('Fail!', data.result + ': System not allow to delete ill group, please contact to system administrator', 'gritter-error');
                                     back_loader();
                                     //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
                                 }
                                 else {
-                                    notify('Fail!', data.result + ': Could not delete user, please try again', 'gritter-error');
+                                    notify('Fail!', data.result + ': Could not delete ill group, please try again', 'gritter-error');
                                     back_loader();
                                     //bootbox.alert(data.result + ':Could not delete user, please try again');
                                 }
