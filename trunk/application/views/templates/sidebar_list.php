@@ -96,6 +96,31 @@
             </li>
         </ul>
     </li>
+    
+    <li>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-desktop"></i>
+            <span>Ill Group</span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+
+        <ul class="submenu">
+            <li>
+                <a href="<?php echo base_url(); ?>ill_groups/add">
+                    <i class="icon-double-angle-right"></i>
+                    New ill group
+                </a>
+            </li>
+
+            <li>
+                <a href="<?php echo base_url(); ?>ill_groups/lists">
+                    <i class="icon-double-angle-right"></i>
+                    List ill group
+                </a>
+            </li>
+        </ul>
+    </li>
 
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">

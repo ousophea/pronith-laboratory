@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Edit user
+        Edit ill group
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to edit user account
+            Please fill all the required input box to edit ill group
         </small>
     </h1>
 </div>
@@ -13,43 +13,33 @@
 
         <form class="form-horizontal" method="post" name="user">
             <div class="control-group">
-                <label class="control-label" for="firstname">First name</label>
+                <label class="control-label" for="firstname">Ill group name</label>
 
                 <div class="controls">
-                    <input name='<?php echo USE_ID; ?>' type='hidden' value='<?php echo $data[USE_ID] ?>'/>
-                    <input name="<?php echo USE_FIRSTNAME; ?>" type="text" value='<?php echo $data[USE_FIRSTNAME] ?>' minlength="3" id="fistname" placeholder="First name">
+                    <input name='<?php echo ILG_ID; ?>' type='hidden' value='<?php echo $data[ILG_ID] ?>'/>
+                    <input name="<?php echo ILG_NAME; ?>" type="text" value='<?php echo $data[ILG_NAME] ?>' minlength="3" id="fistname" placeholder="Ill group name">
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="lastname">Last name</label>
+                <label class="control-label" for="lastname">Description</label>
 
                 <div class="controls">
-                    <input name="<?php echo USE_LASTNAME; ?>" type="text" value='<?php echo $data[USE_LASTNAME] ?>' minlength="3" id="lastname" placeholder="Last name">
+                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text" value='<?php echo $data[ILG_DESCRIPTION] ?>' minlength="3" id="lastname" placeholder="Description" />
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo USE_STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo STATUS; ?>">Status</label>
 
                 <div class="controls">
-                    <input name="<?php echo USE_STATUS; ?>" <?php echo ($data[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
+                    <input name="<?php echo STATUS; ?>" <?php echo ($data[STATUS])?'checked':''; ?> type="checkbox" id="<?php echo STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
                     <span class="lbl"></span>
                     <span class="help-inline"></span>
                 </div>
             </div>
-
-            <div class="control-group">
-                <label class="control-label" for="<?php echo USE_GROUPID; ?>">User Group</label>
-
-                <div class="controls">
-                    <?php echo form_dropdown(USE_GROUPID, $groups, $data[USE_GROUPID], ' required="required"') ?>
-                    <span class="help-inline"></span>
-                </div>
-            </div>
-            
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
@@ -81,7 +71,7 @@
                             type: 'POST',
                             data: user,
                             dataType: 'json',
-                            url: uri[0] + 'users/update'
+                            url: uri[0] + 'ill_groups/update'
                         }).done(function(data) {
                             console.log(data.result)
                             //data.result 0:Invalid, 1:Success, 2: Could not create
@@ -108,7 +98,7 @@
 //                        $.post(
 //                                uri[0] + 'users/update',
 //                                {
-//                                <?php echo USE_FIRSTNAME; ?>: e,
+//                                <?php echo ILG_NAME; ?>: e,
 //                                <?php echo USE_LASTNAME; ?>: p
 //                                },
 //                                function(data) {

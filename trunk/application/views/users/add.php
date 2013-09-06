@@ -37,6 +37,14 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
+            <div class="control-group">
+                <label class="control-label" for="<?php echo USE_GROUPID; ?>">User Group</label>
+
+                <div class="controls">
+                    <?php echo form_dropdown('group', $groups, '', ' required="required"') ?>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
 
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
@@ -64,14 +72,16 @@
             $('form[name="register"]').find("input,select,textarea").not('[type="submit"]').jqBootstrapValidation(
                     {
                         submitSuccess: function($form, event) {
-                            var e = document.register.email.value;//$('[name="email"]').val();
-                            var p = document.register.password.value;//$('[name="password"]').val();
+                            var e = document.register.email.value;
+                            var p = document.register.password.value;
+                            var g = document.register.group.value;
                             go_loader();
                             $.post(
                                     uri[0] + 'users/register',
                                     {
                                     <?php echo USE_USERNAME; ?>: e,
-                                    <?php echo USE_PASSWORD; ?>: p
+                                    <?php echo USE_PASSWORD; ?>: p,
+                                    <?php echo USE_GROUPID; ?>: g
                                     },
                                     function(data) {
 

@@ -56,7 +56,7 @@ class m_users extends CI_Model {
             } else {
                 $this->db->set(USE_USERNAME, $this->input->post(USE_USERNAME));
                 $this->db->set(USE_PASSWORD, sha1(PASSWORD_PREFEX . $this->input->post(USE_PASSWORD)));
-                $this->db->set(USE_GROUPID, 1);
+                $this->db->set(USE_GROUPID, $this->input->post(USE_GROUPID));
                 $this->db->insert(USERS);
                 return 1;
             }
@@ -93,6 +93,22 @@ class m_users extends CI_Model {
             $this->db->where(USE_ID, $data[USE_ID]);
             unset($data[USE_ID]);
             if ($this->db->update(USERS,  $data))
+                return 1;
+            else
+                return 0;
+        } catch (Exception $exc) {
+            return 2;
+        }
+    }
+    
+    function status(){
+        try {
+            $data = $this->input->post('data');
+            if($data[USE_STATUS]==1) $data[USE_STATUS] = 0;
+            else $data[USE_STATUS] = 1;
+            $this->db->set(USE_STATUS,$data[USE_STATUS]);
+            $this->db->where(USE_ID, $data[USE_ID]);
+            if ($this->db->update(USERS))
                 return 1;
             else
                 return 0;

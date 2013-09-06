@@ -11,6 +11,7 @@ $(document).ready(function() {
         return false;
     });
 });
+
 // Loading when link to another content
 function content_loader(data) {
     $(document).ready(function() {
@@ -23,7 +24,7 @@ function content_loader(data) {
         }
         // loat content
         $('#page-content').html(data);
-        $('.loader').slideUp(2000, function() {
+        $('.loader').fadeOut(2000, function() {
             $('.loader .progress .bar').width('0%');
             $('.loader .progress').attr('data-percent', '0%');
         });

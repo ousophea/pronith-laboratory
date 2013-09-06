@@ -15,7 +15,7 @@ class users extends CI_Controller{
     var $data = null;
     function __construct() {
         parent::__construct();
-        $this->load->model(array('m_users'));
+        $this->load->model(array('m_users','m_usergroup'));
     }
     
     function index(){
@@ -39,6 +39,7 @@ class users extends CI_Controller{
     function add(){
         
         $this->data['title'] = 'Create new user';
+        $this->data['groups'] = $this->m_usergroup->group_array();
         $this->load->view('users/add',  $this->data);
     }
     
@@ -46,7 +47,15 @@ class users extends CI_Controller{
         
         $this->data['title'] = 'Edit user';
         $this->data['data'] = $this->input->post('data');
+        $this->data['groups'] = $this->m_usergroup->group_array();
         $this->load->view('users/edit',  $this->data);
+    }
+    
+    /**
+     * Change status
+     */
+    function status(){
+        echo json_encode(array('result' => $this->m_users->status()));
     }
     
     function update(){

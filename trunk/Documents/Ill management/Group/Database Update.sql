@@ -1,0 +1,4 @@
+-- 5-9-2013
+ALTER TABLE `tbl_ills`  CHANGE COLUMN `ill_dateCreated` `ill_date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `ill_name`,  CHANGE COLUMN `ill_dateModified` `ill_date_modified` TIMESTAMP NULL DEFAULT NULL AFTER `ill_date_created`;
+ALTER TABLE `tbl_ills_groups`  CHANGE COLUMN `ill_gro_dateCreated` `ill_gro_date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `ill_gro_description`,  CHANGE COLUMN `ill_gro_dateModified` `ill_gro_date_modified` TIMESTAMP NULL DEFAULT NULL AFTER `ill_gro_date_created`;
+ALTER TABLE `tbl_ills_items`  CHANGE COLUMN `ill_ite_dateCreated` `ill_ite_date_created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP AFTER `ill_ite_value_female`,  CHANGE COLUMN `ill_ite_dateModified` `ill_ite_date_modified` TIMESTAMP NULL DEFAULT NULL AFTER `ill_ite_date_created`;
