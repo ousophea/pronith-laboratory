@@ -56,7 +56,8 @@ class m_users extends CI_Model {
             } else {
                 $this->db->set(USE_USERNAME, $this->input->post(USE_USERNAME));
                 $this->db->set(USE_PASSWORD, sha1(PASSWORD_PREFEX . $this->input->post(USE_PASSWORD)));
-                $this->db->set(USE_GROUPID, $this->input->post(USE_GROUPID));
+                $this->db->set(USE_GROUPID, 1);
+                //$this->db->set(USE_GROUPID, $this->input->post(USE_GROUPID));
                 $this->db->insert(USERS);
                 return 1;
             }
@@ -76,7 +77,8 @@ class m_users extends CI_Model {
 
     function delete() {
         try {
-            $this->db->where(USE_ID, $this->uri->segment(3));
+            $data = $this->input->post('data');
+            $this->db->where(USE_ID, $data[USE_ID]);
             if ($this->db->delete(USERS))
                 return 1;
             else

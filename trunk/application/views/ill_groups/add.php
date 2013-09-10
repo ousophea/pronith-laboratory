@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Edit ill group
+        Add new ill group
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to edit ill group
+            Please fill all the required input box to add an ill group
         </small>
     </h1>
 </div>
@@ -22,19 +22,19 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="lastname">Description</label>
+                <label class="control-label" for="<?php echo ILG_DESCRIPTION; ?>">Description</label>
 
                 <div class="controls">
-                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text"  minlength="3" id="lastname" placeholder="Description" />
+                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text"  minlength="3" id="<?php echo ILG_DESCRIPTION; ?>" placeholder="Description" />
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo ILG_STATUS; ?>">Status</label>
 
                 <div class="controls">
-                    <input name="<?php echo STATUS; ?>" checked="checked" type="checkbox" id="<?php echo STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
+                    <input name="<?php echo ILG_STATUS; ?>" checked="checked" type="checkbox" id="<?php echo ILG_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
                     <span class="lbl"></span>
                     <span class="help-inline"></span>
                 </div>
@@ -63,12 +63,12 @@
         $('form[name="add"]').find("input,select,textarea").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {
-                        var d = {data: $('form[name="add"]').toJSON()};
-                        console.log(d);
+                        var object = {data: $('form[name="add"]').toJSON()};
+                        console.log(object);
                         go_loader();
                         $.ajax({
                             type: 'POST',
-                            data: d,
+                            data: object,
                             dataType: 'json',
                             url: uri[0] + 'ill_groups/create'
                         }).done(function(data) {

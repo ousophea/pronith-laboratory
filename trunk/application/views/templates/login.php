@@ -420,7 +420,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                 if (data.result == 1) {
                                                     $('.loading').fadeOut();
                                                     $('#login-box .message').html("<p class='alert alert-success'>Your registeration successfully,please login.</p>");
-                                                    window.location.href = uri[0]+'users/profile';
+                                                    window.location.href = uri[0];
                                                 }
                                                 else if(data.result==0){
                                                     for (var i = 99; i >=0; i--) {

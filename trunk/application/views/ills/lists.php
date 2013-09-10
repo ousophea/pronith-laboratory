@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List ill group
+        List ills
         <small>
             <i class="icon-double-angle-right"></i>
-            List all ill group information
+            List all ills information
         </small>
     </h1>
 </div>
@@ -19,7 +19,7 @@
                         </label>
                     </th>
                     <th class="sorting">Name</th>
-                    <th class="sorting">Description</th>
+                    <th class="sorting">Group</th>
                     <th class="sorting">Create</th>
                     <th class="sorting">Modifier</th>
                     <th class="sorting">Status</th>
@@ -36,29 +36,29 @@
                         <tr class="odd object" data-object='<?php echo json_encode(array('data' => $row)); ?>'>
                             <td class="center">
                                 <label>
-                                    <input type="checkbox" name="id[]" value="<?php echo $row[ILG_ID]; ?>" class="ace">
+                                    <input type="checkbox" name="id[]" value="<?php echo $row[ILL_ID]; ?>" class="ace">
                                     <span class="lbl"></span>
                                 </label>
-                                <?php echo form_hidden(ILLGROUPS . ILG_ID, json_encode(array('data' => $row))); ?>
+                                <?php echo form_hidden(ILLGROUPS . ILL_ID, json_encode(array('data' => $row))); ?>
                             </td>
 
+                            <td class=" "><?php echo $row[ILL_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILG_NAME]; ?></td>
-                            <td class=" "><?php echo $row[ILG_DESCRIPTION]; ?></td>
-                            <td class=" "><?php echo $row[ILG_DATECREATED]; ?></td>
-                            <td class=" "><?php echo $row[ILG_DATEMODIFIED]; ?></td>
-                            <td class=" "><input name="<?php echo ILG_STATUS; ?>" <?php echo ($row[ILG_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo ILG_STATUS; ?>" placeholder="Status" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
+                            <td class=" "><?php echo $row[ILL_DATECREATED]; ?></td>
+                            <td class=" "><?php echo $row[ILL_DATEMODIFIED]; ?></td>
+                            <td class=" "><input <?php echo ($row[ILL_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo ILL_STATUS; ?>" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
                             
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue view" href="<?php echo base_url(); ?>ill_groups/view">
+                                    <a class="blue view" href="<?php echo base_url(); ?>ills/view">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
-                                    <a class="green edit" href="<?php echo base_url(); ?>ill_groups/edit">
+                                    <a class="green edit" href="<?php echo base_url(); ?>ills/edit">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red delete" href="<?php echo base_url(); ?>ill_groups/delete/">
+                                    <a class="red delete" href="<?php echo base_url(); ?>ills/delete/">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
                                 </div>
@@ -104,10 +104,10 @@
                     //bootbox.alert("You are sure!");
             var base_url = $('[name="base_url"]').val();
             go_loader();
-            parents = $(this).parents(".object");
-            object = $(parents).data('object');
+            object = $(this).data('object');
+            console.log(object)
             $.ajax({
-                   url:base_url+'ill_groups/status',
+                   url:base_url+'ills/status',
                    data:object,
                    type:"POST",
                    dataType:'json'
@@ -124,19 +124,19 @@
                             notify('Fail!', 'Could not change status, please try again.', 'gritter-error');
                             back_loader();
                             return false;
-                            //bootbox.alert('Could not delete ill group');
+                            //bootbox.alert('Could not delete user');
                         }
                         else if (data.result == 2) {
                             notify('Fail!', data.result + ': System not allow to change status, please contact to system administrator', 'gritter-error');
                             back_loader();
                             return false;
-                            //bootbox.alert(data.result + ':System not allow to delete ill group, please contact to system administrator');
+                            //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
                         }
                         else {
                             notify('Fail!', data.result + ': Could not change status, please try again', 'gritter-error');
                             back_loader();
                             return false;
-                            //bootbox.alert(data.result + ':Could not delete ill group, please try again');
+                            //bootbox.alert(data.result + ':Could not delete user, please try again');
                         }
                     });
             
@@ -147,7 +147,7 @@
             var url = this.href;
             parents = $(this).parents(".object");
             object = $(parents).data('object');
-            bootbox.confirm("Are you sure want to delete ill group?", function(result) {
+            bootbox.confirm("Are you sure want to delete ill?", function(result) {
                 if (result) {
                     //bootbox.alert("You are sure!");
                     go_loader();
@@ -159,7 +159,7 @@
                     }).done(function(data) {
                                 if (data.result == 1) {
                                     // call notification
-                                    notify('Done!', 'Delete ill group successully.', 'gritter-success');
+                                    notify('Done!', 'Delete user successully.', 'gritter-success');
                                     $(parents).fadeOut(2000, function() {
                                         this.remove()
                                     });
@@ -169,17 +169,17 @@
                                     // call notification
                                     notify('Fail!', 'Could not delete ill group, please try again.', 'gritter-error');
                                     back_loader();
-                                    //bootbox.alert('Could not delete ill group');
+                                    //bootbox.alert('Could not delete user');
                                 }
                                 else if (data.result == 2) {
                                     notify('Fail!', data.result + ': System not allow to delete ill group, please contact to system administrator', 'gritter-error');
                                     back_loader();
-                                    //bootbox.alert(data.result + ':System not allow to delete ill group, please contact to system administrator');
+                                    //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
                                 }
                                 else {
                                     notify('Fail!', data.result + ': Could not delete ill group, please try again', 'gritter-error');
                                     back_loader();
-                                    //bootbox.alert(data.result + ':Could not delete ill group, please try again');
+                                    //bootbox.alert(data.result + ':Could not delete user, please try again');
                                 }
                             });
                 }

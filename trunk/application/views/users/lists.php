@@ -19,10 +19,10 @@
                         </label>
                     </th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">First name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Last name</th>
-                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Email</th>
-                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Group</th>
-                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">Status</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-3" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Last name</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-4" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Email</th>
+                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-5" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Group</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-6" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">Status</th>
                     <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 161px;">Action</th>
                 </tr>
             </thead>
@@ -34,7 +34,7 @@
                         unset($row[USE_PASSWORD]); // remove password
                         ?>
 
-                        <tr class="odd">
+                        <tr class="odd object" data-object='<?php echo json_encode(array('data' => $row)); ?>'>
                             <td class="center  sorting_1">
                                 <label>
                                     <input type="checkbox" class="ace">
@@ -47,19 +47,19 @@
                             <td class=" "><?php echo $row[USE_LASTNAME]; ?></td>
                             <td class=" "><?php echo $row[USE_USERNAME]; ?></td>
                             <td class=" "><?php echo $row[GRO_NAME]; ?></td>
-                            <td class=" "><input data-status='<?php echo json_encode(array('data' => $row)); ?>' name="<?php echo USE_STATUS; ?>" <?php echo ($row[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
+                            <td class=" "><input <?php echo ($row[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
 
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue ajax" href="<?php echo base_url(); ?>users/view">
+                                    <a class="blue view" href="<?php echo base_url(); ?>users/view">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
-                                    <a class="green ajax" data-user='<?php echo json_encode(array('data' => $row)); ?>' href="<?php echo base_url(); ?>users/edit">
+                                    <a class="green edit" href="<?php echo base_url(); ?>users/edit">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red delete" href="<?php echo base_url(); ?>users/delete/<?php echo $row[USE_ID]; ?>">
+                                    <a class="red delete" href="<?php echo base_url(); ?>users/delete/">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
                                 </div>
@@ -75,24 +75,24 @@
         </table>
     </div>
 </div>
-<script src="<?php echo base_url() . JS; ?>jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() . JS; ?>jquery.dataTables.bootstrap.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+        var object, parents;
         // Register
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
 
         // action ajax
-        $('.ajax').on('click', function() {
-            var user = $(this).data('user');
-            console.log(user)
+        $('.edit').on('click', function() {
+            parents = $(this).parents(".object");
+            object = $(parents).data('object');
+            console.log(object)
             $('.message').html('');
             $.ajax({
                 type: "POST",
                 url: this.href,
-                data: user
+                data: object
             }).done(function(data) {
                 content_loader(data);
             });
@@ -105,15 +105,14 @@
                     //bootbox.alert("You are sure!");
             var base_url = $('[name="base_url"]').val();
             go_loader();
-            var user = $(this).data('status');
-            console.log(user)
+            parents = $(this).parents(".object");
+            object = $(parents).data('object');
             $.ajax({
                    url:base_url+'users/status',
-                   data:user,
+                   data:object,
                    type:"POST",
                    dataType:'json'
                }).done(function(data) {
-                        console.log(data);
                         if (data.result == 1) {
                             // call notification
                             notify('Done!', 'Status have been changed.', 'gritter-success');
@@ -147,19 +146,22 @@
         // Delete
         $(".delete").on('click', function() {
             var url = this.href;
-            var parent = $(this).parent().parent().parent();
+            parents = $(this).parents(".object");
+            object = $(parents).data('object');
             bootbox.confirm("Are you sure want to delete user?", function(result) {
                 if (result) {
                     //bootbox.alert("You are sure!");
                     go_loader();
-                    $.post(
-                            url,
-                            {},
-                            function(data) {
+                    $.ajax({
+                        url:url,
+                        data:object,
+                        type:"POST",
+                        dataType:'json'
+                    }).done(function(data) {
                                 if (data.result == 1) {
                                     // call notification
                                     notify('Done!', 'Delete user successully.', 'gritter-success');
-                                    $(parent).fadeOut(2000, function() {
+                                    $(parents).fadeOut(2000, function() {
                                         this.remove()
                                     });
                                     $('.loader').fadeOut();
@@ -181,7 +183,7 @@
                                     //bootbox.alert(data.result + ':Could not delete user, please try again');
                                 }
                             }, 'json'
-                            );
+                       );
                 }
 
             });

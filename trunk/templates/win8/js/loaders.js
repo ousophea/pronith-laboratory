@@ -1,13 +1,16 @@
 $(document).ready(function() {
-    $('.submenu a.ajax, .ajax').on('click', function() {
+    $('.submenu a.ajax, .ajax').click(function(e) {
         $('.message').html('');
-        $.post(
-                this.href,
-                {data: this.href},
-        function(data) {
-            content_loader(data);
-        }
-        );
+        $.ajax({
+               url:this.href,
+               data:this.href,
+               type:"POST",
+               //dataType:'json'
+           }).done(function(data) {
+               content_loader(data);
+           });
+
+        //$('#page-content').load(this.href);
         return false;
     });
 });

@@ -19,7 +19,7 @@ class users extends CI_Controller{
     }
     
     function index(){
-        allows(array('Admin'));
+        allows(array('administrator'));
         if($this->input->post('data'))
             $this->load->view('users/profile',  $this->data);
         else{
@@ -85,16 +85,16 @@ class users extends CI_Controller{
         redirect('users/login');
     }
     
-    function profile(){
-        allows(array('Admin'));
-        if($this->input->post('data'))
-            $this->load->view('users/profile',  $this->data);
-        else{
-            $this->data['title'] = 'Welcome';
-            $this->load->view(TEMPLATE,  $this->data);
-        }
-        
-    }
+//    function profile(){
+//        allows(array('Admin'));
+//        if($this->input->post('data'))
+//            $this->load->view('users/profile',  $this->data);
+//        else{
+//            $this->data['title'] = 'Welcome';
+//            $this->load->view(TEMPLATE,  $this->data);
+//        }
+//        
+//    }
     
     function table(){
         $this->load->view(TEMPLATE,  $this->data);

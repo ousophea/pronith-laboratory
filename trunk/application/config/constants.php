@@ -60,9 +60,11 @@ define('USERS', TBL_PREFEX.'users');
 define('USE_ID', 'use_id');
 define('USE_USERNAME', 'use_username');
 define('USE_PASSWORD', 'use_password');
-define('USE_FIRSTNAME', 'use_firstname');
-define('USE_LASTNAME', 'use_lastname');
-define('USE_FULLNAME', 'use_fullname');
+define('USE_FIRSTNAME', 'use_firstName');
+define('USE_LASTNAME', 'use_lastName');
+define('USE_FULLNAME', 'use_fullName');
+define('USE_DATACREATED', 'use_dataCreated');
+define('USE_DATAMODIFIED', 'use_dataModified');
 define('USE_STATUS', 'use_status');
 define('USE_GROUPID', 'use_gro_id');
 
@@ -76,17 +78,17 @@ define('ILLGROUPS', TBL_PREFEX.'ills_groups');
 define('ILG_ID', 'ill_gro_id');
 define('ILG_NAME', 'ill_gro_name');
 define('ILG_DESCRIPTION', 'ill_gro_description');
-define('ILG_DATECREATED', 'ill_gro_date_created');
-define('ILG_DATEMODIFIED', 'ill_gro_date_modified');
-define('ILG_STATUS', TBL_PREFEX.'ills_groups.status');
+define('ILG_DATECREATED', 'ill_gro_dateCreated');
+define('ILG_DATEMODIFIED', 'ill_gro_dateModified');
+define('ILG_STATUS', 'ill_gro_status');
 
 define('ILLS', TBL_PREFEX.'ills');
 define('ILL_ID', 'ill_id');
 define('ILL_GROUPID', 'ill_ill_gro_id');
 define('ILL_NAME', 'ill_name');
-define('ILL_DATECREATED', 'ill_date_created');
-define('ILL_DATAMODIFIED', 'ill_date_modified');
-define('ILL_STATUS', TBL_PREFEX.'ills.status');
+define('ILL_DATECREATED', 'ill_dateCreated');
+define('ILL_DATEMODIFIED', 'ill_dateModified');
+define('ILL_STATUS', 'ill_status');
 
 define('ILLITEMS', TBL_PREFEX.'ills_items');
 define('ILI_ID', 'ill_ite_id');
@@ -96,9 +98,9 @@ define('ILI_DESCRIPTION', 'ill_ite_description');
 define('ILI_DIMENTION', 'ill_ite_dimention');
 define('ILI_VALUEMALE', 'ill_ite_value_male');
 define('ILI_VALUEFEMALE', 'ill_ite_value_female');
-define('ILI_DATECREATED', 'ill_ite_date_created');
-define('ILI_DATEMODIFIED', 'ill_ite_date_modified');
-define('ILI_STATUS', TBL_PREFEX.'ills_items.status');
+define('ILI_DATECREATED', 'ill_ite_dateCreated');
+define('ILI_DATEMODIFIED', 'ill_ite_dateModified');
+define('ILI_STATUS', 'ill_ite_status');
 
 // Global worlds
 define('DROPDOWN_DEFAULT', '-- Select --');
