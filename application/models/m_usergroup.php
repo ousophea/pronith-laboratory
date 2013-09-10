@@ -16,17 +16,9 @@ class m_usergroup extends CI_Model{
     function group_array(){
         $data = $this->db->get(GROUPS);
         if($data->num_rows() > 0){
-            return $this->get_dropdown_data($data);
+            return $this->m_global->get_dropdown_data($data,GRO_ID,GRO_NAME);
         }
         
-    }
-    
-    function get_dropdown_data($result_set){
-        $data[''] = DROPDOWN_DEFAULT;
-        foreach ($result_set->result_array() as $value) {
-            $data[$value[GRO_ID]] = $value[GRO_NAME];
-        }
-        return $data;
     }
 }
 

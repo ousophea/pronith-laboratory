@@ -42,6 +42,11 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>ace.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>w8-responsive.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>w8-skins.min.css" />
+        
+        
+        
+        
+        <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>laboratory.css" />
 
 
 
@@ -52,6 +57,8 @@
 
         <!--inline styles if any-->
         <script src="<?php echo base_url() . JS; ?>jquery.min.js"></script>
+        <!--basic scripts-->
+        <script src="<?php echo base_url() . JS; ?>bootstrap.min.js"></script>
 
         <!--Validation-->
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>prettify_bootstrap.css" />
@@ -59,9 +66,16 @@
         <script src="<?php echo base_url() . JS; ?>prettify.js"></script>
         <!----------------->
         
+        
         <!--Messages-->
+        <script src="<?php echo base_url() . JS; ?>bootbox.min.js"></script>
         <script src="<?php echo base_url() . JS; ?>messages.js"></script>
         <!----------------->
+        
+        <!--DataTable-->
+        <script src="<?php echo base_url() . JS; ?>jquery.dataTables.min.js"></script>
+        <script src="<?php echo base_url() . JS; ?>jquery.dataTables.bootstrap.js"></script>
+        <!------------>
         
         
     </head>
@@ -116,11 +130,14 @@
                         </form>
                     </div><!--#nav-search-->
                 </div>
-
-                <div class="loader" style="display: none;">
-                    <div class="progress progress-mini progress-success progress-striped active" data-percent="0%"><div class="bar" style="width: 0%;"></div></div>
-                    <!--<p style="padding-left: 20px">Loading...</p>-->
+                <div class="wrapper-loader" style="height: 9px;">
+                    <div class="loader" style="display: none;">
+                        <div class="progress progress-mini progress-success progress-striped active" data-percent="0%"><div class="bar" style="width: 0%;"></div></div>
+                        <!--<p style="padding-left: 20px">Loading...</p>-->
+                    </div>
                 </div>
+                
+                
                 <div class="message"></div>
                 <div id="page-content" class="clearfix">
                     <?php 
@@ -170,8 +187,7 @@
             <i class="icon-double-angle-up icon-only bigger-110"></i>
         </a>
 
-        <!--basic scripts-->
-        <script src="<?php echo base_url() . JS; ?>bootstrap.min.js"></script>
+        
 
 
         <script src="<?php echo base_url() . JS; ?>jquery-ui-1.10.3.custom.min.js"></script>
@@ -179,7 +195,7 @@
 
         <!--Calenda-->
         <script src="<?php echo base_url() . JS; ?>fullcalendar.min.js"></script>
-        <script src="<?php echo base_url() . JS; ?>bootbox.min.js"></script>
+        
         <!------->
         <!--Gritter Notification-->
         <script src="<?php echo base_url() . JS; ?>jquery.gritter.min.js"></script>

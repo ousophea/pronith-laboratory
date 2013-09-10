@@ -78,27 +78,54 @@
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-folder-close-alt"></i>
-            <span>Categories</span>
+            <span>Ills</span>
 
             <b class="arrow icon-angle-down"></b>
         </a>
 
         <ul class="submenu">
             <li>
-                <a href="<?php echo base_url(); ?>categories/new">
+                <a class="ajax" href="<?php echo base_url(); ?>ills/add">
                     <i class="icon-double-angle-right"></i>
-                    New category
+                    New Ill
                 </a>
             </li>
 
             <li>
-                <a href="<?php echo base_url(); ?>categories/lists">
+                <a class="ajax" href="<?php echo base_url(); ?>ills/lists">
                     <i class="icon-double-angle-right"></i>
-                    List categories
+                    List Ills
                 </a>
             </li>
         </ul>
     </li>
+    
+    <li>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-folder-close-alt"></i>
+            <span>Ill item</span>
+
+            <b class="arrow icon-angle-down"></b>
+        </a>
+
+        <ul class="submenu">
+            <li>
+                <a class="ajax" href="<?php echo base_url(); ?>ill_items/add">
+                    <i class="icon-double-angle-right"></i>
+                    New Ill item
+                </a>
+            </li>
+
+            <li>
+                <a class="ajax" href="<?php echo base_url(); ?>ill_items/lists">
+                    <i class="icon-double-angle-right"></i>
+                    List Ill items
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-user"></i>
@@ -122,7 +149,7 @@
                 </a>
             </li>
             <li>
-                <a class="ajax" href="<?php echo base_url(); ?>users/profile">
+                <a class="ajax" href="<?php echo base_url(); ?>users/index">
                     <i class="icon-double-angle-right"></i>
                     Profile
                 </a>
@@ -140,7 +167,7 @@
 
         <ul class="submenu">
             <li>
-                <a href="<?php echo base_url(); ?>users/new">
+                <a href="<?php echo base_url(); ?>users/add">
                     <i class="icon-double-angle-right"></i>
                     New user group
                 </a>

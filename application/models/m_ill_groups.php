@@ -24,8 +24,8 @@ class m_ill_groups extends CI_Model{
             $this->db->where(ILG_NAME,$data[ILG_NAME]);
             $query = $this->db->get(ILLGROUPS);
             if($query->num_rows() > 0) return 3;
-            if(empty($data[STATUS])) $data[STATUS] = 0;
-            else $data[STATUS] = 1;
+            if(empty($data[ILG_STATUS])) $data[ILG_STATUS] = 0;
+            else $data[ILG_STATUS] = 1;
             if($this->db->insert(ILLGROUPS, $data)){
                 return 1;
             }
@@ -37,7 +37,8 @@ class m_ill_groups extends CI_Model{
     
     function delete() {
         try {
-            $this->db->where(ILG_ID, $this->uri->segment(3));
+            $data = $this->input->post('data');
+            $this->db->where(ILG_ID, $data[ILG_ID]);
             if ($this->db->delete(ILLGROUPS))
                 return 1;
             else
@@ -49,8 +50,8 @@ class m_ill_groups extends CI_Model{
     function update(){
          try {
             $data = $this->input->post('data');
-            if(empty($data[STATUS])) $data[STATUS] = 0;
-            else $data[STATUS] = 1;
+            if(empty($data[ILG_STATUS])) $data[ILG_STATUS] = 0;
+            else $data[ILG_STATUS] = 1;
             $this->db->set(ILG_DATEMODIFIED,'NOW()',FALSE);
             $this->db->where(ILG_ID, $data[ILG_ID]);
             unset($data[ILG_ID]);
@@ -66,9 +67,9 @@ class m_ill_groups extends CI_Model{
     function status(){
         try {
             $data = $this->input->post('data');
-            if($data[STATUS]==1) $data[STATUS] = 0;
-            else $data[STATUS] = 1;
-            $this->db->set(STATUS,$data[STATUS]);
+            if($data[ILG_STATUS]==1) $data[ILG_STATUS] = 0;
+            else $data[ILG_STATUS] = 1;
+            $this->db->set(ILG_STATUS,$data[ILG_STATUS]);
             $this->db->set(ILG_DATEMODIFIED,'NOW()',FALSE);
             $this->db->where(ILG_ID, $data[ILG_ID]);
             if ($this->db->update(ILLGROUPS))
