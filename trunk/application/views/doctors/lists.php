@@ -7,6 +7,29 @@
         </small>
     </h1>
 </div>
+<?php
+if($this->session->flashdata('msg_success')){
+?>
+<div class="msg_success">
+	<?php echo '<p>'.$this->session->flashdata('msg_success').'</p>'; ?>
+</div>
+<?php	
+}
+if($this->session->flashdata('msg_error')){
+?>
+<div class="msg_error">
+	<?php echo '<p>'.$this->session->flashdata('msg_error').'</p>'; ?>
+</div>
+<?php
+}
+if($this->session->flashdata('msg_info')){
+?>
+<div class="msg_info">
+	<?php echo '<p>'.$this->session->flashdata('msg_info').'</p>'; ?>
+</div>
+<?php
+}
+?>
 <div class="row-fluid">
     <div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
         <table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
@@ -18,10 +41,12 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">First name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Last name</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">Name</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Sex</th>
                     <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Email</th>
-                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Group</th>
+                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Position</th>
+                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Working</th>
+                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Doctor Reference</th>
                     <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">Status</th>
                     <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 161px;">Action</th>
                 </tr>
@@ -43,23 +68,25 @@
                                 <?php echo form_hidden(USERS . USE_ID, json_encode(array('data' => $row))); ?>
                             </td>
 
-                            <td class=" "><?php echo $row['']; ?></td>
-                            <td class=" "><?php echo $row[USE_LASTNAME]; ?></td>
-                            <td class=" "><?php echo $row[USE_USERNAME]; ?></td>
-                            <td class=" "><?php echo $row[GRO_NAME]; ?></td>
-                            <td class=" "><input data-user='<?php echo json_encode(array('data' => $row)); ?>' name="<?php echo USE_STATUS; ?>" <?php echo ($row[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7"><span class="lbl"></span></td>
+                            <td class=" "><?php echo $row['doc_name']; ?></td>
+                            <td class=" "><?php echo $row['doc_sex']; ?></td>
+                            <td class=" "><?php echo $row['doc_email']; ?></td>
+                            <td class=" "><?php echo $row['doc_position']; ?></td>
+                            <td class=" "><?php echo $row['hos_name']; ?></td>
+                            <td class=" "><?php echo $row['doc_ref_name']; ?></td>
+                            <td class=" "><input data-user="<?php echo json_encode(array('data' => $row)); ?>" name="<?php echo 'status'; ?>" <?php echo ($row['status'])?'checked':''; ?> type="checkbox" id="<?php echo 'status'; ?>" placeholder="Status" class="ace ace-switch ace-switch-7" /><span class="lbl"></span></td>
 
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue ajax" href="<?php echo base_url(); ?>users/view">
+                                    <a class="blue ajax" href="<?php echo site_url('doctors/view/'.$row['doc_id']); ?>">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
-                                    <a class="green ajax" data-user='<?php echo json_encode(array('data' => $row)); ?>' href="<?php echo base_url(); ?>users/edit">
+                                    <a class="green" data-user='<?php echo json_encode(array('data' => $row)); ?>' href="<?php echo site_url('doctors/edit/'.$row['doc_id']); ?>">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red delete" href="<?php echo base_url(); ?>users/delete/<?php echo $row[USE_ID]; ?>">
+                                    <a class="red delete" href="<?php echo site_url('doctors/delete/'.$row['doc_id']); ?>">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
                                 </div>
@@ -75,10 +102,13 @@
         </table>
     </div>
 </div>
-<script src="<?php echo base_url() . JS; ?>jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url() . JS; ?>jquery.dataTables.bootstrap.js"></script>
+<script src="<?php echo site_url(JS.'jquery.dataTables.min.js'); ?>"></script>
+<script src="<?php echo site_url(JS.'jquery.dataTables.bootstrap.js'); ?>"></script>
 <script type="text/javascript">
     $(document).ready(function() {
+    	$('.msg_success, .msg_error, .msg_info').click(function(){
+    		$(this).fadeOut();
+    	});
         // Register
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
@@ -103,7 +133,7 @@
         $(".delete").on('click', function() {
             var url = this.href;
             var parent = $(this).parent().parent().parent();
-            bootbox.confirm("Are you sure want to delete user?", function(result) {
+            bootbox.confirm("Are you sure want to delete doctor?", function(result) {
                 if (result) {
                     //bootbox.alert("You are sure!");
                     go_loader();
@@ -113,7 +143,7 @@
                             function(data) {
                                 if (data.result == 1) {
                                     // call notification
-                                    notify('Done!', 'Delete user successully.', 'gritter-success');
+                                    notify('Done!', 'Delete doctor successully.', 'gritter-success');
                                     $(parent).fadeOut(2000, function() {
                                         this.remove()
                                     });

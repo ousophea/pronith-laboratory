@@ -32,6 +32,8 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>bootstrap-timepicker.css" />
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>daterangepicker.css" />
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>colorpicker.css" />
+        <!--custom style-->
+        <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>css.css" />
         <!---------------->
         <!--Gritter notification-->
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>jquery.gritter.css" />
