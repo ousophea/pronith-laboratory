@@ -45,7 +45,7 @@ class ill_items extends CI_Controller {
         $this->data['title'] = 'Edit ill group';
         $this->data['groups'] = $this->m_ill_items->group_array();
         $this->data['data'] = $this->input->post('data');
-        $this->load->view('ills/edit',  $this->data);
+        $this->load->view('ill_items/edit',  $this->data);
     }
     
     function update(){

@@ -1,13 +1,22 @@
 $(document).ready(function() {
     $('.submenu a.ajax, .ajax').click(function(e) {
         $('.message').html('');
+        var parent1 = $(this).parent();
+        var parent2 = parent1.parent().parent();
+        
         $.ajax({
                url:this.href,
                data:this.href,
                type:"POST",
                //dataType:'json'
            }).done(function(data) {
+               // load page
                content_loader(data);
+               
+               // set selected menu
+               $('.nav li').removeClass('active');
+               $(parent1).addClass('active');
+               $(parent2).addClass('active');
            });
 
         //$('#page-content').load(this.href);

@@ -5,21 +5,21 @@
             <span>Dashboard</span>
         </a>
     </li>
-	<li <?php echo (segment(1) == 'doctors')?'class="active"':'' ?>>
+    <li <?php echo (segment(1) == 'doctors') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-user"></i>
             <span>Doctors</span>
             <b class="arrow icon-angle-down"></b>
         </a>
         <ul class="submenu">
-            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'add_new')?'class="active"':'' ?>>
+            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'add_new') ? 'class="active"' : '' ?>>
                 <a href="<?php echo site_url('doctors/add_new'); ?>">
                     <i class="icon-double-angle-right"></i>
                     New Doctor
                 </a>
             </li>
 
-            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'lists')?'class="active"':'' ?>>
+            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
                 <a href="<?php echo site_url('doctors/lists'); ?>">
                     <i class="icon-double-angle-right"></i>
                     Doctor Lists
@@ -27,21 +27,21 @@
             </li>
         </ul>
     </li>
-    <li <?php echo (segment(1) == 'patients')?'class="active"':'' ?>>
+    <li <?php echo (segment(1) == 'patients') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-user"></i>
             <span>Patients</span>
             <b class="arrow icon-angle-down"></b>
         </a>
         <ul class="submenu">
-            <li <?php echo (segment(1) == 'patients' && segment(2) == 'add_new')?'class="active"':'' ?>>
+            <li <?php echo (segment(1) == 'patients' && segment(2) == 'add_new') ? 'class="active"' : '' ?>>
                 <a href="<?php echo site_url('patients/add_new'); ?>">
                     <i class="icon-double-angle-right"></i>
                     New Patient
                 </a>
             </li>
 
-            <li <?php echo (segment(1) == 'patients' && segment(2) == 'view')?'class="active"':'' ?>>
+            <li <?php echo (segment(1) == 'patients' && segment(2) == 'view') ? 'class="active"' : '' ?>>
                 <a href="<?php echo site_url('doctors/lists'); ?>">
                     <i class="icon-double-angle-right"></i>
                     Patient Lists
@@ -49,7 +49,7 @@
             </li>
         </ul>
     </li>
-    
+
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-desktop"></i>
@@ -99,7 +99,7 @@
             </li>
         </ul>
     </li>
-    
+
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-folder-close-alt"></i>
@@ -124,8 +124,8 @@
             </li>
         </ul>
     </li>
-    
-    
+
+
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-user"></i>
@@ -156,36 +156,12 @@
             </li>
         </ul>
     </li>
-    </li>
-    <li>
-        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-group"></i>
-            <span>User Groups</span>
+</li>
 
-            <b class="arrow icon-angle-down"></b>
-        </a>
-
-        <ul class="submenu">
-            <li>
-                <a href="<?php echo base_url(); ?>users/add">
-                    <i class="icon-double-angle-right"></i>
-                    New user group
-                </a>
-            </li>
-
-            <li>
-                <a href="<?php echo base_url(); ?>users/lists">
-                    <i class="icon-double-angle-right"></i>
-                    List user groups
-                </a>
-            </li>
-        </ul>
-    </li>
-
-    <li>
-        <a href="<?php echo base_url(); ?>users/calendar">
-            <i class="icon-calendar"></i>
-            <span>Calendar</span>
-        </a>
-    </li>
+<li>
+    <a href="<?php echo base_url(); ?>users/calendar">
+        <i class="icon-calendar"></i>
+        <span>Calendar</span>
+    </a>
+</li>
 </ul><!--/.nav-list-->
