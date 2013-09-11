@@ -10,3 +10,21 @@
   font-weight: 400;
   src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
 }
+
+.msg_success{
+	background-color: #87B87F;
+	color: #FFFFFF;
+	padding: 5px;
+}
+
+.msg_error{
+	background-color: #D15B47;
+	color: #FFFFFF;
+	padding: 5px;
+}
+
+.msg_info{
+	background-color: #6FB3E0;
+	color: #FFFFFF;
+	padding: 5px;
+}
