@@ -58,15 +58,15 @@
                             
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue view" href="<?php echo base_url(); ?>ills/view">
+                                    <a class="blue view" href="<?php echo base_url(); ?>ill_items/view">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
-                                    <a class="green edit" href="<?php echo base_url(); ?>ills/edit">
+                                    <a class="green edit" href="<?php echo base_url(); ?>ill_items/edit">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
 
-                                    <a class="red delete" href="<?php echo base_url(); ?>ills/delete/">
+                                    <a class="red delete" href="<?php echo base_url(); ?>ill_items/delete/">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
                                 </div>

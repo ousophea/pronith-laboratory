@@ -60,8 +60,9 @@ class m_ill_items extends CI_Model{
     
     function delete() {
         try {
-            $this->db->where(ILG_ID, $this->uri->segment(3));
-            if ($this->db->delete(ILLGROUPS))
+            $data = $this->input->post('data');
+            $this->db->where(ILI_ID, $data[ILI_ID]);
+            if ($this->db->delete(ILLITEMS))
                 return 1;
             else
                 return 0;
@@ -77,7 +78,7 @@ class m_ill_items extends CI_Model{
             $this->db->set(ILI_DATEMODIFIED,'NOW()',FALSE);
             $this->db->where(ILI_ID, $data[ILI_ID]);
             unset($data[ILI_ID]);
-            if ($this->db->update(ILLS,  $data))
+            if ($this->db->update(ILLITEMS,  $data))
                 return 1;
             else
                 return 0;
