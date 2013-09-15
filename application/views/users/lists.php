@@ -51,7 +51,7 @@
 
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue view" href="<?php echo base_url(); ?>users/view">
+                                    <a class="blue view-modal">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
@@ -83,6 +83,7 @@
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
 
+
         // action ajax
         $('.edit').on('click', function() {
             parents = $(this).parents(".object");
@@ -98,8 +99,21 @@
             });
             return false;
         });
-
-
+        
+        // View detail modal popup
+        $('.view-modal').on('click',function(){
+            parents = $(this).parents(".object");
+            object = $(parents).data('object').data;
+            var html = '';
+            html +=htmlView("First name", object['<?php echo USE_FIRSTNAME; ?>']);
+            html +=htmlView("Last name", object['<?php echo USE_LASTNAME; ?>']);
+            html +=htmlView("Username", object['<?php echo USE_USERNAME; ?>']);
+            html +=htmlView("Group", object['<?php echo GRO_NAME; ?>']);
+            html +=htmlView("Register date", object['<?php echo USE_DATACREATED; ?>']);
+            html +=htmlView("Modified", (object['<?php echo ILL_STATUS; ?>']==1)?'On':'Off');
+            view(html,'User view detail');// Popup
+        });
+        
         // status
         $(".status").on('click', function() {
                     //bootbox.alert("You are sure!");

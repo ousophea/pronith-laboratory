@@ -50,7 +50,7 @@
                             
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue view" href="<?php echo base_url(); ?>ill_groups/view">
+                                    <a class="blue view-modal">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
@@ -188,15 +188,18 @@
             return false;
         });
         
-        // view
-        $('.view').click(function(){
+        // View detail modal popup
+        $('.view-modal').on('click',function(){
             parents = $(this).parents(".object");
-            object = $(parents).data('object');
-            console.log(object['data']);
-            
-            return false;
+            object = $(parents).data('object').data;
+            var html = '';
+            html +=htmlView("Name", object['<?php echo ILG_NAME; ?>']);
+            html +=htmlView("Description", object['<?php echo ILG_DESCRIPTION; ?>']);
+            html +=htmlView("Date created", object['<?php echo ILG_DATECREATED; ?>']);
+            html +=htmlView("Date modified", object['<?php echo ILG_DATEMODIFIED; ?>']);
+            html +=htmlView("Status", (object['<?php echo ILG_STATUS; ?>']==1)?'On':'Off');
+            view(html,'Ill group view detail');// Popup
         });
-
 
 
 

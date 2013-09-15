@@ -11,3 +11,6 @@
     margin: 0;
     padding: 0px 20px 24px;
 }
+.view-modal{
+    cursor: pointer;
+}

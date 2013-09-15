@@ -185,9 +185,8 @@
             </div><!--/#main-content-->
         </div><!--/.fluid-container#main-container-->
 
-        <a href="#" id="btn-scroll-up" class="btn btn-small btn-inverse">
-            <i class="icon-double-angle-up icon-only bigger-110"></i>
-        </a>
+        <!--Modal bootstrap-->
+        <?php $this->load->view('templates/modal'); ?>
 
         
 
@@ -195,8 +194,11 @@
         <script src="<?php echo base_url() . JS; ?>jquery-ui-1.10.3.custom.min.js"></script>
         <script src="<?php echo base_url() . JS; ?>jquery.ui.touch-punch.min.js"></script>
 
+        <!--Modal-->
+        <script src="<?php echo base_url() . JS; ?>bootstrap-modal.js"></script>
+
         <!--Calenda-->
-        <script src="<?php echo base_url() . JS; ?>fullcalendar.min.js"></script>
+        <!--<script src="<?php echo base_url() . JS; ?>fullcalendar.min.js"></script>-->
         
         <!------->
         <!--Gritter Notification-->
