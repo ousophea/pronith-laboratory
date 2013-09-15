@@ -1,14 +1,9 @@
-<?php
-if(isset($edit_data)){
-	$edit_data = $edit_data->result_array();
-}
-?>
 <div class="page-header position-relative">
     <h1>
-        Edit doctor : <?php echo $edit_data[0]['doc_name']; ?>
+        Add new patient
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new group
+            Please fill all the required input box to add new patient
         </small>
     </h1>
 </div>
@@ -16,70 +11,68 @@ if(isset($edit_data)){
     <div class="span12">
         <!--PAGE CONTENT BEGINS-->
 
-        <?php echo form_open(site_url('doctors/edit_save'),'class="form-horizontal"',array('doc_id'=>$edit_data[0]['doc_id']));?>
+        <?php echo form_open(site_url('doctors/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="doctorName">Doctor Name</label>
+                <label class="control-label" for="patientFirstName">First Name</label>
 
                 <div class="controls">
-                    <input required name="txt_docName" type="text"  minlength="3" id="full_name" value="<?php echo $edit_data[0]['doc_name']; ?>" placeholder="Full Name">
+                    <input required name="txt_patFirstName" type="text"  minlength="3" id="first_name" placeholder="First Name">
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="patientLastName">Last Name</label>
+
+                <div class="controls">
+                    <input required name="txt_patLastName" type="text"  minlength="3" id="last_name" placeholder="Last Name">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label" for="sex">Sex</label>
                 <div class="controls">
-                    <select name="txt_docSex">
+                    <select name="txt_patSex">
                     	<option value="0">-SEX-</option>
-                    	<option value="m" <?php echo ($edit_data[0]['doc_sex'] == 'm')?'selected="selected"':'' ?>>Male</option>
-                    	<option value="f" <?php echo ($edit_data[0]['doc_sex'] == 'f')?'selected="selected"':'' ?>>Female</option>
+                    	<option value="m">Male</option>
+                    	<option value="f">Female</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
-			<div class="control-group">
-                <label class="control-label" for="sex">Email</label>
+            <div class="control-group">
+                <label class="control-label" for="patientIdentityCard">National Identity Card</label>
+
                 <div class="controls">
-                    <input name="txt_docEmail" type="email"  minlength="3" id="email" placeholder="name@example.com" value="<?php echo $edit_data[0]['doc_email']; ?>">
+                    <input name="txt_patIdentityCard" type="number"  minlength="3" id="identity_card" placeholder="National Identity Card">
                     <span class="help-inline"></span>
                 </div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="position">Position</label>
+                <label class="control-label" for="patEmail">Email</label>
+                <div class="controls">
+                    <input name="txt_patEmail" type="email"  minlength="3" id="email" placeholder="name@example.com">
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            <div class="pat_phone">
+            	<div class="control-group">
+	                <label class="control-label" for="patPhones">Phone</label>
+	                <div class="controls">
+	                    <input name="txt_patPhone[]" type="text"  minlength="3" placeholder="(855)">
+	                    <span class="help-inline"></span>
+	                    <span class="add_more_phone">Add More</span>
+	                </div>
+	            </div>
+            </div>
+			<div class="control-group">
+                <label class="control-label" for="patDoctor">Recommanded from Doctor</label>
                 <div class="controls">
                     <select name="txt_docPosition">
-                    	<option value="0">-POSITION-</option>
-                    	<option <?php echo ($edit_data[0]['doc_position'] == 'Doctor')?'selected="selected"':'' ?> value="Doctor">Doctor</option>
-                    	<option <?php echo ($edit_data[0]['doc_position'] == 'Nurse')?'selected="selected"':'' ?> value="Nurse">Nurse</option>
-                    	<option <?php echo ($edit_data[0]['doc_position'] == 'Other')?'selected="selected"':'' ?> value="Other">Other</option>
-                    </select>
-                    <span class="help-inline"></span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="working">Working At</label>
-                <div class="controls">
-                    <select name="txt_docHospital">
-                    	<option value="0">-SELECT HOSPITAL-</option>
-                    	<?php
-                    	if($hospitals_data->num_rows() > 0){
-                    		foreach($hospitals_data->result() as $values){
-                    			echo '<option value="'.$values->hos_id.'" '.(($edit_data[0]['doc_hos_id'] == $values->hos_id)?'selected="selected"':'').'>'.$values->hos_name.'</option>';
-                    		}
-                    	}
-                    	?>
-                    </select>
-                    <span class="help-inline"></span>
-                </div>
-            </div>
-            <div class="control-group">
-                <label class="control-label" for="working">Doctor Recommanded</label>
-                <div class="controls">
-                    <select name="txt_docReference">
-                    	<option value="0">-SELECT DOCTOR-</option>
+                    	<option value="0">-None-</option>
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
-                    			echo '<option value="'.$values->doc_id.'" '.(($edit_data[0]['doc_id'] == $values->doc_id)?'selected="selected"':'').'>'.$values->doc_name.'</option>';
+                    			echo '<option value="'.$values->doc_id.'">'.$values->doc_name.'</option>';
                     		}
                     	}
                     	?>
@@ -88,10 +81,10 @@ if(isset($edit_data)){
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="status">Status</label>
+                <label class="control-label" for="patStatus">Status</label>
 
                 <div class="controls">
-                    <input name="txt_docStatus" checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
+                    <input name="txt_patStatus" checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
                     <span class="lbl"></span>
                     <span class="help-inline"></span>
                 </div>

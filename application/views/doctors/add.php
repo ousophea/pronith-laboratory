@@ -3,14 +3,13 @@
         Add new doctor
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new group
+            Please fill all the required input box to add new patient
         </small>
     </h1>
 </div>
 <div class="row-fluid">
     <div class="span12">
         <!--PAGE CONTENT BEGINS-->
-
         <?php echo form_open(site_url('doctors/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
                 <label class="control-label" for="doctorName">Doctor Name</label>
@@ -56,8 +55,8 @@
                     <select name="txt_docHospital">
                     	<option value="0">-SELECT HOSPITAL-</option>
                     	<?php
-                    	if($hospital_data->num_rows() > 0){
-                    		foreach($hospital_data->result() as $values){
+                    	if($hospitals_data->num_rows() > 0){
+                    		foreach($hospitals_data->result() as $values){
                     			echo '<option value="'.$values->hos_id.'">'.$values->hos_name.'</option>';
                     		}
                     	}
