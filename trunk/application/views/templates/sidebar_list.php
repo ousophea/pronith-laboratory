@@ -12,8 +12,8 @@
             <b class="arrow icon-angle-down"></b>
         </a>
         <ul class="submenu">
-            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'add_new') ? 'class="active"' : '' ?>>
-                <a href="<?php echo site_url('doctors/add_new'); ?>">
+            <li <?php echo (segment(1) == 'doctors' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('doctors/add'); ?>">
                     <i class="icon-double-angle-right"></i>
                     New Doctor
                 </a>
@@ -34,15 +34,15 @@
             <b class="arrow icon-angle-down"></b>
         </a>
         <ul class="submenu">
-            <li <?php echo (segment(1) == 'patients' && segment(2) == 'add_new') ? 'class="active"' : '' ?>>
-                <a href="<?php echo site_url('patients/add_new'); ?>">
+            <li <?php echo (segment(1) == 'patients' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('patients/add'); ?>">
                     <i class="icon-double-angle-right"></i>
                     New Patient
                 </a>
             </li>
 
-            <li <?php echo (segment(1) == 'patients' && segment(2) == 'view') ? 'class="active"' : '' ?>>
-                <a href="<?php echo site_url('doctors/lists'); ?>">
+            <li <?php echo (segment(1) == 'patients' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('patients/lists'); ?>">
                     <i class="icon-double-angle-right"></i>
                     Patient Lists
                 </a>

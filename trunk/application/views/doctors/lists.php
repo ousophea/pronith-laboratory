@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Doctor Lists
+        List doctors
         <small>
             <i class="icon-double-angle-right"></i>
-            Display all doctor reference in our laboratory
+            Display all doctors in our laboratory
         </small>
     </h1>
 </div>
@@ -74,7 +74,7 @@ if($this->session->flashdata('msg_info')){
                             <td class=" "><?php echo $row['doc_position']; ?></td>
                             <td class=" "><?php echo $row['hos_name']; ?></td>
                             <td class=" "><?php echo $row['doc_ref_name']; ?></td>
-                            <td class=" "><input data-user="<?php echo json_encode(array('data' => $row)); ?>" name="<?php echo 'status'; ?>" <?php echo ($row['status'])?'checked':''; ?> type="checkbox" id="<?php echo 'status'; ?>" placeholder="Status" class="ace ace-switch ace-switch-7" /><span class="lbl"></span></td>
+                            <td class=" "><input data-user="<?php echo json_encode(array('data' => $row)); ?>" name="<?php echo 'status'; ?>" <?php echo ($row['doc_status'])?'checked':''; ?> type="checkbox" id="<?php echo 'status'; ?>" placeholder="Status" class="ace ace-switch ace-switch-7" /><span class="lbl"></span></td>
 
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
@@ -133,43 +133,7 @@ if($this->session->flashdata('msg_info')){
         $(".delete").on('click', function() {
             var url = this.href;
             var parent = $(this).parent().parent().parent();
-            bootbox.confirm("Are you sure want to delete doctor?", function(result) {
-                if (result) {
-                    //bootbox.alert("You are sure!");
-                    go_loader();
-                    $.post(
-                            url,
-                            {},
-                            function(data) {
-                                if (data.result == 1) {
-                                    // call notification
-                                    notify('Done!', 'Delete doctor successully.', 'gritter-success');
-                                    $(parent).fadeOut(2000, function() {
-                                        this.remove()
-                                    });
-                                    $('.loader').fadeOut();
-                                }
-                                else if (data.result == 0) {
-                                    // call notification
-                                    notify('Fail!', 'Could not delete user, please try again.', 'gritter-error');
-                                    back_loader();
-                                    //bootbox.alert('Could not delete user');
-                                }
-                                else if (data.result == 2) {
-                                    notify('Fail!', data.result + ': System not allow to delete user, please contact to system administrator', 'gritter-error');
-                                    back_loader();
-                                    //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
-                                }
-                                else {
-                                    notify('Fail!', data.result + ': Could not delete user, please try again', 'gritter-error');
-                                    back_loader();
-                                    //bootbox.alert(data.result + ':Could not delete user, please try again');
-                                }
-                            }, 'json'
-                            );
-                }
-
-            });
+            bootbox.alert('Doctor delete option does not allow. You can use disable instead.');
             return false;
         });
 
