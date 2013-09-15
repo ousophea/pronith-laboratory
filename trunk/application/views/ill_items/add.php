@@ -53,7 +53,16 @@
                 <label class="control-label" for="<?php echo ILI_DESCRIPTION; ?>">Description</label>
 
                 <div class="controls">
-                    <textarea required name="<?php echo ILI_DESCRIPTION; ?>"  id="<?php echo ILI_DESCRIPTION; ?>" placeholder="Description"></textarea>
+                    <textarea name="<?php echo ILI_DESCRIPTION; ?>"  id="<?php echo ILI_DESCRIPTION; ?>" placeholder="Description"></textarea>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label" for="<?php echo ILG_ID; ?>">Ill group</label>
+
+                <div class="controls">
+                    <?php echo form_dropdown(ILG_ID, $ill_group, '', ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -97,6 +106,29 @@
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+        
+        // on change dropdown ill group
+        $('[name="<?php echo ILG_ID; ?>"]').on('change',function(){
+            var val = $(this).val();
+            if(val!=''){
+                $.ajax({
+                    type: 'POST',
+                    data: {<?php echo ILG_ID; ?>:val},
+                    dataType: 'json',
+                    url: uri[0] + 'ill_items/get_ills_by_group_id'
+                }).done(function(data) {
+                    $('[name="<?php echo ILI_ILLID; ?>"] option').remove();
+                    var html;
+                    $.each(data.result, function(val, text) {
+                        html = $('<option></option>').val(val).html(text);
+                        if(val=='')
+                            html.attr('selected', 'selected');
+                        $('[name="<?php echo ILI_ILLID; ?>"]').append(html);  
+                    });
+                });
+            }
+        });
+        
         $('form[name="add"]').find("input,select,textarea").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {
