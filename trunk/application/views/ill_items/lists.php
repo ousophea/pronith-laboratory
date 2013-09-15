@@ -58,7 +58,7 @@
                             
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue view" href="<?php echo base_url(); ?>ill_items/view">
+                                    <a class="blue view-modal" style="cursor:pointer; ">
                                         <i class="icon-eye-open bigger-130"></i>
                                     </a>
 
@@ -69,6 +69,8 @@
                                     <a class="red delete" href="<?php echo base_url(); ?>ill_items/delete/">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
+                                    <!-- Button to trigger modal -->
+                                    <!--<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>-->
                                 </div>
                             </td>
                         </tr>
@@ -82,15 +84,32 @@
         </table>
     </div>
 </div>
-
 <script type="text/javascript">
-    
+
     $(document).ready(function() {
         var object, parents;
         // Register
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+        
+        // View detail modal popup
+        $('.view-modal').on('click',function(){
+            parents = $(this).parents(".object");
+            object = $(parents).data('object').data;
+            var html = '';
+            html +=htmlView("Name", object['<?php echo ILI_NAME; ?>']);
+            html +=htmlView("Dimention", object['<?php echo ILI_DIMENTION; ?>']);
+            html +=htmlView("Ill", object['<?php echo ILI_NAME; ?>']);
+            html +=htmlView("Ill group", object['<?php echo ILG_NAME; ?>']);
+            html +=htmlView("Value male", object['<?php echo ILI_VALUEMALE; ?>']);
+            html +=htmlView("Value female", object['<?php echo ILI_VALUEFEMALE; ?>']);
+            html +=htmlView("Date created", object['<?php echo ILI_DATECREATED; ?>']);
+            html +=htmlView("Date modified", object['<?php echo ILI_DATEMODIFIED; ?>']);
+            html +=htmlView("Status", (object['<?php echo ILI_STATUS; ?>']==1)?'On':'Off');
+            html +=htmlView("Ill item description", object['<?php echo ILI_NAME; ?>']);
+            view(html,'Ill item view detail');// Popup
+        });
 
         // Load page edit and passing data
         $('.edit').on('click', function() {
@@ -195,18 +214,6 @@
             });
             return false;
         });
-        
-        // view
-        $('.view').click(function(){
-            parents = $(this).parents(".object");
-            object = $(parents).data('object');
-            console.log(object['data']);
-            
-            return false;
-        });
-
-
-
 
     });
 </script>

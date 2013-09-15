@@ -29,6 +29,31 @@ function notify(titles, message, class_name) {
     });
 }
 
+/**
+ * 
+ * @param {Array} data_array
+ * @param {String} title
+ * @returns {void}
+ */
+function view(html,title){
+    
+    //$(".element").html(html.join(""));
+    title = (title!=null)?title:'View details';
+    $('#modal-view #modal-header').html(title);
+    $('#modal-view .modal-body .view').html(html);
+    $('#modal-view').modal('toggle');
+}
+
+function htmlView(field,value){
+    var opentag = '<div class="profile-info-row"><div class="profile-info-name">';
+    var middletag = '</div><div class="profile-info-value"><span>';
+    var endtag = '</span></div></div>';
+    return(opentag+field+middletag+value+endtag);
+}
+/**
+ * 
+ * @returns {json}
+ */
 $.fn.toJSON = function() {
     var json = {};
     $.map($(this).serializeArray(), function(n, i) {
@@ -36,4 +61,5 @@ $.fn.toJSON = function() {
     });
     return json;
 };
+
 
