@@ -25,14 +25,28 @@ class m_ill_items extends CI_Model{
      * 
      * @return type
      */
-    function group_array(){
-        $data = $this->db->get(ILLS);
+    function ills_array(){
         $this->db->where(ILL_STATUS,1);
+        $data = $this->db->get(ILLS);
+        
         if($data->num_rows() > 0){
             return $this->m_global->get_dropdown_data($data,ILL_ID,ILL_NAME);
         }
         else
             return array();
+        
+    }
+    /**
+     * 
+     * @return type
+     */
+    function ill_groups_array(){
+        $this->db->where(ILG_STATUS,1);
+        $data = $this->db->get(ILLGROUPS);
+        
+        if($data->num_rows() > 0){
+            return $this->m_global->get_dropdown_data($data,ILG_ID,ILG_NAME);
+        }
         
     }
     /**
@@ -49,6 +63,7 @@ class m_ill_items extends CI_Model{
             if($query->num_rows() > 0) return 3;
             if(empty($data[ILI_STATUS])) $data[ILI_STATUS] = 0;
             else $data[ILI_STATUS] = 1;
+            unset($data[ILG_ID]);
             if($this->db->insert(ILLITEMS, $data)){
                 return 1;
             }
@@ -78,6 +93,7 @@ class m_ill_items extends CI_Model{
             $this->db->set(ILI_DATEMODIFIED,'NOW()',FALSE);
             $this->db->where(ILI_ID, $data[ILI_ID]);
             unset($data[ILI_ID]);
+            unset($data[ILG_ID]);
             if ($this->db->update(ILLITEMS,  $data))
                 return 1;
             else
@@ -102,6 +118,20 @@ class m_ill_items extends CI_Model{
         } catch (Exception $exc) {
             return 2;
         }
+    }
+    
+    function get_ills_by_group_id(){
+        $this->db->where(ILL_GROUPID,  $this->input->post(ILG_ID));
+        $data = $this->db->get(ILLS);
+        if($data->num_rows() > 0){
+            $result = $this->m_global->get_dropdown_data($data,ILL_ID,ILL_NAME);
+            return $result;
+        }
+        else{
+            return array(''=>DROPDOWN_DEFAULT);
+        }
+        
+        
     }
 }
 

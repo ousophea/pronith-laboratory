@@ -23,8 +23,9 @@ class m_ill extends CI_Model{
      * @return type
      */
     function group_array(){
-        $data = $this->db->get(ILLGROUPS);
         $this->db->where(ILG_STATUS,1);
+        $data = $this->db->get(ILLGROUPS);
+        
         if($data->num_rows() > 0){
             return $this->m_global->get_dropdown_data($data,ILG_ID,ILG_NAME);
         }
