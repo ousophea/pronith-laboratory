@@ -11,9 +11,9 @@
     <div class="span12">
         <!--PAGE CONTENT BEGINS-->
 
-        <?php echo form_open(site_url('doctors/add_save'),'class="form-horizontal"');?>
+        <?php echo form_open(site_url('patients/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="patientFirstName">First Name</label>
+                <label class="control-label" for="patFirstName">First Name</label>
 
                 <div class="controls">
                     <input required name="txt_patFirstName" type="text"  minlength="3" id="first_name" placeholder="First Name">
@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patientLastName">Last Name</label>
+                <label class="control-label" for="patLastName">Last Name</label>
 
                 <div class="controls">
                     <input required name="txt_patLastName" type="text"  minlength="3" id="last_name" placeholder="Last Name">
@@ -47,6 +47,17 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
+            <div class="pat_phone">
+            	<div class="control-group">
+	                <label class="control-label" for="phone">Phone</label>
+	                <div class="controls">
+	                    <input required name="txt_patPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
+	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
+	                    <span class="help-inline"></span>
+	                </div>
+	            </div>
+	            <div id="phone_container"></div>
+            </div>
 			<div class="control-group">
                 <label class="control-label" for="patEmail">Email</label>
                 <div class="controls">
@@ -54,25 +65,15 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
-            <div class="pat_phone">
-            	<div class="control-group">
-	                <label class="control-label" for="patPhones">Phone</label>
-	                <div class="controls">
-	                    <input name="txt_patPhone[]" type="text"  minlength="3" placeholder="(855)">
-	                    <span class="help-inline"></span>
-	                    <span class="add_more_phone">Add More</span>
-	                </div>
-	            </div>
-            </div>
 			<div class="control-group">
-                <label class="control-label" for="patDoctor">Recommanded from Doctor</label>
+                <label class="control-label" for="patPattor">Recommanded from Doctor</label>
                 <div class="controls">
-                    <select name="txt_docPosition">
+                    <select name="txt_patReference">
                     	<option value="0">-None-</option>
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
-                    			echo '<option value="'.$values->doc_id.'">'.$values->doc_name.'</option>';
+                    			echo '<option value="'.$values->doc_id.'">'.$values->doc_firstName.' '.$values->doc_lastName.'</option>';
                     		}
                     	}
                     	?>
@@ -104,12 +105,21 @@
         <?php echo form_close(); ?>
     </div><!--/.span-->
 </div>
-<!--
 <script type="text/javascript">
     $(document).ready(function() {
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+            
+		$('.pat_phone span[name="add_more"]').click(function(){
+        	var html = <?php echo json_encode(patient_phone()); ?>;
+        	$('#phone_container').append(html);
+        });
+        
+        $(document).on('click','.control-group span[name="remove_phone"]',function(){
+        	$(this).parent().parent().remove();
+        });
+        
         $('form[name="add"]').find("input,select").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {
@@ -148,4 +158,3 @@
         );
     });
 </script>
--->

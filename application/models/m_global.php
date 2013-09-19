@@ -149,6 +149,43 @@ class m_global extends CI_Model {
         }
         return $this->db->get($table);
     }
+	
+	/**
+     * Function select Where Not In
+     * @param $table the string parameter to select (required)
+     * @param $arr_item_where the array parameter to store the where field comming with value. It's associative array (optional)
+	 * @param $arr_item_no the array parameter to store the where field comming with value. Item value must be array. It's associative array (required)
+     * @param $limit the string parameter store the limit record select separated by , (optional)  
+     * @return table object
+     * @example select_where('tbl_users',array('use_name' => 'vannak','use_password' => '12345'))
+     */
+    public function select_where_not_in($table, $arr_item_not, $arr_item_where = array(), $limit = NULL) {
+    	if (!is_array($arr_item_not) || count($arr_item_not) == 0)
+            return FALSE;
+        if(count($arr_item_where) > 0){
+        	foreach ($arr_item_where as $field => $value) {
+            	$this->db->where($field, $value);
+        	}
+        }
+        if(count($arr_item_not) > 0){
+        	foreach ($arr_item_not as $field => $arr_value){
+        		$this->db->where_not_in($field, $arr_value);
+        	}
+        }
+        if ($limit != NULL) {
+            if (strpos($limit, ',')) {
+                $arr_limit = explode(',', $limit);
+                if (is_numeric($arr_limit[0]) && is_numeric($arr_limit[1])) {
+                    $this->db->limit($arr_limit[0], $arr_limit[1]);
+                }
+            } else {
+                if (is_numeric($limit)) {
+                    $this->db->limit($limit);
+                }
+            }
+        }
+        return $this->db->get($table);
+    }
 
     /**
      * Function select join with inner, left, right
@@ -237,6 +274,24 @@ class m_global extends CI_Model {
                 }
             }
             array_push($batch_data, $batch_list);
+        }
+        $this->db->insert_batch($table, $batch_data);
+        return TRUE;
+    }
+	
+	/**
+     * Function insert multiple records only one field
+     * @param $table the string parameter of table name
+     * @param $arr_fields the numeric array parameter to store fields list to be inserted (required)
+     * @param $arr_data the numeric 2nd dimentional array parameter to store multiple data tobe inserted (required)
+     * @return boolean
+     * @example insert_multi('tbl_users', array('use_name','use_sex'), array(array('vannak','m'),array('sochy','m'), array('sophea','m'))) 
+     */
+    public function insert_multi_one($table, $str_field = NULL, $arr_data = array()) {
+        if($str_field == NULL) return FALSE;
+        $batch_data = array();
+        foreach ($arr_data as $data) {
+            array_push($batch_data, array($str_field=>$data));
         }
         $this->db->insert_batch($table, $batch_data);
         return TRUE;
