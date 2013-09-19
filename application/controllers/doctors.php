@@ -149,6 +149,7 @@ class Doctors extends CI_Controller{
 	
 	//page for ajax call to remove the phone number
 	public function ajax_remove_phone(){
+		allows(array('administrator'));
 		if($_POST){
 			$id = $this->input->post('id');
 			$this->db->delete(TBL_PREFEX.'doctors_phones',array('doc_pho_id'=>$id));

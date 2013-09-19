@@ -126,7 +126,7 @@ if (isset($edit_data)) {
                 <label class="control-label" for="status">Status</label>
 
                 <div class="controls">
-                    <input name="txt_docStatus" checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
+                    <input name="txt_docStatus" <?php echo ($edit_data[0]['doc_status']==1)?'checked="checked"':''; ?> checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
                     <span class="lbl"></span>
                     <span class="help-inline"></span>
                 </div>

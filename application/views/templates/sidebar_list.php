@@ -5,9 +5,31 @@
             <span>Dashboard</span>
         </a>
     </li>
+    <li <?php echo (segment(1) == 'hospitals') ? 'class="active"' : '' ?>>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-building"></i>
+            <span>Hospitals</span>
+            <b class="arrow icon-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li <?php echo (segment(1) == 'hospitals' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('hospitals/add'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    New Hospital
+                </a>
+            </li>
+
+            <li <?php echo (segment(1) == 'hospitals' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('hospitals/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    Hospital Lists
+                </a>
+            </li>
+        </ul>
+    </li>
     <li <?php echo (segment(1) == 'doctors') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-user"></i>
+            <i class="icon-user-md"></i>
             <span>Doctors</span>
             <b class="arrow icon-angle-down"></b>
         </a>
@@ -124,34 +146,46 @@
             </li>
         </ul>
     </li>
-
-
-    <li>
+	<li <?php echo (segment(1) == 'tests') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-user"></i>
-            <span>Users</span>
-
+            <i class="icon-user-md"></i>
+            <span>Examing Tests</span>
             <b class="arrow icon-angle-down"></b>
         </a>
-
         <ul class="submenu">
-            <li>
-                <a class="ajax" href="<?php echo base_url(); ?>users/add">
+            <li <?php echo (segment(1) == 'tests' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('tests/add'); ?>">
                     <i class="icon-double-angle-right"></i>
-                    New user
+                    New Test
                 </a>
             </li>
 
-            <li>
-                <a class="ajax" href="<?php echo base_url(); ?>users/lists">
+            <li <?php echo (segment(1) == 'tests' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('tests/lists'); ?>">
                     <i class="icon-double-angle-right"></i>
-                    List users
+                    Test Lists
                 </a>
             </li>
-            <li>
-                <a class="ajax" href="<?php echo base_url(); ?>users/index">
+        </ul>
+    </li>
+    <li <?php echo (segment(1) == 'reports') ? 'class="active"' : '' ?>>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-print"></i>
+            <span>Reports</span>
+            <b class="arrow icon-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('reports/add'); ?>">
                     <i class="icon-double-angle-right"></i>
-                    Profile
+                    New Report
+                </a>
+            </li>
+
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('reports/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    Report Lists
                 </a>
             </li>
         </ul>
