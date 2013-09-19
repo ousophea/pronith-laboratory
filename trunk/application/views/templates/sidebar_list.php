@@ -1,6 +1,6 @@
 <ul class="nav nav-list">
     <li class="active">
-        <a href="index.html">
+        <a href="<?php echo site_url(); ?>">
             <i class="icon-dashboard"></i>
             <span>Dashboard</span>
         </a>

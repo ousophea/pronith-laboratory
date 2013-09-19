@@ -5,7 +5,7 @@
             <a href="#" class="brand">
                 <small>
                     <i class="icon-unlock-alt"></i>
-                    W8 Admin
+                    Pronith Laboratory Admin Manager
                 </small>
             </a><!--/.brand-->
 

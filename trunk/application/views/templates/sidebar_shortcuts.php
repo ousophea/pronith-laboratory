@@ -1,4 +1,5 @@
 <div id="sidebar-shortcuts">
+	<!--
     <div id="sidebar-shortcuts-large">
         <button class="btn btn-small btn-success">
             <i class="icon-signal"></i>
@@ -26,4 +27,5 @@
 
         <span class="btn btn-danger"></span>
     </div>
+   -->
 </div><!--#sidebar-shortcuts-->

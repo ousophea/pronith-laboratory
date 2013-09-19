@@ -68,7 +68,7 @@ class Doctors extends CI_Controller{
 			}
 	        $this->data['title'] = 'Edit doctor';
 			$this->data['edit_data'] = $edit_data;
-			$this->data['hospital_data'] = $this->m_global->select_all(TBL_PREFEX.'hospitals');
+			$this->data['hospitals_data'] = $this->m_global->select_all(TBL_PREFEX.'hospitals');
 			$this->data['doctors_data'] = $this->m_global->select_all(TBL_PREFEX.'doctors');
 	        $this->load->view(TEMPLATE,  $this->data);
 		}
