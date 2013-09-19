@@ -12,10 +12,18 @@
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('doctors/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="doctorName">Doctor Name</label>
+                <label class="control-label" for="doctorFirstName">First Name</label>
 
                 <div class="controls">
-                    <input required name="txt_docName" type="text"  minlength="3" id="full_name" placeholder="Full Name">
+                    <input required name="txt_docFirstName" type="text"  minlength="3" id="first_name" placeholder="First Name">
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="doctorLastName">Last Name</label>
+
+                <div class="controls">
+                    <input required name="txt_docLastName" type="text"  minlength="3" id="last_name" placeholder="Last Name">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -30,10 +38,21 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
+            <div class="doc_phone">
+            	<div class="control-group">
+	                <label class="control-label" for="phone">Phone</label>
+	                <div class="controls">
+	                    <input required name="txt_docPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
+	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
+	                    <span class="help-inline"></span>
+	                </div>
+	            </div>
+	            <div id="phone_container"></div>
+            </div>
 			<div class="control-group">
                 <label class="control-label" for="sex">Email</label>
                 <div class="controls">
-                    <input required name="txt_docEmail" type="email"  minlength="3" id="email" placeholder="name@example.com">
+                    <input name="txt_docEmail" type="email"  minlength="3" id="email" placeholder="name@example.com">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -73,7 +92,7 @@
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
-                    			echo '<option value="'.$values->doc_id.'">'.$values->doc_name.'</option>';
+                    			echo '<option value="'.$values->doc_id.'">'.$values->doc_firstName.' '.$values->doc_lastName.'</option>';
                     		}
                     	}
                     	?>
@@ -105,12 +124,21 @@
         <?php echo form_close(); ?>
     </div><!--/.span-->
 </div>
-<!--
 <script type="text/javascript">
     $(document).ready(function() {
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+        $('.doc_phone span[name="add_more"]').click(function(){
+        	var html = <?php echo json_encode(doctor_phone()); ?>;
+        	$('#phone_container').append(html);
+        });
+        
+        $(document).on('click','.control-group span[name="remove_phone"]',function(){
+        	$(this).parent().parent().remove();
+        });
+        
+        
         $('form[name="add"]').find("input,select").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {
@@ -149,4 +177,3 @@
         );
     });
 </script>
--->

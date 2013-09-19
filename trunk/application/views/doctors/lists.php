@@ -41,8 +41,10 @@ if($this->session->flashdata('msg_info')){
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">Name</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">First Name</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">Last Name</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Sex</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Phone</th>
                     <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Email</th>
                     <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Position</th>
                     <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Working</th>
@@ -68,8 +70,10 @@ if($this->session->flashdata('msg_info')){
                                 <?php echo form_hidden(USERS . USE_ID, json_encode(array('data' => $row))); ?>
                             </td>
 
-                            <td class=" "><?php echo $row['doc_name']; ?></td>
-                            <td class=" "><?php echo $row['doc_sex']; ?></td>
+                            <td class=" "><?php echo $row['doc_firstName']; ?></td>
+                            <td class=" "><?php echo $row['doc_lastName']; ?></td>
+                            <td class=" "><?php echo (strtolower($row['doc_sex'])=='m')?'Male':'Female'; ?></td>
+                            <td class=" "><?php echo ($row['doc_pho_number'] != NULL)?$row['doc_pho_number'].'<span id="doctor_phone" rel='.$row['doc_id'].'>...</span>':''; ?></td>
                             <td class=" "><?php echo $row['doc_email']; ?></td>
                             <td class=" "><?php echo $row['doc_position']; ?></td>
                             <td class=" "><?php echo $row['hos_name']; ?></td>

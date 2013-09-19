@@ -52,22 +52,39 @@ if(isset($edit_data)){
                     <span class="help-inline"></span>
                 </div>
             </div>
+            <?php
+            if($phones_data->num_rows() > 0){
+            	foreach($phones_data->result() as $rows){
+            ?>
+            <div class="control-group" id="phone_group_<?php echo $rows->pat_pho_id;?>">
+                <label class="control-label" for="sex">Phone</label>
+                <div class="controls">
+                    <span class="pho_number"><?php echo $rows -> pat_pho_number; ?></span>
+                    <span class="icon-trash" style="cursor: pointer;" name="ajax_remove_phone" rel="<?php echo $rows -> pat_pho_id; ?>"></span>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            <?php
+				}
+			}
+            ?>
+            <div class="pat_phone">
+            	<div class="control-group">
+	                <label class="control-label" for="phone">Phone</label>
+	                <div class="controls">
+	                    <input name="txt_patPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
+	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
+	                    <span class="help-inline"></span>
+	                </div>
+	            </div>
+	            <div id="phone_container"></div>
+            </div>
 			<div class="control-group">
                 <label class="control-label" for="patEmail">Email</label>
                 <div class="controls">
                     <input name="txt_patEmail" type="email" value="<?php echo $edit_data[0]['pat_email']; ?>"  minlength="3" id="email" placeholder="name@example.com">
                     <span class="help-inline"></span>
                 </div>
-            </div>
-            <div class="pat_phone">
-            	<div class="control-group">
-	                <label class="control-label" for="patPhones">Phone</label>
-	                <div class="controls">
-	                    <input name="txt_patPhone[]" type="text"  minlength="3" placeholder="(855)">
-	                    <span class="help-inline"></span>
-	                    <span class="add_more_phone">Add More</span>
-	                </div>
-	            </div>
             </div>
 			<div class="control-group">
                 <label class="control-label" for="patDoctor">Recommanded from Doctor</label>
@@ -77,7 +94,7 @@ if(isset($edit_data)){
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
-                    			echo '<option value="'.$values->doc_id.'" '.(($edit_data[0]['pat_doc_id'] == $values->doc_id)?'selected="selected"':'').'>'.$values->doc_name.'</option>';
+                    			echo '<option value="'.$values->doc_id.'" '.(($edit_data[0]['pat_doc_id'] == $values->doc_id)?'selected="selected"':'').'>'.$values->doc_firstName.' '.$values->doc_lastName.'</option>';
                     		}
                     	}
                     	?>
@@ -109,12 +126,32 @@ if(isset($edit_data)){
         <?php echo form_close(); ?>
     </div><!--/.span-->
 </div>
-<!--
 <script type="text/javascript">
     $(document).ready(function() {
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+		$('.pat_phone span[name="add_more"]').click(function(){
+        	var html = <?php echo json_encode(patient_phone()); ?>;
+				$('#phone_container').append(html);
+		});
+
+		$(document).on('click', '.control-group span[name="remove_phone"]', function() {
+			$(this).parent().parent().remove();
+		});
+
+		$('.control-group span[name="ajax_remove_phone"]').click(function() {
+			var pho_id = $(this).attr('rel');
+			$.post(<?php echo json_encode(site_url('patients/ajax_remove_phone')); ?>, {
+				id : pho_id
+			}).done(function(data) {
+				$('#phone_group_'+pho_id).html('<label class="control-label"></label><div class="controlls" style="color:green;">phone number removed</div>');
+			}).fail(function(err){
+				//case false of ajax do
+				$('#phone_group_'+pho_id).html('<label class="control-label"></label><div class="controlls" style="color:red;">phone number removed with error</div>');
+			});
+		});
+		
         $('form[name="add"]').find("input,select").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {
@@ -153,4 +190,3 @@ if(isset($edit_data)){
         );
     });
 </script>
--->

@@ -44,6 +44,7 @@ if($this->session->flashdata('msg_info')){
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending"">First Name</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Last Name</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">Sex</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">Phone</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Identity ID</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Email</th>
                     <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Recommend Doctor</th>
@@ -70,6 +71,7 @@ if($this->session->flashdata('msg_info')){
                             <td class=" "><?php echo $row['pat_firstName']; ?></td>
                             <td class=" "><?php echo $row['pat_lastName']; ?></td>
                             <td class=" "><?php echo (strtolower($row['pat_sex']) == 'm')?'Male':'Female'; ?></td>
+                            <td class=" "><?php echo ($row['pat_pho_number'] != NULL)?$row['pat_pho_number'].'<span id="patient_phone" rel='.$row['pat_id'].'>...</span>':''; ?></td>
                             <td class=" "><?php echo $row['pat_identityCard']; ?></td>
                             <td class=" "><?php echo $row['pat_email']; ?></td>
                             <td class=" "><?php echo $row['doc_name']; ?></td>
