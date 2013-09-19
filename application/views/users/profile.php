@@ -1,6 +1,6 @@
 <div class="page-header position-relative">
     <h1>
-        User Profile Page
+        Welcome Home Page
         <small>
             <i class="icon-double-angle-right"></i>
             3 styles with inline editable feature
@@ -10,7 +10,7 @@
             ?>
             
             <?php
-            var_dump($this->session->userdata(GROUPS));
+            //var_dump($this->session->userdata(GROUPS));
             ?>
         </small>
     </h1>
