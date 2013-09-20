@@ -5,6 +5,7 @@
         <title><?php echo (!empty($title)) ? $title : 'Welcome'; ?> | Pronith Laboratory</title>
         <meta name="description" content="This is page-header (.page-header &gt; h1)" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="Shortcut Icon" type="image/ico" href="<?php echo site_url(IMG.'favicon.ico') ;?>" />
 
         <!--basic styles-->
 
