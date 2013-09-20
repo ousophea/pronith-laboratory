@@ -42,9 +42,9 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 //// ------------------ QMS
 define('TEMPLATE', 'templates/win8');
-
 define('CSS','templates/win8/css/');
 define('JS','templates/win8/js/');
+define('IMG','templates/win8/img/');
 define('FONT','templates/win8/font-awesome/');
 
 // prefex password
