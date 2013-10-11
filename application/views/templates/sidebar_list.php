@@ -74,7 +74,7 @@
 
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-desktop"></i>
+            <i class="icon-plus-sign"></i>
             <span>Ill Group</span>
 
             <b class="arrow icon-angle-down"></b>
@@ -99,7 +99,7 @@
 
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-folder-close-alt"></i>
+            <i class="icon-plus-sign"></i>
             <span>Ills</span>
 
             <b class="arrow icon-angle-down"></b>
@@ -115,7 +115,7 @@
 
             <li>
                 <a class="ajax" href="<?php echo base_url(); ?>ills/lists">
-                    <i class="icon-double-angle-right"></i>
+                    <i class="icon-th-list"></i>
                     List Ills
                 </a>
             </li>
@@ -124,7 +124,7 @@
 
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-folder-close-alt"></i>
+            <i class="icon-list-alt"></i>
             <span>Ill item</span>
 
             <b class="arrow icon-angle-down"></b>
@@ -153,8 +153,8 @@
             <b class="arrow icon-angle-down"></b>
         </a>
         <ul class="submenu">
-            <li <?php echo (segment(1) == 'tests' && segment(2) == 'add') ? 'class="active"' : '' ?>>
-                <a href="<?php echo site_url('tests/add'); ?>">
+            <li <?php echo (segment(1) == 'tests' && (segment(2) == 'add_step1' || segment(2) == 'add_step3' || segment(2) == 'add_step3')) ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('tests/add_step1'); ?>">
                     <i class="icon-double-angle-right"></i>
                     New Test
                 </a>

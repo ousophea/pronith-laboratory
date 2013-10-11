@@ -105,3 +105,5 @@ define('ILI_STATUS', 'ill_ite_status');
 // Global worlds
 define('DROPDOWN_DEFAULT', '-- Select --');
 define('STATUS', 'status');
+//doctor commission %
+define('DOCTOR_COMMISSION', 10);

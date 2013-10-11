@@ -60,6 +60,7 @@
 
         <!--inline styles if any-->
         <script src="<?php echo base_url() . JS; ?>jquery.min.js"></script>
+        		
         <!--basic scripts-->
         <script src="<?php echo base_url() . JS; ?>bootstrap.min.js"></script>
 
