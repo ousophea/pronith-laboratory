@@ -168,6 +168,21 @@
             </li>
         </ul>
     </li>
+    <li <?php echo (segment(1) == 'doctors_commissions') ? 'class="active"' : '' ?>>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-money"></i>
+            <span>Doctor Commission</span>
+            <b class="arrow icon-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li <?php echo (segment(1) == 'doctors_commissions' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('doctors_commissions/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                  	View Commission
+                </a>
+            </li>
+        </ul>
+    </li>
     <li <?php echo (segment(1) == 'reports') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-print"></i>
