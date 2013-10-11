@@ -68,6 +68,10 @@ class Patients extends CI_Controller {
 				}else{
 					$this -> session -> set_flashdata('msg_success', 'New patient has been created!');
 				}
+				if($this->session->userdata('new_patient_exam_test')){
+					$this->session->set_flashdata('pat_id',$last_patient_id);
+					redirect($this->session->userdata('new_patient_exam_test'));
+				}
 				redirect(site_url('patients/lists'));
 			} else {
 				echo '';

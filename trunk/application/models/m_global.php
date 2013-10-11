@@ -186,6 +186,43 @@ class m_global extends CI_Model {
         }
         return $this->db->get($table);
     }
+	
+	/**
+     * Function select Where In
+     * @param $table the string parameter to select (required)
+     * @param $arr_item_where the array parameter to store the where field comming with value. It's associative array (optional)
+	 * @param $arr_item_no the array parameter to store the where field comming with value. Item value must be array. It's associative array (required)
+     * @param $limit the string parameter store the limit record select separated by , (optional)  
+     * @return table object
+     * @example select_where_in('tbl_ills_items',array('ill_id' => array(1,2,3,4)))
+     */
+    public function select_where_in($table, $arr_item_in, $arr_item_where = array(), $limit = NULL) {
+    	if (!is_array($arr_item_in) || count($arr_item_in) == 0)
+            return FALSE;
+        if(count($arr_item_where) > 0){
+        	foreach ($arr_item_where as $field => $value) {
+            	$this->db->where($field, $value);
+        	}
+        }
+        if(count($arr_item_in) > 0){
+        	foreach ($arr_item_in as $field => $arr_value){
+        		$this->db->where_in($field, $arr_value);
+        	}
+        }
+        if ($limit != NULL) {
+            if (strpos($limit, ',')) {
+                $arr_limit = explode(',', $limit);
+                if (is_numeric($arr_limit[0]) && is_numeric($arr_limit[1])) {
+                    $this->db->limit($arr_limit[0], $arr_limit[1]);
+                }
+            } else {
+                if (is_numeric($limit)) {
+                    $this->db->limit($limit);
+                }
+            }
+        }
+        return $this->db->get($table);
+    }
 
     /**
      * Function select join with inner, left, right
@@ -449,7 +486,30 @@ class m_global extends CI_Model {
         }
         return $data;
     }
-
+	
+	//return string for select only patient
+	function get_patient_name($id){
+		$str_return = "No Patient Selected";
+		$this->db->where('pat_id',$id);
+		$this->db->limit(1);
+		$query_get = $this->db->get(TBL_PREFEX.'patients');
+		if($query_get->num_rows() > 0){
+			$query_get = $query_get->result_array();
+			$str_return = strtoupper($query_get[0]['pat_firstName']).' '.ucfirst($query_get[0]['pat_lastName']);
+		}
+		return $str_return;
+	}
+	
+	//function return id of doctor as integer. if null return 0
+	function get_doctor_by_patient($pat_id){
+		$doc_id = 0;
+		$query_join = $this->select_join(TBL_PREFEX.'doctors', array(TBL_PREFEX.'patients' => array('doc_id' => 'pat_doc_id')),'inner',array(TBL_PREFEX.'patients.pat_id' => $pat_id),1);
+		if($query_join->num_rows() > 0){
+			$query_join = $query_join->result_array();
+			$doc_id = $query_join[0]['doc_id'];
+		}
+		return $doc_id;
+	}
 }
 
 ?>
