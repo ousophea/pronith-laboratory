@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Edit ill
+        កែប្រែធាតុរបស់ជំងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to edit ill
+            សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
         </small>
     </h1>
 </div>
@@ -13,7 +13,7 @@
 
         <form class="form-horizontal" method="post" name="edit">
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_NAME; ?>">Ill item name</label>
+                <label class="control-label" for="<?php echo ILI_NAME; ?>">ឈ្មោះធាតុ</label>
 
                 <div class="controls">
                     <input name='<?php echo ILI_ID; ?>' type='hidden' value='<?php echo $data[ILI_ID] ?>'/>
@@ -23,7 +23,7 @@
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">Dimention</label>
+                <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">ខ្នាត</label>
 
                 <div class="controls">
                     <input required name="<?php echo ILI_DIMENTION; ?>" value="<?php echo $data[ILI_DIMENTION]; ?>" type="text"  minlength="1" id="<?php echo ILI_DIMENTION; ?>" placeholder="Dimention">
@@ -32,35 +32,25 @@
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_VALUEMALE; ?>">Value Male</label>
+                <label class="control-label" for="<?php echo ILI_VALUEMALE; ?>">តម្លៃធម្មតាប្រុស</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEMALE; ?>"  value="<?php echo $data[ILI_DIMENTION]; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEMALE; ?>" placeholder="Value Male">
+                    <input required name="<?php echo ILI_VALUEMALE; ?>"  value="<?php echo $data[ILI_VALUEMALE]; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEMALE; ?>" placeholder="Value Male">
                     <span class="help-inline"></span>
                 </div>
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_VALUEFEMALE; ?>">Value Female</label>
+                <label class="control-label" for="<?php echo ILI_VALUEFEMALE; ?>">តម្លៃធម្មតាស្រី</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEFEMALE; ?>"  value="<?php echo $data[ILI_DIMENTION]; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="Value Female">
-                    <span class="help-inline"></span>
-                </div>
-            </div>
-            
-            
-            <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_DESCRIPTION; ?>">Description</label>
-
-                <div class="controls">
-                    <textarea name="<?php echo ILI_DESCRIPTION; ?>"  value="<?php echo $data[ILI_DIMENTION]; ?>" id="<?php echo ILI_DESCRIPTION; ?>" placeholder="Description"></textarea>
+                    <input required name="<?php echo ILI_VALUEFEMALE; ?>"  value="<?php echo $data[ILI_VALUEFEMALE]; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="Value Female">
                     <span class="help-inline"></span>
                 </div>
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILG_ID; ?>">Ill group</label>
+                <label class="control-label" for="<?php echo ILG_ID; ?>">ប្រភេទ</label>
 
                 <div class="controls">
                     <?php echo form_dropdown(ILG_ID, $ill_group) ?>
@@ -68,16 +58,26 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_ILLID; ?>">Ill</label>
+                <label class="control-label" for="<?php echo ILI_ILLID; ?>">ជំងឺ</label>
 
                 <div class="controls">
                     <?php echo form_dropdown(ILI_ILLID, $groups, $data[ILI_ILLID], ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>
+            
+            
+            <div class="control-group">
+                <label class="control-label" for="<?php echo ILI_DESCRIPTION; ?>">បរិយាយ</label>
+
+                <div class="controls">
+                    <textarea name="<?php echo ILI_DESCRIPTION; ?>"  value="<?php echo $data[ILI_DIMENTION]; ?>" id="<?php echo ILI_DESCRIPTION; ?>" placeholder="Description"></textarea>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILI_STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo ILI_STATUS; ?>">ស្ថានភាព</label>
 
                 <div class="controls">
                     <input name="<?php echo ILI_STATUS; ?>"  <?php echo ($data[ILG_STATUS])?'checked':''; ?>  type="checkbox" id="<?php echo ILI_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
@@ -88,13 +88,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    កែប្រែ
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    សារ​ដើម
                 </button>
             </div>
 

@@ -24,7 +24,7 @@
                         <li class="active">
                             <a data-toggle="tab" href="#home">
                                 <i class="green icon-user bigger-120"></i>
-                                ពត៏មានរបស់អ្នក
+                                ជីវប្រវត្តិសង្ខេប
                             </a>
                         </li>
                     </ul>
