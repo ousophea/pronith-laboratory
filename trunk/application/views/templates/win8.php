@@ -112,28 +112,6 @@
             </div>
 
             <div id="main-content" class="clearfix">
-                <div id="breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li>
-                            <i class="icon-home"></i>
-                            <a href="#">ផ្ទះ</a>
-
-                            <span class="divider">
-                                <i class="icon-angle-right"></i>
-                            </span>
-                        </li>
-                        <li class="active">ផ្ទាំង​កិច្ចការ</li>
-                    </ul><!--.breadcrumb-->
-
-                    <div id="nav-search">
-                        <form class="form-search">
-                            <span class="input-icon">
-                                <input type="text" placeholder="Search ..." class="input-small search-query" id="nav-search-input" autocomplete="off" />
-                                <i class="icon-search" id="nav-search-icon"></i>
-                            </span>
-                        </form>
-                    </div><!--#nav-search-->
-                </div>
                 <div class="wrapper-loader" style="height: 9px;">
                     <div class="loader" style="display: none;">
                         <div class="progress progress-mini progress-success progress-striped active" data-percent="0%"><div class="bar" style="width: 0%;"></div></div>

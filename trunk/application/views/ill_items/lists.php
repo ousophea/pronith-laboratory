@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List ill items
+        តារាងធាតុជំងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            List all ill items information
+            បង្ហាញអំពីតារាងធាតុជំងឺ
         </small>
     </h1>
 </div>
@@ -18,15 +18,15 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting">Name</th>
-                    <th class="sorting">Dimention</th>
-                    <th class="sorting">Ill</th>
-                    <th class="sorting">Ill group</th>
-                    <th class="sorting">Value male</th>
-                    <th class="sorting">Value female</th>
-                    <th class="sorting">Create</th>
-                    <th class="sorting">Modifier</th>
-                    <th class="sorting">Status</th>
+                    <th class="sorting">ធាតុ</th>
+                    <th class="sorting">ខ្នាត</th>
+                    <th class="sorting">ជំងឺ</th>
+                    <th class="sorting">ព្រភេទ</th>
+                    <th class="sorting">តម្លៃធម្មតាប្រុស</th>
+                    <th class="sorting">តម្លៃធម្មតាស្រី</th>
+                    <th class="sorting">ថ្ងៃបញ្ចូល</th>
+                    <th class="sorting">ថ្ងៃកែប្រែ</th>
+                    <th class="sorting">ស្ថានភាព</th>
                     <th style="width: 161px;">Action</th>
                 </tr>
             </thead>
