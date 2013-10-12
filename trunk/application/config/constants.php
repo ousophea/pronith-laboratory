@@ -63,8 +63,8 @@ define('USE_PASSWORD', 'use_password');
 define('USE_FIRSTNAME', 'use_firstName');
 define('USE_LASTNAME', 'use_lastName');
 define('USE_FULLNAME', 'use_fullName');
-define('USE_DATACREATED', 'use_dataCreated');
-define('USE_DATAMODIFIED', 'use_dataModified');
+define('USE_DATACREATED', 'use_dateCreated');
+define('USE_DATAMODIFIED', 'use_dateModified');
 define('USE_STATUS', 'use_status');
 define('USE_GROUPID', 'use_gro_id');
 
