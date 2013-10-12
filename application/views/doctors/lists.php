@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List doctors
+        	បង្ហាញ​វេជ្ជបណ្ឌិត
         <small>
             <i class="icon-double-angle-right"></i>
-            Display all doctors in our laboratory
+            	បង្ហាញ​រាល់​ឈ្មោះ វេជ្ជបណ្ឌិតដែល​មាន​នៅ​ក្នុង​ប្រព័ន្ធ 
         </small>
     </h1>
 </div>
@@ -133,11 +133,11 @@ if($this->session->flashdata('msg_info')){
             return false;
         });
 
-        // Delete
+        //Delete
         $(".delete").on('click', function() {
             var url = this.href;
             var parent = $(this).parent().parent().parent();
-            bootbox.alert('Doctor delete option does not allow. You can use disable instead.');
+            bootbox.alert('លុប​វេជ្ជ​បណ្ឌិត​មិន​ត្រូវ​បាន​អនុញ្ញាតិ។ អ្នក​អាច​ប្តូរ​ ស្ថាន​ភាព ជំនួស​ការ​លុប​បាន។');
             return false;
         });
 

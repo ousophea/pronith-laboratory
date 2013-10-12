@@ -61,12 +61,12 @@ class Patients extends CI_Controller {
 						array_push($data_batch,array($last_patient_id,$value));
 					}
 					if($this->m_global->insert_multi(TBL_PREFEX.'patients_phones',array('pat_pho_pat_id','pat_pho_number'),$data_batch)){
-						$this -> session -> set_flashdata('msg_success', 'New patient has been created!');
+						$this -> session -> set_flashdata('msg_success', 'អ្នក​ជំងឺ​ថ្មី ត្រូវ​បាន​បង្កើត!');
 					}else{
-						$this -> session -> set_flashdata('msg_success', 'New patient has been created! But has some error with phone inserted.');
+						$this -> session -> set_flashdata('msg_success', 'អ្នក​ជំងឺ​ថ្មី ត្រូវ​បាន​បង្កើត! ប៉ុន្តែ​មាន​បញ្ហា​ ជាមួយ​ការ​បញ្ចូល​លេខ​ទូរស័ព្ទ');
 					}
 				}else{
-					$this -> session -> set_flashdata('msg_success', 'New patient has been created!');
+					$this -> session -> set_flashdata('msg_success', 'អ្នក​ជំងឺ​ថ្មី ត្រូវ​បាន​បង្កើត!');
 				}
 				if($this->session->userdata('new_patient_exam_test')){
 					$this->session->set_flashdata('pat_id',$last_patient_id);
@@ -84,7 +84,7 @@ class Patients extends CI_Controller {
 			allows(array('administrator'));
 			$edit_data = $this -> m_global -> select_where(TBL_PREFEX . 'patients', array('pat_id' => $id), 1);
 			if (!is_numeric($id) || (count($edit_data -> result_array()) == 0)) {
-				$this -> session -> set_flashdata('msg_error', 'The patient you are trying to edit is not exist in our system!');
+				$this -> session -> set_flashdata('msg_error', 'អ្នក​ជំងឺ​ ដែល​អ្នក​កំ​ពុង​ ព្យាយាម​កែប្រែ ពុំ​មាន​នៅ​ក្នុង​ប្រ​ព័ន្ធ​ទេ!');
 				redirect(site_url('patients/lists'));
 			}
 			$this -> data['title'] = 'Edit patient';
@@ -123,12 +123,12 @@ class Patients extends CI_Controller {
 						array_push($data_batch,array($pat_id,$value));
 					}
 					if($this->m_global->insert_multi(TBL_PREFEX.'patients_phones',array('pat_pho_pat_id','pat_pho_number'),$data_batch)){
-						$this -> session -> set_flashdata('msg_success', 'A patient at id = ' . $pat_id . ' has been updated!');
+						$this -> session -> set_flashdata('msg_success', 'អ្នក​ជំ​ងឺ​ត្រង់ id = ' . $pat_id . ' ត្រូវ​បាន​ធ្វើ​ការ​ កែប្រែ!');
 					}else{
-						$this -> session -> set_flashdata('msg_success', 'A patient at id = ' . $pat_id . ' has been updated! But has some error with phone inserted.');
+						$this -> session -> set_flashdata('msg_success', 'អ្នក​ជំ​ងឺ​ត្រង់ id = ' . $pat_id . ' ត្រូវ​បាន​ធ្វើ​ការ​ កែប្រែ! ប៉ុន្តែ​មាន​បញ្ហា​ជាមួយ ការ​បញ្ចូល​លេខ​ទូរស័ព្ទ');
 					}
 				}else{
-					$this -> session -> set_flashdata('msg_success', 'A patient at id = ' . $pat_id . ' has been updated!');
+					$this -> session -> set_flashdata('msg_success', 'អ្នក​ជំ​ងឺ​ត្រង់ id = ' . $pat_id . ' ត្រូវ​បាន​ធ្វើ​ការ​ កែប្រែ!');
 				}
 				
 				redirect(site_url('patients/lists'));

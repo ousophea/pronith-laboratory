@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Add new hospital
+        បង្កើតមន្ទីរ​ពេទ្យ​ថ្មី
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new hospital
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -21,23 +21,23 @@ if($this->session->flashdata('msg_error')){
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('hospitals/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="hosName">Hospital Name</label>
+                <label class="control-label" for="hosName">ឈ្មោះ​មន្ទីរ​ពេទ្យ</label>
 
                 <div class="controls">
-                    <input required name="txt_hosName" type="text"  minlength="3" id="hos_name" placeholder="Hospital Name">
+                    <input required name="txt_hosName" type="text"  minlength="3" id="hos_name" placeholder="ឈ្មោះ​មន្ទីរ​ពេទ្យ">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="hosAddress">Address</label>
+                <label class="control-label" for="hosAddress">អាស័យដ្ឋាន</label>
 
                 <div class="controls">
-                    <textarea name="txt_hosAddress" id="hos_address" placeholder="Address"></textarea>
+                    <textarea name="txt_hosAddress" id="hos_address" placeholder="អាស័យដ្ឋាន"></textarea>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="status">Status</label>
+                <label class="control-label" for="status">ស្ថាន​ភាព</label>
 
                 <div class="controls">
                     <input name="txt_hosStatus" checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
@@ -48,13 +48,13 @@ if($this->session->flashdata('msg_error')){
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    	បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារ​ដើម
                 </button>
             </div>
         <?php echo form_close(); ?>

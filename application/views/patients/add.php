@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Add new patient
+        បង្កើត​អ្នក​ជំងឺ​ថ្មី
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new patient
+             	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ 
         </small>
     </h1>
 </div>
@@ -13,43 +13,43 @@
 
         <?php echo form_open(site_url('patients/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="patFirstName">First Name</label>
+                <label class="control-label" for="patFirstName">គោត្តនាម</label>
 
                 <div class="controls">
-                    <input required name="txt_patFirstName" type="text"  minlength="3" id="first_name" placeholder="First Name">
+                    <input required name="txt_patFirstName" type="text"  minlength="3" id="first_name" placeholder="គោត្តនាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patLastName">Last Name</label>
+                <label class="control-label" for="patLastName">នាម</label>
 
                 <div class="controls">
-                    <input required name="txt_patLastName" type="text"  minlength="3" id="last_name" placeholder="Last Name">
+                    <input required name="txt_patLastName" type="text"  minlength="3" id="last_name" placeholder="នាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="sex">Sex</label>
+                <label class="control-label" for="sex">ភេទ</label>
                 <div class="controls">
                     <select name="txt_patSex">
-                    	<option value="0">-SEX-</option>
-                    	<option value="m">Male</option>
-                    	<option value="f">Female</option>
+                    	<option value="0">-ភេទ-</option>
+                    	<option value="m">ប្រុស</option>
+                    	<option value="f">ស្រី</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patientIdentityCard">National Identity Card</label>
+                <label class="control-label" for="patientIdentityCard">លេខ​អត្តសញ្ញាណប័ណ្ណ</label>
 
                 <div class="controls">
-                    <input name="txt_patIdentityCard" type="number"  minlength="3" id="identity_card" placeholder="National Identity Card">
+                    <input name="txt_patIdentityCard" type="number"  minlength="3" id="identity_card" placeholder="លេខ​អត្តសញ្ញាណប័ណ្ណ">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="pat_phone">
             	<div class="control-group">
-	                <label class="control-label" for="phone">Phone</label>
+	                <label class="control-label" for="phone">លេខ​ទូរស័ព្ទ</label>
 	                <div class="controls">
 	                    <input required name="txt_patPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
 	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
@@ -59,17 +59,17 @@
 	            <div id="phone_container"></div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="patEmail">Email</label>
+                <label class="control-label" for="patEmail">អ៊ី​ម៉ែល</label>
                 <div class="controls">
                     <input name="txt_patEmail" type="email"  minlength="3" id="email" placeholder="name@example.com">
                     <span class="help-inline"></span>
                 </div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="patPattor">Recommanded from Doctor</label>
+                <label class="control-label" for="patPattor">ណែ​នាំ​ពី​វេជ្ជ​បណ្ឌិត</label>
                 <div class="controls">
                     <select name="txt_patReference">
-                    	<option value="0">-None-</option>
+                    	<option value="0">-គ្មាន-</option>
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
@@ -82,7 +82,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patStatus">Status</label>
+                <label class="control-label" for="patStatus">ស្ថានភាព</label>
 
                 <div class="controls">
                     <input name="txt_patStatus" checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
@@ -93,13 +93,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    	បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារដើម
                 </button>
             </div>
         <?php echo form_close(); ?>

@@ -5,10 +5,10 @@ if (isset($edit_data)) {
 ?>
 <div class="page-header position-relative">
     <h1>
-        Edit hospital : <?php echo $edit_data[0]['hos_name']; ?>
+        កែប្រែ មន្ទីរពេទ្យ : <?php echo $edit_data[0]['hos_name']; ?>
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new hospital
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -18,23 +18,23 @@ if (isset($edit_data)) {
 
         <?php echo form_open(site_url('hospitals/edit_save'), 'class="form-horizontal"', array('hos_id' => $edit_data[0]['hos_id'])); ?>
             <div class="control-group">
-                <label class="control-label" for="hosName">Hospital Name</label>
+                <label class="control-label" for="hosName">ឈ្មោះ​មន្ទីរ​ពេទ្យ</label>
 
                 <div class="controls">
-                    <input required name="txt_hosName" type="text"  minlength="3" id="hos_name" placeholder="Hospital Name" value="<?php echo $edit_data[0]['hos_name'] ?>">
+                    <input required name="txt_hosName" type="text"  minlength="3" id="hos_name" placeholder="ឈ្មោះ​មន្ទីរ​ពេទ្យ" value="<?php echo $edit_data[0]['hos_name'] ?>">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="hosAddress">Address</label>
+                <label class="control-label" for="hosAddress">អាស័យដ្ឋាន</label>
 
                 <div class="controls">
-                    <textarea name="txt_hosAddress" id="hos_address" placeholder="Address"><?php echo $edit_data[0]['hos_address'] ?></textarea>
+                    <textarea name="txt_hosAddress" id="hos_address" placeholder="អាស័យដ្ឋាន"><?php echo $edit_data[0]['hos_address'] ?></textarea>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="status">Status</label>
+                <label class="control-label" for="status">ស្ថាន​ភាព</label>
 
                 <div class="controls">
                     <input name="txt_hosStatus" <?php echo ($edit_data[0]['hos_status']==1)?'checked="checked"':''; ?> checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
@@ -45,13 +45,13 @@ if (isset($edit_data)) {
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    	កែប្រែ
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារដើម
                 </button>
             </div>
         <?php echo form_close(); ?>

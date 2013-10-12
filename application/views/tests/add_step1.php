@@ -4,10 +4,10 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
 ?>
 <div class="page-header position-relative">
     <h1>
-        Add new exam test : step 1
+        បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាល ទី១
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new exam test
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -39,7 +39,7 @@ if($this->session->flashdata('msg_info')){
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/add_step2'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="doctorFirstName">Select Patient</label>
+                <label class="control-label" for="doctorFirstName">ជ្រើស​រើស ឈ្មោះ​អ្នកជំងឺ</label>
 
                 <div class="controls">
                 	<select name="txt_patId">
@@ -59,23 +59,23 @@ if($this->session->flashdata('msg_info')){
                     	?>
                     </select>
                     <span class="help-inline"></span>
-                    <a href="<?php echo site_url('tests/add_patient'); ?>" alt="Add new patient">Add New Patient</a>
+                    <a href="<?php echo site_url('tests/add_patient'); ?>" alt="បញ្ចូលថ្មី">Add New Patient</a>
                 </div>
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="status">Ill is received?</label>
+                <label class="control-label" for="status">ជំងឺ​ទទួល​បាន?</label>
                 <div class="controls">
                     <select name="txt_isReceiveIll">
-                    	<option value="1" <?php echo (($this->session->userdata('txt_isReceiveIll') && $this->session->userdata('txt_isReceiveIll') == '1')?'selected="selected"':'');?>>Received</option>
-                    	<option value="0" <?php echo (($this->session->userdata('txt_isReceiveIll') && $this->session->userdata('txt_isReceiveIll') == 0)?'selected="selected"':'');?>>Not Yet</option>
+                    	<option value="1" <?php echo (($this->session->userdata('txt_isReceiveIll') && $this->session->userdata('txt_isReceiveIll') == '1')?'selected="selected"':'');?>>ទទួល​បាន</option>
+                    	<option value="0" <?php echo (($this->session->userdata('txt_isReceiveIll') && $this->session->userdata('txt_isReceiveIll') == 0)?'selected="selected"':'');?>>មិនទាន់​ ទទួល​បាន</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
             
             <div class="control-group">            	
-                <label class="control-label" for="doctorLastName">Select ill for test</label>
+                <label class="control-label" for="doctorLastName">ជ្រើស​រើស ជំ​ងឺ</label>
 
                 <div class="controls">
                 	<div class="accordion">
@@ -130,18 +130,18 @@ if($this->session->flashdata('msg_info')){
             <div class="form-actions">
                 <button id="btn_step_one" class="btn btn-info" type="submit">
                     <i class="icon-arrow-right bigger-110"></i>
-                    Next Step
+                    	បន្ទាប់
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារដើម
                 </button>
                 &nbsp; &nbsp; &nbsp;
                 <button type="button" class="btn btn-danger">
                 	<i class="icon-eject"></i>
-                	Cancel
+                	បោះបង់
                 </button>
             </div>
         <?php echo form_close(); ?>

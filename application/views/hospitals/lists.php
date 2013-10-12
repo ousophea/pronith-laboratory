@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List hospitals
+        បង្ហាញ​ មន្ទីរពេទ្យ
         <small>
             <i class="icon-double-angle-right"></i>
-            Display all hospitals in our laboratory
+            	បង្ហាញ​រាល់​ឈ្មោះ មន្ទីរ​ពេទ្យ​ដែល​មាន​នៅ​ក្នុង​ប្រព័ន្ធ
         </small>
     </h1>
 </div>
@@ -41,9 +41,9 @@ if($this->session->flashdata('msg_info')){
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">Hospital Name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">Address</th>
-                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">Status</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">ឈ្មោះ​មន្ទីរ​ពេទ្យ</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">អាស័យ​ដ្ឋាន</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">ស្ថាន​ភាព</th>
                     <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 161px;">Action</th>
                 </tr>
             </thead>
@@ -125,7 +125,7 @@ if($this->session->flashdata('msg_info')){
         $(".delete").on('click', function() {
             var url = this.href;
             var parent = $(this).parent().parent().parent();
-            bootbox.alert('Hospital delete option does not allow. You can use disable instead.');
+            bootbox.alert('ប្រព័ន្ធ​មិន​អនុញ្ញាត​អោយ​លុបឈ្មោះ មន្ទីរ​ពេទ្យ​ទេ។ អ្នក​អាច​ប្តូរ​ ស្ថាន​ភាព ជំនួស​ការ​លុប​បាន។');
             return false;
         });
     });

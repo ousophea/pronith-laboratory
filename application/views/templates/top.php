@@ -5,10 +5,10 @@
             <a href="#" class="brand">
                 <small>
                     <i class="icon-unlock-alt"></i>
-                    Pronith Laboratory Admin Manager
-                </small>
+                    	ប្រព័ន្ធគ្រប់​គ្រង មន្ទីរ​ពិសោធន៍
+                    </small>
+                    <b>ប្រណីត</b>
             </a><!--/.brand-->
-
             <ul class="nav ace-nav pull-right">
                 <li class="grey">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">

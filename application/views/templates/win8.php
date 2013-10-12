@@ -116,13 +116,13 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="icon-home"></i>
-                            <a href="#">Home</a>
+                            <a href="#">ផ្ទះ</a>
 
                             <span class="divider">
                                 <i class="icon-angle-right"></i>
                             </span>
                         </li>
-                        <li class="active">Dashboard</li>
+                        <li class="active">ផ្ទាំង​កិច្ចការ</li>
                     </ul><!--.breadcrumb-->
 
                     <div id="nav-search">

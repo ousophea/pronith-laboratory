@@ -7,10 +7,10 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
 <div class="page-header position-relative">
     <h1>
-        Add new exam test : finish
+        បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាលបញ្ចប់
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new exam test
+            	សូម​ផ្ទៀង​ផ្ទាត់ របាយការណ៍​ឡើង​វិញ មុន​នឹង​សំរេចចិត្ត បញ្ចូល
         </small>
     </h1>
 </div>
@@ -43,25 +43,25 @@ if($this->session->flashdata('msg_info')){
         <?php echo form_open(site_url('tests/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
                 <label for="patient">
-                	Patient Name : <?php echo get_patient_name($this->session->userdata('txt_patId'));?>
+                	ឈ្មោះ អ្នក​ជំងឺ : <?php echo get_patient_name($this->session->userdata('txt_patId'));?>
                 </label>
             </div>
             <div class="control-group">
                 <label for="patient">
-                	Receive Ill for Test? : <?php echo ($this->session->userdata('txt_isReceiveIll') == 1)?'Yes, Received':'Not Receive Yet';?>
+                	ជំងឺ​ទទួល​បាន? : <?php echo ($this->session->userdata('txt_isReceiveIll') == 1)?'ទទួល​បាន':'មិន​ទាន់ ទទួល​បាន';?>
                 </label>
             </div>
             <div class="control-group">
                 <label for="datetime_receive">
-                	Date Time Receive Result : <?php echo $this->session->userdata('txt_dateTimeReceived');?>
+                	ថ្ងៃ​ខែ ត្រឡប់​មក​យក លទ្ធផល : <?php echo $this->session->userdata('txt_dateTimeReceived');?>
                 </label>
             </div>
             <div class="control-group">
-                <label for="ill_selected_detail">Ills selected detail</label>
+                <label for="ill_selected_detail">ពត៌មាន​លំអិត អំពី​ជំងឺ​ ដែល​ត្រូវ​បាន​ជ្រើស​រើស</label>
 				<table class="table table-bordered">
 					<tr class="success">
-						<th class="success">Ill Name</th>
-						<th class="success">Unit Price (៛)</th>	
+						<th class="success">ឈ្មោះ</th>
+						<th class="success">តំលៃមួយ​ឯកតា (៛)</th>	
 					</tr>
 					<?php
 					$total_price = 0;
@@ -85,33 +85,40 @@ if($this->session->flashdata('msg_info')){
 					}
 					?>
 					<tr class="sub_total_price">
-						<td align="right">Sub Total</td>
+						<td align="right">តំលៃ​</td>
 						<td><b><?php echo number_format($total_price,0); ?>៛</b></td>
 					</tr>
 					<tr class="discount">
-						<td align="right">Discount</td>
+						<td align="right">បញ្ចុះតំលៃ</td>
 						<td><b><?php echo $this->session->userdata['txt_discount']; ?>%</b></td>
 					</tr>
 					<tr class="tax">
-						<td align="right">Tax</td>
+						<td align="right">ពន្ធ</td>
 						<td><b><?php echo $this->session->userdata['txt_tax']; ?>%</b></td>
 					</tr>
 					<?php
 					if($this->session->userdata('txt_isPaid') == 1){
 					?>
+					<tr class="deposit">
+						<td align="right">ប្រាក់កក់</td>
+						<td><b><?php echo number_format($this->session->userdata('txt_deposit'),0); ?>៛</b></td>
+					</tr>
+					<tr class="owe">
+						<td align="right">ប្រាក់ ជំពាក់</td>
+						<td><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
+					</tr>
 					<tr class="paid">
-						<td align="right">Note</td>
-						<td><b>Invoice is already paid</b></td>
+						<td colspan="2">សំគាល់៖ វិក័យ​ប័ត្រ​ ត្រូវ​បាន​បង់​ប្រាក់​គ្រប់</td>
 					</tr>
 					<?php
 					}else{
 					?>
 					<tr class="deposit">
-						<td align="right">Deposit (ប្រាក់កក់)</td>
+						<td align="right">ប្រាក់កក់</td>
 						<td><b><?php echo number_format($this->session->userdata('txt_deposit'),0); ?>៛</b></td>
 					</tr>
 					<tr class="owe">
-						<td align="right">Owed (ប្រាក់ ជំពាក់)</td>
+						<td align="right">ប្រាក់ ជំពាក់</td>
 						<td><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
 					</tr>
 					<?php
@@ -124,18 +131,18 @@ if($this->session->flashdata('msg_info')){
             	<a href="<?php echo site_url('tests/add_step2'); ?>">
             	<button id="btn_back_step_three" class="btn btn-info" type="button">
                     <i class="icon-arrow-left bigger-110"></i>
-                    Back Previous Step
+                    	ត្រ​ឡប់​ក្រោយ
                 </button>
                </a>
                 &nbsp; &nbsp; &nbsp;
                 <button id="btn_step_one" class="btn btn-info" type="submit">
                     <i class="icon-print bigger-110"></i>
-                    Finish & Print
+                    	បញ្ចប់
                 </button>
                 &nbsp; &nbsp; &nbsp;
                 <button type="button" class="btn btn-danger">
                 	<i class="icon-eject"></i>
-                	Cancel
+                	បោះបង់
                 </button>
             </div>
         <?php echo form_close(); ?>
