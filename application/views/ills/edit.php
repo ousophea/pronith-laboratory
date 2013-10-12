@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Edit ill
+        កែប្រែជំអឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to edit ill
+            សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
         </small>
     </h1>
 </div>
@@ -13,17 +13,17 @@
 
         <form class="form-horizontal" method="post" name="edit">
             <div class="control-group">
-                <label class="control-label" for="firstname">Ill name</label>
+                <label class="control-label" for="firstname">ឈ្មោះ</label>
 
                 <div class="controls">
                     <input name='<?php echo ILL_ID; ?>' type='hidden' value='<?php echo $data[ILL_ID] ?>'/>
-                    <input name="<?php echo ILL_NAME; ?>" type="text" value='<?php echo $data[ILL_NAME] ?>' minlength="3" id="fistname" placeholder="Ill name">
+                    <input name="<?php echo ILL_NAME; ?>" type="text" value='<?php echo $data[ILL_NAME] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះជំងឺ">
                     <span class="help-inline"></span>
                 </div>
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILL_GROUPID; ?>">Ill Group</label>
+                <label class="control-label" for="<?php echo ILL_GROUPID; ?>">ប្រភេទ</label>
 
                 <div class="controls">
                     <?php echo form_dropdown(ILL_GROUPID, $groups, $data[ILL_GROUPID], ' required="required"') ?>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILL_STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo ILL_STATUS; ?>">ស្ថានភាព</label>
 
                 <div class="controls">
                     <input name="<?php echo ILL_STATUS; ?>" <?php echo ($data[ILL_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo ILL_STATUS; ?>" class="ace ace-switch ace-switch-7">
@@ -43,13 +43,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    កែប្រែ
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    សារ​ដើម
                 </button>
             </div>
 
