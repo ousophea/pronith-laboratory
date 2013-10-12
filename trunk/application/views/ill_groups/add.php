@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Add new ill group
+        បញ្ចូល​ប្រ​ភេទ​ជំ​ងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add an ill group
+            ចូរបញ្ចូល​ប្រ​ភេទ​ជំ​ងឺខាងក្រោម
         </small>
     </h1>
 </div>
@@ -13,25 +13,25 @@
 
         <form class="form-horizontal" method="post" name="add">
             <div class="control-group">
-                <label class="control-label" for="firstname">Ill group name</label>
+                <label class="control-label" for="firstname">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILG_NAME; ?>" type="text"  minlength="3" id="fistname" placeholder="Ill group name">
+                    <input required name="<?php echo ILG_NAME; ?>" type="text"  minlength="3" id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILG_DESCRIPTION; ?>">Description</label>
+                <label class="control-label" for="<?php echo ILG_DESCRIPTION; ?>">បរិយាយ</label>
 
                 <div class="controls">
-                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text"  minlength="3" id="<?php echo ILG_DESCRIPTION; ?>" placeholder="Description" />
+                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text"  minlength="3" id="<?php echo ILG_DESCRIPTION; ?>" placeholder="បរិយាយ" />
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILG_STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo ILG_STATUS; ?>">ស្ថានភាព</label>
 
                 <div class="controls">
                     <input name="<?php echo ILG_STATUS; ?>" checked="checked" type="checkbox" id="<?php echo ILG_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
@@ -42,13 +42,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    សារ​ដើម
                 </button>
             </div>
 
