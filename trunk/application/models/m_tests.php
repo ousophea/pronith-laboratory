@@ -28,7 +28,7 @@ class m_tests extends CI_Model {
 				if($query_ills->num_rows() > 0){
 					$arr_ills[$rows_groups->ill_gro_name] = array();
 					foreach($query_ills->result() as $rows_ills){
-						$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_id] = $rows_ills->ill_name.(($rows_ills->ill_nameEn == '')?'':'('.$rows_ills->ill_nameEn.')').' - '.$rows_ills->ill_price.'៛';
+						$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_id] = $rows_ills->ill_name.(($rows_ills->ill_nameEn == '')?'':'('.$rows_ills->ill_nameEn.')').' - '.number_format($rows_ills->ill_price,0).'៛';
 					}
 				}
 			}

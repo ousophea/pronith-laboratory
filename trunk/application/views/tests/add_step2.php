@@ -13,30 +13,30 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
             	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
+    <?php
+	if($this->session->flashdata('msg_success')){
+	?>
+	<div class="msg_success">
+		<?php echo '<p>'.$this->session->flashdata('msg_success').'</p>'; ?>
+	</div>
+	<?php	
+	}
+	if($this->session->flashdata('msg_error')){
+	?>
+	<div class="msg_error">
+		<?php echo '<p>'.$this->session->flashdata('msg_error').'</p>'; ?>
+	</div>
+	<?php
+	}
+	if($this->session->flashdata('msg_info')){
+	?>
+	<div class="msg_info">
+		<?php echo '<p>'.$this->session->flashdata('msg_info').'</p>'; ?>
+	</div>
+	<?php
+	}
+	?>
 </div>
-<?php
-if($this->session->flashdata('msg_success')){
-?>
-<div class="msg_success">
-	<?php echo '<p>'.$this->session->flashdata('msg_success').'</p>'; ?>
-</div>
-<?php	
-}
-if($this->session->flashdata('msg_error')){
-?>
-<div class="msg_error">
-	<?php echo '<p>'.$this->session->flashdata('msg_error').'</p>'; ?>
-</div>
-<?php
-}
-if($this->session->flashdata('msg_info')){
-?>
-<div class="msg_info">
-	<?php echo '<p>'.$this->session->flashdata('msg_info').'</p>'; ?>
-</div>
-<?php
-}
-?>
 <div class="row-fluid">
     <div class="span12" id="test_add">
         <!--PAGE CONTENT BEGINS-->
@@ -165,10 +165,12 @@ if($this->session->flashdata('msg_info')){
                     	សារដើម
                 </button>
                 &nbsp; &nbsp; &nbsp;
+                <a href="<?php echo site_url('tests/add_cancel')?>">
                 <button type="button" class="btn btn-danger">
                 	<i class="icon-eject"></i>
                 	បោះបង់
                 </button>
+                </a>
             </div>
         <?php echo form_close(); ?>
     </div><!--/.span-->

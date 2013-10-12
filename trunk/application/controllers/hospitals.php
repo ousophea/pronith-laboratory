@@ -25,7 +25,7 @@ class Hospitals extends CI_Controller{
         if($this->input->post('data'))
             $this->load->view('hospitals/lists',  $this->data);
         else{
-            $this->data['title'] = 'List hospitals';
+            $this->data['title'] = 'បង្ហាញ​មន្ទីរ​ពេទ្យ';
             $this->load->view(TEMPLATE,  $this->data);
         }
 	}
@@ -35,7 +35,7 @@ class Hospitals extends CI_Controller{
         if($this->input->post('data'))
             $this->load->view('doctors/add',  $this->data);
         else{
-            $this->data['title'] = 'Add new doctor';
+            $this->data['title'] = 'បង្កើត​មន្ទីរ​ពេទ្យ​ថ្មី';
 			$this->data['hospitals_data'] = $this->m_global->select_all(TBL_PREFEX.'hospitals');
 			$this->data['doctors_data'] = $this->m_global->select_all(TBL_PREFEX.'doctors');
             $this->load->view(TEMPLATE,  $this->data);
@@ -70,7 +70,7 @@ class Hospitals extends CI_Controller{
 				$this->session->set_flashdata('msg_error','មន្ទីរ​ពេទ្យ ដែល​អ្នក​កំ​ពុង​ ព្យាយាម​កែប្រែ ពុំ​មាន​ក្នុង​ប្រព័ន្ទ​ទេ!');
 				redirect(site_url('hospitals/lists'));
 			}
-	        $this->data['title'] = 'Edit hospital';
+	        $this->data['title'] = 'កែ​ប្រែ​មន្ទីរ​ពេទ្យ';
 			$this->data['edit_data'] = $edit_data;
 	        $this->load->view(TEMPLATE,  $this->data);
 		}
