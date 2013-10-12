@@ -53,10 +53,10 @@ class Hospitals extends CI_Controller{
 				'hos_status' => $hos_status
 			);
 			if($this->m_global->insert(TBL_PREFEX.'hospitals',$data_insert)){
-				$this->session->set_flashdata('msg_success','New hospital has been created!');
+				$this->session->set_flashdata('msg_success','មន្ទីរ​ពេទ្យ​ថ្មី ត្រូវ​បាន​បង្កើត!');
 				redirect(site_url('hospitals/lists'));
 			}else{
-				$this->session->set_flashdata('msg_error','Can not create new hospital! Please check again.');
+				$this->session->set_flashdata('msg_error','មន្ទីរ​ពេទ្យ​ថ្មី មិន​ត្រូវ​បាន​បង្កើត​ទេ! សូម​ព្យាយាម​ម្តង​ទៀត');
 				redirect(site_url('hospitals/add'));
 			}
 		}
@@ -67,7 +67,7 @@ class Hospitals extends CI_Controller{
 			allows(array('administrator'));
 			$edit_data = $this->m_global->select_where(TBL_PREFEX.'hospitals',array('hos_id'=>$id),1);
 			if(!is_numeric($id) || (count($edit_data->result_array()) == 0)){
-				$this->session->set_flashdata('msg_error','The hospital you are trying to edit is not exist in our system!');
+				$this->session->set_flashdata('msg_error','មន្ទីរ​ពេទ្យ ដែល​អ្នក​កំ​ពុង​ ព្យាយាម​កែប្រែ ពុំ​មាន​ក្នុង​ប្រព័ន្ទ​ទេ!');
 				redirect(site_url('hospitals/lists'));
 			}
 	        $this->data['title'] = 'Edit hospital';
@@ -88,10 +88,10 @@ class Hospitals extends CI_Controller{
 				'hos_status' => $hos_status
 			);
 			if($this->m_global->update(TBL_PREFEX.'hospitals',$data_update,array('hos_id'=>$hos_id))){
-				$this->session->set_flashdata('msg_success','A hospital at id = '.$hos_id.' has been updated!');
+				$this->session->set_flashdata('msg_success','មន្ទីរ​ពេទ្យ​ត្រង់ id = '.$hos_id.' ត្រូវ​បាន​ធ្វើ​ការ​កែប្រែ');
 				redirect(site_url('hospitals/lists'));
 			}else{
-				$this->session->set_flashdata('msg_error','A hospital at id = '.$hos_id.' can not be updated! Please try again.');
+				$this->session->set_flashdata('msg_error','មន្ទីរ​ពេទ្យ​ត្រង់ id = '.$hos_id.' មិន​អាច​ធ្វើ​ការ​កែប្រែ​ បានទេ! សូម​ព្យាយាម​ម្តង​ទៀត');
 				redirect(site_url('hospitals/add'));
 			}
 		}

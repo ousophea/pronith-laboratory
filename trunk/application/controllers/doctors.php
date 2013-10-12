@@ -62,12 +62,12 @@ class Doctors extends CI_Controller{
 						array_push($data_batch,array($last_doctor_id,$value));
 					}
 					if($this->m_global->insert_multi(TBL_PREFEX.'doctors_phones',array('doc_pho_doc_id','doc_pho_number'),$data_batch)){
-						$this->session->set_flashdata('msg_success','New doctor has been created!');
+						$this->session->set_flashdata('msg_success','វេជ្ជបណ្ឌិត​ថ្មី ត្រូវ​បាន​បង្កើត!');
 					}else{
-						$this->session->set_flashdata('msg_success','New doctor has been created! But has some error with phone inserted.');
+						$this->session->set_flashdata('msg_success','វេជ្ជបណ្ឌិត​ថ្មី ត្រូវ​បាន​បង្កើត! ប៉ុន្តែ​មាន​បញ្ហា​ជាមួយ​ ការ​បញ្ចូល​លេខ​ទូរស័ព្ទ');
 					}
 				}else{
-					$this->session->set_flashdata('msg_success','New doctor has been created!');
+					$this->session->set_flashdata('msg_success','វេជ្ជបណ្ឌិត​ថ្មី ត្រូវ​បាន​បង្កើត!');
 				}
 				redirect(site_url('doctors/lists'));
 			}else{
@@ -81,7 +81,7 @@ class Doctors extends CI_Controller{
 			allows(array('administrator'));
 			$edit_data = $this->m_global->select_where(TBL_PREFEX.'doctors',array('doc_id'=>$id),1);
 			if(!is_numeric($id) || (count($edit_data->result_array()) == 0)){
-				$this->session->set_flashdata('msg_error','The doctor you are trying to edit is not exist in our system!');
+				$this->session->set_flashdata('msg_error','ឈ្មោះ​វេជ្ជ​បណ្ឌិត ដែល​អ្នក​កំ​ពុង​កែប្រែ ពុំ​មាន​នៅ​ក្នុង​ប្រព័ន្ធ​ទេ!');
 				redirect(site_url('doctors/lists'));
 			}
 	        $this->data['title'] = 'Edit doctor';
@@ -122,12 +122,12 @@ class Doctors extends CI_Controller{
 						array_push($data_batch,array($doc_id,$value));
 					}
 					if($this->m_global->insert_multi(TBL_PREFEX.'doctors_phones',array('doc_pho_doc_id','doc_pho_number'),$data_batch)){
-						$this->session->set_flashdata('msg_success','A doctor at id = '.$doc_id.' has been updated!');
+						$this->session->set_flashdata('msg_success','វេជ្ជ​បណ្ឌិត​ត្រង់ id = '.$doc_id.' ត្រូវ​បាន​ធ្វើ​ការ​កែប្រែ!');
 					}else{
-						$this->session->set_flashdata('msg_success','A doctor at id = '.$doc_id.' has been updated! But has some error with phone number inserted.');
+						$this->session->set_flashdata('msg_success','វេជ្ជ​បណ្ឌិត​ត្រង់  id = '.$doc_id.' ត្រូវ​បាន​ធ្វើ​ការ​កែប្រែ! តែ​មាន​បញ្ហា​ត្រង់​ ការ​បញ្ចូល​លេខ​ទូរស័ព្ទ');
 					}
 				}else{
-					$this->session->set_flashdata('msg_success','A doctor at id = '.$doc_id.' has been updated!');
+					$this->session->set_flashdata('msg_success','វេជ្ជ​បណ្ឌិត​ត្រង់ id = '.$doc_id.' ត្រូវ​បាន​ធ្វើ​ការ​កែប្រែ!');
 				}
 				redirect(site_url('doctors/lists'));
 			}else{

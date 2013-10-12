@@ -5,10 +5,10 @@ if (isset($edit_data)) {
 ?>
 <div class="page-header position-relative">
     <h1>
-        Edit doctor : <?php echo $edit_data[0]['doc_firstName'] . ' ' . $edit_data[0]['doc_lastName']; ?>
+        កែប្រែ​វេជ្ជ​បណ្ឌិត : <?php echo $edit_data[0]['doc_firstName'] . ' ' . $edit_data[0]['doc_lastName']; ?>
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new group
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -18,28 +18,28 @@ if (isset($edit_data)) {
 
         <?php echo form_open(site_url('doctors/edit_save'), 'class="form-horizontal"', array('doc_id' => $edit_data[0]['doc_id'])); ?>
             <div class="control-group">
-                <label class="control-label" for="doctorFirstName">First Name</label>
+                <label class="control-label" for="doctorFirstName">គោត្តនាម</label>
 
                 <div class="controls">
-                    <input required name="txt_docFirstName" type="text"  minlength="3" id="first_name" placeholder="First Name" value="<?php echo $edit_data[0]['doc_firstName']; ?>">
+                    <input required name="txt_docFirstName" type="text"  minlength="3" id="first_name" placeholder="គោត្តនាម" value="<?php echo $edit_data[0]['doc_firstName']; ?>">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="doctorLastName">Last Name</label>
+                <label class="control-label" for="doctorLastName">នាម</label>
 
                 <div class="controls">
-                    <input required name="txt_docLastName" type="text"  minlength="3" id="last_name" placeholder="Last Name" value="<?php echo $edit_data[0]['doc_lastName']; ?>">
+                    <input required name="txt_docLastName" type="text"  minlength="3" id="last_name" placeholder="នាម" value="<?php echo $edit_data[0]['doc_lastName']; ?>">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="sex">Sex</label>
+                <label class="control-label" for="sex">ភេទ</label>
                 <div class="controls">
                     <select name="txt_docSex">
-                    	<option value="0">-SEX-</option>
-                    	<option value="m" <?php echo ($edit_data[0]['doc_sex'] == 'm')?'selected="selected"':'' ?>>Male</option>
-                    	<option value="f" <?php echo ($edit_data[0]['doc_sex'] == 'f')?'selected="selected"':'' ?>>Female</option>
+                    	<option value="0">-ភេទ-</option>
+                    	<option value="m" <?php echo ($edit_data[0]['doc_sex'] == 'm')?'selected="selected"':'' ?>>ប្រុស</option>
+                    	<option value="f" <?php echo ($edit_data[0]['doc_sex'] == 'f')?'selected="selected"':'' ?>>ស្រី</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
@@ -49,7 +49,7 @@ if (isset($edit_data)) {
             	foreach($phones_data->result() as $rows){
             ?>
             <div class="control-group" id="phone_group_<?php echo $rows->doc_pho_id;?>">
-                <label class="control-label" for="sex">Phone</label>
+                <label class="control-label" for="sex">លេខទូរស័ព្ទ</label>
                 <div class="controls">
                     <span class="pho_number"><?php echo $rows -> doc_pho_number; ?></span>
                     <span class="icon-trash" style="cursor: pointer;" name="ajax_remove_phone" rel="<?php echo $rows -> doc_pho_id; ?>"></span>
@@ -62,7 +62,7 @@ if (isset($edit_data)) {
             ?>
             <div class="doc_phone">
             	<div class="control-group">
-	                <label class="control-label" for="phone">Phone</label>
+	                <label class="control-label" for="phone">លេខទូរស័ព្ទ</label>
 	                <div class="controls">
 	                    <input name="txt_docPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
 	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
@@ -72,29 +72,29 @@ if (isset($edit_data)) {
 	            <div id="phone_container"></div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="sex">Email</label>
+                <label class="control-label" for="sex">អ៊ីម៉ែល</label>
                 <div class="controls">
                     <input name="txt_docEmail" type="email"  minlength="3" id="email" placeholder="name@example.com" value="<?php echo $edit_data[0]['doc_email']; ?>">
                     <span class="help-inline"></span>
                 </div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="position">Position</label>
+                <label class="control-label" for="position">មុខ​តំ​ណែង</label>
                 <div class="controls">
                     <select name="txt_docPosition">
-                    	<option value="0">-POSITION-</option>
-                    	<option <?php echo ($edit_data[0]['doc_position'] == 'Doctor')?'selected="selected"':'' ?> value="Doctor">Doctor</option>
-                    	<option <?php echo ($edit_data[0]['doc_position'] == 'Nurse')?'selected="selected"':'' ?> value="Nurse">Nurse</option>
-                    	<option <?php echo ($edit_data[0]['doc_position'] == 'Other')?'selected="selected"':'' ?> value="Other">Other</option>
+                    	<option value="0">-ជ្រើសរើស-</option>
+                    	<option <?php echo ($edit_data[0]['doc_position'] == 'វេជ្ជបណ្ឌិត')?'selected="selected"':'' ?> value="វេជ្ជបណ្ឌិត">វេជ្ជបណ្ឌិត</option>
+                    	<option <?php echo ($edit_data[0]['doc_position'] == 'គិលានុបដ្ឋករ')?'selected="selected"':'' ?> value="គិលានុបដ្ឋករ">គិលានុបដ្ឋករ</option>
+                    	<option <?php echo ($edit_data[0]['doc_position'] == 'ផ្សេងទៀត')?'selected="selected"':'' ?> value="ផ្សេងទៀត">ផ្សេងទៀត</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="working">Working At</label>
+                <label class="control-label" for="working">ធ្វើការ​នៅ</label>
                 <div class="controls">
                     <select name="txt_docHospital">
-                    	<option value="0">-SELECT HOSPITAL-</option>
+                    	<option value="0">-ជ្រើស​រើស-</option>
                     	<?php
 						if ($hospitals_data -> num_rows() > 0) {
 							foreach ($hospitals_data->result() as $values) {
@@ -107,10 +107,10 @@ if (isset($edit_data)) {
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="working">Doctor Recommanded</label>
+                <label class="control-label" for="working">ណែ​នាំ​ពី​វេជ្ជ​បណ្ឌិត</label>
                 <div class="controls">
                     <select name="txt_docReference">
-                    	<option value="0">-SELECT DOCTOR-</option>
+                    	<option value="0">-គ្មាន-</option>
                     	<?php
 						if ($doctors_data -> num_rows() > 0) {
 							foreach ($doctors_data->result() as $values) {
@@ -123,7 +123,7 @@ if (isset($edit_data)) {
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="status">Status</label>
+                <label class="control-label" for="status">ស្ថាន​ភាព</label>
 
                 <div class="controls">
                     <input name="txt_docStatus" <?php echo ($edit_data[0]['doc_status']==1)?'checked="checked"':''; ?> checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
@@ -134,13 +134,13 @@ if (isset($edit_data)) {
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    	កែប្រែ
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារដើម
                 </button>
             </div>
         <?php echo form_close(); ?>

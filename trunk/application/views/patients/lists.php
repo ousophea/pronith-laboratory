@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List patients
+        បង្ហាញ​អ្នក​ជំ​ងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            Display all patients in our laboratory
+            	បង្ហាញ​រាល់​ឈ្មោះ អ្នក​ជំ​ងឺ​ដែល​មាន​នៅ​ក្នុង​ប្រព័ន្ធ 
         </small>
     </h1>
 </div>
@@ -41,14 +41,14 @@ if($this->session->flashdata('msg_info')){
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending"">First Name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Last Name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">Sex</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">Phone</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Identity ID</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Email</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Recommend Doctor</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">Status</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending"">គោត្តនាម</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">នាម</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">ភេទ</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending">លេខ​ទូរស័ព្ទ</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">លេខ​អត្តសញ្ញាណប័ណ្ណ</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">អ៊ី​ម៉ែល</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">ណែ​នាំ​ពី​វេជ្ជ​បណ្ឌិត</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending">ស្ថានភាព</th>
                     <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 161px;">Action</th>
             </thead>
             <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -70,7 +70,7 @@ if($this->session->flashdata('msg_info')){
 
                             <td class=" "><?php echo $row['pat_firstName']; ?></td>
                             <td class=" "><?php echo $row['pat_lastName']; ?></td>
-                            <td class=" "><?php echo (strtolower($row['pat_sex']) == 'm')?'Male':'Female'; ?></td>
+                            <td class=" "><?php echo (strtolower($row['pat_sex']) == 'm')?'ប្រុស':'ស្រី'; ?></td>
                             <td class=" "><?php echo ($row['pat_pho_number'] != NULL)?$row['pat_pho_number'].'<span id="patient_phone" rel='.$row['pat_id'].'>...</span>':''; ?></td>
                             <td class=" "><?php echo $row['pat_identityCard']; ?></td>
                             <td class=" "><?php echo $row['pat_email']; ?></td>
@@ -134,7 +134,7 @@ if($this->session->flashdata('msg_info')){
         $(".delete").on('click', function() {
             var url = this.href;
             var parent = $(this).parent().parent().parent();
-            bootbox.alert('Doctor delete option does not allow. You can use disable instead.');
+            bootbox.alert('ប្រព័ន្ធ​មិន​អនុញ្ញាត​អោយ​លុបឈ្មោះ អ្នក​ជំងឺ​ទេ។ អ្នក​អាច​ប្តូរ​ ស្ថាន​ភាព ជំនួស​ការ​លុប​បាន។');
             return false;
         });
 

@@ -5,10 +5,10 @@ if(isset($edit_data)){
 ?>
 <div class="page-header position-relative">
     <h1>
-        Edit patient : <?php echo $edit_data[0]['pat_firstName'].' '.$edit_data[0]['pat_lastName']; ?>
+        កែ​ប្រែអ្នក​ជំងឺ​ : <?php echo $edit_data[0]['pat_firstName'].' '.$edit_data[0]['pat_lastName']; ?>
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to edit patient
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -18,37 +18,37 @@ if(isset($edit_data)){
 
         <?php echo form_open(site_url('patients/edit_save'),'class="form-horizontal"',array('pat_id'=>$edit_data[0]['pat_id']));?>
             <div class="control-group">
-                <label class="control-label" for="patientFirstName">First Name</label>
+                <label class="control-label" for="patientFirstName">គោត្តនាម</label>
 
                 <div class="controls">
-                    <input required name="txt_patFirstName" value="<?php echo $edit_data[0]['pat_firstName']; ?>" type="text"  minlength="3" id="first_name" placeholder="First Name">
+                    <input required name="txt_patFirstName" value="<?php echo $edit_data[0]['pat_firstName']; ?>" type="text"  minlength="3" id="first_name" placeholder="គោត្តនាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patientLastName">Last Name</label>
+                <label class="control-label" for="patientLastName">នាម</label>
 
                 <div class="controls">
-                    <input required name="txt_patLastName" value="<?php echo $edit_data[0]['pat_lastName']; ?>" type="text"  minlength="3" id="last_name" placeholder="Last Name">
+                    <input required name="txt_patLastName" value="<?php echo $edit_data[0]['pat_lastName']; ?>" type="text"  minlength="3" id="last_name" placeholder="នាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="sex">Sex</label>
+                <label class="control-label" for="sex">ភេទ</label>
                 <div class="controls">
                     <select name="txt_patSex">
-                    	<option value="0">-SEX-</option>
-                    	<option value="m" <?php echo ($edit_data[0]['pat_sex'] == 'm')?'selected="selected"':'' ?>>Male</option>
-                    	<option value="f" <?php echo ($edit_data[0]['pat_sex'] == 'f')?'selected="selected"':'' ?>>Female</option>
+                    	<option value="0">-ភេទ-</option>
+                    	<option value="m" <?php echo ($edit_data[0]['pat_sex'] == 'm')?'selected="selected"':'' ?>>ប្រុស</option>
+                    	<option value="f" <?php echo ($edit_data[0]['pat_sex'] == 'f')?'selected="selected"':'' ?>>ស្រី</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patientIdentityCard">National Identity Card</label>
+                <label class="control-label" for="patientIdentityCard">លេខ​អត្តសញ្ញាណប័ណ្ណ</label>
 
                 <div class="controls">
-                    <input name="txt_patIdentityCard" value="<?php echo $edit_data[0]['pat_identityCard']; ?>" type="number"  minlength="3" id="identity_card" placeholder="National Identity Card">
+                    <input name="txt_patIdentityCard" value="<?php echo $edit_data[0]['pat_identityCard']; ?>" type="number"  minlength="3" id="identity_card" placeholder="លេខ​អត្តសញ្ញាណប័ណ្ណ">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -57,7 +57,7 @@ if(isset($edit_data)){
             	foreach($phones_data->result() as $rows){
             ?>
             <div class="control-group" id="phone_group_<?php echo $rows->pat_pho_id;?>">
-                <label class="control-label" for="sex">Phone</label>
+                <label class="control-label" for="sex">ទូរស័ព្ទ</label>
                 <div class="controls">
                     <span class="pho_number"><?php echo $rows -> pat_pho_number; ?></span>
                     <span class="icon-trash" style="cursor: pointer;" name="ajax_remove_phone" rel="<?php echo $rows -> pat_pho_id; ?>"></span>
@@ -70,7 +70,7 @@ if(isset($edit_data)){
             ?>
             <div class="pat_phone">
             	<div class="control-group">
-	                <label class="control-label" for="phone">Phone</label>
+	                <label class="control-label" for="phone">ទូរស័ព្ទ</label>
 	                <div class="controls">
 	                    <input name="txt_patPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
 	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
@@ -80,17 +80,17 @@ if(isset($edit_data)){
 	            <div id="phone_container"></div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="patEmail">Email</label>
+                <label class="control-label" for="patEmail">អ៊ី​ម៉ែល</label>
                 <div class="controls">
                     <input name="txt_patEmail" type="email" value="<?php echo $edit_data[0]['pat_email']; ?>"  minlength="3" id="email" placeholder="name@example.com">
                     <span class="help-inline"></span>
                 </div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="patDoctor">Recommanded from Doctor</label>
+                <label class="control-label" for="patDoctor">ណែ​នាំ​ពី​វេជ្ជ​បណ្ឌិត</label>
                 <div class="controls">
                     <select name="txt_docReference">
-                    	<option value="0">-None-</option>
+                    	<option value="0">-គ្មាន-</option>
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
@@ -103,7 +103,7 @@ if(isset($edit_data)){
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="patStatus">Status</label>
+                <label class="control-label" for="patStatus">ស្ថាន​ភាព</label>
 
                 <div class="controls">
                     <input name="txt_patStatus" <?php echo ($edit_data[0]['pat_status']==1)?'checked="checked"':''; ?> type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
@@ -114,13 +114,13 @@ if(isset($edit_data)){
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    	កែប្រែ
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារដើម
                 </button>
             </div>
         <?php echo form_close(); ?>

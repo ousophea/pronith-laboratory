@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Add new doctor
+        បង្កើត​វេជ្ជ​បណ្ឌិត​ថ្មី
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new patient
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -12,35 +12,35 @@
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('doctors/add_save'),'class="form-horizontal"');?>
             <div class="control-group">
-                <label class="control-label" for="doctorFirstName">First Name</label>
+                <label class="control-label" for="doctorFirstName">គោត្តនាម</label>
 
                 <div class="controls">
-                    <input required name="txt_docFirstName" type="text"  minlength="3" id="first_name" placeholder="First Name">
+                    <input required name="txt_docFirstName" type="text"  minlength="3" id="first_name" placeholder="គោត្តនាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="doctorLastName">Last Name</label>
+                <label class="control-label" for="doctorLastName">នាម</label>
 
                 <div class="controls">
-                    <input required name="txt_docLastName" type="text"  minlength="3" id="last_name" placeholder="Last Name">
+                    <input required name="txt_docLastName" type="text"  minlength="3" id="last_name" placeholder="នាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="sex">Sex</label>
+                <label class="control-label" for="sex">ភេទ</label>
                 <div class="controls">
                     <select name="txt_docSex">
-                    	<option value="0">-SEX-</option>
-                    	<option value="m">Male</option>
-                    	<option value="f">Female</option>
+                    	<option value="0">-ភេទ-</option>
+                    	<option value="m">ប្រុស</option>
+                    	<option value="f">ស្រី</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="doc_phone">
             	<div class="control-group">
-	                <label class="control-label" for="phone">Phone</label>
+	                <label class="control-label" for="phone">លេខទូរស័ព្ទ</label>
 	                <div class="controls">
 	                    <input required name="txt_docPhone[]" value="" type="number"  minlength="10" id="phone" placeholder="(855)">
 	                    <span class="icon-plus-sign" style="cursor: pointer;" name="add_more"></span>
@@ -50,29 +50,29 @@
 	            <div id="phone_container"></div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="sex">Email</label>
+                <label class="control-label" for="sex">អ៊ី​ម៉ែល</label>
                 <div class="controls">
                     <input name="txt_docEmail" type="email"  minlength="3" id="email" placeholder="name@example.com">
                     <span class="help-inline"></span>
                 </div>
             </div>
 			<div class="control-group">
-                <label class="control-label" for="position">Position</label>
+                <label class="control-label" for="position">មុខ​តំ​ណែង</label>
                 <div class="controls">
                     <select name="txt_docPosition">
-                    	<option value="0">-POSITION-</option>
-                    	<option value="Doctor">Doctor</option>
-                    	<option value="Doctor">Nurse</option>
-                    	<option value="Doctor">Other</option>
+                    	<option value="0">-ជ្រើសរើស-</option>
+                    	<option value="Doctor">វេជ្ជបណ្ឌិត</option>
+                    	<option value="Doctor">គិលានុបដ្ឋករ</option>
+                    	<option value="Doctor">ផ្សេងទៀត</option>
                     </select>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="working">Working At</label>
+                <label class="control-label" for="working">ធ្វើការ​នៅ</label>
                 <div class="controls">
                     <select name="txt_docHospital">
-                    	<option value="0">-SELECT HOSPITAL-</option>
+                    	<option value="0">-ជ្រើស​រើស-</option>
                     	<?php
                     	if($hospitals_data->num_rows() > 0){
                     		foreach($hospitals_data->result() as $values){
@@ -85,10 +85,10 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="working">Doctor Recommanded</label>
+                <label class="control-label" for="working">ណែ​នាំ​ពី​វេជ្ជ​បណ្ឌិត</label>
                 <div class="controls">
                     <select name="txt_docReference">
-                    	<option value="0">-SELECT DOCTOR-</option>
+                    	<option value="0">-គ្មាន-</option>
                     	<?php
                     	if($doctors_data->num_rows() > 0){
                     		foreach($doctors_data->result() as $values){
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="status">Status</label>
+                <label class="control-label" for="status">ស្ថាន​ភាព</label>
 
                 <div class="controls">
                     <input name="txt_docStatus" checked="checked" type="checkbox" id="status" placeholder="Status" class="ace ace-switch ace-switch-7">
@@ -112,13 +112,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    	បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារ​ដើម
                 </button>
             </div>
         <?php echo form_close(); ?>

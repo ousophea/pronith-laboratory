@@ -7,10 +7,10 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
 <div class="page-header position-relative">
     <h1>
-        Add new exam test : step 2
+        បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាល ទី២
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new exam test
+            	សូម​បំ​ពេញ​រាល់​ពត៌មាន​ អោយ​បាន​គ្រប់​ជ្រុង​ជ្រោយ
         </small>
     </h1>
 </div>
@@ -43,20 +43,20 @@ if($this->session->flashdata('msg_info')){
         <?php echo form_open(site_url('tests/add_step3'),'class="form-horizontal"');?>
             <div class="control-group">
                 <label for="patient">
-                	Patient Name : <?php echo get_patient_name($this->session->userdata('txt_patId'));?>
+                	ឈ្មោះ​ អ្នក​ជំងឺ : <?php echo get_patient_name($this->session->userdata('txt_patId'));?>
                 </label>
             </div>
             <div class="control-group">
                 <label for="patient">
-                	Receive Ill for Test? : <?php echo ($this->session->userdata('txt_isReceiveIll') == 1)?'Yes, Received':'Not Receive Yet';?>
+                	ជំងឺ​ទទួល​បាន? : <?php echo ($this->session->userdata('txt_isReceiveIll') == 1)?'ទទួល​បាន':'មិន​ទាន់ ទទួល​បាន';?>
                 </label>
             </div>
             <div class="control-group">
-                <label for="ill_selected_detail">Ills selected detail</label>
+                <label for="ill_selected_detail">ពត៌មាន​លំអិត អំពី​ជំងឺ​ ដែល​ត្រូវ​បាន​ជ្រើស​រើស</label>
 				<table class="table table-bordered">
 					<tr class="success">
-						<th class="success">Ill Name</th>
-						<th class="success">Unit Price (៛)</th>	
+						<th class="success">ឈ្មោះ</th>
+						<th class="success">តំលៃមួយ​ឯកតា (៛)</th>	
 					</tr>
 					<?php
 					$total_price = 0;
@@ -80,7 +80,7 @@ if($this->session->flashdata('msg_info')){
 					}
 					?>
 					<tr class="total_price">
-						<td align="right">Total</td>
+						<td align="right">តំលៃ​សរុប</td>
 						<td><b><?php echo number_format($total_price,0); ?>៛</b></td>
 					</tr>
 					<?php
@@ -90,7 +90,7 @@ if($this->session->flashdata('msg_info')){
             </div>
             <input type="hidden" name="txt_subTotal" value="<?php echo $total_price; ?>" />
             <div class="control-group">
-                <label class="control-label" for="receive_time">Date Time Receive Result</label>
+                <label class="control-label" for="receive_time">ថ្ងៃ​ខែ ត្រឡប់​មក​យក លទ្ធផល</label>
 
                 <div class="controls">
                     <input type="text" name="txt_dateTimeReceived" />
@@ -113,29 +113,29 @@ if($this->session->flashdata('msg_info')){
 				</script>
             </div>
             <div class="control-group">
-                <label class="control-label" for="discount">Discount</label>
+                <label class="control-label" for="discount">បញ្ចុះតំលៃ</label>
                 <div class="controls">
                     <input type="number" name="txt_discount" value="<?php echo ($this->session->userdata('txt_discount'))?$this->session->userdata('txt_discount'):0; ?>" />
                     <span class="help-inline">%</span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="deposit">Deposit Pay (ប្រាក់​កក់)</label>
+                <label class="control-label" for="deposit">ប្រាក់​កក់</label>
                 <div class="controls">
                     <input type="number" name="txt_deposit" value="<?php echo ($this->session->userdata('txt_deposit'))?$this->session->userdata('txt_deposit'):0; ?>" />
                     <span class="help-inline">៛</span>
-                    &nbsp;Pay All? <input type="checkbox" <?php echo ($this->session->userdata('txt_payAll') && $this->session->userdata('txt_payAll') == 1)?'checked="checked"':''; ?> name="txt_payAll" value="1" id="depositPayAll" style="opacity: 1;" />
+                    &nbsp;បង់​ទាំង​អស់? <input type="checkbox" <?php echo ($this->session->userdata('txt_payAll') && $this->session->userdata('txt_payAll') == 1)?'checked="checked"':''; ?> name="txt_payAll" value="1" id="depositPayAll" style="opacity: 1;" />
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="owe">Credit Owed (ប្រាក់​ជំពាក់)</label>
+                <label class="control-label" for="owe">ប្រាក់​ជំពាក់</label>
                 <div class="controls">
-                    <input type="number" readonly="readonly" name="txt_owe" value="<?php echo ($this->session->userdata('txt_owe') || $this->session->userdata('txt_owe') == '0')?$this->session->userdata('txt_owe'):$total_price; ?>" />
+                    <input type="number" readonly="readonly" name="txt_owe" value="<?php echo ($this->session->userdata('txt_owe') || $this->session->userdata('txt_owe') == 0)?$this->session->userdata('txt_owe'):$total_price; ?>" />
                     <span class="help-inline">៛</span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="deposit">Tax</label>
+                <label class="control-label" for="deposit">ពន្ធ</label>
                 <div class="controls">
                     <select name="txt_tax">
                     	<option value="0" <?php echo ($this->session->userdata('txt_tax') && $this->session->userdata('txt_tax') == 0)?'selected="selected"':''; ?>>0%</option>
@@ -151,23 +151,23 @@ if($this->session->flashdata('msg_info')){
             	<a href="<?php echo site_url('tests/add_step1'); ?>">
             	<button id="btn_back_step_two" class="btn btn-info" type="button">
                     <i class="icon-arrow-left bigger-110"></i>
-                    Back Previous Step
+                    	ត្រឡប់​ក្រោយ
                 </button>
                </a>
                 &nbsp; &nbsp; &nbsp;
                 <button id="btn_step_one" class="btn btn-info" type="submit">
                     <i class="icon-arrow-right bigger-110"></i>
-                    Next Step
+                    	បន្ទាប់
                 </button>
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    	សារដើម
                 </button>
                 &nbsp; &nbsp; &nbsp;
                 <button type="button" class="btn btn-danger">
                 	<i class="icon-eject"></i>
-                	Cancel
+                	បោះបង់
                 </button>
             </div>
         <?php echo form_close(); ?>
