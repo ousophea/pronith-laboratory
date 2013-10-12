@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List ills
+        តារាងជំងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            List all ills information
+            តារាងបង្ហាញអំពីជំងឺ
         </small>
     </h1>
 </div>
@@ -18,11 +18,11 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting">Name</th>
-                    <th class="sorting">Group</th>
-                    <th class="sorting">Create</th>
-                    <th class="sorting">Modifier</th>
-                    <th class="sorting">Status</th>
+                    <th class="sorting">ឈ្មោះ</th>
+                    <th class="sorting">ព្រភេទ</th>
+                    <th class="sorting">ថ្ងៃបញ្ចូល</th>
+                    <th class="sorting">ថ្ងៃកែប្រែ</th>
+                    <th class="sorting">ស្ថានភាព</th>
                     <th style="width: 161px;">Action</th>
                 </tr>
             </thead>

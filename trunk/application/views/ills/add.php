@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Add new ill
+        បញ្ចូលជំងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to all an ill
+            សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
         </small>
     </h1>
 </div>
@@ -13,16 +13,16 @@
 
         <form class="form-horizontal" method="post" name="add">
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILL_NAME; ?>">Ill name</label>
+                <label class="control-label" for="<?php echo ILL_NAME; ?>">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILL_NAME; ?>" type="text"  minlength="3" id="<?php echo ILL_NAME; ?>" placeholder="Ill group name">
+                    <input required name="<?php echo ILL_NAME; ?>" type="text"  minlength="3" id="<?php echo ILL_NAME; ?>" placeholder="ឈ្មោះជំងឺ">
                     <span class="help-inline"></span>
                 </div>
             </div>
             
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILL_GROUPID; ?>">Ill Group</label>
+                <label class="control-label" for="<?php echo ILL_GROUPID; ?>">ប្រភេទ</label>
 
                 <div class="controls">
                     <?php echo form_dropdown(ILL_GROUPID, $groups, '', ' required="required"') ?>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo ILL_STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo ILL_STATUS; ?>">ស្ថានភាព</label>
 
                 <div class="controls">
                     <input name="<?php echo ILL_STATUS; ?>" checked="checked" type="checkbox" id="<?php echo ILL_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
@@ -42,13 +42,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    សារ​ដើម
                 </button>
             </div>
 
