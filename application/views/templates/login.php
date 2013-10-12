@@ -61,10 +61,10 @@
                                 <div class="center">
                                     <h1>
                                         <i class="icon-leaf green"></i>
-                                        <span class="red">QMS</span>
+                                        <span class="red">PRONITH LABORATORY</span>
                                         <span class="white">System</span>
                                     </h1>
-                                    <h4 class="blue">International Technology</h4>
+                                    <h4 class="blue">---</h4>
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@
                                             <div class="widget-main">
                                                 <h4 class="header blue lighter bigger">
                                                     <i class="icon-coffee green"></i>
-                                                    Please Enter Your Information
+                                                    បញ្ចូលពត៏មានរបស់អ្នក
                                                 </h4>
                                                 <div class="message"></div>
                                                 <div class="loading" style="display: none;" >
@@ -93,7 +93,7 @@
                                                             <!--<label class="control-label">Email address</label>-->
                                                             <div class="controls">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input required name="email" type="email" class="span12" placeholder="Email" />
+                                                                    <input required name="email" type="text" class="span12" placeholder="ឈ្មោះសម្ងាត់" />
                                                                     <i class="icon-envelope"></i>
                                                                 </span>
                                                                 <p class="help-block"></p>
@@ -105,7 +105,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="password" type="password" class="span12" placeholder="Password" />
+                                                                        <input required name="password" type="password" class="span12" placeholder="កូដសម្ងាត់" />
                                                                         <i class="icon-lock"></i>
                                                                     </span>
                                                                 </label>
@@ -117,13 +117,13 @@
 
                                                         <div class="clearfix">
                                                             <label class="inline">
-                                                                <input type="checkbox" class="ace" />
-                                                                <span class="lbl"> Remember Me</span>
+<!--                                                                <input type="checkbox" class="ace" />
+                                                                <span class="lbl"> ចងចាំ</span>-->
                                                             </label>
 
                                                             <button class="width-35 pull-right btn btn-small btn-primary">
                                                                 <i class="icon-key"></i>
-                                                                Login
+                                                                ចូល
                                                             </button>
                                                         </div>
 
@@ -134,17 +134,17 @@
 
                                             <div class="toolbar clearfix">
                                                 <div>
-                                                    <a href="#" onclick="show_box('forgot-box');
+<!--                                                    <a href="#" onclick="show_box('forgot-box');
                                                             return false;" class="forgot-password-link">
                                                         <i class="icon-arrow-left"></i>
                                                         I forgot my password
-                                                    </a>
+                                                    </a>-->
                                                 </div>
 
                                                 <div>
                                                     <a href="#" onclick="show_box('signup-box');
                                                             return false;" class="user-signup-link">
-                                                        I want to register
+                                                        ចុះឈ្មោះ
                                                         <i class="icon-arrow-right"></i>
                                                     </a>
                                                 </div>
@@ -199,7 +199,7 @@
                                             <div class="widget-main">
                                                 <h4 class="header green lighter bigger">
                                                     <i class="icon-group blue"></i>
-                                                    New User Registration
+                                                    ចុះឈ្មោះថ្មី
                                                 </h4>
                                                 <div class="message"></div>
                                                 <div class="loading" style="display: none;" >
@@ -208,7 +208,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="space-6"></div>
-                                                <p> Enter your details to begin: </p>
+                                                <p>បញ្ចូលពត៏មានរបស់អ្នក: </p>
                                                 
                                                 <form name="register" method="post">
                                                     <fieldset>
@@ -216,8 +216,8 @@
                                                             <!--<label class="control-label">Email address</label>-->
                                                             <div class="controls">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input required name="email" type="email" class="span12" placeholder="Email" />
-                                                                    <i class="icon-envelope"></i>
+                                                                    <input required data-validation-required-message="ចូរបំពេញ់ប្រអប់" name="email" type="text" class="span12" placeholder="ឈ្នោះសម្ងាត់" />
+                                                                    <i class="icon-user"></i>
                                                                 </span>
                                                                 <p class="help-block"></p>
                                                             </div>
@@ -228,7 +228,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="password" minlength="6" maxlength="30" type="password" class="span12" placeholder="Password" />
+                                                                        <input required="required" name="password" minlength="6" maxlength="30" data-validation-minlength-message="តួអក្សរយ៉ាងតិច៦"  data-validation-required-message="ចូរបំពេញ់ប្រអប់" type="password" class="span12" placeholder="កូដសម្ងាត់" />
                                                                         <i class="icon-lock"></i>
                                                                     </span>
                                                                 </label>
@@ -241,7 +241,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="passwordc" type="password" data-validation-match-match="password" data-validation-match-message="Password not match!!!" class="span12" placeholder="Repeat password" />
+                                                                        <input required name="passwordc" type="password" data-validation-match-match="password" data-validation-match-message="ឈ្នោះសម្ងាត់មិនដូចគ្នា" class="span12" placeholder="កូដសម្ងាត់ម្ដងទៀត" />
                                                                         <i class="icon-retweet"></i>
                                                                     </span>
                                                                 </label>
@@ -253,10 +253,10 @@
                                                             <!--<label class="control-label">Email address</label>-->
                                                             <div class="controls">
                                                                 <label>
-                                                                    <input required data-validation-required-message="Please accept agreement" name="accept" type="checkbox" class="ace" />
+                                                                    <input required data-validation-required-message="សូមយល់ព្រមនឹងលក្ខណ" name="accept" type="checkbox" class="ace" />
                                                                     <span class="lbl">
-                                                                        I accept the
-                                                                        <a href="#">User Agreement</a>
+                                                                        យល់ព្រមនឹងលក្ខណ
+                                                                        <!--<a href="#">User Agreement</a>-->
                                                                     </span>
                                                                 </label>
                                                                 <p class="help-block"></p>
@@ -269,11 +269,11 @@
                                                         <div class="clearfix">
                                                             <button type="reset" class="width-30 pull-left btn btn-small">
                                                                 <i class="icon-refresh"></i>
-                                                                Reset
+                                                                លុប
                                                             </button>
 
                                                             <button type="submit" id="btn-register" class="width-65 pull-right btn btn-small btn-success">
-                                                                Register
+                                                                ចុះឈ្មោះ
                                                                 <i class="icon-arrow-right icon-on-right"></i>
                                                             </button>
                                                         </div>
@@ -285,7 +285,7 @@
                                                 <a href="#" onclick="show_box('login-box');
                                                             return false;" class="back-to-login-link">
                                                     <i class="icon-arrow-left"></i>
-                                                    Back to login
+                                                    ត្រឡបក្រោយ
                                                 </a>
                                             </div>
                                         </div><!--/widget-body-->
@@ -372,7 +372,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                     $('.loading').fadeOut();
                                                     $('#signup-box').removeClass('visible');
                                                     $('#login-box').addClass('visible');
-                                                    $('#login-box .message').html("<p class='alert alert-success'>Your registeration successfully, please login.</p>");
+                                                    $('#login-box .message').html("<p class='alert alert-success'>ចុះឈ្មោះថ្មីបានសម្រេច សូមចូល.</p>");
                                                     
                                                 }
                                                 else if(data.result==0){
@@ -427,7 +427,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                         $('#login-box .progress .bar').width(i + "%");
                                                     }
                                                     //$('#signup-box .loading').fadeOut();
-                                                    $('#login-box .message').html("<p class='alert alert-error'>Username and password invalid!!!</p>");
+                                                    $('#login-box .message').html("<p class='alert alert-error'>ឈ្មោះ និងកូដសម្ថាត់មិនត្រឹមត្រួវ</p>");
                                                     
                                                 }
                                                 else if(data.result==2){
