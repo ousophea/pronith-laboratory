@@ -26,7 +26,7 @@ class Doctors extends CI_Controller{
         if($this->input->post('data'))
             $this->load->view('doctors/add',  $this->data);
         else{
-            $this->data['title'] = 'Add new doctor';
+            $this->data['title'] = 'បង្កើត​វេជ្ជ​បណ្ឌិត​ថ្មី';
 			$this->data['hospitals_data'] = $this->m_global->select_all(TBL_PREFEX.'hospitals');
 			$this->data['doctors_data'] = $this->m_global->select_all(TBL_PREFEX.'doctors');
             $this->load->view(TEMPLATE,  $this->data);
@@ -84,7 +84,7 @@ class Doctors extends CI_Controller{
 				$this->session->set_flashdata('msg_error','ឈ្មោះ​វេជ្ជ​បណ្ឌិត ដែល​អ្នក​កំ​ពុង​កែប្រែ ពុំ​មាន​នៅ​ក្នុង​ប្រព័ន្ធ​ទេ!');
 				redirect(site_url('doctors/lists'));
 			}
-	        $this->data['title'] = 'Edit doctor';
+	        $this->data['title'] = 'កែប្រែ​វេជ្ជ​បណ្ឌិត';
 			$this->data['edit_data'] = $edit_data;
 			$this->data['hospitals_data'] = $this->m_global->select_all(TBL_PREFEX.'hospitals');
 			$this->data['doctors_data'] = $this->m_global->select_where_not_in(TBL_PREFEX.'doctors',array('doc_id'=>array($id)));
@@ -142,7 +142,7 @@ class Doctors extends CI_Controller{
         if($this->input->post('data'))
             $this->load->view('doctors/lists',  $this->data);
         else{
-            $this->data['title'] = 'List doctors';
+            $this->data['title'] = 'បង្ហាញ​វេជ្ជ​បណ្ឌិត';
             $this->load->view(TEMPLATE,  $this->data);
         }
 	}

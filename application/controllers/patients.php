@@ -27,7 +27,7 @@ class Patients extends CI_Controller {
 		if ($this -> input -> post('data'))
 			$this -> load -> view('patients/add', $this -> data);
 		else {
-			$this -> data['title'] = 'Add new patient';
+			$this -> data['title'] = 'បង្កើត​អ្នក​ជំងឺថ្មី';
 			$this -> data['doctors_data'] = $this -> m_global -> select_all(TBL_PREFEX . 'doctors');
 			$this -> load -> view(TEMPLATE, $this -> data);
 		}
@@ -87,7 +87,7 @@ class Patients extends CI_Controller {
 				$this -> session -> set_flashdata('msg_error', 'អ្នក​ជំងឺ​ ដែល​អ្នក​កំ​ពុង​ ព្យាយាម​កែប្រែ ពុំ​មាន​នៅ​ក្នុង​ប្រ​ព័ន្ធ​ទេ!');
 				redirect(site_url('patients/lists'));
 			}
-			$this -> data['title'] = 'Edit patient';
+			$this -> data['title'] = 'កែប្រែ​អ្នក​ជំងឺ';
 			$this -> data['edit_data'] = $edit_data;
 			$this -> data['doctors_data'] = $this -> m_global -> select_all(TBL_PREFEX . 'doctors');
 			$this->data['phones_data'] = $this->m_global->select_where(TBL_PREFEX.'patients_phones',array('pat_pho_pat_id'=>$id));
@@ -144,7 +144,7 @@ class Patients extends CI_Controller {
 		if ($this -> input -> post('data'))
 			$this -> load -> view('patients/lists', $this -> data);
 		else {
-			$this -> data['title'] = 'List patients';
+			$this -> data['title'] = 'បង្ហាញ​អ្នក​ជំងឺ';
 			$this -> load -> view(TEMPLATE, $this -> data);
 		}
 	}

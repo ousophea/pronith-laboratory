@@ -41,7 +41,7 @@ class Tests extends CI_Controller {
         if($this->input->post('data'))
             $this->load->view('tests/add',  $this->data);
         else{
-            $this->data['title'] = 'Add new exam test step1';
+            $this->data['title'] = 'បង្កើត​តេស្ថថ្មី ដំណាក់​កាល​ទី១';
 			$this->data['patients_data'] = $this->m_global->select_all(TBL_PREFEX.'patients');
 			$this->data['ills_data'] = $this->m_tests->ill_lists();
             $this->load->view(TEMPLATE,  $this->data);
@@ -67,8 +67,21 @@ class Tests extends CI_Controller {
 			$this->session->set_userdata('txt_patId',$patient);
 			$this->session->set_userdata('txt_isReceiveIll',$ill_is_receive);
 			$this->session->set_userdata('txt_ills',$ills);
+			$str_check = '';
+			if ($patient == '0') $str_check .= 'សូម​ជ្រើស​រើស អ្នក​ជំ​ងឺ<br/>';
+			if (!$ills) $str_check .= 'សូម​ជ្រើស​រើស ជំ​ងឺ​ដើម្បី​ធ្វើ​តេស្ថ យ៉ាង​ហោច​ណាស់​អោយ​បាន​១មុខ<br/>';
+			if($str_check != ''){
+				$this->session->set_flashdata('msg_error',substr($str_check,0,-5));
+				redirect(site_url('tests/add_step1'));
+			}
+			if($ill_is_receive == '0') $this->session->set_flashdata('msg_info','បញ្ជាក់៖ ជំងឺ​មិន​ទាន់​ទទួល​ពី អ្នក​ជំងឺ​សំរាប់​ធ្វើ​តេស្ថ');
+		}else{
+			if(!$this->session->userdata('txt_patId')){
+				$this->session->set_flashdata('msg_error','អ្នក​មិន​អាច​បង្កើតតេស្ថ ដោយ​មិន​បាន​បំ​ពេញ​ពត៌មាន​ នៅ​ក្នុង​ដំណាក់​កាល់​ទី​១​ទេ។');
+				redirect(site_url('tests/add_step1'));
+			}
 		}
-		$this->data['title'] = 'Add new exam test step2';
+		$this->data['title'] = 'បង្កើត​តេស្ថថ្មី ដំណាក់​កាល​ទី២';
 		$this->data['ills_selected_data'] = $this->m_tests->ill_selected_lists($this->session->userdata('txt_ills'));
         $this->load->view(TEMPLATE,  $this->data);
 	}
@@ -102,8 +115,13 @@ class Tests extends CI_Controller {
 			$this->session->set_userdata('txt_tax',$tax);
 			$this->session->set_userdata('txt_payAll',$pay_all);
 			$this->session->set_userdata('txt_isPaid',$is_paid);
+		}else{
+			if(!$this->session->userdata('txt_subTotal')){
+				$this->session->set_flashdata('msg_error','អ្នក​មិន​អាច​បង្កើតតេស្ថ ដោយ​មិន​បាន​បំ​ពេញ​ពត៌មាន​ នៅ​ក្នុង​ដំណាក់​កាល់​ទី​២ទេ។');
+				redirect(site_url('tests/add_step2'));
+			}
 		}
-		$this->data['title'] = 'Add new exam test finish';
+		$this->data['title'] = 'បង្កើត​តេស្ថថ្មី ដំណាក់​កាល​បញ្ចប់';
 		$this->data['ills_selected_data'] = $this->m_tests->ill_selected_lists($this->session->userdata('txt_ills'));
         $this->load->view(TEMPLATE,  $this->data);
 	}
@@ -200,6 +218,28 @@ class Tests extends CI_Controller {
 		redirect(site_url('patients/add'));
 	}
 	
+	public function add_cancel(){
+		$arr_unset_session = array();
+		if($this->session->userdata('txt_patId')) $arr_unset_session['txt_patId'] = '';
+		if($this->session->userdata('txt_isReceiveIll')) $arr_unset_session['txt_isReceiveIll'] = '';
+		if($this->session->userdata('txt_ills')) $arr_unset_session['txt_ills'] = '';
+		if($this->session->userdata('txt_dateTimeReceived')) $arr_unset_session['txt_dateTimeReceived'] = '';
+		if($this->session->userdata('txt_discount')) $arr_unset_session['txt_discount']='';
+		if($this->session->userdata('txt_deposit')) $arr_unset_session['txt_discount']='txt_deposit';
+		if($this->session->userdata('txt_subTotal')) $arr_unset_session['txt_subTotal'] = '';
+		if($this->session->userdata('txt_owe')) $arr_unset_session['txt_owe'] = '';
+		if($this->session->userdata('txt_tax')) $arr_unset_session['txt_tax'] = '';
+		if($this->session->userdata('txt_payAll')) $arr_unset_session['txt_payAll'] = '';
+		if($this->session->userdata('txt_isPaid')) $arr_unset_session['txt_isPaid'] = '';
+
+		if($this->session->unset_userdata($arr_unset_session) == NULL){
+			$this->session->set_flashdata('msg_info','អ្នក​បាន​បោះបង់ ​ការ​បង្កើត តេស្ថ');
+		}else{
+			$this->session->set_flashdata('msg_error','មិន​អាច​បោះ​បង់ ការ​បង្កើតតេស្ថ។ សូម​ព្យា​យាម​ម្តង​ទៀត។');
+		}
+		redirect(site_url('tests/lists'));
+	}
+	/*
 	function select_ill_order_by_group(){
 		$arr_data = array();
 		$this->db->where('ill_gro_status',1);
@@ -219,4 +259,6 @@ class Tests extends CI_Controller {
 		}
 		return $arr_data;
 	}
+	 * 
+	 */
 }

@@ -6,30 +6,30 @@
             	បង្ហាញ​រាល់​ឈ្មោះ អ្នក​ជំ​ងឺ​ដែល​មាន​នៅ​ក្នុង​ប្រព័ន្ធ 
         </small>
     </h1>
+    <?php
+	if($this->session->flashdata('msg_success')){
+	?>
+	<div class="msg_success">
+		<?php echo '<p>'.$this->session->flashdata('msg_success').'</p>'; ?>
+	</div>
+	<?php	
+	}
+	if($this->session->flashdata('msg_error')){
+	?>
+	<div class="msg_error">
+		<?php echo '<p>'.$this->session->flashdata('msg_error').'</p>'; ?>
+	</div>
+	<?php
+	}
+	if($this->session->flashdata('msg_info')){
+	?>
+	<div class="msg_info">
+		<?php echo '<p>'.$this->session->flashdata('msg_info').'</p>'; ?>
+	</div>
+	<?php
+	}
+	?>
 </div>
-<?php
-if($this->session->flashdata('msg_success')){
-?>
-<div class="msg_success">
-	<?php echo '<p>'.$this->session->flashdata('msg_success').'</p>'; ?>
-</div>
-<?php	
-}
-if($this->session->flashdata('msg_error')){
-?>
-<div class="msg_error">
-	<?php echo '<p>'.$this->session->flashdata('msg_error').'</p>'; ?>
-</div>
-<?php
-}
-if($this->session->flashdata('msg_info')){
-?>
-<div class="msg_info">
-	<?php echo '<p>'.$this->session->flashdata('msg_info').'</p>'; ?>
-</div>
-<?php
-}
-?>
 <div class="row-fluid">
     <div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
         <table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
