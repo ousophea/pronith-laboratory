@@ -12,24 +12,25 @@
             <ul class="nav ace-nav pull-right">
                 <li class="light-blue user-profile">
                     <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
-                        <img class="nav-user-photo" src="images/user.png" alt="Jason's Photo" />
+                        <!--<img class="nav-user-photo" src="images/user.png" alt="Jason's Photo" />-->
                         <span id="user_info">
-                            <small><?php echo $this->session->userdata(USE_USERNAME); ?></small>
+                            <?php $user = $this->session->userdata(USERS); ?>
+                           <small><?php echo $user[USE_USERNAME]; ?></small>
                         </span>
 
                         <i class="icon-caret-down"></i>
                     </a>
 
                     <ul class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer" id="user_menu">
-                        <li>
+<!--                        <li>
                             <a href="#">
                                 <i class="icon-cog"></i>
                                 កំណត់
                             </a>
-                        </li>
+                        </li>-->
 
                         <li>
-                            <a class="ajax" href="<?php echo base_url(); ?>users/profile">
+                            <a href="<?php echo base_url(); ?>">
                                 <i class="icon-user"></i>
                                 ជីវប្រវត្តិសង្ខេប
                             </a>
@@ -40,7 +41,7 @@
                         <li>
                             <a href="<?php echo base_url().'users/loginout' ?>">
                                 <i class="icon-off"></i>
-                                ចាកចេញ់
+                                ចាកចេញ
                             </a>
                         </li>
                     </ul>

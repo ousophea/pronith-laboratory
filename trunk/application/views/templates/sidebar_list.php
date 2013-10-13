@@ -209,7 +209,7 @@
     
     <li>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
-            <i class="icon-plus-sign"></i>
+            <i class="icon-group"></i>
             <span>អ្នកប្រើប្រាស់</span>
 
             <b class="arrow icon-angle-down"></b>

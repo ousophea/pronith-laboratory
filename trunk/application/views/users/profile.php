@@ -23,13 +23,20 @@
                     <ul class="nav nav-tabs padding-18">
                         <li class="active">
                             <a data-toggle="tab" href="#home">
-                                <i class="green icon-user bigger-120"></i>
+                                <i class="icon-user bigger-120"></i>
                                 ជីវប្រវត្តិសង្ខេប
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#password">
+                                <i class="icon-key bigger-120"></i>
+                                ប្ដូរកូដសម្ថាត់
                             </a>
                         </li>
                     </ul>
 
                     <div class="tab-content no-border padding-24">
+                        
                         <div id="home" class="tab-pane active">
                             <div class="row-fluid">
                                 <div class="span12">
@@ -47,7 +54,7 @@
                                         </div>
 
                                         <div class="profile-info-row">
-                                            <div class="profile-info-name">ឋនៈ</div>
+                                            <div class="profile-info-name">ឋានៈ</div>
 
                                             <div class="profile-info-value">
                                                 <span><?php echo $user[GRO_NAME].'&nbsp;'; ?></span>
@@ -71,6 +78,15 @@
                                         </div>
                                     </div>
 
+                                    
+                                    </div>
+                                </div><!--/span-->
+                            </div><!--/row-fluid-->
+
+                        
+                        <div id="password" class="tab-pane active">
+                            <div class="row-fluid">
+                                <div class="span12">
                                     
                                     </div>
                                 </div><!--/span-->
