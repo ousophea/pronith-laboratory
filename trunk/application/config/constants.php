@@ -105,7 +105,7 @@ define('ILI_DATEMODIFIED', 'ill_ite_dateModified');
 define('ILI_STATUS', 'ill_ite_status');
 
 // Global worlds
-define('DROPDOWN_DEFAULT', '-- ច្រើសរើស --');
+define('DROPDOWN_DEFAULT', '-- ជ្រើសរើស --');
 define('STATUS', 'status');
 //doctor commission %
 define('DOCTOR_COMMISSION', 10);
