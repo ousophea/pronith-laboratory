@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List users
+        តារាងអ្នកប្រើប្រាស់
         <small>
             <i class="icon-double-angle-right"></i>
-            List all users information who registered in system
+            តារាងបង្ហាញអំពីអ្នកប្រើប្រាស់
         </small>
     </h1>
 </div>
@@ -18,10 +18,10 @@
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">First name</th>
-                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-3" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">Last name</th>
-                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-4" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">Email</th>
-                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-5" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">Group</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 168px;">នាម</th>
+                    <th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-3" rowspan="1" colspan="1" aria-label="Price: activate to sort column ascending" style="width: 121px;">គោត្តនាម</th>
+                    <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-4" rowspan="1" colspan="1" aria-label="Clicks: activate to sort column ascending" style="width: 132px;">ឈ្មោះសម្ថាត់</th>
+                    <th class="hidden-phone sorting" role="columnheader" tabindex="0" aria-controls="sample-table-5" rowspan="1" colspan="1" aria-label="Update: activate to sort column ascending" style="width: 197px;">ឋានៈ</th>
                     <th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-6" rowspan="1" colspan="1" aria-label="Status: activate to sort column ascending" style="width: 164px;">Status</th>
                     <th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 161px;">Action</th>
                 </tr>

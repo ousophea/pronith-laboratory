@@ -193,10 +193,10 @@
             parents = $(this).parents(".object");
             object = $(parents).data('object').data;
             var html = '';
-            html +=htmlView("Name", object['<?php echo ILL_NAME; ?>']);
-            html +=htmlView("Ill group", object['<?php echo ILG_NAME; ?>']);
-            html +=htmlView("Date created", object['<?php echo ILL_DATECREATED; ?>']);
-            html +=htmlView("Date modified", object['<?php echo ILL_DATEMODIFIED; ?>']);
+            html +=htmlView("Name", object['<?php echo ILL_NAME; ?>']+"&nbsp;"+object['<?php echo ILL_NAME; ?>']);
+            html +=htmlView("Ill group", object['<?php echo ILG_NAME; ?>']+"&nbsp;");
+            html +=htmlView("Date created", object['<?php echo ILL_DATECREATED; ?>']+"&nbsp;");
+            html +=htmlView("Date modified", object['<?php echo ILL_DATEMODIFIED; ?>']+"&nbsp;");
             html +=htmlView("Status", (object['<?php echo ILL_STATUS; ?>']==1)?'On':'Off');
             view(html,'Ill view detail');// Popup
         });

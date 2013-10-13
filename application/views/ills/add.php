@@ -1,6 +1,6 @@
 <div class="page-header position-relative">
     <h1>
-        បញ្ចូលជំងឺ
+        បង្កើតជំងឺ
         <small>
             <i class="icon-double-angle-right"></i>
             សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
@@ -17,6 +17,7 @@
 
                 <div class="controls">
                     <input required name="<?php echo ILL_NAME; ?>" type="text"  minlength="3" id="<?php echo ILL_NAME; ?>" placeholder="ឈ្មោះជំងឺ">
+                    <input  name="<?php echo ILL_NAMEKH; ?>" type="text"  minlength="3" id="<?php echo ILL_NAMEKH; ?>" placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
             </div>

@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Edit user
+        កែប្រែអ្នកប្រើប្រាស់
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to edit user account
+            សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
         </small>
     </h1>
 </div>
@@ -13,17 +13,17 @@
 
         <form class="form-horizontal" method="post" name="user">
             <div class="control-group">
-                <label class="control-label" for="firstname">First name</label>
+                <label class="control-label" for="firstname">នាម</label>
 
                 <div class="controls">
                     <input name='<?php echo USE_ID; ?>' type='hidden' value='<?php echo $data[USE_ID] ?>'/>
-                    <input name="<?php echo USE_FIRSTNAME; ?>" type="text" value='<?php echo $data[USE_FIRSTNAME] ?>' minlength="3" id="fistname" placeholder="First name">
+                    <input name="<?php echo USE_FIRSTNAME; ?>" type="text" value='<?php echo $data[USE_FIRSTNAME] ?>' minlength="3" id="fistname" placeholder="នាម">
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="lastname">Last name</label>
+                <label class="control-label" for="lastname">គោត្តនាម</label>
 
                 <div class="controls">
                     <input name="<?php echo USE_LASTNAME; ?>" type="text" value='<?php echo $data[USE_LASTNAME] ?>' minlength="3" id="lastname" placeholder="Last name">
@@ -32,7 +32,7 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo USE_STATUS; ?>">Status</label>
+                <label class="control-label" for="<?php echo USE_STATUS; ?>">ស្ថានភាព</label>
 
                 <div class="controls">
                     <input name="<?php echo USE_STATUS; ?>" <?php echo ($data[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
@@ -42,7 +42,7 @@
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="<?php echo USE_GROUPID; ?>">User Group</label>
+                <label class="control-label" for="<?php echo USE_GROUPID; ?>">ឋានៈ</label>
 
                 <div class="controls">
                     <?php echo form_dropdown(USE_GROUPID, $groups, $data[USE_GROUPID], ' required="required"') ?>
@@ -53,13 +53,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    សារដើម
                 </button>
             </div>
 

@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        Add a new user
+        បង្កើតអ្នកប្រើប្រាស់
         <small>
             <i class="icon-double-angle-right"></i>
-            Please fill all the required input box to add new user account
+            សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
         </small>
     </h1>
 </div>
@@ -13,32 +13,32 @@
 
         <form class="form-horizontal" method="post" name="register">
             <div class="control-group">
-                <label class="control-label" for="email">Email</label>
+                <label class="control-label" for="email">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <input name="email" type="email" required="required" id="email" placeholder="E-mail">
+                    <input name="email" type="text" required="required" id="email" placeholder="ឈ្មោះ">
                     <span class="help-inline"></span>
                 </div>
             </div>
 
             <div class="control-group">
-                <label class="control-label" for="password">Password</label>
+                <label class="control-label" for="password">កូដសម្ងាត់</label>
 
                 <div class="controls">
-                    <input name="password" type="password" required="required" minlength="6" maxlength="30" id="passowrd" placeholder="Password">
+                    <input name="password" type="password" required="required" minlength="6" maxlength="30" id="passowrd" placeholder="កូដសម្ងាត់">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="passwordc">Password Confirm</label>
+                <label class="control-label" for="passwordc">កូដសម្ងាត់ម្ដងទៀត</label>
 
                 <div class="controls">
-                    <input name="passwordc" type="password" required="required" id="passowrdc" placeholder="Password Confirm" data-validation-match-match="password" data-validation-match-message="Password not match!!!">
+                    <input name="passwordc" type="password" required="required" id="passowrdc" placeholder="កូដសម្ងាត់ម្ដងទៀត" data-validation-match-match="password" data-validation-match-message="Password not match!!!">
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="control-group">
-                <label class="control-label" for="<?php echo USE_GROUPID; ?>">User Group</label>
+                <label class="control-label" for="<?php echo USE_GROUPID; ?>">ឋានៈ</label>
 
                 <div class="controls">
                     <?php echo form_dropdown('group', $groups, '', ' required="required"') ?>
@@ -49,13 +49,13 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    Submit
+                    បង្កើត
                 </button>
 
                 &nbsp; &nbsp; &nbsp;
                 <button class="btn" type="reset">
                     <i class="icon-undo bigger-110"></i>
-                    Reset
+                    សារដើម
                 </button>
             </div>
 
