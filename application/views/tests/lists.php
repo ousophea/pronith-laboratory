@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        List patient test
+        បង្ហាញ​របាយការណ៍ តេស្ថ​ជំងឺ​
         <small>
             <i class="icon-double-angle-right"></i>
-            List all patient test information
+            បង្ហាញ​រាល់​ពត៌មាន ដែល​ទាក់​ទង​នឹង​​ការ​ធ្វើ​តេស្ថ
         </small>
     </h1>
     <?php
@@ -45,16 +45,16 @@
                     <th class="sorting">អ្នក​បង្កើត</th>
                     <th class="sorting">ថ្ងៃ​ខែ​បង្កើត</th>
                     <th class="sorting">ថ្ងៃ​មក​យក​លទ្ធផល</th>
-                    <th class="sorting">ទទួល​ជំ​ងឺ​តេស្ថ</th>
-                    <th class="sorting">លទ្ធផល​ចេញ</th>
                     <th class="sorting">លទ្ធផល​បាន​យក</th>
+                    <th class="sorting">លទ្ធផល​ចេញ</th>
+                    <th class="sorting">ទទួល​ជំ​ងឺ​តេស្ថ</th>
                     <th class="sorting">តំ​លៃ</th>
                     <th class="sorting">ប្រាក់​កក់</th>
                     <th class="sorting">ជំ​ពាក់</th>
                     <th class="sorting">បង់​រួច</th>
                     <th class="sorting">បញ្ចុះ​តំ​លៃ</th>
                     <th class="sorting">ពន្ធ</th>
-                    <th class="sorting">Commission</th>
+                    <th class="sorting">កំរៃ​ជើងសារ</th>
                     <th style="width: 161px;">Action</th>
                 </tr>
             </thead>
@@ -84,25 +84,39 @@
                             <td class=" "><?php echo number_format($row['pat_tes_subTotal'],0); ?>៛</td>
                             <td class=" "><?php echo number_format($row['pat_tes_deposit'],0); ?>៛</td>
                             <td class=" "><?php echo number_format($row['pat_tes_owe'],0); ?>៛</td>
-                            <td class=" "><?php echo ($row['pat_test_isPaid'] == 1)?'បង់​រួច':'មិន​ទាន់​បង់​រួច'; ?></td>
+                            <td class=" "><?php echo ($row['pat_tes_isPaid'] == 1)?'បង់​រួច':'មិន​ទាន់​បង់​រួច'; ?></td>
                             <td class=" "><?php echo $row['pat_tes_discount']; ?>%</td>
-                            <td class=" "><?php echo $row['pat_tes_tax']; ?></td>
-                            <td class=" "><?php echo ($row['pat_tes_doctorCommission'] == 0)?'ពុំមាន':$row['pat_tes_doctorCommission']; ?></td>
-                            <td class=" "><input name="txt_patTestStatus" <?php echo ($row['pat_tes_status'])?'checked':''; ?> type="checkbox" id="patTestStatus" placeholder="Status" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
-                            
+                            <td class=" "><?php echo $row['pat_tes_tax']; ?>%</td>
+                            <td class=" "><?php echo ($row['pat_tes_doctorCommission'] == 0)?'ពុំមាន':number_format($row['pat_tes_doctorCommission'],0).'៛'; ?></td>
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
-                                    <a class="blue view-modal">
-                                        <i class="icon-eye-open bigger-130"></i>
-                                    </a>
-
-                                    <a class="green edit" href="<?php echo site_url('tests/edit/'.$row['pat_tes_id']); ?>">
-                                        <i class="icon-pencil bigger-130"></i>
-                                    </a>
-
-                                    <a class="red delete" href="<?php echo site_url('tests/delete/'.$row['pat_tes_id']); ?>">
-                                        <i class="icon-trash bigger-130"></i>
-                                    </a>
+                                <?php
+                                if($row['pat_tes_isPaid'] == 0){
+                                ?>
+                                	<a class="blue" href="<?php echo site_url('tests/pay_tests/'.$row['pat_tes_id']); ?>">
+                                		បង់​ប្រាក់
+                                	</a>
+                                <?php
+                                }else{
+                                ?>
+                                	<a style="color: green;">បង់​ប្រាក់</a>
+                                <?php
+                                }
+								if($row['pat_tes_isResult'] == 0){
+								?>
+									<a class="blue" href="<?php echo site_url('tests/input_result_tests/'.$row['pat_tes_id']); ?>">
+                                		បញ្ចូល​លទ្ធផល
+                                	</a>
+								<?php
+								}else{
+								?>
+									<a style="color: green;">បញ្ចូល​លទ្ធផល</a>
+								<?php
+								}
+                                ?>
+                                	<a class="blue" href="<?php echo site_url('tests/print_result_tests/'.$row['pat_tes_id']); ?>">
+                                		ព្រីន​​លទ្ធផល
+                                	</a>
                                 </div>
                             </td>
                         </tr>
@@ -285,4 +299,3 @@
         }
     })
 </script>
-

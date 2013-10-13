@@ -28,7 +28,7 @@ class Patients extends CI_Controller {
 			$this -> load -> view('patients/add', $this -> data);
 		else {
 			$this -> data['title'] = 'បង្កើត​អ្នក​ជំងឺថ្មី';
-			$this -> data['doctors_data'] = $this -> m_global -> select_all(TBL_PREFEX . 'doctors');
+			$this -> data['doctors_data'] = $this -> m_global -> select_where(TBL_PREFEX . 'doctors',array('doc_status'=>1));
 			$this -> load -> view(TEMPLATE, $this -> data);
 		}
 	}
@@ -89,7 +89,7 @@ class Patients extends CI_Controller {
 			}
 			$this -> data['title'] = 'កែប្រែ​អ្នក​ជំងឺ';
 			$this -> data['edit_data'] = $edit_data;
-			$this -> data['doctors_data'] = $this -> m_global -> select_all(TBL_PREFEX . 'doctors');
+			$this -> data['doctors_data'] = $this -> m_global -> select_where(TBL_PREFEX . 'doctors',array('doc_status'=>1));
 			$this->data['phones_data'] = $this->m_global->select_where(TBL_PREFEX.'patients_phones',array('pat_pho_pat_id'=>$id));
 			$this -> load -> view(TEMPLATE, $this -> data);
 		}

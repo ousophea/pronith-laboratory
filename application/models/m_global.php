@@ -120,6 +120,20 @@ class m_global extends CI_Model {
         }
         return $this->db->get($table);
     }
+	
+	/**
+	 * Function select_where_limit_one()
+	 */
+	public function select_where_limit_one($table,$arry_where = array()) {
+		if (!is_array($arry_where) || count($arry_where) <= 0)
+            return FALSE;
+		foreach ($arry_where as $field => $value) {
+            $this->db->where($field, $value);
+        }
+		$this->db->limit(1);
+		$query_select = $this->db->get($table);
+		return $query_select->result_array();
+	}
 
     /**
      * Function select Where Or

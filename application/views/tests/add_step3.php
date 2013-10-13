@@ -1,11 +1,7 @@
-<?php
-if($this->session->userdata('new_patient_exam_test')) $this->session->unset_userdata('new_patient_exam_test');
-//var_dump($ills_data);
-?>
 <!-- apply for date time picker -->
 <script type="text/javascript" language="JavaScript" src="<?php echo site_url(JS.'jquery.simple-dtpicker.js') ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
-<div class="page-header position-relative">
+<div class="page-header position-relative hidden-print">
     <h1>
         បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាលបញ្ចប់
         <small>
@@ -40,7 +36,7 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
 <div class="row-fluid">
     <div class="span12" id="test_add">
         <!--PAGE CONTENT BEGINS-->
-        <?php echo form_open(site_url('tests/add_save'),'class="form-horizontal"');?>
+        <?php echo form_open(site_url('tests/add_save'),'class="form-horizontal" id="frmStepThree"');?>
             <div class="control-group">
                 <label for="patient">
                 	ឈ្មោះ អ្នក​ជំងឺ : <?php echo get_patient_name($this->session->userdata('txt_patId'));?>
@@ -135,7 +131,7 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
                 </button>
                </a>
                 &nbsp; &nbsp; &nbsp;
-                <button id="btn_step_one" class="btn btn-info" type="submit">
+                <button id="btn_step_three" class="btn btn-info" type="submit">
                     <i class="icon-print bigger-110"></i>
                     	បញ្ចប់
                 </button>

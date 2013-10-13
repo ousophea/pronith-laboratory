@@ -103,7 +103,7 @@
                 <span></span>
             </a>
 
-            <div id="sidebar">
+            <div id="sidebar" class="hidden-print">
                 <?php echo $this->load->view('templates/sidebar_shortcuts'); ?>
                 <?php echo $this->load->view('templates/sidebar_list'); ?>
                 <div id="sidebar-collapse">
@@ -112,7 +112,7 @@
             </div>
 
             <div id="main-content" class="clearfix">
-                <div class="wrapper-loader" style="height: 9px;">
+                <div class="wrapper-loader hidden-print" style="height: 9px;">
                     <div class="loader" style="display: none;">
                         <div class="progress progress-mini progress-success progress-striped active" data-percent="0%"><div class="bar" style="width: 0%;"></div></div>
                         <!--<p style="padding-left: 20px">Loading...</p>-->
@@ -120,7 +120,7 @@
                 </div>
                 
                 
-                <div class="message"></div>
+                <div class="message hidden-print"></div>
                 <div id="page-content" class="clearfix">
                     <?php 
                         if($this->uri->segment(1)==''){
