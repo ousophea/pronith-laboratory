@@ -27,7 +27,7 @@
 
                 <div class="controls">
                     <!--<input required name="<?php echo ILI_DIMENTION; ?>" value="<?php echo $data[ILI_DIMENTION]; ?>" type="text"  minlength="1" id="<?php echo ILI_DIMENTION; ?>" placeholder="Dimention">-->
-                    <?php echo form_dropdown(ILI_ILLID, dimention(), $data[ILI_DIMENTION], ' required="required"') ?>
+                    <?php echo form_dropdown(ILI_DIMENTION, dimention(), $data[ILI_DIMENTION], ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>

@@ -25,7 +25,7 @@
                 <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">ខ្នាត</label>
 
                 <div class="controls">
-                    <?php echo form_dropdown(ILI_ILLID, dimention(), '', ' required="required"') ?>
+                    <?php echo form_dropdown(ILI_DIMENTION, dimention(), '', ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>
