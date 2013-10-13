@@ -29,11 +29,11 @@ class m_users extends CI_Model {
                 $result_array = $data->result_array[0];
                 unset($result_array[USE_PASSWORD]);
                 // create array session
-                $this->session->set_userdata(USERS, $result_array );
-                
+                $this->session->set_userdata(USERS, $result_array);
+
                 $groups = $this->db->get(GROUPS);
                 $groups->result_array();
-                $this->session->set_userdata(GROUPS,$groups->result_array);
+                $this->session->set_userdata(GROUPS, $groups->result_array);
                 return 1;
             } else {
                 return 0;
@@ -87,14 +87,17 @@ class m_users extends CI_Model {
             return 2;
         }
     }
+
     function update() {
         try {
             $data = $this->input->post('data');
-            if(empty($data[USE_STATUS])) $data[USE_STATUS] = 0;
-            else $data[USE_STATUS] = 1;
+            if (empty($data[USE_STATUS]))
+                $data[USE_STATUS] = 0;
+            else
+                $data[USE_STATUS] = 1;
             $this->db->where(USE_ID, $data[USE_ID]);
             unset($data[USE_ID]);
-            if ($this->db->update(USERS,  $data))
+            if ($this->db->update(USERS, $data))
                 return 1;
             else
                 return 0;
@@ -102,13 +105,15 @@ class m_users extends CI_Model {
             return 2;
         }
     }
-    
-    function status(){
+
+    function status() {
         try {
             $data = $this->input->post('data');
-            if($data[USE_STATUS]==1) $data[USE_STATUS] = 0;
-            else $data[USE_STATUS] = 1;
-            $this->db->set(USE_STATUS,$data[USE_STATUS]);
+            if ($data[USE_STATUS] == 1)
+                $data[USE_STATUS] = 0;
+            else
+                $data[USE_STATUS] = 1;
+            $this->db->set(USE_STATUS, $data[USE_STATUS]);
             $this->db->where(USE_ID, $data[USE_ID]);
             if ($this->db->update(USERS))
                 return 1;
@@ -116,6 +121,47 @@ class m_users extends CI_Model {
                 return 0;
         } catch (Exception $exc) {
             return 2;
+        }
+    }
+
+    function changePassword() {
+        try {
+            $data = $this->input->post('data');
+            $user = $this->session->userdata(USERS);
+            $this->db->where(USE_ID, $user[USE_ID]);
+            $this->db->where(USE_BLOCKED, 0);
+            $this->db->where(USE_PASSWORD, sha1(PASSWORD_PREFEX . $data[USE_PASSWORD . 'old']));
+            $query = $this->db->get(USERS);
+            if ($query->num_rows() > 0) {
+                $this->db->where(USE_ID, $user[USE_ID]);
+                $this->db->set(USE_PASSWORD, sha1(PASSWORD_PREFEX . $data[USE_PASSWORD]));
+                $this->db->set(USE_INVALIDPASSWORD, 0);
+                $this->db->update(USERS);
+                return 1;
+            } else {
+
+                $this->db->where(USE_ID, $user[USE_ID]);
+                $query = $this->db->get(USERS);
+
+                foreach ($query->result_array() as $row) {
+                    if($row[USE_BLOCKED]==1){
+                        return 2;// use is blocked
+                    }
+                    else {
+                        if( ($row[USE_INVALIDPASSWORD] == ALLOWINVALIDPASSWORD)){
+                            $this->db->set(USE_BLOCKED, 1);
+                            return 2;
+                        }
+                        else{
+                            $this->db->set(USE_INVALIDPASSWORD, USE_INVALIDPASSWORD . "+1",FALSE);
+                        }
+                        $this->db->update(USERS);
+                    }
+                    return 0;
+                }
+            }
+        } catch (Exception $exc) {
+            echo $exc->getTraceAsString();
         }
     }
 
