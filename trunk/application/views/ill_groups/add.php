@@ -1,9 +1,9 @@
 <div class="page-header position-relative">
     <h1>
-        បញ្ចូល​ប្រ​ភេទ​ជំ​ងឺ
+        បង្កើតប្រ​ភេទ​ជំ​ងឺ
         <small>
             <i class="icon-double-angle-right"></i>
-            ចូរបញ្ចូល​ប្រ​ភេទ​ជំ​ងឺខាងក្រោម
+            ចូរបង្កើតប្រ​ភេទ​ជំ​ងឺខាងក្រោម
         </small>
     </h1>
 </div>
@@ -17,6 +17,7 @@
 
                 <div class="controls">
                     <input required name="<?php echo ILG_NAME; ?>" type="text"  minlength="3" id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
+                    <input  name="<?php echo ILG_NAMEKH; ?>" type="text"  placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
             </div>

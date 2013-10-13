@@ -1,6 +1,6 @@
 <div class="page-header position-relative">
     <h1>
-        បញ្ចូលធាតុថ្មី
+        បង្កើតធាតុថ្មី
         <small>
             <i class="icon-double-angle-right"></i>
             សូម​បំ​ពេញ​​ពត៌មាន​អោយ​បាន​ត្រឹមត្រូវ
@@ -25,7 +25,7 @@
                 <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">ខ្នាត</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_DIMENTION; ?>" type="text"  minlength="1" id="<?php echo ILI_DIMENTION; ?>" placeholder="ខ្នាត">
+                    <?php echo form_dropdown(ILI_ILLID, dimention(), '', ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>

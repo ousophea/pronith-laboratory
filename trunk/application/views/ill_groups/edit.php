@@ -18,6 +18,7 @@
                 <div class="controls">
                     <input name='<?php echo ILG_ID; ?>' type='hidden' value='<?php echo $data[ILG_ID] ?>'/>
                     <input name="<?php echo ILG_NAME; ?>" type="text" value='<?php echo $data[ILG_NAME] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
+                    <input name="<?php echo ILG_NAMEKH; ?>" type="text" value='<?php echo $data[ILG_NAMEKH] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -43,7 +44,7 @@
             <div class="form-actions">
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
-                    ដែប្រែ
+                    កែប្រែ
                 </button>
 
                 &nbsp; &nbsp; &nbsp;

@@ -77,6 +77,7 @@ define('GRO_STATUS', 'gro_status');
 define('ILLGROUPS', TBL_PREFEX.'ills_groups');
 define('ILG_ID', 'ill_gro_id');
 define('ILG_NAME', 'ill_gro_name');
+define('ILG_NAMEKH', 'ill_gro_nameKh');
 define('ILG_DESCRIPTION', 'ill_gro_description');
 define('ILG_DATECREATED', 'ill_gro_dateCreated');
 define('ILG_DATEMODIFIED', 'ill_gro_dateModified');
@@ -86,6 +87,7 @@ define('ILLS', TBL_PREFEX.'ills');
 define('ILL_ID', 'ill_id');
 define('ILL_GROUPID', 'ill_ill_gro_id');
 define('ILL_NAME', 'ill_name');
+define('ILL_NAMEKH', 'ill_nameKh');
 define('ILL_DATECREATED', 'ill_dateCreated');
 define('ILL_DATEMODIFIED', 'ill_dateModified');
 define('ILL_STATUS', 'ill_status');
@@ -103,7 +105,7 @@ define('ILI_DATEMODIFIED', 'ill_ite_dateModified');
 define('ILI_STATUS', 'ill_ite_status');
 
 // Global worlds
-define('DROPDOWN_DEFAULT', '-- Select --');
+define('DROPDOWN_DEFAULT', '-- ច្រើសរើស --');
 define('STATUS', 'status');
 //doctor commission %
 define('DOCTOR_COMMISSION', 10);

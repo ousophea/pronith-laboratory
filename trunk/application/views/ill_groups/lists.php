@@ -42,7 +42,7 @@
                                 <?php echo form_hidden(ILLGROUPS . ILG_ID, json_encode(array('data' => $row))); ?>
                             </td>
 
-                            <td class=" "><?php echo $row[ILG_NAME]; ?></td>
+                            <td class=" "><?php echo $row[ILG_NAME].'  '.$row[ILG_NAMEKH]; ?></td>
                             <td class=" "><?php echo $row[ILG_DESCRIPTION]; ?></td>
                             <td class=" "><?php echo $row[ILG_DATECREATED]; ?></td>
                             <td class=" "><?php echo $row[ILG_DATEMODIFIED]; ?></td>
@@ -73,7 +73,7 @@
             </tbody>
         </table>
     </div>
-</div>
+</div>&nbsp;
 
 <script type="text/javascript">
     
@@ -193,10 +193,10 @@
             parents = $(this).parents(".object");
             object = $(parents).data('object').data;
             var html = '';
-            html +=htmlView("Name", object['<?php echo ILG_NAME; ?>']);
-            html +=htmlView("Description", object['<?php echo ILG_DESCRIPTION; ?>']);
-            html +=htmlView("Date created", object['<?php echo ILG_DATECREATED; ?>']);
-            html +=htmlView("Date modified", object['<?php echo ILG_DATEMODIFIED; ?>']);
+            html +=htmlView("Name", object['<?php echo ILG_NAME; ?>']+' &nbsp; '+object['<?php echo ILG_NAMEKH; ?>']);
+            html +=htmlView("Description", object['<?php echo ILG_DESCRIPTION; ?>']+"&nbsp;");
+            html +=htmlView("Date created", object['<?php echo ILG_DATECREATED; ?>']+"&nbsp;");
+            html +=htmlView("Date modified", object['<?php echo ILG_DATEMODIFIED; ?>']+"&nbsp;");
             html +=htmlView("Status", (object['<?php echo ILG_STATUS; ?>']==1)?'On':'Off');
             view(html,'Ill group view detail');// Popup
         });

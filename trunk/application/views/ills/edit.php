@@ -18,6 +18,7 @@
                 <div class="controls">
                     <input name='<?php echo ILL_ID; ?>' type='hidden' value='<?php echo $data[ILL_ID] ?>'/>
                     <input name="<?php echo ILL_NAME; ?>" type="text" value='<?php echo $data[ILL_NAME] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះជំងឺ">
+                    <input name="<?php echo ILL_NAMEKH; ?>" type="text" value='<?php echo $data[ILL_NAMEKH] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
             </div>
