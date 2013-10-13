@@ -75,6 +75,10 @@ class users extends CI_Controller {
         echo json_encode(array('result' => $this->m_users->delete()));
     }
 
+    function changepass() {
+        echo json_encode(array('result' => $this->m_users->changePassword()));
+    }
+
     function lists() {
 
         $this->data['title'] = 'List users';

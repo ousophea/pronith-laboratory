@@ -93,7 +93,7 @@
                                                             <!--<label class="control-label">Email address</label>-->
                                                             <div class="controls">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input required name="email" type="text" class="span12" placeholder="ឈ្មោះសម្ងាត់" />
+                                                                    <input required name="email" type="text" class="span12" placeholder="ឈ្មោះសម្ងាត់"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
                                                                     <i class="icon-envelope"></i>
                                                                 </span>
                                                                 <p class="help-block"></p>
@@ -105,7 +105,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="password" type="password" class="span12" placeholder="កូដសម្ងាត់" />
+                                                                        <input required name="password" type="password" class="span12" placeholder="កូដសម្ងាត់"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
                                                                         <i class="icon-lock"></i>
                                                                     </span>
                                                                 </label>
@@ -216,7 +216,7 @@
                                                             <!--<label class="control-label">Email address</label>-->
                                                             <div class="controls">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input required data-validation-required-message="ចូរបំពេញ់ប្រអប់" name="email" type="text" class="span12" placeholder="ឈ្នោះសម្ងាត់" />
+                                                                    <input required  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ" name="email" type="text" class="span12" placeholder="ឈ្នោះសម្ងាត់" />
                                                                     <i class="icon-user"></i>
                                                                 </span>
                                                                 <p class="help-block"></p>
@@ -228,7 +228,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required="required" name="password" minlength="6" maxlength="30" data-validation-minlength-message="តួអក្សរយ៉ាងតិច៦"  data-validation-required-message="ចូរបំពេញ់ប្រអប់" type="password" class="span12" placeholder="កូដសម្ងាត់" />
+                                                                        <input required="required" name="password" minlength="6" maxlength="30" data-validation-minlength-message="តួអក្សរយ៉ាងតិច៦"   data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ" type="password" class="span12" placeholder="កូដសម្ងាត់" />
                                                                         <i class="icon-lock"></i>
                                                                     </span>
                                                                 </label>
@@ -241,7 +241,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="passwordc" type="password" data-validation-match-match="password" data-validation-match-message="ឈ្នោះសម្ងាត់មិនដូចគ្នា" class="span12" placeholder="កូដសម្ងាត់ម្ដងទៀត" />
+                                                                        <input required name="passwordc" type="password" data-validation-match-match="password" data-validation-match-message="ឈ្នោះសម្ងាត់មិនដូចគ្នា" class="span12" placeholder="កូដសម្ងាត់ម្ដងទៀត"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
                                                                         <i class="icon-retweet"></i>
                                                                     </span>
                                                                 </label>

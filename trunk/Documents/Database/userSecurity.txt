@@ -1,0 +1,2 @@
+ALTER TABLE  `tbl_users` ADD  `use_blocked` BIT( 1 ) NOT NULL DEFAULT b'0' AFTER  `use_lastName` ,
+ADD  `use_invalidPassword` INT( 2 ) NOT NULL DEFAULT  '0' AFTER  `use_blocked`

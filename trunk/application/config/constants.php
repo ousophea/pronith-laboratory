@@ -67,6 +67,8 @@ define('USE_DATACREATED', 'use_dateCreated');
 define('USE_DATAMODIFIED', 'use_dateModified');
 define('USE_STATUS', 'use_status');
 define('USE_GROUPID', 'use_gro_id');
+define('USE_BLOCKED', 'use_blocked');
+define('USE_INVALIDPASSWORD', 'use_invalidPassword');
 
 define('GROUPS', TBL_PREFEX.'users_groups');
 define('GRO_ID', 'gro_id');
@@ -107,5 +109,6 @@ define('ILI_STATUS', 'ill_ite_status');
 // Global worlds
 define('DROPDOWN_DEFAULT', '-- ជ្រើសរើស --');
 define('STATUS', 'status');
+define('ALLOWINVALIDPASSWORD', 10);
 //doctor commission %
 define('DOCTOR_COMMISSION', 10);
