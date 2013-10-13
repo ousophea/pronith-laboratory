@@ -28,3 +28,8 @@
 	color: #FFFFFF;
 	padding: 5px;
 }
+.invoice_test {
+    position: absolute;
+    right: 20px;
+    text-align: right;
+}

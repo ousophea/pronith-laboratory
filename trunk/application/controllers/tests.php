@@ -102,7 +102,7 @@ class Tests extends CI_Controller {
 			$datetime_received = $this->input->post('txt_dateTimeReceived');
 			$discount = ($this->input->post('txt_discount')=='')?0:$this->input->post('txt_discount');
 			$deposit = ($this->input->post('txt_deposit')=='')?0:$this->input->post('txt_deposit');
-			$owe = $this->input->post('txt_owe');
+			$owe = ($this->input->post('txt_owe') == '')?0:$this->input->post('txt_owe');
 			$tax = $this->input->post('txt_tax');
 			$pay_all = $this->input->post('txt_payAll');
 			$is_paid = ($pay_all == '1')?1:0;
@@ -115,6 +115,10 @@ class Tests extends CI_Controller {
 			$this->session->set_userdata('txt_tax',$tax);
 			$this->session->set_userdata('txt_payAll',$pay_all);
 			$this->session->set_userdata('txt_isPaid',$is_paid);
+			//get time to compare with date_time_receive ill
+			$date = new DateTime();
+			$timestamp_now = $date->getTimestamp();
+			
 		}else{
 			if(!$this->session->userdata('txt_subTotal')){
 				$this->session->set_flashdata('msg_error','អ្នក​មិន​អាច​បង្កើតតេស្ថ ដោយ​មិន​បាន​បំ​ពេញ​ពត៌មាន​ នៅ​ក្នុង​ដំណាក់​កាល់​ទី​២ទេ។');
@@ -144,7 +148,12 @@ class Tests extends CI_Controller {
 		if($doc_id == 0){
 			$doctor_commission = 0;
 		}else{
-			$doctor_commission = ($total*DOCTOR_COMMISSION)/100;
+			$arr_doctor_row = $this->m_global->select_where_limit_one(TBL_PREFEX.'doctors',array('doc_id'=>$doc_id,'doc_status'=>1));
+			if(count($arr_doctor_row) > 0){
+				$doctor_commission = ($total*$arr_doctor_row[0]['doc_commission'])/100;
+			}else{
+				$doctor_commission = 0;
+			}
 		}
 		$total = $total - $doctor_commission;
 		//insert data into tbl_patients_tests
@@ -155,23 +164,26 @@ class Tests extends CI_Controller {
 			'pat_tes_isReceiveIll' => $is_received_ill,
 			'pat_tes_subTotal' => $sub_total,
 			'pat_tes_total' => $total,
-			'pat_test_isPaid' => $is_paid,
+			'pat_tes_isPaid' => $is_paid,
 			'pat_tes_deposit' => $deposit,
 			'pat_tes_owe' => $owe,
 			'pat_tes_discount' => $discount,
 			'pat_tes_tax' => $tax,
 			'pat_tes_doctorCommission' => $doctor_commission
 		);
-		$this->m_global->insert(TBL_PREFEX.'patients_tests',$data_patient_test);
+		//$this->m_global->insert(TBL_PREFEX.'patients_tests',$data_patient_test);
 		$pat_tes_id = $this->db->insert_id();
 		//insert data into tbl_doctors_commissions in case patient has reference from doctor
 		if($doc_id != 0){
-			$data_doctor_commission = array(
-				'doc_com_doc_id' => $doc_id,
-				'doc_com_pat_tes_id' => $pat_tes_id,
-				'doc_com_ammount' => $doctor_commission
-			);
-			$this->m_global->insert(TBL_PREFEX.'doctors_commissions', $data_doctor_commission);
+			$arr_doctor_row = $this->m_global->select_where_limit_one(TBL_PREFEX.'doctors',array('doc_id'=>$doc_id,'doc_status'=>1));
+			if(count($arr_doctor_row) > 0){
+				$data_doctor_commission = array(
+					'doc_com_doc_id' => $doc_id,
+					'doc_com_pat_tes_id' => $pat_tes_id,
+					'doc_com_ammount' => $doctor_commission
+				);
+				//$this->m_global->insert(TBL_PREFEX.'doctors_commissions', $data_doctor_commission);
+			}
 		}
 		//insert data into tbl_patients_tests_has_tbl_ills for join between patient test and ills
 		$arr_fields = array('pat_tes_id','ill_id');
@@ -179,7 +191,7 @@ class Tests extends CI_Controller {
 		foreach ($arr_ill_selected as $key => $value) {
 			array_push($arr_data,array($pat_tes_id,$value));
 		}
-		$this->m_global->insert_multi(TBL_PREFEX.'patients_tests_has_tbl_ills',$arr_fields,$arr_data);
+		//$this->m_global->insert_multi(TBL_PREFEX.'patients_tests_has_tbl_ills',$arr_fields,$arr_data);
 		
 		//insert data into tbl_patients_tests_results for input the result
 		$query_select_ill = $this->m_global->select_where_in(TBL_PREFEX.'ills_items',array('ill_ite_ill_id' => $arr_ill_selected));
@@ -188,11 +200,31 @@ class Tests extends CI_Controller {
 			$arr_data_tests_results = array();
 			foreach ($query_select_ill->result() as $ill_item_rows) {
 				array_push($arr_data_tests_results,array($pat_tes_id,$ill_item_rows->ill_ite_id));
+			}
+			//$this->m_global->insert_multi(TBL_PREFEX.'patients_tests_results',$arr_fields_tests_results,$arr_data_tests_results);
+		}
+		$this->session->set_userdata('txt_testId',$pat_tes_id);
+		$this->session->set_flashdata('msg_success','តេស្ថ​ថ្មី​ ត្រូវ​បាន​បង្កើត​ដោយ​ជោគ​ជ័យៃ។​ សូម​ព្រីន​វិក័យ​ប័ត្រ​ មុន​នឹង​បិទ​ផ្ទាំង​​កិច្ច​ការ');
+		$this->data['title'] = 'បង្កើត​តេស្ថថ្មី​ជោគ​ជ័យ ចេញ​វិក័យប័ត្រ';
+		$this->data['ills_selected_data'] = $this->m_tests->ill_selected_lists($this->session->userdata('txt_ills'));
+        $this->load->view(TEMPLATE,  $this->data);
+	}
+	
+	public function input_result_tests($id=''){
+		//if($id == '' || !is_numeric($id)){
+			$this->data['title'] = 'បញ្ចូល​លទ្ធផល តេស្ថ​អ្នក​ជំងឺ';
+			$this->db->where('pat_tes_res_pat_tes',$id);
+			$query_select_ill = $this->db->get(TBL_PREFEX.'patients_tests_results');
+			
+			if($query_select_ill->num_rows() > 0){
 				
 			}
-			$this->m_global->insert_multi(TBL_PREFEX.'patients_tests_results',$arr_fields_tests_results,$arr_data_tests_results);
-		}
-		$this->session->set_flashdata('msg_success','New patient test has been created.');
+			$this->data['ill_item_selected_lists'] = $this->m_tests->ill_item_selected_lists($this->session->userdata('txt_ills'));
+        	$this->load->view(TEMPLATE,  $this->data);
+		//}else{
+		//	$this->session->set_flashdata('msg_error','តេស្ថ​អ្នក​ជំ​ងឺ ដែល​អ្នក​កំ​ពុង​ចង់​ បញ្ចូល​លទ្ធផល ពុំ​មាន​នៅ​ក្នុង​ប្រព័ន្ធ​ទេ');
+		//	redirect(site_url('tests/lists'));
+		//}
 	}
 	
 	public function edit($id=NULL){
@@ -207,10 +239,11 @@ class Tests extends CI_Controller {
 		if($this->input->post('data'))
             $this->load->view('tests/lists',  $this->data);
         else{
-            $this->data['title'] = 'Display all tests';
+            $this->data['title'] = 'បង្ហាញ​រាល់​ តេស្ថ​អ្នក​ជំងឺ';
 			$this->data['patients_tests_data'] = $this->m_global->select_all(VIE_PREFEX.'patients_tests');
             $this->load->view(TEMPLATE,  $this->data);
         }
+		$this->remove_session_test();
 	}
 	
 	public function add_patient(){
@@ -219,6 +252,15 @@ class Tests extends CI_Controller {
 	}
 	
 	public function add_cancel(){
+		if($this->remove_session_test() == NULL){
+			$this->session->set_flashdata('msg_info','អ្នក​បាន​បោះបង់ ​ការ​បង្កើត តេស្ថ');
+		}else{
+			$this->session->set_flashdata('msg_error','មិន​អាច​បោះ​បង់ ការ​បង្កើតតេស្ថ។ សូម​ព្យា​យាម​ម្តង​ទៀត។');
+		}
+		redirect(site_url('tests/lists'));
+	}
+
+	private function remove_session_test(){
 		$arr_unset_session = array();
 		if($this->session->userdata('txt_patId')) $arr_unset_session['txt_patId'] = '';
 		if($this->session->userdata('txt_isReceiveIll')) $arr_unset_session['txt_isReceiveIll'] = '';
@@ -231,34 +273,6 @@ class Tests extends CI_Controller {
 		if($this->session->userdata('txt_tax')) $arr_unset_session['txt_tax'] = '';
 		if($this->session->userdata('txt_payAll')) $arr_unset_session['txt_payAll'] = '';
 		if($this->session->userdata('txt_isPaid')) $arr_unset_session['txt_isPaid'] = '';
-
-		if($this->session->unset_userdata($arr_unset_session) == NULL){
-			$this->session->set_flashdata('msg_info','អ្នក​បាន​បោះបង់ ​ការ​បង្កើត តេស្ថ');
-		}else{
-			$this->session->set_flashdata('msg_error','មិន​អាច​បោះ​បង់ ការ​បង្កើតតេស្ថ។ សូម​ព្យា​យាម​ម្តង​ទៀត។');
-		}
-		redirect(site_url('tests/lists'));
+		return $this->session->unset_userdata($arr_unset_session);
 	}
-	/*
-	function select_ill_order_by_group(){
-		$arr_data = array();
-		$this->db->where('ill_gro_status',1);
-		$ill_group_data = $this->db->get(TBL_PREFEX.'ills_groups');
-		if($ill_group_data->num_rows() > 0){
-			foreach($ill_group_data->result() as $groups){
-				$arr_ill = array();
-				$this->db->where('ill_ill_gro_id',$groups->ill_gro_id);
-				$ill_data = $this->db->get(TBL_PREFEX.'ills');
-				if($ill_data->num_rows() > 0){
-					foreach($ill_data->result() as $ills){
-						$arr_ill[$ills->ill_id] = $ills->ill_name;
-					} 
-				}
-				$arr_data[$groups->ill_gro_name] = $ill_data;
-			}
-		}
-		return $arr_data;
-	}
-	 * 
-	 */
 }

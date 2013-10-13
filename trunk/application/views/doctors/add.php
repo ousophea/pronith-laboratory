@@ -101,6 +101,14 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="commission">កំ​រៃ​ជើង​សារ</label>
+
+                <div class="controls">
+                    <input required name="txt_docCommission" value="0" type="text" placeholder="កំ​រៃ​ជើង​សារ">
+                    <span class="help-inline">%</span>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="status">ស្ថាន​ភាព</label>
 
                 <div class="controls">

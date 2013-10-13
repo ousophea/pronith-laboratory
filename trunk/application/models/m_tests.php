@@ -28,7 +28,7 @@ class m_tests extends CI_Model {
 				if($query_ills->num_rows() > 0){
 					$arr_ills[$rows_groups->ill_gro_name] = array();
 					foreach($query_ills->result() as $rows_ills){
-						$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_id] = $rows_ills->ill_name.(($rows_ills->ill_nameEn == '')?'':'('.$rows_ills->ill_nameEn.')').' - '.number_format($rows_ills->ill_price,0).'៛';
+						$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_id] = $rows_ills->ill_name.(($rows_ills->ill_nameKh == '')?'':' ('.$rows_ills->ill_nameKh.')').' - '.number_format($rows_ills->ill_price,0).'៛';
 					}
 				}
 			}
@@ -50,13 +50,49 @@ class m_tests extends CI_Model {
 				if($query_ills->num_rows() > 0){
 					$arr_ills[$rows_groups->ill_gro_name] = array();
 					foreach($query_ills->result() as $rows_ills){
-						$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_name.(($rows_ills->ill_nameEn == '')?'':'('.$rows_ills->ill_nameEn.')')] = $rows_ills->ill_price;
+						$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_name.(($rows_ills->ill_nameKh == '')?'':' ('.$rows_ills->ill_nameKh.')')] = $rows_ills->ill_price;
 					}
 				}
 			}
 		}
 		return $arr_ills;
 	}
+	
+	//select ill item
+	function ill_item_selected_lists($arr_selected_ill_items){
+		$arr_ills = array();
+		$this->db->where('ill_gro_status',1);
+		$query_groups = $this->db->get(TBL_PREFEX.'ills_groups');
+		if($query_groups->num_rows() > 0){
+			foreach($query_groups->result() as $rows_groups){
+				$this->db->where('ill_status',1);
+				$this->db->where('ill_ill_gro_id',$rows_groups->ill_gro_id);
+				//$this->db->where_in('ill_id',$arr_selected_ill_items);
+				$query_ills = $this->db->get(TBL_PREFEX.'ills');
+				if($query_ills->num_rows() > 0){
+					foreach ($query_ills->result() as $rows_ills) {
+						
+						$this->db->where('ill_ite_status',1);
+						$this->db->where('ill_ite_ill_id',$rows_ills->ill_id);
+						//$this->db->where_in('ill_ite_id',$arr_selected_ill_items);
+						$query_ills_items = $this->db->get(TBL_PREFEX.'ills_items');
+						if($query_ills_items->num_rows() > 0){
+							$arr_ills[$rows_groups->ill_gro_name] = array();
+							foreach ($query_ills_items->result() as $rows_items) {
+								$arr_ills[$rows_groups->ill_gro_name.(($rows_groups->ill_gro_nameKh != '')?' ('.$rows_groups->ill_gro_nameKh.')':'')][$rows_ills->ill_name.(($rows_ills->ill_nameKh !='')?' ('.$rows_ills->ill_nameKh.')':'')] = $rows_items; 
+							}
+						}
+					}
+					//$arr_ills[$rows_groups->ill_gro_name] = array();
+					//foreach($query_ills->result() as $rows_ills){
+					//	$arr_ills[$rows_groups->ill_gro_name][$rows_ills->ill_name.(($rows_ills->ill_nameKh == '')?'':' ('.$rows_ills->ill_nameKh.')')] = $rows_ills->ill_price;
+					//}
+				}
+			}
+		}
+		return $arr_ills;
+	}
+	
 	
 }
 ?>

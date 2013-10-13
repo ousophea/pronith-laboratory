@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse">
+<div class="navbar navbar-inverse hidden-print">
 
     <div class="navbar-inner">
         <div class="container-fluid">

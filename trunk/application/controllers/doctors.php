@@ -42,6 +42,7 @@ class Doctors extends CI_Controller{
 			$doc_position = $this->input->post('txt_docPosition');
 			$doc_hospital = $this->input->post('txt_docHospital');
 			$doc_reference = ($this->input->post('txt_docReference')=='0')?NULL:$this->input->post('txt_docReference');
+			$doc_commission = $this->input->post('txt_docCommission');
 			$doc_status = $this->input->post('txt_docStatus');
 			$data_insert = array(
 				'doc_firstName'=>$doc_first_name,
@@ -51,6 +52,7 @@ class Doctors extends CI_Controller{
 				'doc_position'=>$doc_position,
 				'doc_hos_id'=>$doc_hospital,
 				'doc_reference'=>$doc_reference,
+				'doc_commission' => $doc_commission,
 				'doc_status'=>$doc_status);
 			if($this->m_global->insert(TBL_PREFEX.'doctors',$data_insert)){
 				$last_doctor_id = $this->db->insert_id();
@@ -103,16 +105,18 @@ class Doctors extends CI_Controller{
 			$doc_position = $this->input->post('txt_docPosition');
 			$doc_hospital = $this->input->post('txt_docHospital');
 			$doc_reference = ($this->input->post('txt_docReference')=='0')?NULL:$this->input->post('txt_docReference');
+			$doc_commission = $this->input->post('txt_docCommission');
 			$doc_status = $this->input->post('txt_docStatus');
 			$data_update = array(
-				'doc_firstName'=>$doc_first_name,
-				'doc_lastName'=>$doc_last_name,
-				'doc_sex'=>$doc_sex,
-				'doc_email'=>$doc_email,
-				'doc_position'=>$doc_position,
-				'doc_hos_id'=>$doc_hospital,
-				'doc_reference'=>$doc_reference,
-				'doc_status'=>$doc_status);
+				'doc_firstName' => $doc_first_name,
+				'doc_lastName' => $doc_last_name,
+				'doc_sex' => $doc_sex,
+				'doc_email' => $doc_email,
+				'doc_position' => $doc_position,
+				'doc_hos_id' => $doc_hospital,
+				'doc_reference' => $doc_reference,
+				'doc_commission' => $doc_commission,
+				'doc_status' => $doc_status);
 			if($this->m_global->update(TBL_PREFEX.'doctors',$data_update,array('doc_id'=>$doc_id))){
 				$arr_doctor_phone = $this->input->post('txt_docPhone');
 				$arr_doctor_phone = array_filter($arr_doctor_phone);

@@ -81,17 +81,19 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
                 	<div class="accordion">
                 	<?php
 					if(count($ills_data) > 0){
+						$collapse = 1;
 						foreach($ills_data as $keys_groups=>$arr_values){
+							
 					?>
 						<div class="accordion-group">
 							<div class="accordion-heading">
-								<a class="accordion-toggle" data-toggle="collapse" data-parent="" href="#collapse<?php echo $keys_groups; ?>">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="" href="#collapse<?php echo $collapse; ?>">
 								ប្រភេទ​ជំងឺ ៖ <?php echo $keys_groups; ?>
 								</a>
 							</div>
-							<div id="collapse<?php echo $keys_groups; ?>" class="accordion-body collapse">
+							<div id="collapse<?php echo $collapse; ?>" class="accordion-body collapse">
 						<?php
-						foreach($arr_values as $keys=>$values){
+							foreach($arr_values as $keys=>$values){
 						?>
 								<div class="accordion-inner">
 									<label class="checkbox">
@@ -116,11 +118,12 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
 									</label>
 								</div>
 						<?php
-						}
+							}
 						?>
 							</div>
 						</div>
 					<?php
+						$collapse++;
 						}
 					}
 					?>		
