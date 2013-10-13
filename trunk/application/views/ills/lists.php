@@ -42,7 +42,7 @@
                                 <?php echo form_hidden(ILLGROUPS . ILL_ID, json_encode(array('data' => $row))); ?>
                             </td>
 
-                            <td class=" "><?php echo $row[ILL_NAME]; ?></td>
+                            <td class=" "><?php echo $row[ILL_NAME].' '.$row[ILL_NAMEKH]; ?></td>
                             <td class=" "><?php echo $row[ILG_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILL_DATECREATED]; ?></td>
                             <td class=" "><?php echo $row[ILL_DATEMODIFIED]; ?></td>
@@ -193,7 +193,7 @@
             parents = $(this).parents(".object");
             object = $(parents).data('object').data;
             var html = '';
-            html +=htmlView("Name", object['<?php echo ILL_NAME; ?>']+"&nbsp;"+object['<?php echo ILL_NAME; ?>']);
+            html +=htmlView("Name", object['<?php echo ILL_NAME; ?>']+"&nbsp;"+object['<?php echo ILL_NAMEKH; ?>']);
             html +=htmlView("Ill group", object['<?php echo ILG_NAME; ?>']+"&nbsp;");
             html +=htmlView("Date created", object['<?php echo ILL_DATECREATED; ?>']+"&nbsp;");
             html +=htmlView("Date modified", object['<?php echo ILL_DATEMODIFIED; ?>']+"&nbsp;");
