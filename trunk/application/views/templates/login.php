@@ -3,7 +3,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title>Login & Register</title>
+        <title>ចូល & ចុះ​ឈ្មោះ</title>
 
         <meta name="description" content="User login page" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,10 +61,10 @@
                                 <div class="center">
                                     <h1>
                                         <i class="icon-leaf green"></i>
-                                        <span class="red">PRONITH LABORATORY</span>
-                                        <span class="white">System</span>
+                                        <span class="red">មន្ទីរ​ពិសោធន៍ វេជ្ជសាស្ត្រ</span>
+                                        <span class="white">ប្រណីត</span>
                                     </h1>
-                                    <h4 class="blue">---</h4>
+                                    <h3 class="red" style="font-size:40pt;">&#9829;&#9829;&#9829;&#9829;&#9829;</h3>
                                 </div>
                             </div>
 
@@ -77,7 +77,7 @@
                                             <div class="widget-main">
                                                 <h4 class="header blue lighter bigger">
                                                     <i class="icon-coffee green"></i>
-                                                    បញ្ចូលពត៏មានរបស់អ្នក
+                                                    	បញ្ចូលពត៌មានរបស់អ្នក
                                                 </h4>
                                                 <div class="message"></div>
                                                 <div class="loading" style="display: none;" >
@@ -93,7 +93,7 @@
                                                             <!--<label class="control-label">Email address</label>-->
                                                             <div class="controls">
                                                                 <span class="block input-icon input-icon-right">
-                                                                    <input required name="email" type="text" class="span12" placeholder="ឈ្មោះសម្ងាត់"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
+                                                                    <input required name="email" type="text" class="span12" placeholder="ឈ្មោះសម្ងាត់"  data-validation-required-message="ចូរបញ្ចូលទិន្ន័យ"/>
                                                                     <i class="icon-envelope"></i>
                                                                 </span>
                                                                 <p class="help-block"></p>
@@ -105,7 +105,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="password" type="password" class="span12" placeholder="កូដសម្ងាត់"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
+                                                                        <input required name="password" type="password" class="span12" placeholder="កូដសម្ងាត់"  data-validation-required-message="ចូរបញ្ចូលទិន្ន័យ"/>
                                                                         <i class="icon-lock"></i>
                                                                     </span>
                                                                 </label>
@@ -157,12 +157,12 @@
                                             <div class="widget-main">
                                                 <h4 class="header red lighter bigger">
                                                     <i class="icon-key"></i>
-                                                    Retrieve Password
+                                                    	ទាញ​យក​លេខ​កូដ​សំ​ងាត់
                                                 </h4>
 
                                                 <div class="space-6"></div>
                                                 <p>
-                                                    Enter your email and to receive instructions
+                                                    	បញ្ចូល​អ៊ី​ម៉ែល​ដើម្បី ទទួល​បាន​លេខ​កូដ​សំងាត់
                                                 </p>
 
                                                 <form>
@@ -177,7 +177,7 @@
                                                         <div class="clearfix">
                                                             <button onclick="return false;" class="width-35 pull-right btn btn-small btn-danger">
                                                                 <i class="icon-lightbulb"></i>
-                                                                Send Me!
+                                                                	ផ្ញើរ
                                                             </button>
                                                         </div>
                                                     </fieldset>
@@ -187,7 +187,7 @@
                                             <div class="toolbar center">
                                                 <a href="#" onclick="show_box('login-box');
                                                             return false;" class="back-to-login-link">
-                                                    Back to login
+                                                    	ត្រឡប់​ចូល​ប្រព័ន្ធ
                                                     <i class="icon-arrow-right"></i>
                                                 </a>
                                             </div>
@@ -199,7 +199,7 @@
                                             <div class="widget-main">
                                                 <h4 class="header green lighter bigger">
                                                     <i class="icon-group blue"></i>
-                                                    ចុះឈ្មោះថ្មី
+                                                    	ចុះឈ្មោះថ្មី
                                                 </h4>
                                                 <div class="message"></div>
                                                 <div class="loading" style="display: none;" >
@@ -208,7 +208,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="space-6"></div>
-                                                <p>បញ្ចូលពត៏មានរបស់អ្នក: </p>
+                                                <p>បញ្ចូលពត៌មានរបស់អ្នក </p>
                                                 
                                                 <form name="register" method="post">
                                                     <fieldset>
@@ -228,7 +228,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required="required" name="password" minlength="6" maxlength="30" data-validation-minlength-message="តួអក្សរយ៉ាងតិច៦"   data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ" type="password" class="span12" placeholder="កូដសម្ងាត់" />
+                                                                        <input required="required" name="password" minlength="6" maxlength="30" data-validation-minlength-message="តួអក្សរយ៉ាងតិច៦"   data-validation-required-message="ចូរបញ្ចូលទិន្ន័យ" type="password" class="span12" placeholder="កូដសម្ងាត់" />
                                                                         <i class="icon-lock"></i>
                                                                     </span>
                                                                 </label>
@@ -241,7 +241,7 @@
                                                             <div class="controls">
                                                                 <label>
                                                                     <span class="block input-icon input-icon-right">
-                                                                        <input required name="passwordc" type="password" data-validation-match-match="password" data-validation-match-message="ឈ្នោះសម្ងាត់មិនដូចគ្នា" class="span12" placeholder="កូដសម្ងាត់ម្ដងទៀត"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
+                                                                        <input required name="passwordc" type="password" data-validation-match-match="password" data-validation-match-message="កូដសម្ងាត់មិនដូចគ្នា" class="span12" placeholder="កូដសម្ងាត់ម្ដងទៀត"  data-validation-required-message="ចូរបញ្ចូលនិន្នន័យ"/>
                                                                         <i class="icon-retweet"></i>
                                                                     </span>
                                                                 </label>
@@ -255,7 +255,7 @@
                                                                 <label>
                                                                     <input required data-validation-required-message="សូមយល់ព្រមនឹងលក្ខណ" name="accept" type="checkbox" class="ace" />
                                                                     <span class="lbl">
-                                                                        យល់ព្រមនឹងលក្ខណ
+                                                                        	យល់ព្រមនឹងលក្ខ័ណ
                                                                         <!--<a href="#">User Agreement</a>-->
                                                                     </span>
                                                                 </label>
@@ -269,11 +269,11 @@
                                                         <div class="clearfix">
                                                             <button type="reset" class="width-30 pull-left btn btn-small">
                                                                 <i class="icon-refresh"></i>
-                                                                លុប
+                                                                	លុប
                                                             </button>
 
                                                             <button type="submit" id="btn-register" class="width-65 pull-right btn btn-small btn-success">
-                                                                ចុះឈ្មោះ
+                                                                	ចុះឈ្មោះ
                                                                 <i class="icon-arrow-right icon-on-right"></i>
                                                             </button>
                                                         </div>
@@ -285,7 +285,7 @@
                                                 <a href="#" onclick="show_box('login-box');
                                                             return false;" class="back-to-login-link">
                                                     <i class="icon-arrow-left"></i>
-                                                    ត្រឡបក្រោយ
+                                                    	ត្រឡប់ក្រោយ
                                                 </a>
                                             </div>
                                         </div><!--/widget-body-->
@@ -381,7 +381,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                     }
                                                 
                                                     $('#signup-box .loading').fadeOut();
-                                                    $('#signup-box .message').html("<p class='alert alert-error'>Email already exist!!!</p>");
+                                                    $('#signup-box .message').html("<p class='alert alert-error'>អ៊ី​ម៉ែល​មាន​រួច​ហើយ!</p>");
                                                     
                                                 }
                                                 else if(data.result==2){
@@ -390,7 +390,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                     }
                                                 
                                                     $('#signup-box .loading').fadeOut();
-                                                    $('#signup-box .message').html("<p class='alert alert-error'>Your could not register, please contact to system adminstrator!!!</p>");
+                                                    $('#signup-box .message').html("<p class='alert alert-error'>អ្នក​មិន​អាច​ចុះ​ឈ្មោះ​បាន​ទេ, សូម​ទាក់​ទង​អ្នក​គ្រប់​គ្រង​ប្រព័ន្ធ!</p>");
                                                 }
                                             }, 'json');
                                     event.preventDefault();
@@ -419,7 +419,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                 //data.result 0:Invalid, 1:Success, 2: Could not create
                                                 if (data.result == 1) {
                                                     $('.loading').fadeOut();
-                                                    $('#login-box .message').html("<p class='alert alert-success'>Your registeration successfully,please login.</p>");
+                                                    $('#login-box .message').html("<p class='alert alert-success'>ចូល​ប្រព័ន្ធជោគ​ជ័យ!</p>");
                                                     window.location.href = uri[0];
                                                 }
                                                 else if(data.result==0){
@@ -427,7 +427,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                         $('#login-box .progress .bar').width(i + "%");
                                                     }
                                                     //$('#signup-box .loading').fadeOut();
-                                                    $('#login-box .message').html("<p class='alert alert-error'>ឈ្មោះ និងកូដសម្ថាត់មិនត្រឹមត្រួវ</p>");
+                                                    $('#login-box .message').html("<p class='alert alert-error'>ឈ្មោះ និងកូដសម្ងាត់មិនត្រឹមត្រូវ</p>");
                                                     
                                                 }
                                                 else if(data.result==2){
@@ -436,7 +436,7 @@ window.jQuery || document.write("<script src='<?php echo base_url() . JS; ?>jque
                                                     }
                                                 
                                                     $('#login-box .loading').fadeOut();
-                                                    $('#login-box .message').html("<p class='alert alert-error'>System could not login, please contact to system administrator</p>");
+                                                    $('#login-box .message').html("<p class='alert alert-error'>ប្រព័ន្ធ​ មិន​អាច​ផ្ទៀង​ផ្ទាត់​ការ​ចូល​របស់​អ្នក​បាន​ទេ, សូម​ទាក់​ទង​អ្នក​គ្រប់​គ្រង​ប្រព័ន្ធ</p>");
                                                 }
                                             }, 'json');
                                     event.preventDefault();

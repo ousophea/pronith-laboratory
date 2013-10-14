@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title><?php echo (!empty($title)) ? $title : 'សូម​ស្វា​គមន៍'; ?> | មន្ទីរ​ពិសោធន៍ ប្រណីត</title>
+        <title><?php echo (!empty($title)) ? $title : 'សូម​ស្វា​គមន៍'; ?> | មន្ទីរ​ពិសោធន៍​វេជ្ជសាស្ត្រ ប្រណីត</title>
         <meta name="description" content="This is page-header (.page-header &gt; h1)" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="Shortcut Icon" type="image/ico" href="<?php echo site_url(IMG.'favicon.ico') ;?>" />

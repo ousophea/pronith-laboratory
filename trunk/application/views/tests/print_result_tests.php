@@ -1,3 +1,10 @@
+<?php
+	if($patients_tests_data->num_rows() > 0){
+		$patients_tests_data = $patients_tests_data->result_array();
+	}else{
+		$patients_tests_data = FALSE;
+	}
+?>
 <!-- apply for date time picker -->
 <script type="text/javascript" language="JavaScript" src="<?php echo site_url(JS.'jquery.simple-dtpicker.js') ?>"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
@@ -39,7 +46,6 @@
 	?>
 </div>
 <div><img width="50%" src="<?php echo site_url(IMG.'invoice_banner.png')?>" alt="" /></div>
-<div style="text-align: right; font-weight: bold;">វិក័យ​ប័ត្រលេខ ៖ <?php echo string_digit($this->session->userdata('txt_testId')); ?></div>
 <div class="row-fluid">
 	<div class="invoice_test">
 		<p>ថ្ងៃ ខែ ឆ្នាំ ៖ <?php echo date('d-F-Y'); ?></p>
@@ -50,74 +56,53 @@
         <?php echo form_open(site_url('tests/lists'),'class="form-horizontal" id="frmPrint"');?>
             <div class="control-group">
             	<p>មន្ទីរ​ពិសោធន៍ វេជ្ជសាស្រ្ត ប្រ​ណីត</p>
-                <p>ឈ្មោះ អ្នក​ជំងឺ ៖ <?php echo get_patient_name($this->session->userdata('txt_patId'));?></p>
-                <p>ភេទ ៖ <?php echo get_patient_sex($this->session->userdata('txt_patId'));?></p>
+                <p>ឈ្មោះ អ្នក​ជំងឺ ៖ <?php echo $patients_tests_data[0]['pat_firstName'].' '.$patients_tests_data[0]['pat_lastName'];?></p>
+                <p>ភេទ ៖ <?php echo ($patients_tests_data[0]['pat_sex'] == 'm')?'ប្រុស':'ស្រី';?></p>
             </div>
             <div class="control-group">
-          		<h3>វិក័យប័ត្រ</h3>
-				<table class="table table-bordered" style="border-bottom: 0px;">
+          		<h3>លទ្ធផល នៃ​ការ​ធ្វើ​តេស្ថ​ជំងឺ</h3>
+				<table class="table table-bordered">
 					<tr class="success">
-						<th class="success">លរ</th>
 						<th class="success">ឈ្មោះ</th>
-						<th class="success">តំលៃមួយ​ឯកតា (៛)</th>	
+						<th class="success">លទ្ធផល</th>
+						<th class="success">ខ្នាត</th>
+						<th class="success">តំលៃ​ធម្មតា<?php echo(($patients_tests_data[0]['pat_sex'] == 'm')?'បុរស':(($patients_tests_data[0]['pat_sex'] == 'f')?'ស្រ្តី':'មិន​ស្គាល់')); ?></th>	
 					</tr>
 					<?php
-					$total_price = 0;
-					$no = 1;
-					if(count($ills_selected_data) > 0){
-						foreach($ills_selected_data as $keys_groups=>$arr_values){
-							foreach($arr_values as $keys=>$values){
-								$total_price += $values;
+					$ills_groups = '';
+					$ills = '';
+					if($patients_tests_results_data->num_rows() > 0){
+						foreach($patients_tests_results_data->result() as $rows){
+							if($rows->groups_name != $ills_groups){
+					?>
+					<tr class="ills_groups">
+						<td colspan="4" class="warning"><b><?php echo $rows->groups_name; ?></b></td>
+					</tr>
+					<?php
+								$ills_groups = $rows->groups_name;
+							}
+							if($rows->ills_name != $ills){
+					?>
+					<tr class="ills">
+						<td colspan="4" class="warning"><b><i><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></i></b></td>
+					</tr>
+					<?php
+								$ills = $rows->ills_name;
+							}
 					?>
 					<tr>
-						<td style="<?php echo (($no == 1)?'border-bottom:0px;':'border-bottom:0px;border-top:0px;');?>"><?php echo $no; ?></td>
-						<td style="<?php echo ($no == 1)?'border-bottom:0px;':'border-bottom:0px;border-top:0px;';?>"><?php echo $keys; ?></td>
-						<td style="<?php echo ($no == 1)?'border-bottom:0px;':'border-bottom:0px;border-top:0px;';?>"><?php echo number_format($values,0); ?>៛</td>
+						<td><?php echo $rows->ill_ite_name; ?></td>
+						<td>
+							<label for="value">= <?php echo $rows->pat_tes_res_value; ?></label>
+						</td>
+						<td><?php echo $rows->ill_ite_dimention; ?></td>
+						<td>(<?php echo (($patients_tests_data[0]['pat_sex'] == 'm')?$rows->ill_ite_value_male:(($patients_tests_data[0]['pat_sex'] == 'f')?$rows->ill_ite_value_female:'--')); ?>)</td>
 					</tr>
 					<?php
-								$no++;
-							}
 						}
 					}
 					?>
-					<tr class="sub_total_price">
-						<td style="border-left: 0px solid; border-bottom: 0px solid; border-right: 0px solid;">&nbsp;</td>
-						<td style="border-left: 0px solid; border-bottom: 0px solid; text-align: right;">សរុប (៛)</td>
-						<td style="border-bottom: 0px solid;"><b><?php echo number_format($total_price,0); ?>៛</b></td>
-					</tr>
-					<tr class="discount">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">បញ្ចុះតំលៃ (%)</td>
-						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo $this->session->userdata['txt_discount']; ?>%</b></td>
-					</tr>
-					<tr class="tax">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ពន្ធ (%)</td>
-						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo $this->session->userdata['txt_tax']; ?>%</b></td>
-					</tr>
-					<tr class="amount">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ចំនួន (៛)</td>
-						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format($total_price-($total_price*$this->session->userdata['txt_discount'])/100,0); ?>៛</b></td>
-					</tr>
-					<tr class="deposit">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ប្រាក់កក់ (៛)</td>
-						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format($this->session->userdata('txt_deposit'),0); ?>៛</b></td>
-					</tr>
-					<tr class="owe">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ប្រាក់ ជំពាក់ (៛)</td>
-						<td style="border-top: 0px solid; border-bottom:1px solid #ddd;"><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
-					</tr>
 				</table>
-				<?php
-				if($this->session->userdata('txt_isPaid') == 1){
-				?>
-				<div><p>*សំគាល់៖ វិក័យ​ប័ត្រ​ ត្រូវ​បាន​បង់​ប្រាក់​គ្រប់</p></div>
-				<?php
-				}
-				?>
 				<div style="margin-bottom: 50px;margin-right: 250px;text-align: right;"><b>ហត្ថលេខា បេឡាករ</b></div>
             </div>
             <div class="invoice-footer" style="text-align: center;">
@@ -143,7 +128,7 @@
             $("#frmPrint").submit(function(){
             	print();
             	<?php
-            	$this->session->set_flashdata('msg_success','តេស្ថ​ត្រូវ​បាន​បង្កើត រួម​ជា​មួយ​​វិក័យ​ប័ត្រ ត្រូវ​បាន​ព្រីន​ចេញ។ សូម​បញ្ចូល​លទ្ធផល​តេស្ថ បន្ទាប់​ពី​អ្នក​ ទទួល​បាន​លទ្ធផល ពី​ Laboratory Doctor');
+				$this->session->set_flashdata('msg_success','លទ្ធផល​តេស្ថ ត្រូវ​បាន​ព្រីន​ចេញ។ សូម​រក្សា​ទុក រង់​ចាំ​អ្នក​ជំងឺ​មក​ទទួល​យក');
             	?>
             	return true;
             });

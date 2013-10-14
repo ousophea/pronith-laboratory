@@ -86,9 +86,9 @@
                             	<?php
                             	}else{
                             	?>	
-								<a class="blue" href="<?php echo site_url('tests/paid_tests/'.$row['pat_tes_id']); ?>">
+								<a class="blue test_is_receive" href="<?php echo site_url('tests/result_receive/'.$row['pat_tes_id']); ?>">
                                 		មិន​ទាន់​យក
-                                </a>
+                              	</a>
 								<?php
                             	}
                             	?>
@@ -189,6 +189,10 @@
                 content_loader(data);
             });
             return false;
+        });
+        
+        $('.test_is_receive').click(function(){
+        	if(!confirm('តើ​អ្នក​ពិត​ជា​ចង់​ធ្វើ​មែន​ទេ?')) return false;
         });
 
         // status
