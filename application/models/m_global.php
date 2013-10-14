@@ -524,6 +524,39 @@ class m_global extends CI_Model {
 		}
 		return $doc_id;
 	}
+	
+	//function to check if data exist
+	function check_data_exist($table,$arr_where=array()){
+		if (!is_array($arr_where) || count($arr_where) <= 0)
+            return '';
+		foreach ($arr_where as $fields => $value) {
+            $this->db->where($fields, $value);
+        }
+		$query_get = $this->db->get($table);
+		if($query_get->num_rows() > 0){
+			return TRUE;
+		}else{
+			return FALSE;
+		}
+	}
+	
+	//function get one value that return as string
+	function get_one_value($table,$field,$arr_where = array()){
+		$this->db->select($field);
+		if(count($arr_where) > 0){
+			foreach ($arr_where as $key => $value) {
+				$this->db->where($key,$value);
+			}
+		}
+		$this->db->limit(1);
+		$query_select = $this->db->get($table);
+		if($query_select->num_rows() > 0){
+			$query_select = $query_select->result_array();
+			return $query_select[0][$field];
+		}else{
+			return FALSE;
+		}
+	}
 }
 
 ?>

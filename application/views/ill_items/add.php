@@ -16,7 +16,7 @@
                 <label class="control-label" for="<?php echo ILI_NAME; ?>">ឈ្មោះធាតុ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_NAME; ?>" type="text"  minlength="3" id="<?php echo ILI_NAME; ?>" placeholder="ឈ្មោះធាតុ">
+                    <input required name="<?php echo ILI_NAME; ?>" type="text"  minlength="1" id="<?php echo ILI_NAME; ?>" placeholder="ឈ្មោះធាតុ">
                     <span class="help-inline"></span>
                 </div>
             </div>

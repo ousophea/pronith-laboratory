@@ -132,7 +132,7 @@
                </a>
                 &nbsp; &nbsp; &nbsp;
                 <button id="btn_step_three" class="btn btn-info" type="submit">
-                    <i class="icon-print bigger-110"></i>
+                    <i class="icon-save bigger-110"></i>
                     	បញ្ចប់
                 </button>
                 &nbsp; &nbsp; &nbsp;

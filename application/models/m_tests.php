@@ -93,6 +93,15 @@ class m_tests extends CI_Model {
 		return $arr_ills;
 	}
 	
+	public function tests_results($pat_tes_id=0){
+		$this->db->select("concat(tbl_ills_groups.ill_gro_name, ' ', tbl_ills_groups.ill_gro_nameKh ) AS groups_name, concat(tbl_ills.ill_name, ' ', tbl_ills.ill_nameKh ) AS ills_name, tbl_ills_items.*, tbl_patients_tests_results.*");
+		$this->db->join(TBL_PREFEX.'ills_items',TBL_PREFEX.'patients_tests_results.pat_tes_res_ill_ite_id='.TBL_PREFEX.'ills_items.ill_ite_id','inner');
+		$this->db->join(TBL_PREFEX.'ills',TBL_PREFEX.'ills_items.ill_ite_ill_id='.TBL_PREFEX.'ills.ill_id','inner');
+		$this->db->join(TBL_PREFEX.'ills_groups',TBL_PREFEX.'ills.ill_ill_gro_id='.TBL_PREFEX.'ills_groups.ill_gro_id','inner');
+		$this->db->where(TBL_PREFEX.'patients_tests_results.pat_tes_res_pat_tes_id',$pat_tes_id);
+		$this->db->order_by('groups_name asc,ills_name asc');
+		return $this->db->get(TBL_PREFEX.'patients_tests_results');
+	}
 	
 }
 ?>

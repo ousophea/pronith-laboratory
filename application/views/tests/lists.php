@@ -78,13 +78,27 @@
                             <td class=" "><?php echo $row['use_name']; ?></td>
                             <td class=" "><?php echo $row['pat_tes_dateCreated']; ?></td>
                             <td class=" "><?php echo $row['pat_tes_dateTimeReceived']; ?></td>
-                            <td class=" "><?php echo ($row['pat_tes_isReceive'] == 1)?'មក​យក​រួច':'មិន​ទាន់​មក​យក'; ?></td>
+                            <td class=" ">
+                            	<?php
+                            	if($row['pat_tes_isReceive'] == 1){
+                            	?>
+                            	<a style="color: green;">បាន​យក</a>
+                            	<?php
+                            	}else{
+                            	?>	
+								<a class="blue" href="<?php echo site_url('tests/paid_tests/'.$row['pat_tes_id']); ?>">
+                                		មិន​ទាន់​យក
+                                </a>
+								<?php
+                            	}
+                            	?>
+                            </td>
                             <td class=" "><?php echo ($row['pat_tes_isResult'] == 1)?'លទ្ធផល​បាន​ចេញ':'លទ្ធផល​មិន​ទាន់​ចេញ'; ?></td>
                             <td class=" "><?php echo ($row['pat_tes_isReceiveIll'] == 1)?'ទទួល​បាន':'មិនទទួល​បាន'; ?></td>
                             <td class=" "><?php echo number_format($row['pat_tes_subTotal'],0); ?>៛</td>
                             <td class=" "><?php echo number_format($row['pat_tes_deposit'],0); ?>៛</td>
                             <td class=" "><?php echo number_format($row['pat_tes_owe'],0); ?>៛</td>
-                            <td class=" "><?php echo ($row['pat_tes_isPaid'] == 1)?'បង់​រួច':'មិន​ទាន់​បង់​រួច'; ?></td>
+                            <td class=" "><?php echo ($row['pat_tes_isPaid'] == 1)?'<span class="green">បង់​រួច</span>':'<span class="red">មិន​ទាន់​បង់​រួច</span>'; ?></td>
                             <td class=" "><?php echo $row['pat_tes_discount']; ?>%</td>
                             <td class=" "><?php echo $row['pat_tes_tax']; ?>%</td>
                             <td class=" "><?php echo ($row['pat_tes_doctorCommission'] == 0)?'ពុំមាន':number_format($row['pat_tes_doctorCommission'],0).'៛'; ?></td>
@@ -114,9 +128,31 @@
 								<?php
 								}
                                 ?>
+                                <?php
+                                if($row['pat_tes_isResult'] == 0){
+                                ?>
+                                	<a style="color: green;">ព្រីន​​លទ្ធផល</a>
+                                <?php
+                                }else{
+                                ?>
                                 	<a class="blue" href="<?php echo site_url('tests/print_result_tests/'.$row['pat_tes_id']); ?>">
                                 		ព្រីន​​លទ្ធផល
                                 	</a>
+                                <?php
+                                }
+                                if($row['pat_tes_isResult'] == 1 && $row['pat_tes_isReceive'] == 1 && $row['pat_tes_isPaid'] == 1){
+                                ?>
+                                	<a style="color: green;">បិទ​បញ្ជីរ</a>
+                                <?php
+                                }else{
+                                ?>
+                                	<a class="blue" href="<?php echo site_url('tests/close_patients_tests/'.$row['pat_tes_id']); ?>">
+                                		បិទ​បញ្ជីរ
+                                	</a>
+                                <?php
+                                }
+                                ?>
+                                
                                 </div>
                             </td>
                         </tr>
@@ -267,7 +303,7 @@
         var oTable1 = $('#sample-table-2').dataTable({
             "aoColumns": [
                 {"bSortable": false},
-                null, null, null, null, null,
+                null, null, null, null, null, null, null, null, null, null, null, null, null, null,
                 {"bSortable": false}
             ]});
 

@@ -126,7 +126,7 @@
             <div class="control-group">
                 <label class="control-label" for="owe">ប្រាក់​ជំពាក់</label>
                 <div class="controls">
-                    <input type="number" readonly="readonly" name="txt_owe" value="<?php echo ($this->session->userdata('txt_owe') || $this->session->userdata('txt_owe') == 0)?$this->session->userdata('txt_owe'):$total_price; ?>" />
+                    <input type="number" readonly="readonly" name="txt_owe" value="<?php echo ($this->session->userdata('txt_owe'))?$this->session->userdata('txt_owe'):$total_price; ?>" />
                     <span class="help-inline">៛</span>
                 </div>
             </div>
@@ -176,14 +176,31 @@
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+            
+        $('[name="txt_deposit"]').blur(function(){
+        	if($(this).val() == '') $(this).val('0');
+        	var deposit = parseInt($(this).val());
+	    	var total = parseInt(<?php echo json_encode($total_price); ?>);
+	    	var discount = $('[name="txt_discount"]').val();
+	    	var owe = (total-((total*discount)/100 + deposit));
+	    	$('[name=txt_owe]').val(owe);
+        });
         
         $('[name="txt_deposit"]').keyup(function(){
 		    var value = $(this).val();
 		    value = value.replace(/[^0-9]+/g, '');
 		    $(this).val(value);
-		    var deposit = ($(this).val() == '')?0:$(this).val();
-			var owe = <?php echo json_encode($total_price); ?> - deposit;
-			$('[name=txt_owe]').val(owe);
+		});
+		
+		$('[name="txt_discount"]').blur(function(){
+			if($(this).val() == '') $(this).val('0');
+			if(parseInt($(this).val()) >= 0){
+		    	var deposit = parseInt($('[name=txt_deposit]').val());
+		    	var total = parseInt(<?php echo json_encode($total_price); ?>);
+		    	var discount = $(this).val();
+		    	var owe = (total-((total*discount)/100 + deposit));
+		    	$('[name=txt_owe]').val(owe);
+		    }
 		});
 		
 		$('[name="txt_discount"]').keyup(function(){
@@ -194,13 +211,22 @@
 		
 		$('#depositPayAll').click(function(){
 			if($(this).prop('checked')){
-				$('[name=txt_deposit]').val('<?php echo json_encode($total_price); ?>');
+		    	var owe = 0;
+		    	var total = parseInt(<?php echo json_encode($total_price); ?>);
+		    	var discount = $(this).val();
+		    	var deposit = (total-((total*discount)/100));
+		    	$('[name=txt_owe]').val(owe);
+		    	$('[name=txt_deposit]').val(deposit);
 				$('[name=txt_deposit]').attr('readonly','readonly');
-				$('[name=txt_owe]').val(0);
 			}else{
-				$('[name=txt_owe]').val('<?php echo json_encode($total_price); ?>');
+		    	var total = parseInt(<?php echo json_encode($total_price); ?>);
+		    	var discount = $(this).val();
+		    	var owe = (total-((total*discount)/100));
+		    	var deposit = 0;
+		    	$('[name=txt_owe]').val(owe);
+		    	$('[name=txt_deposit]').val(deposit);
 				$('[name=txt_deposit]').removeAttr('readonly');
-				$('[name=txt_deposit]').val(0);
+				
 			}
 		});
 		     

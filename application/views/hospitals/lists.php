@@ -130,13 +130,12 @@
         });
     });
 </script>
-<!--
 <script type="text/javascript">
     jQuery(function($) {
         var oTable1 = $('#sample-table-2').dataTable({
             "aoColumns": [
                 {"bSortable": false},
-                null, null, null, null, null,
+                null, null, null,
                 {"bSortable": false}
             ]});
 
@@ -168,4 +167,3 @@
         }
     })
 </script>
--->

@@ -2,12 +2,12 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
-
-function segment($uri = 1) {
-    $lmp = & get_instance();
-    return $lmp->uri->segment($uri);
+if (!function_exists('segment')) {
+	function segment($uri = 1) {
+	    $lmp = & get_instance();
+	    return $lmp->uri->segment($uri);
+	}
 }
-
 if (!function_exists('dimention')) {
 
     function dimention() {
@@ -22,7 +22,12 @@ if (!function_exists('dimention')) {
         );
         return $array;
     }
-
+}
+if (!function_exists('string_digit')) {
+    function string_digit($digit) {
+        $format = '0000000';
+		return substr($format, 0,-strlen($digit)).$digit;
+    }
 }
 
 ?>
