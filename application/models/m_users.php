@@ -150,6 +150,7 @@ class m_users extends CI_Model {
                     else {
                         if( ($row[USE_INVALIDPASSWORD] == ALLOWINVALIDPASSWORD)){
                             $this->db->set(USE_BLOCKED, 1);
+                            $this->db->update(USERS);
                             return 2;
                         }
                         else{

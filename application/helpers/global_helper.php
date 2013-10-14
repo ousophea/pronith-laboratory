@@ -12,6 +12,7 @@ if (!function_exists('dimention')) {
 
     function dimention() {
         $array = array(
+            ''=>DROPDOWN_DEFAULT,
             'x10&#x2079;/1'=>'x10&#x2079;/1',
             'x10&#x2081;&#x2082;/1'=>'x10&#x2081;&#x2082;/1',
             'g/dl'=>'g/dl',
