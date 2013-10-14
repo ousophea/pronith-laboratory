@@ -213,14 +213,14 @@
 			if($(this).prop('checked')){
 		    	var owe = 0;
 		    	var total = parseInt(<?php echo json_encode($total_price); ?>);
-		    	var discount = $(this).val();
+		    	var discount = $('[name=txt_discount]').val();
 		    	var deposit = (total-((total*discount)/100));
 		    	$('[name=txt_owe]').val(owe);
 		    	$('[name=txt_deposit]').val(deposit);
 				$('[name=txt_deposit]').attr('readonly','readonly');
 			}else{
 		    	var total = parseInt(<?php echo json_encode($total_price); ?>);
-		    	var discount = $(this).val();
+		    	var discount = $('[name=txt_discount]').val();
 		    	var owe = (total-((total*discount)/100));
 		    	var deposit = 0;
 		    	$('[name=txt_owe]').val(owe);

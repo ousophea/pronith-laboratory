@@ -25,14 +25,14 @@ class users extends CI_Controller {
         if ($this->input->post('data'))
             $this->load->view('users/profile', $this->data);
         else {
-            $this->data['title'] = 'Welcome';
+            $this->data['title'] = 'សូម​ស្វាគមន៍';
             $this->load->view(TEMPLATE, $this->data);
         }
         //redirect('users/profile');
     }
 
     function login() {
-        $this->data['title'] = 'Login | Register';
+        $this->data['title'] = 'ចូល​ប្រព័ន្ធ | ចុះ​ឈ្មោះ';
         $this->load->view('templates/login', $this->data);
     }
 
@@ -46,14 +46,14 @@ class users extends CI_Controller {
 
     function add() {
 
-        $this->data['title'] = 'Create new user';
+        $this->data['title'] = 'បង្កើត​អ្នក​ប្រើប្រាស់​ថ្មី';
         $this->data['groups'] = $this->m_usergroup->group_array();
         $this->load->view('users/add', $this->data);
     }
 
     function edit() {
 
-        $this->data['title'] = 'Edit user';
+        $this->data['title'] = 'កែ​ប្រែ​អ្នក​ប្រើ​ប្រាស់';
         $this->data['data'] = $this->input->post('data');
         $this->data['groups'] = $this->m_usergroup->group_array();
         $this->load->view('users/edit', $this->data);
@@ -81,7 +81,7 @@ class users extends CI_Controller {
 
     function lists() {
 
-        $this->data['title'] = 'List users';
+        $this->data['title'] = 'បង្ហាញ​អ្នក​ប្រើប្រាស់';
         $this->data['data'] = $this->m_users->getUsers();
         $this->load->view('users/lists', $this->data);
     }
