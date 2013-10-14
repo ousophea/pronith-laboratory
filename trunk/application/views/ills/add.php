@@ -75,6 +75,7 @@
                             //data.result 0:Invalid, 1:Success, 2: Could not create
                             if (data.result == 1) {
                                 notify('Done! ', 'Create new ill successfully', 'gritter-success');
+                                 resetForm();
                                 $('.loader').fadeOut();
                             }
                             else if (data.result == 3) {
@@ -96,4 +97,10 @@
                 }
         );
     });
+    
+        // reset form data
+    function resetForm(){
+        $('input, textarea').val("");
+        $('select').val("");
+    }
 </script>
