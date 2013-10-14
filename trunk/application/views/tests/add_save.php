@@ -39,10 +39,10 @@
 	?>
 </div>
 <div><img width="50%" src="<?php echo site_url(IMG.'invoice_banner.png')?>" alt="" /></div>
-<div style="text-align: right; font-weight: bold;">វិក័យ​ប័ត្រលេខ៖ 00<?php echo '1'; ?></div>
+<div style="text-align: right; font-weight: bold;">វិក័យ​ប័ត្រលេខ៖ <?php echo string_digit($this->session->userdata('txt_testId')); ?></div>
 <div class="row-fluid">
 	<div class="invoice_test">
-		<p>ថ្ងៃ ខែ ឆ្នាំ ៖ <?php echo date('d-F-y'); ?></p>
+		<p>ថ្ងៃ ខែ ឆ្នាំ ៖ <?php echo date('d-F-Y'); ?></p>
 		<p>លេខ​ទូរស័ព្ទ ៖ 012 22 64 71<br/>012 88 77 76<br/>011 93 03 20</p>
 	</div>
     <div class="span12" id="test_add">
@@ -100,9 +100,6 @@
 						<td style="border:0px solid; text-align: right;">ចំនួន (៛)</td>
 						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format($total_price-($total_price*$this->session->userdata['txt_discount'])/100,2); ?>៛</b></td>
 					</tr>
-					<?php
-					if($this->session->userdata('txt_isPaid') == 1){
-					?>
 					<tr class="deposit">
 						<td style="border:0px solid;"> &nbsp;</td>
 						<td style="border:0px solid; text-align: right;">ប្រាក់កក់ (៛)</td>
@@ -111,34 +108,17 @@
 					<tr class="owe">
 						<td style="border:0px solid;"> &nbsp;</td>
 						<td style="border:0px solid; text-align: right;">ប្រាក់ ជំពាក់ (៛)</td>
-						<td style="border-top: 0px solid;"><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
+						<td style="border-top: 0px solid; border-bottom:1px solid #ddd;"><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
 					</tr>
-					<tr class="paid">
-						<td style="border:0px solid;" colspan="2">*សំគាល់៖ វិក័យ​ប័ត្រ​ ត្រូវ​បាន​បង់​ប្រាក់​គ្រប់</td>
-						<td style="border-left:0px solid; border-right: 0px solid; border-bottom: 0px;">&nbsp;</td>
-					</tr>
-					<?php
-					}else{
-					?>
-					<tr class="deposit">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ប្រាក់កក់ (៛)</td>
-						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format($this->session->userdata('txt_deposit'),0); ?>៛</b></td>
-					</tr>
-					<tr class="owe">
-						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ប្រាក់ ជំពាក់ (៛)</td>
-						<td style="border-top: 0px solid;"><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
-					</tr>
-					<?php
-					}
-					?>
-					<tr>
-						<td style="border:0px solid;" colspan="2"> &nbsp;</td>
-						<td style="border:0px solid !important;"><h4>ហត្ថលេខា បេឡាករ</h4></td>
-					</tr>	
 				</table>
-				
+				<?php
+				if($this->session->userdata('txt_isPaid') == 1){
+				?>
+				<div><p>*សំគាល់៖ វិក័យ​ប័ត្រ​ ត្រូវ​បាន​បង់​ប្រាក់​គ្រប់</p></div>
+				<?php
+				}
+				?>
+				<div style="margin-bottom: 50px;margin-right: 250px;text-align: right;"><b>ហត្ថលេខា បេឡាករ</b></div>
             </div>
             <div class="invoice-footer" style="text-align: center;">
             	<p>អាសយដ្ឋាន ផ្ទះលេខ ៥០៨, ផ្លូវលេខ ៥៩៨, សង្កាត់ភ្នំពេញថ្មី, ខណ្ឌសែនសុខ, ក្រុងភ្នំពេញ ព្រះរាជាណាចក្រកម្ពុជា</p>

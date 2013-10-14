@@ -59,7 +59,7 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
                     	?>
                     </select>
                     <span class="help-inline"></span>
-                    <a href="<?php echo site_url('tests/add_patient'); ?>" alt="បញ្ចូលថ្មី">Add New Patient</a>
+                    <a href="<?php echo site_url('tests/add_patient'); ?>" alt="បង្កើតថ្មី">បង្កើត​អ្នក​ជំងឺ</a>
                 </div>
             </div>
             

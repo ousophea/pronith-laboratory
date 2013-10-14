@@ -17,7 +17,7 @@
 
                 <div class="controls">
                     <input name='<?php echo ILI_ID; ?>' type='hidden' value='<?php echo $data[ILI_ID] ?>'/>
-                    <input required name="<?php echo ILI_NAME; ?>" value="<?php echo $data[ILI_NAME]; ?>" type="text"  minlength="3" id="<?php echo ILI_NAME; ?>" placeholder="Ill item name">
+                    <input required name="<?php echo ILI_NAME; ?>" value="<?php echo $data[ILI_NAME]; ?>" type="text"  minlength="1" id="<?php echo ILI_NAME; ?>" placeholder="Ill item name">
                     <span class="help-inline"></span>
                 </div>
             </div>
