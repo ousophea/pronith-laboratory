@@ -14,8 +14,9 @@ class m_ill_items extends CI_Model{
     //put your code here
     function lists(){
         $this->db->from(ILLITEMS);
-        $this->db->join(ILLS,ILI_ILLID.'='.ILL_ID);
-        $this->db->join(ILLGROUPS,ILG_ID.'='.ILL_GROUPID);
+		$this->db->join(TBL_PREFEX.'ills_items_dimentions',TBL_PREFEX.'ills_items'.'.ill_ite_ill_ite_dim_id='.TBL_PREFEX.'ills_items_dimentions'.'.ill_ite_dim_id','inner');
+        $this->db->join(ILLS,ILI_ILLID.'='.ILL_ID,'inner');
+        $this->db->join(ILLGROUPS,ILG_ID.'='.ILL_GROUPID,'inner');
         $this->db->set(ILI_STATUS,1);
         return $this->db->get();;
         

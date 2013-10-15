@@ -27,7 +27,19 @@
 
                 <div class="controls">
                     <!--<input required name="<?php echo ILI_DIMENTION; ?>" value="<?php echo $data[ILI_DIMENTION]; ?>" type="text"  minlength="1" id="<?php echo ILI_DIMENTION; ?>" placeholder="Dimention">-->
-                    <?php echo form_dropdown(ILI_DIMENTION, dimention(), $data[ILI_DIMENTION], ' required="required"') ?>
+                    <!--<?php echo form_dropdown(ILI_DIMENTION, dimention(), $data[ILI_DIMENTION], ' required="required"') ?>-->
+                    <select name="ill_ite_ill_ite_dim_id">
+                		<option value="0"><?php echo DROPDOWN_DEFAULT; ?></option>
+                		<?php
+                		if($ill_item_dimention->num_rows() > 0){
+                			foreach($ill_item_dimention->result() as $rows){
+                		?>
+                		<option <?php echo ($data['ill_ite_ill_ite_dim_id']==$rows->ill_ite_dim_id)?'selected="selected"':''; ?> value="<?php echo $rows->ill_ite_dim_id; ?>"><?php echo $rows->ill_ite_dim_value; ?></option>
+                		<?php
+                			}
+                		}
+                		?>
+                	</select>
                     <span class="help-inline"></span>
                 </div>
             </div>

@@ -47,7 +47,7 @@
                             </td>
 
                             <td class=" "><?php echo $row[ILI_NAME]; ?></td>
-                            <td class=" "><?php echo $row[ILI_DIMENTION]; ?></td>
+                            <td class=" "><?php echo $row['ill_ite_dim_value']; ?></td>
                             <td class=" "><?php echo $row[ILL_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILG_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILI_VALUEMALE]; ?></td>

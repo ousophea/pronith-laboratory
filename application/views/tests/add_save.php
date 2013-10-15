@@ -5,6 +5,9 @@
 	#main-content{
 		margin-left: 0px !important;
 	}
+	.banner_header{
+		height: 100px;
+	}
 </style>
 <div class="page-header position-relative hidden-print">
     <h1>
@@ -38,28 +41,28 @@
 	}
 	?>
 </div>
-<div><img width="50%" src="<?php echo site_url(IMG.'invoice_banner.png')?>" alt="" /></div>
-<div style="text-align: right; font-weight: bold;">វិក័យ​ប័ត្រលេខ ៖ <?php echo string_digit($this->session->userdata('txt_testId')); ?></div>
+<div class="banner_header">&nbsp;</div>
 <div class="row-fluid">
 	<div class="invoice_test">
-		<p>ថ្ងៃ ខែ ឆ្នាំ ៖ <?php echo date('d-F-Y'); ?></p>
-		<p>លេខ​ទូរស័ព្ទ ៖ 012 22 64 71<br/>012 88 77 76<br/>011 93 03 20</p>
+		<p><b>Invoice No: <?php echo string_digit($this->session->userdata('txt_testId')); ?></b></p>
+		<p>Date: <?php echo date('d-F-Y'); ?></p>
+		<p>Tél: 012 22 64 71<br/>012 88 77 76<br/>011 93 03 20</p>
 	</div>
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/lists'),'class="form-horizontal" id="frmPrint"');?>
             <div class="control-group">
-            	<p>មន្ទីរ​ពិសោធន៍ វេជ្ជសាស្រ្ត ប្រ​ណីត</p>
-                <p>ឈ្មោះ អ្នក​ជំងឺ ៖ <?php echo get_patient_name($this->session->userdata('txt_patId'));?></p>
-                <p>ភេទ ៖ <?php echo get_patient_sex($this->session->userdata('txt_patId'));?></p>
+                <p>Nom et Prénom: <?php echo get_patient_name($this->session->userdata('txt_patId'));?></p>
+                <p>Age: <?php echo get_patient_age($this->session->userdata('txt_patId'));?>A</p>
+                <p>Sex: <?php echo get_patient_sex($this->session->userdata('txt_patId'));?></p>
             </div>
             <div class="control-group">
-          		<h3>វិក័យប័ត្រ</h3>
+          		<h3>Invoice</h3>
 				<table class="table table-bordered" style="border-bottom: 0px;">
 					<tr class="success">
-						<th class="success">លរ</th>
-						<th class="success">ឈ្មោះ</th>
-						<th class="success">តំលៃមួយ​ឯកតា (៛)</th>	
+						<th class="success">No</th>
+						<th class="success">Description</th>
+						<th class="success">Price (៛)</th>	
 					</tr>
 					<?php
 					$total_price = 0;
@@ -82,48 +85,43 @@
 					?>
 					<tr class="sub_total_price">
 						<td style="border-left: 0px solid; border-bottom: 0px solid; border-right: 0px solid;">&nbsp;</td>
-						<td style="border-left: 0px solid; border-bottom: 0px solid; text-align: right;">សរុប (៛)</td>
+						<td style="border-left: 0px solid; border-bottom: 0px solid; text-align: right;">Total (៛)</td>
 						<td style="border-bottom: 0px solid;"><b><?php echo number_format($total_price,0); ?>៛</b></td>
 					</tr>
 					<tr class="discount">
 						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">បញ្ចុះតំលៃ (%)</td>
-						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo $this->session->userdata['txt_discount']; ?>%</b></td>
+						<td style="border:0px solid; text-align: right;">Discount (៛)</td>
+						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format(($total_price*$this->session->userdata['txt_discount'])/100,0); ?>៛</b></td>
 					</tr>
 					<tr class="tax">
 						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ពន្ធ (%)</td>
+						<td style="border:0px solid; text-align: right;">Tax (%)</td>
 						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo $this->session->userdata['txt_tax']; ?>%</b></td>
 					</tr>
 					<tr class="amount">
 						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ចំនួន (៛)</td>
+						<td style="border:0px solid; text-align: right;">Amount (៛)</td>
 						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format($total_price-($total_price*$this->session->userdata['txt_discount'])/100,0); ?>៛</b></td>
 					</tr>
 					<tr class="deposit">
 						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ប្រាក់កក់ (៛)</td>
+						<td style="border:0px solid; text-align: right;">Deposit (៛)</td>
 						<td style="border-bottom: 0px solid; border-top: 0px solid;"><b><?php echo number_format($this->session->userdata('txt_deposit'),0); ?>៛</b></td>
 					</tr>
 					<tr class="owe">
 						<td style="border:0px solid;"> &nbsp;</td>
-						<td style="border:0px solid; text-align: right;">ប្រាក់ ជំពាក់ (៛)</td>
+						<td style="border:0px solid; text-align: right;">Owe (៛)</td>
 						<td style="border-top: 0px solid; border-bottom:1px solid #ddd;"><b><?php echo number_format($this->session->userdata('txt_owe'),0); ?>៛</b></td>
 					</tr>
 				</table>
 				<?php
 				if($this->session->userdata('txt_isPaid') == 1){
 				?>
-				<div><p>*សំគាល់៖ វិក័យ​ប័ត្រ​ ត្រូវ​បាន​បង់​ប្រាក់​គ្រប់</p></div>
+				<div><p>*Note: This invoice is paid full.</p></div>
 				<?php
 				}
 				?>
-				<div style="margin-bottom: 50px;margin-right: 250px;text-align: right;"><b>ហត្ថលេខា បេឡាករ</b></div>
-            </div>
-            <div class="invoice-footer" style="text-align: center;">
-            	<p>អាសយដ្ឋាន ផ្ទះលេខ ៥០៨, ផ្លូវលេខ ៥៩៨, សង្កាត់ភ្នំពេញថ្មី, ខណ្ឌសែនសុខ, ក្រុងភ្នំពេញ ព្រះរាជាណាចក្រកម្ពុជា</p>
-            	<p>No. 508, Phnom Penh Thmey, Sen Sok, Phnom Penh, Cambodia</p>
-            	<p>Tel: 012 22 64 71 / 012 88 77 76 / 011 93 03 20</p>
+				<div style="margin-bottom: 50px;margin-right: 20px;text-align: right;"><b>Signature du technicien</b></div>
             </div>
             <div class="form-actions hidden-print">
                 &nbsp; &nbsp; &nbsp;

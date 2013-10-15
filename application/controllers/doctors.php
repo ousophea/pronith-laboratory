@@ -78,8 +78,8 @@ class Doctors extends CI_Controller{
 		}
 	}
 	
-	public function edit($id=NULL){
-		if($id != NULL){
+	public function edit($id=''){
+		if($id != '' && is_numeric($id)){
 			allows(array('administrator'));
 			$edit_data = $this->m_global->select_where(TBL_PREFEX.'doctors',array('doc_id'=>$id),1);
 			if(!is_numeric($id) || (count($edit_data->result_array()) == 0)){
@@ -92,6 +92,9 @@ class Doctors extends CI_Controller{
 			$this->data['doctors_data'] = $this->m_global->select_where_not_in(TBL_PREFEX.'doctors',array('doc_id'=>array($id)));
 			$this->data['phones_data'] = $this->m_global->select_where(TBL_PREFEX.'doctors_phones',array('doc_pho_doc_id'=>$id));
 	        $this->load->view(TEMPLATE,  $this->data);
+		}else{
+			$this->session->set_flashdata('msg_error','វេជ្ជ​បណ្ឌិត​ ដែល​អ្នក​ជ្រើស​រើស​ដើម្បី​កែប្រែ មិន​ត្រូវ​បាន​រក​ឃើញ​ទេ សូម​ព្យាយាម​ម្តង​ទៀត');
+			redirect(site_url('doctors/lists'));
 		}
 	}
 	

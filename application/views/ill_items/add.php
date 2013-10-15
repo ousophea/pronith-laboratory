@@ -25,7 +25,19 @@
                 <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">ខ្នាត</label>
 
                 <div class="controls">
-                    <?php echo form_dropdown(ILI_DIMENTION, dimention(), '', ' required="required"') ?>
+                	<select name="ill_ite_ill_ite_dim_id">
+                		<option value="0"><?php echo DROPDOWN_DEFAULT; ?></option>
+                		<?php
+                		if($ill_item_dimention->num_rows() > 0){
+                			foreach($ill_item_dimention->result() as $rows){
+                		?>
+                		<option value="<?php echo $rows->ill_ite_dim_id; ?>"><?php echo $rows->ill_ite_dim_value; ?></option>
+                		<?php
+                			}
+                		}
+                		?>
+                	</select>
+                    <!--<?php echo form_dropdown(ILI_DIMENTION, dimention(), '', ' required="required"') ?>-->
                     <span class="help-inline"></span>
                 </div>
             </div>

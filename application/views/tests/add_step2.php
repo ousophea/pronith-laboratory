@@ -34,7 +34,7 @@
 	?>
 </div>
 <div class="row-fluid">
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/add_step3'),'class="form-horizontal"');?>
             <div class="control-group">

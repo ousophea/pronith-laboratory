@@ -137,11 +137,22 @@
                     បញ្ចូល​ធាតុ​ជំងឺ
                 </a>
             </li>
-
             <li>
                 <a class="ajax" href="<?php echo base_url(); ?>ill_items/lists">
                     <i class="icon-double-angle-right"></i>
                     បង្ហាញ​ធាតុ​ជំងឺ
+                </a>
+            </li>
+            <li <?php echo (segment(1) == 'ill_items_dimentions' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('ill_items_dimentions/add'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    បញ្ចូល​ខ្នាត​ធាតុ​ជំងឺ​
+                </a>
+            </li>
+            <li <?php echo (segment(1) == 'ill_items_dimentions' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('ill_items_dimentions/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    បង្ហាញ​ខ្នាតធាតុ​ជំងឺ
                 </a>
             </li>
         </ul>
