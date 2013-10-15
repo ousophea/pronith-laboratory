@@ -1,7 +1,4 @@
-<script type="text/javascript" src="<?php echo site_url(JS.'nicEdit.js') ?>"></script>
-<script type="text/javascript">
-	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-</script>
+
 <div class="page-header position-relative">
     <h1>
         បង្កើតខ្នាត​ធាតុ នៃ​ជំងឺ​ថ្មី
@@ -90,4 +87,8 @@
                 }
         );
     });
+</script>
+<script type="text/javascript" src="<?php echo base_url().JS.'nicEdit.js' ?>"></script>
+<script type="text/javascript">
+	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>
