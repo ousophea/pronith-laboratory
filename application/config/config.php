@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:81/pronith-laboratory/';
+$config['base_url']	= 'http://localhost/Projects/pronith-laboratory/';
 
 /*
 |--------------------------------------------------------------------------
