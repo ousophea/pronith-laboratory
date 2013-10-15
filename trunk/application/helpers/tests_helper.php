@@ -17,9 +17,13 @@ function get_patient_sex($id = 0){
 	$query_select = $CI->db->get(TBL_PREFEX.'patients');
 	$query_select = $query_select->result_array();
 	if(count($query_select) > 0){
-		return ($query_select[0]['pat_sex']=='m')?'ប្រុស':'ស្រី';
+		return ($query_select[0]['pat_sex']=='m')?'M':'F';
 	}else{
 		return 'គ្មាន';
 	}
+}
+function get_patient_age($id=0){
+	$CI = get_instance();
+	return$CI->m_global->get_one_value(TBL_PREFEX.'patients','pat_age',array('pat_id'=>$id));
 }
 ?>

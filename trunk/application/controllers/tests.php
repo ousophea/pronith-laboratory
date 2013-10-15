@@ -20,6 +20,7 @@ class Tests extends CI_Controller {
 	}
 	
 	public function index(){
+		allows(array('administrator'));
 		redirect(site_url('tests/lists'));
 	}
 	
@@ -131,6 +132,7 @@ class Tests extends CI_Controller {
 	}
 	
 	public function add_save(){
+		allows(array('administrator'));
 		$arr_users_profile = $this->session->userdata(TBL_PREFEX.'users');
 		$use_id = $arr_users_profile['use_id'];
 		$pat_id = $this->session->userdata('txt_patId');
@@ -201,6 +203,7 @@ class Tests extends CI_Controller {
 	}
 	
 	public function input_result_tests($id = ''){
+		allows(array('administrator'));
 		$check = $this->m_global->check_data_exist(TBL_PREFEX.'patients_tests_results',array('pat_tes_res_pat_tes_id'=>$id));
 		$pat_id = $this->m_global->get_one_value(TBL_PREFEX.'patients_tests','pat_tes_pat_id',array('pat_tes_id'=>$id));
 		if($check){
@@ -224,6 +227,7 @@ class Tests extends CI_Controller {
 	}
 
 	public function input_result_tests_save(){
+		allows(array('administrator'));
 		if($_POST){
 			$patient_test_id = $this->input->post('txt_patTesId');
 			$arr_ills_items = $this->input->post('txt_illItemId');
@@ -249,6 +253,7 @@ class Tests extends CI_Controller {
 	}
 
 	public function print_result_tests($id=''){
+		allows(array('administrator'));
 		$check = $this->m_global->check_data_exist(VIE_PREFEX.'patients_tests_results_views',array('pat_tes_res_pat_tes_id'=>$id));
 		if($id!='' && is_numeric($id) && $check){
 			$this->data['title'] = 'ព្រីន​លទ្ធផល​តេស្ថ​ជំងឺ';
@@ -262,6 +267,7 @@ class Tests extends CI_Controller {
 	}
 	
 	public function pay_tests($id = ''){
+		allows(array('administrator'));
 		$check = $this->m_global->check_data_exist(TBL_PREFEX.'patients_tests',array('pat_tes_id'=>$id,'pat_tes_isPaid'=>1));
 		if($id!='' && is_numeric($id) && !$check){
 			$this->data['title'] = 'កែប្រែ វិក័យប័ត្របង់​ប្រាក់';
@@ -274,6 +280,7 @@ class Tests extends CI_Controller {
 	}
 	
 	public function pay_tests_save(){
+		allows(array('administrator'));
 		if($_POST){
 			$patient_test_id = $this->input->post('txt_patTesId');
 			$patient_pay = $this->input->post('txt_patTesPay');
@@ -299,16 +306,9 @@ class Tests extends CI_Controller {
 			redirect(site_url('tests/lists'));
 		}
 	}
-	
-	public function edit($id=NULL){
-		
-	}
-	
-	public function edit_save(){
-		
-	}
-	
+
 	public function lists(){
+		allows(array('administrator'));
 		if($this->input->post('data'))
             $this->load->view('tests/lists',  $this->data);
         else{
@@ -320,11 +320,13 @@ class Tests extends CI_Controller {
 	}
 	
 	public function add_patient(){
+		allows(array('administrator'));
 		$this->session->set_userdata('new_patient_exam_test',site_url('tests/add'));
 		redirect(site_url('patients/add'));
 	}
 	
 	public function add_cancel(){
+		allows(array('administrator'));
 		if($this->remove_session_test() == NULL){
 			$this->session->set_flashdata('msg_info','អ្នក​បាន​បោះបង់ ​ការ​បង្កើត តេស្ថ');
 		}else{
@@ -334,6 +336,7 @@ class Tests extends CI_Controller {
 	}
 	
 	public function result_receive($pat_tes_id){
+		allows(array('administrator'));
 		if($pat_tes_id!='' && is_numeric($pat_tes_id)){
 			$is_paid = $this->m_global->get_one_value(TBL_PREFEX.'patients_tests','pat_tes_isPaid',array('pat_tes_id'=>$pat_tes_id));
 			$is_result = $this->m_global->get_one_value(TBL_PREFEX.'patients_tests','pat_tes_isResult',array('pat_tes_id'=>$pat_tes_id));
@@ -351,6 +354,7 @@ class Tests extends CI_Controller {
 	}
 
 	private function remove_session_test(){
+		allows(array('administrator'));
 		$arr_unset_session = array();
 		if($this->session->userdata('txt_patId')) $arr_unset_session['txt_patId'] = '';
 		if($this->session->userdata('txt_isReceiveIll')) $arr_unset_session['txt_isReceiveIll'] = '';

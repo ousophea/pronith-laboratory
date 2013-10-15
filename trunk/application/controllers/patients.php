@@ -42,10 +42,12 @@ class Patients extends CI_Controller {
 			$pat_identity_card = $this -> input -> post('txt_patIdentityCard');
 			$doc_reference = ($this -> input -> post('txt_docReference') == '0') ? NULL : $this -> input -> post('txt_docReference');
 			$pat_status = $this -> input -> post('txt_patStatus');
+			$pat_age = $this->input->post('txt_patAge');
 			$data_insert = array(
 				'pat_firstName' => $pat_first_name,
 				'pat_lastName' => $pat_last_name, 
 				'pat_sex' => $pat_sex,
+				'pat_age' => $pat_age,
 				'pat_identityCard' => $pat_identity_card, 
 				'pat_email' => $pat_email,
 				'pat_doc_id' => $doc_reference, 
@@ -105,10 +107,12 @@ class Patients extends CI_Controller {
 			$pat_email = $this -> input -> post('txt_patEmail');
 			$doc_reference = ($this -> input -> post('txt_docReference') == '0') ? NULL : $this -> input -> post('txt_docReference');
 			$pat_status = $this -> input -> post('txt_patStatus');
+			$pat_age = $this->input->post('txt_patAge');
 			$data_update = array(
 				'pat_firstName' => $pat_first_name,
 				'pat_lastName' => $pat_last_name, 
 				'pat_sex' => $pat_sex,
+				'pat_age' => $pat_age,
 				'pat_identityCard' => $pat_identity_card, 
 				'pat_email' => $pat_email,
 				'pat_doc_id' => $doc_reference, 

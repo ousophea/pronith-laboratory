@@ -38,9 +38,9 @@ if($patients_tests_data->num_rows() > 0){
 	?>
 </div>
 <div class="row-fluid">
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
-        <?php echo form_open(site_url('tests/input_result_tests_save'),'class="form-horizontal" id="frmStepThree"');?>
+        <?php echo form_open(site_url('tests/input_result_tests_save'),'class="form-horizontal" id="frmInputResult"');?>
         	<input type="hidden" name="txt_patTesId" value="<?php echo $pat_tes_id; ?>" />
             <div class="control-group">
                 <label for="patient">
@@ -89,7 +89,7 @@ if($patients_tests_data->num_rows() > 0){
 							<input type="hidden" name="txt_illItemId[]" value="<?php echo $rows->ill_ite_id; ?>" />
 							<input type="text" required="required" minlength="1" name="txt_illItemResult[]" />
 						</td>
-						<td><?php echo $rows->ill_ite_dimention; ?></td>
+						<td><?php echo $rows->ill_ite_dim_value; ?></td>
 						<td>(<?php echo (($pat_sex == 'm')?$rows->ill_ite_value_male:(($pat_sex == 'f')?$rows->ill_ite_value_female:'--')); ?>)</td>
 					</tr>
 					<?php
@@ -119,6 +119,9 @@ if($patients_tests_data->num_rows() > 0){
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+        $('#frmInputResult').submit(function(){
+        	if(!confirm('ទិន្ន័យ​លទ្ធផល បញ្ចូល​ហើយ មិន​អាច​កែ​ប្រែ​បាន​ទេ។ សូម​ធ្វើ​ការ​ត្រួត​ពិនិត្យ​ អោយ​បាន​ច្បាស់​មុន​នឹង​បន្ត​។\nតើ​អ្នក​ពិតជា ចង់​បន្ត​មែន​ទេ?')) return false;
+        });
         $('form[name="add"]').find("input,select").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {

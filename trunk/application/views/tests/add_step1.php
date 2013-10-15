@@ -35,7 +35,7 @@ if($this->session->userdata('new_patient_exam_test')) $this->session->unset_user
 	?>
 </div>
 <div class="row-fluid">
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/add_step2'),'class="form-horizontal"');?>
             <div class="control-group">

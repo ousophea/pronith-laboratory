@@ -40,6 +40,14 @@
                 </div>
             </div>
             <div class="control-group">
+                <label class="control-label" for="patientIdentityCard">អាយុ</label>
+
+                <div class="controls">
+                    <input name="txt_patAge" type="number"  minlength="1" id="age" placeholder="អាយុ">
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            <div class="control-group">
                 <label class="control-label" for="patientIdentityCard">លេខ​អត្តសញ្ញាណប័ណ្ណ</label>
 
                 <div class="controls">

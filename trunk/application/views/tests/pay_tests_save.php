@@ -9,6 +9,9 @@ if($patients_tests_data->num_rows() > 0){
 	#main-content{
 		margin-left: 0px !important;
 	}
+	.banner_header{
+		height: 100px;
+	}
 </style>
 <div class="page-header position-relative hidden-print">
     <h1>
@@ -42,47 +45,39 @@ if($patients_tests_data->num_rows() > 0){
 	}
 	?>
 </div>
-<div><img width="50%" src="<?php echo site_url(IMG.'invoice_banner.png')?>" alt="" /></div>
-<div style="text-align: right; font-weight: bold;">
-	វិក័យ​ប័ត្រលេខ ៖ <?php echo string_digit($patients_tests_data[0]['pat_tes_id']); ?>(1)
-	<br/>
-	យោង​តាម​វិក័យ​ប័ត្រ​លេខ ៖ <?php echo string_digit($patients_tests_data[0]['pat_tes_id']); ?>
-</div>
+<div class="banner_header">&nbsp;</div>
 <div class="row-fluid">
 	<div class="invoice_test">
-		<p>ថ្ងៃ ខែ ឆ្នាំ ៖ <?php echo date('d-F-Y'); ?></p>
-		<p>លេខ​ទូរស័ព្ទ ៖ 012 22 64 71<br/>012 88 77 76<br/>011 93 03 20</p>
+		<p><b>Invoice No: <?php echo string_digit($patients_tests_data[0]['pat_tes_id']); ?>-1</b></p>
+		<p><b><i>Reference Invoice No: <?php echo string_digit($patients_tests_data[0]['pat_tes_id']); ?></i></b></p>
+		<p>Date: <?php echo date('d-F-Y'); ?></p>
+		<p>Tél: 012 22 64 71<br/>012 88 77 76<br/>011 93 03 20</p>
 	</div>
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/lists'),'class="form-horizontal" id="frmPrint"');?>
             <div class="control-group">
-            	<p>មន្ទីរ​ពិសោធន៍ វេជ្ជសាស្រ្ត ប្រ​ណីត</p>
-                <p>ឈ្មោះ អ្នក​ជំងឺ ៖ <?php echo $patients_tests_data[0]['pat_firstName'].' '.$patients_tests_data[0]['pat_lastName'];?></p>
-                <p>ភេទ ៖ <?php echo ($patients_tests_data[0]['pat_sex'] == 'm')?'ប្រុស':'ស្រី';?></p>
+                <p>Nom et Prénom: <?php echo $patients_tests_data[0]['pat_firstName'].' '.$patients_tests_data[0]['pat_lastName'];?></p>
+                <p>Age: <?php echo $patients_tests_data[0]['pat_age'];?>A</p>
+                <p>Sex: <?php echo strtoupper($patients_tests_data[0]['pat_sex']);?></p>
             </div>
             <div class="control-group">
-          		<h3>វិក័យប័ត្រ-បង់​ប្រាក់​បង្គ្រប់</h3>
+          		<h3>Invoice - Last Payment</h3>
 				<table class="table table-bordered">
 					<tr class="success">
-						<th class="success">ពិ​ពណ៌នា</th>
-						<th class="success">តំលៃ (៛)</th>	
+						<th class="success">Description</th>
+						<th class="success">Price (៛)</th>	
 					</tr>
 					<tr>
-						<td>ប្រាក់​ជំ​ពាក់</td>
+						<td>Owe (៛)</td>
 						<td><?php echo number_format($patients_tests_data[0]['pat_tes_owe'],0);?>៛</td>
 					</tr>
 					<tr>
-						<td>ប្រាក់​​ត្រូវ​បង់</td>
+						<td>Pay (៛)</td>
 						<td><b><?php echo number_format($patients_tests_data[0]['pat_tes_owe'],0);?>៛</b></td>
 					</tr>
 				</table>
-				<div style="margin-bottom: 50px;margin-right: 50px;text-align: right;"><b>ហត្ថលេខា បេឡាករ</b></div>
-            </div>
-            <div class="invoice-footer" style="text-align: center;">
-            	<p>អាសយដ្ឋាន ផ្ទះលេខ ៥០៨, ផ្លូវលេខ ៥៩៨, សង្កាត់ភ្នំពេញថ្មី, ខណ្ឌសែនសុខ, ក្រុងភ្នំពេញ ព្រះរាជាណាចក្រកម្ពុជា</p>
-            	<p>No. 508, Phnom Penh Thmey, Sen Sok, Phnom Penh, Cambodia</p>
-            	<p>Tel: 012 22 64 71 / 012 88 77 76 / 011 93 03 20</p>
+				<div style="margin-bottom: 50px;margin-right: 20px;text-align: right;"><b>Signature du technicien</b></div>
             </div>
             <div class="form-actions hidden-print">
                 &nbsp; &nbsp; &nbsp;

@@ -34,7 +34,7 @@
 	?>
 </div>
 <div class="row-fluid">
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/add_save'),'class="form-horizontal" id="frmStepThree"');?>
             <div class="control-group">
@@ -151,6 +151,9 @@
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
+        $('#frmStepThree').submit(function(){
+        	if(!confirm('តេស្ថ​ជំងឺ នឹង​ត្រូវ​បាន​បង្កើត​​ ក្នុង​ពេល​នេះ។\nតើ​អ្នក​ពិត​ចង់​បង្កើត​ មែន​ឬទេ?')) return false;
+        });
         $('form[name="add"]').find("input,select").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {

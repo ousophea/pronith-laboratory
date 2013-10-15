@@ -38,7 +38,7 @@ if($patients_tests_data->num_rows() > 0){
 	?>
 </div>
 <div class="row-fluid">
-    <div class="span12" id="test_add">
+    <div id="test_add">
         <!--PAGE CONTENT BEGINS-->
         <?php echo form_open(site_url('tests/pay_tests_save'),'class="form-horizontal" id="frmPayTes"');?>
         	<input type="hidden" name="txt_patTesId" value="<?php echo $patients_tests_data[0]['pat_tes_id']; ?>" />
@@ -110,6 +110,8 @@ if($patients_tests_data->num_rows() > 0){
 			if(parseInt($('[name=txt_patTesPay]').val()) != parseInt(<?php echo json_encode($patients_tests_data[0]['pat_tes_owe']); ?>)){
 				bootbox.alert('សូម​បញ្ចូល​តំ​លៃ​ទឹក​ប្រាក់​អោយ​ត្រូវ​នឹង វិក័យ​ប័ត្រ​ជំពាក់​ប្រាក់។ ទឹក​ប្រាក់​ដែល​អ្នក​ត្រូវ​បង់គឺ '+<?php echo json_encode(number_format($patients_tests_data[0]['pat_tes_owe'],0)); ?>+'៛');
 				return false;
+			}else{
+				if(!confirm('ទិន្ន័យ​នឹង​ត្រូវ​បាន​​កែ​ប្រែ​​ក្នុង​ពេល​នេះ។ តើ​អ្នក​ពិត​ជា​ចង់​បន្ត​ មែន​ទេ?')) return false;
 			}
 		});
 		
