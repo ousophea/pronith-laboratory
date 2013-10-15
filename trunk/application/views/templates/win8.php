@@ -216,5 +216,6 @@
         
         <script src="<?php echo base_url() . JS; ?>loaders.js"></script>
         
+        
     </body>
 </html>
