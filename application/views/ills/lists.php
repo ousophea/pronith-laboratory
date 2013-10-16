@@ -19,10 +19,11 @@
                         </label>
                     </th>
                     <th class="sorting">ឈ្មោះ</th>
+                    <th class="sorting">តម្លៃ</th>
                     <th class="sorting">ព្រភេទ</th>
-                    <th class="sorting">ថ្ងៃបញ្ចូល</th>
+<!--                    <th class="sorting">ថ្ងៃបញ្ចូល</th>
                     <th class="sorting">ថ្ងៃកែប្រែ</th>
-                    <th class="sorting">ស្ថានភាព</th>
+                    <th class="sorting">ស្ថានភាព</th>-->
                     <th style="width: 161px;">Action</th>
                 </tr>
             </thead>
@@ -43,10 +44,11 @@
                             </td>
 
                             <td class=" "><?php echo $row[ILL_NAME].' '.$row[ILL_NAMEKH]; ?></td>
+                            <td class=" "><?php echo $row[ILL_PRICE]; ?>&</td>
                             <td class=" "><?php echo $row[ILG_NAME]; ?></td>
-                            <td class=" "><?php echo $row[ILL_DATECREATED]; ?></td>
+<!--                            <td class=" "><?php echo $row[ILL_DATECREATED]; ?></td>
                             <td class=" "><?php echo $row[ILL_DATEMODIFIED]; ?></td>
-                            <td class=" "><input <?php echo ($row[ILL_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo ILL_STATUS; ?>" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
+                            <td class=" "><input <?php echo ($row[ILL_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo ILL_STATUS; ?>" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>-->
                             
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
@@ -193,12 +195,13 @@
             parents = $(this).parents(".object");
             object = $(parents).data('object').data;
             var html = '';
-            html +=htmlView("Name", object['<?php echo ILL_NAME; ?>']+"&nbsp;"+object['<?php echo ILL_NAMEKH; ?>']);
-            html +=htmlView("Ill group", object['<?php echo ILG_NAME; ?>']+"&nbsp;");
-            html +=htmlView("Date created", object['<?php echo ILL_DATECREATED; ?>']+"&nbsp;");
-            html +=htmlView("Date modified", object['<?php echo ILL_DATEMODIFIED; ?>']+"&nbsp;");
-            html +=htmlView("Status", (object['<?php echo ILL_STATUS; ?>']==1)?'On':'Off');
-            view(html,'Ill view detail');// Popup
+            html +=htmlView("ឈ្មោះ", object['<?php echo ILL_NAME; ?>']+"&nbsp;"+object['<?php echo ILL_NAMEKH; ?>']);
+            html +=htmlView("តម្លៃ", object['<?php echo ILL_PRICE; ?>']+"$&nbsp;");
+            html +=htmlView("ប្រភេទ", object['<?php echo ILG_NAME; ?>']+"&nbsp;");
+            html +=htmlView("ថ្ងៃបង្កើត", object['<?php echo ILL_DATECREATED; ?>']+"&nbsp;");
+            html +=htmlView("ថ្ងៃកែប្រែ", object['<?php echo ILL_DATEMODIFIED; ?>']+"&nbsp;");
+            html +=htmlView("ស្ថានភាព", (object['<?php echo ILL_STATUS; ?>']==1)?'On':'Off');
+            view(html,'បង្ហាញអំពីពត៌មានបន្ថែម');// Popup
         });
 
 

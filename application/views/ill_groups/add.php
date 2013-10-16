@@ -16,7 +16,7 @@
                 <label class="control-label" for="firstname">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILG_NAME; ?>" type="text"  minlength="3" id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
+                    <input required name="<?php echo ILG_NAME; ?>" type="text"  id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
                     <input  name="<?php echo ILG_NAMEKH; ?>" type="text"  placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
@@ -26,7 +26,7 @@
                 <label class="control-label" for="<?php echo ILG_DESCRIPTION; ?>">បរិយាយ</label>
 
                 <div class="controls">
-                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text"  minlength="3" id="<?php echo ILG_DESCRIPTION; ?>" placeholder="បរិយាយ" />
+                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text"  id="<?php echo ILG_DESCRIPTION; ?>" placeholder="បរិយាយ" />
                     <span class="help-inline"></span>
                 </div>
             </div>

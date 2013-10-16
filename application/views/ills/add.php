@@ -16,8 +16,8 @@
                 <label class="control-label" for="<?php echo ILL_NAME; ?>">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILL_NAME; ?>" type="text"  minlength="3" id="<?php echo ILL_NAME; ?>" placeholder="ឈ្មោះជំងឺ">
-                    <input  name="<?php echo ILL_NAMEKH; ?>" type="text"  minlength="3" id="<?php echo ILL_NAMEKH; ?>" placeholder="ឈ្មោះខ្មែរ">
+                    <input required name="<?php echo ILL_NAME; ?>" type="text" id="<?php echo ILL_NAME; ?>" placeholder="ឈ្មោះជំងឺ"  data-validation-required-message="ចូរបញ្ចូលឈ្មោះជំងឺ">
+                    <input  name="<?php echo ILL_NAMEKH; ?>" type="text" id="<?php echo ILL_NAMEKH; ?>" placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -27,6 +27,15 @@
 
                 <div class="controls">
                     <?php echo form_dropdown(ILL_GROUPID, $groups, '', ' required="required"') ?>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label" for="<?php echo ILL_PRICE; ?>">តម្លៃ</label>
+
+                <div class="controls">
+                    <input required name="<?php echo ILL_PRICE; ?>" type="text" value="0" id="<?php echo ILL_PRICE; ?>" placeholder="តម្លៃ"  data-validation-required-message="ចូរបញ្ចូលតម្លៃ">$
                     <span class="help-inline"></span>
                 </div>
             </div>

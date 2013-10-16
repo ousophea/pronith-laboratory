@@ -16,52 +16,52 @@
                 <label class="control-label" for="<?php echo ILI_NAME; ?>">ឈ្មោះធាតុ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_NAME; ?>" type="text"  minlength="1" id="<?php echo ILI_NAME; ?>" placeholder="ឈ្មោះធាតុ">
+                    <input required name="<?php echo ILI_NAME; ?>" type="text" id="<?php echo ILI_NAME; ?>" placeholder="ឈ្មោះធាតុ">
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">ខ្នាត</label>
 
                 <div class="controls">
-                	<select name="ill_ite_ill_ite_dim_id">
-                		<option value="0"><?php echo DROPDOWN_DEFAULT; ?></option>
-                		<?php
-                		if($ill_item_dimention->num_rows() > 0){
-                			foreach($ill_item_dimention->result() as $rows){
-                		?>
-                		<option value="<?php echo $rows->ill_ite_dim_id; ?>"><?php echo $rows->ill_ite_dim_value; ?></option>
-                		<?php
-                			}
-                		}
-                		?>
-                	</select>
+                    <select name="ill_ite_ill_ite_dim_id">
+                        <option value="0"><?php echo DROPDOWN_DEFAULT; ?></option>
+                        <?php
+                        if ($ill_item_dimention->num_rows() > 0) {
+                            foreach ($ill_item_dimention->result() as $rows) {
+                                ?>
+                                <option value="<?php echo $rows->ill_ite_dim_id; ?>"><?php echo $rows->ill_ite_dim_value; ?></option>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </select>
                     <!--<?php echo form_dropdown(ILI_DIMENTION, dimention(), '', ' required="required"') ?>-->
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_VALUEMALE; ?>">តម្លៃធម្មតាប្រុស</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEMALE; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEMALE; ?>" placeholder="តម្លៃធម្មតាប្រុស">
+                    <input required name="<?php echo ILI_VALUEMALE; ?>" type="text" id="<?php echo ILI_VALUEMALE; ?>" placeholder="តម្លៃធម្មតាប្រុស">
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_VALUEFEMALE; ?>">តម្លៃធម្មតាស្រី</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEFEMALE; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="តម្លៃធម្មតាស្រី">
+                    <input required name="<?php echo ILI_VALUEFEMALE; ?>" type="text"  id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="តម្លៃធម្មតាស្រី">
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
-            
-            
+
+
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILG_ID; ?>">ប្រភេទ</label>
 
@@ -70,7 +70,7 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_ILLID; ?>">ជំងឺ</label>
 
@@ -80,7 +80,29 @@
                 </div>
             </div>
 
-            
+            <div class="control-group">
+                <label class="control-label" for="option">ជម្រើស</label>
+
+                <div class="controls">
+                    <label>
+                        <input name="option" id="option" type="checkbox" class="ace">
+                        <span class="lbl"> សូមចុចត្រងនេះប្រសិនបើធាតុជម្ងឺនេះស្ថិតក្នុងធាតុជម្ងឺផ្សេងទៀត</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="control-group parentid" style='display: none;'>
+                <label class="control-label" for="<?php echo ILI_PARENTID; ?>">ស្ថិតក្នុងធាតុជំងឺ</label>
+                <?php
+                $parents = array("" => 'dddddd');
+                ?>
+                <div class="controls">
+                    <?php echo form_dropdown(ILI_PARENTID, $parents, '') ?>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_DESCRIPTION; ?>">បរិយាយ</label>
 
@@ -89,7 +111,7 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_STATUS; ?>">ស្ថានភាព</label>
 
@@ -120,14 +142,24 @@
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
-        
+
+            // option
+            $('[name="option"]').on('change', function() {
+                if($(this).prop("checked")){
+                    $('.parentid').slideDown();
+                }
+                else{
+                     $('.parentid').slideUp();
+                }
+            });
+
         // on change dropdown ill group
-        $('[name="<?php echo ILG_ID; ?>"]').on('change',function(){
+        $('[name="<?php echo ILG_ID; ?>"]').on('change', function() {
             var val = $(this).val();
-            if(val!=''){
+            if (val != '') {
                 $.ajax({
                     type: 'POST',
-                    data: {<?php echo ILG_ID; ?>:val},
+                    data: {<?php echo ILG_ID; ?>: val},
                     dataType: 'json',
                     url: uri[0] + 'ill_items/get_ills_by_group_id'
                 }).done(function(data) {
@@ -135,14 +167,14 @@
                     var html;
                     $.each(data.result, function(val, text) {
                         html = $('<option></option>').val(val).html(text);
-                        if(val=='')
+                        if (val == '')
                             html.attr('selected', 'selected');
-                        $('[name="<?php echo ILI_ILLID; ?>"]').append(html);  
+                        $('[name="<?php echo ILI_ILLID; ?>"]').append(html);
                     });
                 });
             }
         });
-        
+
         $('form[name="add"]').find("input,select,textarea").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {
@@ -157,7 +189,7 @@
                             //data.result 0:Invalid, 1:Success, 2: Could not create
                             if (data.result == 1) {
                                 notify('Done! ', 'Create new ill successfully', 'gritter-success');
-                                 resetForm();
+                                resetForm();
                                 $('.loader').fadeOut();
                             }
                             else if (data.result == 3) {
@@ -179,9 +211,9 @@
                 }
         );
     });
-    
+
     // reset form data
-    function resetForm(){
+    function resetForm() {
         $('input, textarea').val("");
         $('select').val("");
     }
