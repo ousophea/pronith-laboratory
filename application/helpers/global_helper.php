@@ -1,5 +1,4 @@
 <?php
-
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 if (!function_exists('segment')) {
@@ -7,6 +6,25 @@ if (!function_exists('segment')) {
 	    $lmp = & get_instance();
 	    return $lmp->uri->segment($uri);
 	}
+
+function formatMoney($number, $fractional = false,$currency=NULL) {
+    if ($fractional) {
+        $number = sprintf('%.2f', $number);
+    }
+    if($currency != NULL){
+        $number .= " ".$currency;
+    }
+    while (true) {
+        $replaced = preg_replace('/(-?\d+)(\d\d\d)/', '$1,$2', $number);
+        if ($replaced != $number) {
+            $number = $replaced;
+        } else {
+            break;
+        }
+    }
+    return $number;
+}
+
 }
 if (!function_exists('dimention')) {
 
