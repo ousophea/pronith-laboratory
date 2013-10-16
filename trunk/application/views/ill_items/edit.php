@@ -17,7 +17,7 @@
 
                 <div class="controls">
                     <input name='<?php echo ILI_ID; ?>' type='hidden' value='<?php echo $data[ILI_ID] ?>'/>
-                    <input required name="<?php echo ILI_NAME; ?>" value="<?php echo $data[ILI_NAME]; ?>" type="text"  minlength="1" id="<?php echo ILI_NAME; ?>" placeholder="Ill item name">
+                    <input required name="<?php echo ILI_NAME; ?>" value="<?php echo $data[ILI_NAME]; ?>" type="text" id="<?php echo ILI_NAME; ?>" placeholder="Ill item name">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                 <label class="control-label" for="<?php echo ILI_VALUEMALE; ?>">តម្លៃធម្មតាប្រុស</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEMALE; ?>"  value="<?php echo $data[ILI_VALUEMALE]; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEMALE; ?>" placeholder="Value Male">
+                    <input required name="<?php echo ILI_VALUEMALE; ?>"  value="<?php echo $data[ILI_VALUEMALE]; ?>" type="text" id="<?php echo ILI_VALUEMALE; ?>" placeholder="Value Male">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                 <label class="control-label" for="<?php echo ILI_VALUEFEMALE; ?>">តម្លៃធម្មតាស្រី</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEFEMALE; ?>"  value="<?php echo $data[ILI_VALUEFEMALE]; ?>" type="text"  minlength="1" id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="Value Female">
+                    <input required name="<?php echo ILI_VALUEFEMALE; ?>"  value="<?php echo $data[ILI_VALUEFEMALE]; ?>" type="text" id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="Value Female">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 <label class="control-label" for="<?php echo ILG_ID; ?>">ប្រភេទ</label>
 
                 <div class="controls">
-                    <?php echo form_dropdown(ILG_ID, $ill_group) ?>
+                    <?php echo form_dropdown(ILG_ID, $ill_group,$data[ILI_ILLID], ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>

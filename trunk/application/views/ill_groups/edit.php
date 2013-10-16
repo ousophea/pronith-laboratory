@@ -17,8 +17,8 @@
 
                 <div class="controls">
                     <input name='<?php echo ILG_ID; ?>' type='hidden' value='<?php echo $data[ILG_ID] ?>'/>
-                    <input name="<?php echo ILG_NAME; ?>" type="text" value='<?php echo $data[ILG_NAME] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
-                    <input name="<?php echo ILG_NAMEKH; ?>" type="text" value='<?php echo $data[ILG_NAMEKH] ?>' minlength="3" id="fistname" placeholder="ឈ្មោះខ្មែរ">
+                    <input name="<?php echo ILG_NAME; ?>" type="text" value='<?php echo $data[ILG_NAME] ?>' id="fistname" placeholder="ឈ្មោះប្រភេទជំងឺ">
+                    <input name="<?php echo ILG_NAMEKH; ?>" type="text" value='<?php echo $data[ILG_NAMEKH] ?>' d="fistname" placeholder="ឈ្មោះខ្មែរ">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                 <label class="control-label" for="lastname">បរិយាយ</label>
 
                 <div class="controls">
-                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text" value='<?php echo $data[ILG_DESCRIPTION] ?>' minlength="3" id="lastname" placeholder="បរិយាយ" />
+                    <textarea name="<?php echo ILG_DESCRIPTION; ?>" type="text" value='<?php echo $data[ILG_DESCRIPTION] ?>' id="lastname" placeholder="បរិយាយ" />
                     <span class="help-inline"></span>
                 </div>
             </div>

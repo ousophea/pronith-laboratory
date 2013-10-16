@@ -33,7 +33,7 @@
                 <label class="control-label" for="passwordc">កូដសម្ងាត់ម្ដងទៀត</label>
 
                 <div class="controls">
-                    <input name="passwordc" type="password" required="required" id="passowrdc" placeholder="កូដសម្ងាត់ម្ដងទៀត" data-validation-match-match="password" data-validation-match-message="Password not match!!!">
+                    <input name="passwordc" type="password" required="required" id="passowrdc" placeholder="កូដសម្ងាត់ម្ដងទៀត" data-validation-match-match="password" data-validation-match-message="កូដសម្ងាត់មិនដូកគ្នា">
                     <span class="help-inline"></span>
                 </div>
             </div>

@@ -89,6 +89,7 @@ define('ILLS', TBL_PREFEX.'ills');
 define('ILL_ID', 'ill_id');
 define('ILL_GROUPID', 'ill_ill_gro_id');
 define('ILL_NAME', 'ill_name');
+define('ILL_PRICE', 'ill_price');
 define('ILL_NAMEKH', 'ill_nameKh');
 define('ILL_DATECREATED', 'ill_dateCreated');
 define('ILL_DATEMODIFIED', 'ill_dateModified');
@@ -96,6 +97,7 @@ define('ILL_STATUS', 'ill_status');
 
 define('ILLITEMS', TBL_PREFEX.'ills_items');
 define('ILI_ID', 'ill_ite_id');
+define('ILI_PARENTID', 'ill_ite_parentId');
 define('ILI_ILLID', 'ill_ite_ill_id');
 define('ILI_NAME', 'ill_ite_name');
 define('ILI_DESCRIPTION', 'ill_ite_description');

@@ -1,0 +1,1 @@
+ALTER TABLE `tbl_ills_items`  ADD COLUMN `ill_ite_parentId` INT(11) NULL DEFAULT '0' AFTER `ill_ite_ill_id`;
