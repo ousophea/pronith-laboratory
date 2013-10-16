@@ -106,6 +106,34 @@ define('ILI_DATECREATED', 'ill_ite_dateCreated');
 define('ILI_DATEMODIFIED', 'ill_ite_dateModified');
 define('ILI_STATUS', 'ill_ite_status');
 
+define('DOCTORCOMMISSIONS', TBL_PREFEX.'doctors_commissions');
+define('DOCCOMM_ID', 'doc_com_id');
+define("DOCCOMM_DOC_ID", "doc_com_doc_id");
+define("DOCCOMM_PAT_TES_ID", "doc_com_pat_tes_id");
+define('DOCCOMM_AMMOUNT', 'doc_com_ammount');
+define('DOCCOMM_GETPAID', 'doc_com_getPaid');
+define('DOCCOMM_DATECREATE', 'doc_com_dateCreated');
+define('DOCCOMM_DATEMODIFIED', 'doc_com_dateModified');
+define('DOCCOMM_STATUS', 'doc_com_status');
+
+
+define('DOCTOR', TBL_PREFEX.'doctors');
+define('DOC_ID', 'doc_id');
+define("DOC_FNAME", "doc_firstName");
+define("DOC_LNAME", "doc_lastName");
+define("DOC_SEX", "doc_sex");
+
+define('PARTIENTSTEST', TBL_PREFEX.'patients_tests');
+define('PARTIENTSTEST_ID', 'pat_tes_id');
+define('PARTIENTSTEST_PAR_ID', 'pat_tes_pat_id');
+define('PARTIENTSTEST_DATE','pat_tes_dateCreated');
+
+define('PARTIENT', TBL_PREFEX.'patients');
+define('PARTIENT_ID', 'pat_id');
+define('PARTIENT_FNAME', 'pat_firstName');
+define('PARTIENT_LNAME', 'pat_lastName');
+
+
 // Global worlds
 define('DROPDOWN_DEFAULT', '-- ជ្រើសរើស --');
 define('STATUS', 'status');
