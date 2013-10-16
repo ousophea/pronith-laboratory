@@ -44,7 +44,7 @@
                             </td>
 
                             <td class=" "><?php echo $row[ILL_NAME].' '.$row[ILL_NAMEKH]; ?></td>
-                            <td class=" "><?php echo $row[ILL_PRICE]; ?>&</td>
+                            <td class=" "><?php echo $row[ILL_PRICE]; ?>$</td>
                             <td class=" "><?php echo $row[ILG_NAME]; ?></td>
 <!--                            <td class=" "><?php echo $row[ILL_DATECREATED]; ?></td>
                             <td class=" "><?php echo $row[ILL_DATEMODIFIED]; ?></td>

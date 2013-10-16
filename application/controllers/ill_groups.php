@@ -35,7 +35,8 @@ class ill_groups extends CI_Controller{
     function lists(){
         $this->data['title'] = 'List ill groups';
         $this->data['data'] = $this->m_ill_groups->getIllGroups();
-        $this->load->view('ill_groups/lists',  $this->data);
+        //$this->load->view('ill_groups/lists',  $this->data);
+        $this->load->view(TEMPLATE,  $this->data);
     }
     
     function edit(){

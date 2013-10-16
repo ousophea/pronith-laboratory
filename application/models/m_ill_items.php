@@ -60,6 +60,7 @@ class m_ill_items extends CI_Model {
         try {
             $data = $this->input->post('data');
             $this->db->where(ILI_NAME, $data[ILI_NAME]);
+            $this->db->where(ILI_ILLID, $data[ILI_ILLID]);
             $query = $this->db->get(ILLITEMS);
             if ($query->num_rows() > 0)
                 return 3;

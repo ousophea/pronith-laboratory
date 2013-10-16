@@ -89,7 +89,7 @@
             </li>
 
             <li>
-                <a class="ajax" href="<?php echo base_url(); ?>ill_groups/lists">
+                <a class="" href="<?php echo base_url(); ?>ill_groups/lists">
                     <i class="icon-double-angle-right"></i>
                     បង្ហាញ​ប្រ​ភេទ​ជំ​ងឺ
                 </a>
@@ -114,7 +114,7 @@
             </li>
 
             <li>
-                <a class="ajax" href="<?php echo base_url(); ?>ills/lists">
+                <a class="" href="<?php echo base_url(); ?>ills/lists">
                     <i class="icon-th-list"></i>
                     បង្ហាញ​ជំងឺ
                 </a>
@@ -138,7 +138,7 @@
                 </a>
             </li>
             <li>
-                <a class="ajax" href="<?php echo base_url(); ?>ill_items/lists">
+                <a class="" href="<?php echo base_url(); ?>ill_items/lists">
                     <i class="icon-double-angle-right"></i>
                     បង្ហាញ​ធាតុ​ជំងឺ
                 </a>
@@ -237,7 +237,7 @@
             </li>
 
             <li>
-                <a class="ajax" href="<?php echo base_url(); ?>users/lists">
+                <a class="" href="<?php echo base_url(); ?>users/lists">
                     <i class="icon-th-list"></i>
                     	បង្ហាញ​អ្នកប្រើប្រាស់
                 </a>

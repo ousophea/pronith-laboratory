@@ -35,7 +35,7 @@
                 <label class="control-label" for="<?php echo ILL_PRICE; ?>">តម្លៃ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILL_PRICE; ?>" type="text" value="0" id="<?php echo ILL_PRICE; ?>" placeholder="តម្លៃ"  data-validation-required-message="ចូរបញ្ចូលតម្លៃ">$
+                    <input required name="<?php echo ILL_PRICE; ?>" type="text" value="0" id="<?php echo ILL_PRICE; ?>" pattern="[-+]?([0-9]*\.[0-9]+|[0-9]+)" data-validation-pattern-message="ចូរបញ្ចូលតម្លៃជាលេខ ឧ: 10, 20 រឺ 123.001"  placeholder="តម្លៃ"  data-validation-required-message="ចូរបញ្ចូលតម្លៃ">$
                     <span class="help-inline"></span>
                 </div>
             </div>

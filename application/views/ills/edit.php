@@ -36,7 +36,7 @@
                 <label class="control-label" for="<?php echo ILL_PRICE; ?>">តម្លៃ</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILL_PRICE; ?>" type="text" value='<?php echo $data[ILL_PRICE] ?>' id="<?php echo ILL_PRICE; ?>" placeholder="តម្លៃ"  data-validation-required-message="ចូរបញ្ចូលតម្លៃ">$
+                    <input required name="<?php echo ILL_PRICE; ?>" type="text" value='<?php echo $data[ILL_PRICE] ?>' id="<?php echo ILL_PRICE; ?>"  pattern="[-+]?([0-9]*\.[0-9]+|[0-9]+)" data-validation-pattern-message="ចូរបញ្ចូលតម្លៃជាលេខ ឧ: 10, 20 រឺ 123.001" placeholder="តម្លៃ"  data-validation-required-message="ចូរបញ្ចូលតម្លៃ">$
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -51,6 +51,12 @@
                 </div>
             </div>
             <div class="form-actions">
+                <a class="btn btn-info" href="<?php echo base_url().'ills/lists'; ?>">
+                    <i class="icon-backward bigger-110"></i>
+                    ត្រឡប់ក្រោយ
+                </a>
+
+                &nbsp; &nbsp; &nbsp;
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
                     កែប្រែ
