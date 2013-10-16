@@ -1,0 +1,1 @@
+ALTER TABLE `tbl_doctors_commissions`  CHANGE COLUMN `doc_com_getPaid` `doc_com_getPaid` INT(1) NULL DEFAULT '0' AFTER `doc_com_ammount`;
