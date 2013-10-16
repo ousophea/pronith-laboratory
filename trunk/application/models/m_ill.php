@@ -41,6 +41,7 @@ class m_ill extends CI_Model{
         try {
             $data = $this->input->post('data');
             $this->db->where(ILL_NAME,$data[ILL_NAME]);
+            $this->db->where(ILL_GROUPID,$data[ILL_GROUPID]);
             $query = $this->db->get(ILLS);
             if($query->num_rows() > 0) return 3;
             if(empty($data[ILL_STATUS])) $data[ILL_STATUS] = 0;

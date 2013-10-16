@@ -22,7 +22,8 @@ class ills extends CI_Controller{
     function lists(){
         $this->data['title'] = 'Ill';
         $this->data['data'] = $this->m_ill->lists();
-        $this->load->view('ills/lists',  $this->data);
+//        $this->load->view('ills/lists',  $this->data);
+        $this->load->view(TEMPLATE,  $this->data);
     }
     
     

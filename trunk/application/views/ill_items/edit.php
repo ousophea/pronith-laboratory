@@ -99,6 +99,11 @@
                 </div>
             </div>
             <div class="form-actions">
+                <a class="btn btn-info" href="<?php echo base_url().'ill_items/lists'; ?>">
+                    <i class="icon-backward bigger-110"></i>
+                    ត្រឡប់ក្រោយ
+                </a>
+                 &nbsp; &nbsp; &nbsp;
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
                     កែប្រែ
