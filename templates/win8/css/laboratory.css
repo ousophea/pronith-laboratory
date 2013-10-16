@@ -14,3 +14,9 @@
 .view-modal{
     cursor: pointer;
 }
+
+/*#paidBTN input.ace-switch[type="checkbox"] + .lbl:before {
+   
+    content: "Paid         Not";
+    color: #ff3333;
+}*/
