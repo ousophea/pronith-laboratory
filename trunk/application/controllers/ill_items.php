@@ -65,6 +65,12 @@ class ill_items extends CI_Controller {
     function get_ills_by_group_id(){
         echo json_encode(array('result' => $this->m_ill_items->get_ills_by_group_id()));
     }
+    
+    function get_ill_item_parents(){
+       
+        echo json_encode(array('result' =>$this->m_ill_items->get_ill_item_parents() ));
+    }
+    
 }
 
 ?>
