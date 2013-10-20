@@ -37,7 +37,7 @@
                 <label class="control-label" for="<?php echo ILI_VALUEMALE; ?>">តម្លៃធម្មតាប្រុស</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEMALE; ?>" type="text" id="<?php echo ILI_VALUEMALE; ?>" placeholder="តម្លៃធម្មតាប្រុស">
+                    <input required name="<?php echo ILI_VALUEMALE; ?>" type="text" id="<?php echo ILI_VALUEMALE; ?>"  pattern="[=]?[>]?[<]?[>=]?[<=]?([0-9]*\-[0-9]+|[0-9]+)" data-validation-pattern-message="ចូរបញ្ចូលតម្លៃជាលេខ ឧ: 1-5, =5, >=5,  រឺ <=5" placeholder="តម្លៃធម្មតាប្រុស">
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                 <label class="control-label" for="<?php echo ILI_VALUEFEMALE; ?>">តម្លៃធម្មតាស្រី</label>
 
                 <div class="controls">
-                    <input required name="<?php echo ILI_VALUEFEMALE; ?>" type="text"  id="<?php echo ILI_VALUEFEMALE; ?>" placeholder="តម្លៃធម្មតាស្រី">
+                    <input required name="<?php echo ILI_VALUEFEMALE; ?>" type="text"  id="<?php echo ILI_VALUEFEMALE; ?>"  pattern="[=]?[>]?[<]?[>=]?[<=]?([0-9]*\-[0-9]+|[0-9]+)" data-validation-pattern-message="ចូរបញ្ចូលតម្លៃជាលេខ ឧ: 1-5, =5, >=5,  រឺ <=5" placeholder="តម្លៃធម្មតាស្រី">
                     <span class="help-inline"></span>
                 </div>
             </div>

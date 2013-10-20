@@ -83,7 +83,7 @@ class users extends CI_Controller {
 
         $this->data['title'] = 'បង្ហាញ​អ្នក​ប្រើប្រាស់';
         $this->data['data'] = $this->m_users->getUsers();
-        $this->load->view('users/lists', $this->data);
+        $this->load->view(TEMPLATE, $this->data);
     }
 
     function loginout() {

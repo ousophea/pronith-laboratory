@@ -12,12 +12,12 @@
         <table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
             <thead>
                 <tr role="row">
-                    <th class="center sorting_disabled">
+<!--                    <th class="center sorting_disabled">
                         <label>
                             <input type="checkbox" class="ace">
                             <span class="lbl"></span>
                         </label>
-                    </th>
+                    </th>-->
                     <th class="sorting">ធាតុ</th>
                     <th class="sorting">ខ្នាត</th>
                     <th class="sorting">ជំងឺ</th>
@@ -38,13 +38,12 @@
                         ?>
 
                         <tr class="odd object" data-object='<?php echo json_encode(array('data' => $row)); ?>'>
-                            <td class="center">
+<!--                            <td class="center">
                                 <label>
                                     <input type="checkbox" name="id[]" value="<?php echo $row[ILL_ID]; ?>" class="ace">
                                     <span class="lbl"></span>
                                 </label>
-                                <?php echo form_hidden(ILLGROUPS . ILL_ID, json_encode(array('data' => $row))); ?>
-                            </td>
+                            </td>-->
 
                             <td class=" "><?php echo $row[ILI_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILI_DIMENTION]; ?></td>
