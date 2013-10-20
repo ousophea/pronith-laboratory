@@ -1,4 +1,3 @@
-
 <div class="page-header position-relative">
     <h1>
         បង្កើតខ្នាត​ធាតុ នៃ​ជំងឺ​ថ្មី
@@ -8,6 +7,12 @@
         </small>
     </h1>
 </div>
+<script type="text/javascript" src="<?php echo site_url(JS.'nicEdit.js'); ?>"></script>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { 
+		new nicEditor({iconsPath : '<?php echo site_url(IMAGES."nicEditorIcons.gif");?>',buttonList : ['subscript','superscript']}).panelInstance('ill_dimension');
+		});
+</script>
 <div class="row-fluid">
     <div class="span12">
         <!--PAGE CONTENT BEGINS-->
@@ -16,7 +21,7 @@
                 <label class="control-label" for="name">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <textarea name="txt_illItemDimentionValue" cols="10" rows="3"></textarea>
+                    <textarea id="ill_dimension" name="txt_illItemDimentionValue" cols="10" rows="3"></textarea>
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -87,8 +92,4 @@
                 }
         );
     });
-</script>
-<script type="text/javascript" src="<?php echo base_url().JS.'nicEdit.js' ?>"></script>
-<script type="text/javascript">
-	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
 </script>

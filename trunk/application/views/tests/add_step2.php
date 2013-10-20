@@ -126,6 +126,12 @@
             <div class="control-group">
                 <label class="control-label" for="owe">ប្រាក់​ជំពាក់</label>
                 <div class="controls">
+                	<?php
+                	$owe = 0;
+                	if($this->session->userdata('txt_deposit')){
+                		
+                	}
+                	?>
                     <input type="number" readonly="readonly" name="txt_owe" value="<?php echo ($this->session->userdata('txt_owe'))?$this->session->userdata('txt_owe'):$total_price; ?>" />
                     <span class="help-inline">៛</span>
                 </div>
