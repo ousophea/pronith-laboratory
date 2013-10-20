@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 20, 2013 at 03:11 AM
+-- Generation Time: Oct 20, 2013 at 05:10 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -502,7 +502,7 @@ CREATE TABLE IF NOT EXISTS `tbl_patients_tests` (
   PRIMARY KEY (`pat_tes_id`),
   KEY `fk_tbl_patients_tests_tbl_users1_idx` (`pat_tes_use_id`),
   KEY `fk_tbl_patients_tests_tbl_patients1_idx` (`pat_tes_pat_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Triggers `tbl_patients_tests`
@@ -710,21 +710,53 @@ CREATE TABLE IF NOT EXISTS `vie_patients_tests` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vie_patients_tests_results_inputs`
+-- Stand-in structure for view `vie_patients_tests_results_inputs`
 --
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vie_patients_tests_results_inputs` AS select concat(`db_laboratory`.`tbl_ills_groups`.`ill_gro_name`,' ',`db_laboratory`.`tbl_ills_groups`.`ill_gro_nameKh`) AS `groups_name`,concat(`db_laboratory`.`tbl_ills`.`ill_name`,' ',`db_laboratory`.`tbl_ills`.`ill_nameKh`) AS `ills_name`,`db_laboratory`.`tbl_ills_items`.`ill_ite_id` AS `ill_ite_id`,`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_id` AS `ill_ite_ill_id`,`db_laboratory`.`tbl_ills_items`.`ill_ite_name` AS `ill_ite_name`,`db_laboratory`.`tbl_ills_items`.`ill_ite_description` AS `ill_ite_description`,`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_ite_dim_id` AS `ill_ite_ill_ite_dim_id`,`db_laboratory`.`tbl_ills_items`.`ill_ite_value_male` AS `ill_ite_value_male`,`db_laboratory`.`tbl_ills_items`.`ill_ite_value_female` AS `ill_ite_value_female`,`db_laboratory`.`tbl_ills_items`.`ill_ite_dateCreated` AS `ill_ite_dateCreated`,`db_laboratory`.`tbl_ills_items`.`ill_ite_dateModified` AS `ill_ite_dateModified`,`db_laboratory`.`tbl_ills_items`.`ill_ite_status` AS `ill_ite_status`,`db_laboratory`.`tbl_patients_tests`.`pat_tes_id` AS `pat_tes_id`,`db_laboratory`.`tbl_ills_items_dimentions`.`ill_ite_dim_id` AS `ill_ite_dim_id`,`db_laboratory`.`tbl_ills_items_dimentions`.`ill_ite_dim_value` AS `ill_ite_dim_value` from (((((`tbl_ills_items` join `tbl_ills_items_dimentions` on((`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_ite_dim_id` = `db_laboratory`.`tbl_ills_items_dimentions`.`ill_ite_dim_id`))) join `tbl_ills` on((`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_id` = `db_laboratory`.`tbl_ills`.`ill_id`))) join `tbl_ills_groups` on((`db_laboratory`.`tbl_ills`.`ill_ill_gro_id` = `db_laboratory`.`tbl_ills_groups`.`ill_gro_id`))) join `tbl_patients_tests_has_tbl_ills` on((`db_laboratory`.`tbl_ills`.`ill_id` = `db_laboratory`.`tbl_patients_tests_has_tbl_ills`.`ill_id`))) join `tbl_patients_tests` on((`db_laboratory`.`tbl_patients_tests_has_tbl_ills`.`pat_tes_id` = `db_laboratory`.`tbl_patients_tests`.`pat_tes_id`))) where (`db_laboratory`.`tbl_ills_items`.`ill_ite_status` = 1) order by `groups_name`,`ills_name`;
--- Error reading data: (#1356 - View 'db_laboratory.vie_patients_tests_results_inputs' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
-
+CREATE TABLE IF NOT EXISTS `vie_patients_tests_results_inputs` (
+`groups_name` varchar(91)
+,`ills_name` varchar(91)
+,`ill_ite_id` int(11)
+,`ill_ite_ill_id` int(11)
+,`ill_ite_parentId` int(11)
+,`ill_ite_name` varchar(45)
+,`ill_ite_nameKh` varchar(45)
+,`ill_ite_description` text
+,`ill_ite_dimention` varchar(200)
+,`ill_ite_value_male` varchar(45)
+,`ill_ite_value_female` varchar(45)
+,`ill_ite_dateCreated` timestamp
+,`ill_ite_dateModified` timestamp
+,`ill_ite_status` bit(1)
+,`pat_tes_id` int(11)
+);
 -- --------------------------------------------------------
 
 --
--- Table structure for table `vie_patients_tests_results_views`
+-- Stand-in structure for view `vie_patients_tests_results_views`
 --
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vie_patients_tests_results_views` AS select concat(`db_laboratory`.`tbl_ills_groups`.`ill_gro_name`,' ',`db_laboratory`.`tbl_ills_groups`.`ill_gro_nameKh`) AS `groups_name`,concat(`db_laboratory`.`tbl_ills`.`ill_name`,' ',`db_laboratory`.`tbl_ills`.`ill_nameKh`) AS `ills_name`,`db_laboratory`.`tbl_ills_items`.`ill_ite_id` AS `ill_ite_id`,`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_id` AS `ill_ite_ill_id`,`db_laboratory`.`tbl_ills_items`.`ill_ite_name` AS `ill_ite_name`,`db_laboratory`.`tbl_ills_items`.`ill_ite_description` AS `ill_ite_description`,`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_ite_dim_id` AS `ill_ite_ill_ite_dim_id`,`db_laboratory`.`tbl_ills_items`.`ill_ite_value_male` AS `ill_ite_value_male`,`db_laboratory`.`tbl_ills_items`.`ill_ite_value_female` AS `ill_ite_value_female`,`db_laboratory`.`tbl_ills_items`.`ill_ite_dateCreated` AS `ill_ite_dateCreated`,`db_laboratory`.`tbl_ills_items`.`ill_ite_dateModified` AS `ill_ite_dateModified`,`db_laboratory`.`tbl_ills_items`.`ill_ite_status` AS `ill_ite_status`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_id` AS `pat_tes_res_id`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_pat_tes_id` AS `pat_tes_res_pat_tes_id`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_ill_ite_id` AS `pat_tes_res_ill_ite_id`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_value` AS `pat_tes_res_value`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_dateCreated` AS `pat_tes_res_dateCreated`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_dateModified` AS `pat_tes_res_dateModified`,`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_status` AS `pat_tes_res_status`,`db_laboratory`.`tbl_ills_items_dimentions`.`ill_ite_dim_id` AS `ill_ite_dim_id`,`db_laboratory`.`tbl_ills_items_dimentions`.`ill_ite_dim_value` AS `ill_ite_dim_value` from ((((`tbl_patients_tests_results` join `tbl_ills_items` on((`db_laboratory`.`tbl_patients_tests_results`.`pat_tes_res_ill_ite_id` = `db_laboratory`.`tbl_ills_items`.`ill_ite_id`))) join `tbl_ills_items_dimentions` on((`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_ite_dim_id` = `db_laboratory`.`tbl_ills_items_dimentions`.`ill_ite_dim_id`))) join `tbl_ills` on((`db_laboratory`.`tbl_ills_items`.`ill_ite_ill_id` = `db_laboratory`.`tbl_ills`.`ill_id`))) join `tbl_ills_groups` on((`db_laboratory`.`tbl_ills`.`ill_ill_gro_id` = `db_laboratory`.`tbl_ills_groups`.`ill_gro_id`))) where (`db_laboratory`.`tbl_ills_items`.`ill_ite_status` = 1) order by `groups_name`,`ills_name`;
--- Error reading data: (#1356 - View 'db_laboratory.vie_patients_tests_results_views' references invalid table(s) or column(s) or function(s) or definer/invoker of view lack rights to use them)
-
+CREATE TABLE IF NOT EXISTS `vie_patients_tests_results_views` (
+`groups_name` varchar(91)
+,`ills_name` varchar(91)
+,`ill_ite_id` int(11)
+,`ill_ite_ill_id` int(11)
+,`ill_ite_parentId` int(11)
+,`ill_ite_name` varchar(45)
+,`ill_ite_nameKh` varchar(45)
+,`ill_ite_description` text
+,`ill_ite_dimention` varchar(200)
+,`ill_ite_value_male` varchar(45)
+,`ill_ite_value_female` varchar(45)
+,`ill_ite_dateCreated` timestamp
+,`ill_ite_dateModified` timestamp
+,`ill_ite_status` bit(1)
+,`pat_tes_res_id` int(11)
+,`pat_tes_res_pat_tes_id` int(11)
+,`pat_tes_res_ill_ite_id` int(11)
+,`pat_tes_res_value` float
+,`pat_tes_res_dateCreated` timestamp
+,`pat_tes_res_dateModified` timestamp
+,`pat_tes_res_status` bit(1)
+);
 -- --------------------------------------------------------
 
 --
@@ -751,6 +783,24 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 DROP TABLE IF EXISTS `vie_patients_tests`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vie_patients_tests` AS select `t`.`pat_tes_id` AS `pat_tes_id`,`t`.`pat_tes_pat_id` AS `pat_tes_pat_id`,`t`.`pat_tes_use_id` AS `pat_tes_use_id`,`t`.`pat_tes_dateTimeReceived` AS `pat_tes_dateTimeReceived`,`t`.`pat_tes_isReceive` AS `pat_tes_isReceive`,`t`.`pat_tes_isResult` AS `pat_tes_isResult`,`t`.`pat_tes_isReceiveIll` AS `pat_tes_isReceiveIll`,`t`.`pat_tes_subTotal` AS `pat_tes_subTotal`,`t`.`pat_tes_total` AS `pat_tes_total`,`t`.`pat_tes_isPaid` AS `pat_tes_isPaid`,`t`.`pat_tes_deposit` AS `pat_tes_deposit`,`t`.`pat_tes_owe` AS `pat_tes_owe`,`t`.`pat_tes_discount` AS `pat_tes_discount`,`t`.`pat_tes_doctorCommission` AS `pat_tes_doctorCommission`,`t`.`pat_tes_dateCreated` AS `pat_tes_dateCreated`,`t`.`pat_tes_dateModified` AS `pat_tes_dateModified`,`t`.`pat_tes_tax` AS `pat_tes_tax`,`t`.`pat_tes_status` AS `pat_tes_status`,concat(`p`.`pat_firstName`,' ',`p`.`pat_lastName`) AS `pat_name`,concat(`u`.`use_firstName`,' ',`u`.`use_lastName`) AS `use_name` from ((`tbl_patients_tests` `t` join `tbl_patients` `p` on((`t`.`pat_tes_pat_id` = `p`.`pat_id`))) join `tbl_users` `u` on((`t`.`pat_tes_use_id` = `u`.`use_id`)));
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vie_patients_tests_results_inputs`
+--
+DROP TABLE IF EXISTS `vie_patients_tests_results_inputs`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vie_patients_tests_results_inputs` AS select concat(`tbl_ills_groups`.`ill_gro_name`,' ',`tbl_ills_groups`.`ill_gro_nameKh`) AS `groups_name`,concat(`tbl_ills`.`ill_name`,' ',`tbl_ills`.`ill_nameKh`) AS `ills_name`,`tbl_ills_items`.`ill_ite_id` AS `ill_ite_id`,`tbl_ills_items`.`ill_ite_ill_id` AS `ill_ite_ill_id`,`tbl_ills_items`.`ill_ite_parentId` AS `ill_ite_parentId`,`tbl_ills_items`.`ill_ite_name` AS `ill_ite_name`,`tbl_ills_items`.`ill_ite_nameKh` AS `ill_ite_nameKh`,`tbl_ills_items`.`ill_ite_description` AS `ill_ite_description`,`tbl_ills_items`.`ill_ite_dimention` AS `ill_ite_dimention`,`tbl_ills_items`.`ill_ite_value_male` AS `ill_ite_value_male`,`tbl_ills_items`.`ill_ite_value_female` AS `ill_ite_value_female`,`tbl_ills_items`.`ill_ite_dateCreated` AS `ill_ite_dateCreated`,`tbl_ills_items`.`ill_ite_dateModified` AS `ill_ite_dateModified`,`tbl_ills_items`.`ill_ite_status` AS `ill_ite_status`,`tbl_patients_tests`.`pat_tes_id` AS `pat_tes_id` from ((((`tbl_ills_items` join `tbl_ills` on((`tbl_ills_items`.`ill_ite_ill_id` = `tbl_ills`.`ill_id`))) join `tbl_ills_groups` on((`tbl_ills`.`ill_ill_gro_id` = `tbl_ills_groups`.`ill_gro_id`))) join `tbl_patients_tests_has_tbl_ills` on((`tbl_ills`.`ill_id` = `tbl_patients_tests_has_tbl_ills`.`ill_id`))) join `tbl_patients_tests` on((`tbl_patients_tests_has_tbl_ills`.`pat_tes_id` = `tbl_patients_tests`.`pat_tes_id`))) where (`tbl_ills_items`.`ill_ite_status` = 1) order by `groups_name`,`ills_name`;
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `vie_patients_tests_results_views`
+--
+DROP TABLE IF EXISTS `vie_patients_tests_results_views`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vie_patients_tests_results_views` AS select concat(`tbl_ills_groups`.`ill_gro_name`,' ',`tbl_ills_groups`.`ill_gro_nameKh`) AS `groups_name`,concat(`tbl_ills`.`ill_name`,' ',`tbl_ills`.`ill_nameKh`) AS `ills_name`,`tbl_ills_items`.`ill_ite_id` AS `ill_ite_id`,`tbl_ills_items`.`ill_ite_ill_id` AS `ill_ite_ill_id`,`tbl_ills_items`.`ill_ite_parentId` AS `ill_ite_parentId`,`tbl_ills_items`.`ill_ite_name` AS `ill_ite_name`,`tbl_ills_items`.`ill_ite_nameKh` AS `ill_ite_nameKh`,`tbl_ills_items`.`ill_ite_description` AS `ill_ite_description`,`tbl_ills_items`.`ill_ite_dimention` AS `ill_ite_dimention`,`tbl_ills_items`.`ill_ite_value_male` AS `ill_ite_value_male`,`tbl_ills_items`.`ill_ite_value_female` AS `ill_ite_value_female`,`tbl_ills_items`.`ill_ite_dateCreated` AS `ill_ite_dateCreated`,`tbl_ills_items`.`ill_ite_dateModified` AS `ill_ite_dateModified`,`tbl_ills_items`.`ill_ite_status` AS `ill_ite_status`,`tbl_patients_tests_results`.`pat_tes_res_id` AS `pat_tes_res_id`,`tbl_patients_tests_results`.`pat_tes_res_pat_tes_id` AS `pat_tes_res_pat_tes_id`,`tbl_patients_tests_results`.`pat_tes_res_ill_ite_id` AS `pat_tes_res_ill_ite_id`,`tbl_patients_tests_results`.`pat_tes_res_value` AS `pat_tes_res_value`,`tbl_patients_tests_results`.`pat_tes_res_dateCreated` AS `pat_tes_res_dateCreated`,`tbl_patients_tests_results`.`pat_tes_res_dateModified` AS `pat_tes_res_dateModified`,`tbl_patients_tests_results`.`pat_tes_res_status` AS `pat_tes_res_status` from (((`tbl_patients_tests_results` join `tbl_ills_items` on((`tbl_patients_tests_results`.`pat_tes_res_ill_ite_id` = `tbl_ills_items`.`ill_ite_id`))) join `tbl_ills` on((`tbl_ills_items`.`ill_ite_ill_id` = `tbl_ills`.`ill_id`))) join `tbl_ills_groups` on((`tbl_ills`.`ill_ill_gro_id` = `tbl_ills_groups`.`ill_gro_id`))) where (`tbl_ills_items`.`ill_ite_status` = 1) order by `groups_name`,`ills_name`;
 
 --
 -- Constraints for dumped tables
