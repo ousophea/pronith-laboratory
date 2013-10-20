@@ -7,6 +7,10 @@
         </small>
     </h1>
 </div>
+<script type="text/javascript" src="<?php echo site_url(JS.'nicEdit.js'); ?>"></script>
+<script type="text/javascript">
+	new nicEditor({iconsPath : '<?php echo site_url(IMAGES."nicEditorIcons.gif");?>',buttonList : ['subscript','superscript']}).panelInstance('ite_dimention');
+</script>
 <div class="row-fluid">
     <div class="span12">
         <!--PAGE CONTENT BEGINS-->
@@ -17,31 +21,18 @@
 
                 <div class="controls">
                     <input required name="<?php echo ILI_NAME; ?>" type="text" id="<?php echo ILI_NAME; ?>" placeholder="ឈ្មោះធាតុ">
+                    <input type="text" placeholder="ឈ្មោះខ្មែរ" name="ill_ite_nameKh" aria-invalid="false">
                     <span class="help-inline"></span>
                 </div>
             </div>
-
-            <div class="control-group">
+			<div class="control-group">
                 <label class="control-label" for="<?php echo ILI_DIMENTION; ?>">ខ្នាត</label>
 
                 <div class="controls">
-                    <select name="ill_ite_ill_ite_dim_id">
-                        <option value="0"><?php echo DROPDOWN_DEFAULT; ?></option>
-                        <?php
-                        if ($ill_item_dimention->num_rows() > 0) {
-                            foreach ($ill_item_dimention->result() as $rows) {
-                                ?>
-                                <option value="<?php echo $rows->ill_ite_dim_id; ?>"><?php echo $rows->ill_ite_dim_value; ?></option>
-                                <?php
-                            }
-                        }
-                        ?>
-                    </select>
-                    <!--<?php echo form_dropdown(ILI_DIMENTION, dimention(), '', ' required="required"') ?>-->
+                    <textarea cols="10" rows="2" name="ill_ite_dimention" id="ite_dimention"></textarea>
                     <span class="help-inline"></span>
                 </div>
             </div>
-
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_VALUEMALE; ?>">តម្លៃធម្មតាប្រុស</label>
 
@@ -86,7 +77,7 @@
                 <div class="controls">
                     <label>
                         <input name="option" id="option" type="checkbox" class="ace">
-                        <span class="lbl"> សូមចុចត្រងនេះប្រសិនបើធាតុជម្ងឺនេះស្ថិតក្នុងធាតុជម្ងឺផ្សេងទៀត</span>
+                        <span class="lbl"> សូមចុចត្រង់នេះប្រសិនបើធាតុជម្ងឺនេះស្ថិតក្នុងធាតុជម្ងឺផ្សេងទៀត</span>
                     </label>
                 </div>
             </div>

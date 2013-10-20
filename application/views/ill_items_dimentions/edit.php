@@ -1,7 +1,3 @@
-<script type="text/javascript" src="<?php echo site_url(JS.'nicEdit.js') ?>"></script>
-<script type="text/javascript">
-	//bkLib.onDomLoaded(function() { nicEditors.allTextAreas() });
-</script>
 <?php
 if (isset($edit_data)) {
 	$edit_data = $edit_data -> result_array();
@@ -18,6 +14,14 @@ if (isset($edit_data)) {
         </small>
     </h1>
 </div>
+<script type="text/javascript" src="<?php echo site_url(JS.'nicEdit.js') ?>"></script>
+<script type="text/javascript">
+	bkLib.onDomLoaded(function() { 
+		//nicEditors.allTextAreas();
+		new nicEditor({buttonList : ['subscript','superscript'],iconsPath : '<?php echo site_url(IMAGES."nicEditorIcons.gif");?>'}).panelInstance('ill_dimension'); 
+		
+		});
+</script>
 <div class="row-fluid">
     <div class="span12">
         <!--PAGE CONTENT BEGINS-->
@@ -27,7 +31,7 @@ if (isset($edit_data)) {
                 <label class="control-label" for="name">ឈ្មោះ</label>
 
                 <div class="controls">
-                    <textarea name="txt_illItemDimentionValue" cols="10" rows="3"><?php echo $edit_data[0]['ill_ite_dim_value']; ?></textarea>
+                    <textarea id="ill_dimension" name="txt_illItemDimentionValue" cols="10" rows="3"><?php echo $edit_data[0]['ill_ite_dim_value']; ?></textarea>
                     <span class="help-inline"></span>
                 </div>
             </div>

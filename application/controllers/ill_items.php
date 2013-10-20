@@ -30,7 +30,6 @@ class ill_items extends CI_Controller {
     function add(){
         $this->data['title'] = 'Create new ill';
         $this->data['groups'] = $this->m_ill_items->ills_array();
-		$this->data['ill_item_dimention'] = $this->m_global->select_all(TBL_PREFEX.'ills_items_dimentions');
         $this->data['ill_group'] = $this->m_ill_items->ill_groups_array();
         $this->load->view('ill_items/add',  $this->data);
     }
@@ -46,7 +45,6 @@ class ill_items extends CI_Controller {
     function edit(){
         $this->data['title'] = 'Edit ill group';
         $this->data['groups'] = $this->m_ill_items->ills_array();
-		$this->data['ill_item_dimention'] = $this->m_global->select_all(TBL_PREFEX.'ills_items_dimentions');
         $this->data['ill_group'] = $this->m_ill_items->ill_groups_array();
         $this->data['data'] = $this->input->post('data');
         $this->load->view('ill_items/edit',  $this->data);

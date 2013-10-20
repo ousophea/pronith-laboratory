@@ -45,6 +45,7 @@ define('TEMPLATE', 'templates/win8');
 define('CSS','templates/win8/css/');
 define('JS','templates/win8/js/');
 define('IMG','templates/win8/img/');
+define('IMAGES','templates/win8/images/');
 define('FONT','templates/win8/font-awesome/');
 
 // prefex password
@@ -101,7 +102,7 @@ define('ILI_PARENTID', 'ill_ite_parentId');
 define('ILI_ILLID', 'ill_ite_ill_id');
 define('ILI_NAME', 'ill_ite_name');
 define('ILI_DESCRIPTION', 'ill_ite_description');
-define('ILI_DIMENTION', 'ill_ite_dim_value');
+define('ILI_DIMENTION', 'ill_ite_dimention');
 define('ILI_VALUEMALE', 'ill_ite_value_male');
 define('ILI_VALUEFEMALE', 'ill_ite_value_female');
 define('ILI_DATECREATED', 'ill_ite_dateCreated');
