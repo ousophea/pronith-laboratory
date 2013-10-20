@@ -20,7 +20,7 @@ class ill_items extends CI_Controller {
     }
     
     function lists(){
-        $this->data['title'] = 'Ill';
+        $this->data['title'] = 'បង្ហាញ​​ឈ្មោះ​ធាតុ​ជំ​ងឺ';
         $this->data['data'] = $this->m_ill_items->lists();
 //        $this->load->view('ill_items/lists',  $this->data);
         $this->load->view(TEMPLATE,  $this->data);
@@ -28,7 +28,7 @@ class ill_items extends CI_Controller {
     
     
     function add(){
-        $this->data['title'] = 'Create new ill';
+        $this->data['title'] = 'បង្កើត​ធាតុ​ជំ​ងឺ​ថ្មី';
         $this->data['groups'] = $this->m_ill_items->ills_array();
         $this->data['ill_group'] = $this->m_ill_items->ill_groups_array();
         $this->load->view('ill_items/add',  $this->data);
@@ -43,7 +43,7 @@ class ill_items extends CI_Controller {
     }
     
     function edit(){
-        $this->data['title'] = 'Edit ill group';
+        $this->data['title'] = 'កែ​ប្រែ​​ធាតុ​ជំ​ងឺ';
         $this->data['groups'] = $this->m_ill_items->ills_array();
         $this->data['ill_group'] = $this->m_ill_items->ill_groups_array();
         $this->data['data'] = $this->input->post('data');
