@@ -177,7 +177,13 @@
             <li <?php echo (segment(1) == 'doctors_commissions' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
                 <a class="" href="<?php echo site_url('doctors_commissions/lists'); ?>">
                     <i class="icon-double-angle-right"></i>
-                    បង្ហាញ​កំរៃ​ជើងសារ​
+                    ​កំរៃ​ជើងសារ ត្រូវបង់
+                </a>
+            </li>
+            <li <?php echo (segment(1) == 'doctors_commissions' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a class="" href="<?php echo site_url('doctors_commissions/lists/1'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    ​កំរៃ​ជើងសារ បានបង់
                 </a>
             </li>
         </ul>
