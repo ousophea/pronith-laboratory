@@ -170,108 +170,108 @@ if($this->session->flashdata('msg_success')){
         //            view(html,'Ill item view detail');// Popup
         //        });
         // Load page edit and passing data
-        $('.edit').on('click', function() {
-            parents = $(this).parents(".object");
-            object = $(parents).data('object');
-            $('.message').html('');
-            $.ajax({
-                type: "POST",
-                url: this.href,
-                data: object
-            }).done(function(data) {
-                content_loader(data);
-            });
-            return false;
-        });
+//        $('.edit').on('click', function() {
+//            parents = $(this).parents(".object");
+//            object = $(parents).data('object');
+//            $('.message').html('');
+//            $.ajax({
+//                type: "POST",
+//                url: this.href,
+//                data: object
+//            }).done(function(data) {
+//                content_loader(data);
+//            });
+//            return false;
+//        });
 
-        // status
-        $(".status").on('click', function() {
-            //bootbox.alert("You are sure!");
-            var base_url = $('[name="base_url"]').val();
-            go_loader();
-            object = $(this).data('object');
-            console.log(object)
-            $.ajax({
-                url:base_url+'ills/status',
-                data:object,
-                type:"POST",
-                dataType:'json'
-            }).done(function(data) {
-                if (data.result == 1) {
-                    // call notification
-                    notify('Done!', 'Status have been changed.', 'gritter-success');
-                    $('.loader').fadeOut();
-                    return true;
-                            
-                }
-                else if (data.result == 0) {
-                    // call notification
-                    notify('Fail!', 'Could not change status, please try again.', 'gritter-error');
-                    back_loader();
-                    return false;
-                    //bootbox.alert('Could not delete user');
-                }
-                else if (data.result == 2) {
-                    notify('Fail!', data.result + ': System not allow to change status, please contact to system administrator', 'gritter-error');
-                    back_loader();
-                    return false;
-                    //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
-                }
-                else {
-                    notify('Fail!', data.result + ': Could not change status, please try again', 'gritter-error');
-                    back_loader();
-                    return false;
-                    //bootbox.alert(data.result + ':Could not delete user, please try again');
-                }
-            });
-            
-        });
+//        // status
+//        $(".status").on('click', function() {
+//            //bootbox.alert("You are sure!");
+//            var base_url = $('[name="base_url"]').val();
+//            go_loader();
+//            object = $(this).data('object');
+//            console.log(object)
+//            $.ajax({
+//                url:base_url+'ills/status',
+//                data:object,
+//                type:"POST",
+//                dataType:'json'
+//            }).done(function(data) {
+//                if (data.result == 1) {
+//                    // call notification
+//                    notify('Done!', 'Status have been changed.', 'gritter-success');
+//                    $('.loader').fadeOut();
+//                    return true;
+//                            
+//                }
+//                else if (data.result == 0) {
+//                    // call notification
+//                    notify('Fail!', 'Could not change status, please try again.', 'gritter-error');
+//                    back_loader();
+//                    return false;
+//                    //bootbox.alert('Could not delete user');
+//                }
+//                else if (data.result == 2) {
+//                    notify('Fail!', data.result + ': System not allow to change status, please contact to system administrator', 'gritter-error');
+//                    back_loader();
+//                    return false;
+//                    //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
+//                }
+//                else {
+//                    notify('Fail!', data.result + ': Could not change status, please try again', 'gritter-error');
+//                    back_loader();
+//                    return false;
+//                    //bootbox.alert(data.result + ':Could not delete user, please try again');
+//                }
+//            });
+//            
+//        });
 
         // Delete
-        $(".delete").on('click', function() {
-            var url = this.href;
-            parents = $(this).parents(".object");
-            object = $(parents).data('object');
-            bootbox.confirm("Are you sure want to delete ill?", function(result) {
-                if (result) {
-                    //bootbox.alert("You are sure!");
-                    go_loader();
-                    $.ajax({
-                        url:url,
-                        data:object,
-                        type:"POST",
-                        dataType:'json'
-                    }).done(function(data) {
-                        if (data.result == 1) {
-                            // call notification
-                            notify('Done!', 'Delete user successully.', 'gritter-success');
-                            $(parents).fadeOut(2000, function() {
-                                this.remove()
-                            });
-                            $('.loader').fadeOut();
-                        }
-                        else if (data.result == 0) {
-                            // call notification
-                            notify('Fail!', 'Could not delete ill group, please try again.', 'gritter-error');
-                            back_loader();
-                            //bootbox.alert('Could not delete user');
-                        }
-                        else if (data.result == 2) {
-                            notify('Fail!', data.result + ': System not allow to delete ill group, please contact to system administrator', 'gritter-error');
-                            back_loader();
-                            //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
-                        }
-                        else {
-                            notify('Fail!', data.result + ': Could not delete ill group, please try again', 'gritter-error');
-                            back_loader();
-                            //bootbox.alert(data.result + ':Could not delete user, please try again');
-                        }
-                    });
-                }
-
-            });
-            return false;
-        });
+//        $(".delete").on('click', function() {
+//            var url = this.href;
+//            parents = $(this).parents(".object");
+//            object = $(parents).data('object');
+//            bootbox.confirm("Are you sure want to delete ill?", function(result) {
+//                if (result) {
+//                    //bootbox.alert("You are sure!");
+//                    go_loader();
+//                    $.ajax({
+//                        url:url,
+//                        data:object,
+//                        type:"POST",
+//                        dataType:'json'
+//                    }).done(function(data) {
+//                        if (data.result == 1) {
+//                            // call notification
+//                            notify('Done!', 'Delete user successully.', 'gritter-success');
+//                            $(parents).fadeOut(2000, function() {
+//                                this.remove()
+//                            });
+//                            $('.loader').fadeOut();
+//                        }
+//                        else if (data.result == 0) {
+//                            // call notification
+//                            notify('Fail!', 'Could not delete ill group, please try again.', 'gritter-error');
+//                            back_loader();
+//                            //bootbox.alert('Could not delete user');
+//                        }
+//                        else if (data.result == 2) {
+//                            notify('Fail!', data.result + ': System not allow to delete ill group, please contact to system administrator', 'gritter-error');
+//                            back_loader();
+//                            //bootbox.alert(data.result + ':System not allow to delete user, please contact to system administrator');
+//                        }
+//                        else {
+//                            notify('Fail!', data.result + ': Could not delete ill group, please try again', 'gritter-error');
+//                            back_loader();
+//                            //bootbox.alert(data.result + ':Could not delete user, please try again');
+//                        }
+//                    });
+//                }
+//
+//            });
+//            return false;
+//        });
 
     });
 </script>
