@@ -198,14 +198,14 @@
         </a>
         <ul class="submenu">
             <li <?php echo (segment(1) == 'reports' && segment(2) == 'add') ? 'class="active"' : '' ?>>
-                <a href="<?php echo site_url('reports/add'); ?>">
+                <a href="<?php echo site_url('reports/income'); ?>">
                     <i class="icon-double-angle-right"></i>
                     របាយ​ការណ៍​ប្រាក់​ចំណូល
                 </a>
             </li>
             
             <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>> 
-                <a href="<?php echo site_url('reports/lists'); ?>">
+                <a href="<?php echo site_url('reports/test'); ?>">
                     <i class="icon-double-angle-right"></i>
                     របាយ​ការណ៍​តេស្ថ
                 </a>
