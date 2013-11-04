@@ -139,6 +139,7 @@ define('PARTIENT_LNAME', 'pat_lastName');
 
 // Global worlds
 define('DROPDOWN_DEFAULT', '-- ជ្រើសរើស --');
+define('REPORT', 'របាយការណ៍');
 define('STATUS', 'status');
 define('ALLOWINVALIDPASSWORD', 10);
 //doctor commission %
