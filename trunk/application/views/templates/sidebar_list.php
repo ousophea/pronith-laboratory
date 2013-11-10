@@ -168,11 +168,12 @@
         </ul>
     </li>
     <li <?php echo (segment(1) == 'doctors_commissions') ? 'class="active"' : '' ?>>
-        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+        <a href="<?php echo site_url('doctors_commissions/lists'); ?>" >
             <i class="icon-money"></i>
             <span>កំរៃ​​ជើង​សារ</span>
             <b class="arrow icon-angle-down"></b>
         </a>
+<!--        
         <ul class="submenu">
             <li <?php echo (segment(1) == 'doctors_commissions' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
                 <a class="" href="<?php echo site_url('doctors_commissions/lists'); ?>">
@@ -186,7 +187,7 @@
                     ​កំរៃ​ជើងសារ បានបង់
                 </a>
             </li>
-        </ul>
+        </ul>-->
     </li>
     
     <!--Report menu-->
