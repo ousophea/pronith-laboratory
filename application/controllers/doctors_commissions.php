@@ -22,10 +22,21 @@ class doctors_commissions extends CI_Controller {
 
     function lists() {
         $this->data['title'] = 'DOCTORS COMMISSIONS';
-        $this->data['data'] = $this->m_doctors_comm->lists(segment(3));
+        $this->data['data'] = $this->m_doctors_comm->lists(2);
+//        echo $this->data['data'];exit();
 //        $this->load->view('doctors_commissions/lists', $this->data);
         $this->load->view(TEMPLATE, $this->data);
 //      echo $this->m_doctors_comm->lists();
+    }
+    
+    function view_doctor_comm(){
+        $this->data['data'] = $this->m_doctors_comm->lists($this->input->post('comm_status'));
+//        echo $this->data['data'];exit();
+        $this->load->view('doctors_commissions/list', $this->data);
+        
+//        echo "Hello view doctor comm";
+//        echo  $this->input->post('comm_status');
+        
     }
 
     function invioce() {

@@ -13,19 +13,23 @@
 class m_doctors_comm extends CI_Model {
 
     //put your code here
-    function lists($paid = NULL) {
+    function lists($doc_com_status = NULL) {
 //        $this->db->from(DOCTORCOMMISSIONS);
 //        $this->db->join(PARTIENTSTEST,PARTIENTSTEST_ID.'='.DOCCOMM_PAT_TES_ID);
         $this->db->select(DOCTOR . ".*");
         $this->db->select(DOCTORCOMMISSIONS . ".*");
         $this->db->join(DOCTOR, DOC_ID . '=' . DOCCOMM_DOC_ID);
         $this->db->select_sum(DOCCOMM_AMMOUNT);
-        $this->db->group_by(DOCCOMM_DOC_ID);
-        if ($paid == NULL) {
-            $this->db->where(DOCCOMM_GETPAID, 0);
-        } else {
-             $this->db->where(DOCCOMM_GETPAID, 1);
+        if ($doc_com_status < 0) {
+            $this->db->group_by(array(DOCCOMM_GETPAID,DOCCOMM_DOC_ID));
+//            $this->db->where(DOCCOMM_GETPAID, $doc_com_status);
+        } 
+        else { 
+            $this->db->group_by(DOCCOMM_DOC_ID);
+            $this->db->where(DOCCOMM_GETPAID, $doc_com_status);
         }
+        
+         
         return $this->db->get(DOCTORCOMMISSIONS);
 //        $this->db->get(DOCTORCOMMISSIONS);
 //       return $this->db->last_query();
