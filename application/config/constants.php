@@ -125,6 +125,25 @@ define('DOC_ID', 'doc_id');
 define("DOC_FNAME", "doc_firstName");
 define("DOC_LNAME", "doc_lastName");
 define("DOC_SEX", "doc_sex");
+define("DOC_HOSPITALID", "doc_hos_id");
+define("DOC_REFERENCE", "doc_reference");
+define("DOC_EMAIL", "doc_email");
+define("DOC_POSITION", "doc_position");
+define("DOC_COMMISSION", "doc_commission");
+define("DOC_DATECREATED", "doc_dateCreated");
+define("DOC_DATEMODIFIED", "doc_dateModified");
+define("DOC_STATUS", "doc_status");
+
+define('DOCTORPHONE', TBL_PREFEX.'doctors_phones');
+define('DOCPHONEID', 'doc_pho_id');
+define('DOCPHONEDOCID', 'doc_pho_doc_id');
+define('DOCPHONENUMBER', 'doc_pho_number');
+
+define('HOSPITALS', TBL_PREFEX.'hospitals');
+define('HOSID', 'hos_id');
+define('HOSNAME', 'hos_name');
+define('HOSADDRESS', 'hos_address');
+define('HOSSTATUS', 'hos_status');
 
 define('PARTIENTSTEST', TBL_PREFEX.'patients_tests');
 define('PARTIENTSTEST_ID', 'pat_tes_id');
