@@ -212,7 +212,7 @@
                 </a>
             </li>
             <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>> 
-                <a href="<?php echo site_url('reports/partient'); ?>">
+                <a href="<?php echo site_url('reports/patient'); ?>">
                     <i class="icon-double-angle-right"></i>
                     របាយ​ការណ៍​អ្នកជម្ងឺ
                 </a>

@@ -25,7 +25,11 @@ class reports extends CI_Controller {
         $this->load->view(TEMPLATE, $this->data);
     }
 
-    function partient() {
+    function patient() {
+        $this->data['title'] = REPORT . 'អ្នកជម្ងឺ';
+        allows(array('administrator'));
+        $this->data['data'] = $this->m_reports->findPatients();
+        $this->data['doctors'] = $this->m_reports->findDoctors();
         $this->load->view(TEMPLATE, $this->data);
     }
 
