@@ -32,6 +32,7 @@
 </div>
 <div class="row-fluid">
     <div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
+        
         <table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
             <thead>
                 <tr role="row">
@@ -101,6 +102,7 @@
 
             </tbody>
         </table>
+        
     </div>
 </div>
 <script src="<?php echo site_url(JS.'jquery.dataTables.min.js'); ?>"></script>
