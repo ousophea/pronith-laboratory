@@ -18,13 +18,12 @@ foreach ($reference->result_array() as $value) {
     <div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid">
         <div>
             <form method="POST" action="<?php echo base_url(); ?>reports/doctor">
-                <label>
-                    Date from: <input type="text" name="start" />
+                <label for="date" >ចណ្លោះថ្ងៃទី: <input type="text" name="date" value="<?php echo set_value('date'); ?>" class="date-range-picker" id="date" />
+                <span class="input-group-addon">
+                    <i class="icon-calendar bigger-110"></i>
+                </span>
                 </label>
-                <label>
-                    To: <input type="text" name="end" />
-                </label>
-                <input type="submit" value="Filter" />
+                <input type="submit" value="Filter" class="btn btn-primary"/>
             </form>
         </div>
         <table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
@@ -36,15 +35,15 @@ foreach ($reference->result_array() as $value) {
                             <span class="lbl"></span>
                         </label>
                     </th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Sex</th>
-                    <th>Phone</th>
-                    <th >Email</th>
-                    <th>Position</th>
-                    <th>Working</th>
-                    <th>Doctor Reference</th>
-                    <th>Status</th>
+                    <th>នាម</th>
+                    <th>គោត្តនាម</th>
+                    <th>ភេទ</th>
+                    <th>ទូរសព្ឋ</th>
+                    <th >អ៊ីម៉ែល</th>
+                    <th>ឋានៈ</th>
+                    <th>ធ្វើការនៅ</th>
+                    <th>ណែ​នាំ​ពី​វេជ្ជ​បណ្ឌិត</th>
+                    <!--<th>Status</th>-->
                 </tr>
             </thead>
             <tbody role="alert" aria-live="polite" aria-relevant="all">
@@ -72,7 +71,7 @@ foreach ($reference->result_array() as $value) {
                             <td class=" "><?php echo $row['doc_position']; ?></td>
                             <td class=" "><?php echo $row['hos_name']; ?></td>
                             <td class=" "><?php echo $doctor_reference[DOC_ID]; ?></td>
-                            <td class=" "><input data-user="<?php echo json_encode(array('data' => $row)); ?>" name="<?php echo 'status'; ?>" <?php echo ($row['doc_status']) ? 'checked' : ''; ?> type="checkbox" id="<?php echo 'status'; ?>" placeholder="Status" class="ace ace-switch ace-switch-7" /><span class="lbl"></span></td>
+                            <!--<td class=" "><input data-user="<?php echo json_encode(array('data' => $row)); ?>" name="<?php echo 'status'; ?>" <?php echo ($row['doc_status']) ? 'checked' : ''; ?> type="checkbox" id="<?php echo 'status'; ?>" placeholder="Status" class="ace ace-switch ace-switch-7" /><span class="lbl"></span></td>-->
                         </tr>
 
                         <?php
@@ -86,3 +85,16 @@ foreach ($reference->result_array() as $value) {
     </div>
 </div>
 <script src="<?php echo base_url() . JS; ?>data.table.js"></script>
+<script src="<?php echo base_url() . JS; ?>daterangepicker.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('input[name=date], .icon-calendar').daterangepicker({
+            format: 'YYYY-MM-DD',
+            separator: ' to ',
+            timePicker: true,
+            showDropdowns: true,
+            showWeekNumbers: true
+        });
+
+    });
+</script>

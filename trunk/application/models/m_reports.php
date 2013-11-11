@@ -16,9 +16,10 @@ class m_reports extends CI_Model {
 
     function findDoctors() {
 
-        if ($this->input->post('start')) {
-            $start = $this->input->post('start');
-            $end = $this->input->post('end');
+        if ($this->input->post('date')!='') {
+            $date = explode(' to ', $this->input->post('date'));
+            $start = $date[0];
+            $end = $date[1];
             $this->db->where(DOC_DATECREATED.' >=', $start);
             $this->db->where(DOC_DATECREATED.' <=', $end);
         }
@@ -31,14 +32,21 @@ class m_reports extends CI_Model {
     function findPatients() {
 
         $this->db->where('pat_status', 1);
-        if ($this->input->post('start')!='' && $this->input->post('end')!='' ) {
-            $start = $this->input->post('start');
-            $end = $this->input->post('end');
+         if ($this->input->post('date')!='') {
+            $date = explode(' to ', $this->input->post('date'));
+            $start = $date[0];
+            $end = $date[1];
             $this->db->where('pat_dateCreated >=', $start);
             $this->db->where('pat_dateCreated <=', $end);
         }
         if ($this->input->post('pat_doc_id')!='' ) {
             $this->db->where('pat_doc_id', $this->input->post('pat_doc_id'));
+        }
+        if ($this->input->post(ILL_ID)!='' ) {
+            $this->db->where(ILLS.'.'.ILL_ID, $this->input->post(ILL_ID));
+            $this->db->join('tbl_patients_tests','pat_id=pat_tes_pat_id');
+            $this->db->join('tbl_patients_tests_has_tbl_ills','tbl_patients_tests.pat_tes_id=tbl_patients_tests_has_tbl_ills.pat_tes_id');
+            $this->db->join(ILLS,ILLS.'.'.ILL_ID.'=tbl_patients_tests_has_tbl_ills.ill_id');
         }
         
         
@@ -48,7 +56,6 @@ class m_reports extends CI_Model {
         $this->db->join(DOCTOR,'pat_doc_id=doc_id','left');
         return $this->db->get();
     }
-
 }
 
 ?>
