@@ -220,7 +220,7 @@
             <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>> 
                 <a href="<?php echo site_url('reports/doctor'); ?>">
                     <i class="icon-double-angle-right"></i>
-                    របាយ​ការណ៍​គ្រូពេទ្យ
+                    របាយ​ការណ៍​វេជ្ជ​បណ្ឌិត
                 </a>
             </li>
         </ul>

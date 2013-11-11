@@ -17,7 +17,7 @@ class reports extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model(array('m_reports'));
+        $this->load->model(array('m_reports','m_ill'));
     }
 
     function index() {
@@ -30,6 +30,7 @@ class reports extends CI_Controller {
         allows(array('administrator'));
         $this->data['data'] = $this->m_reports->findPatients();
         $this->data['doctors'] = $this->m_reports->findDoctors();
+        $this->data['ills'] = $this->m_ill->findIllsByStatus();
         $this->load->view(TEMPLATE, $this->data);
     }
 

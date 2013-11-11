@@ -99,6 +99,11 @@ class m_ill extends CI_Model{
             return 2;
         }
     }
+    
+    function findIllsByStatus($status=1){
+        $this->db->where(ILL_STATUS,$status);
+        return $this->db->get(ILLS);
+    }
 }
 
 ?>
