@@ -218,6 +218,9 @@ class Tests extends CI_Controller {
 			$this->data['title'] = 'បញ្ចូល​លទ្ធផល តេស្ថ​អ្នក​ជំងឺ';
 			$this->data['pat_tes_id'] = $id;
 			$this->data['items_tests_data'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_inputs',array('pat_tes_id'=>$id));
+			$this->data['items_tests_data_ills'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_inputs_ills',array('pat_tes_id'=>$id));
+			$this->data['items_tests_data_ills_items'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_inputs_ills_items',array('pat_tes_id'=>$id));
+			$this->data['items_tests_data_ills_items_subs'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_inputs_ills_items_subs',array('pat_tes_id'=>$id));
 			$this->data['patients_tests_data'] = $this->m_global->select_where(TBL_PREFEX.'patients_tests',array('pat_tes_id'=>$id));
         	$this->load->view(TEMPLATE,  $this->data);
 		}else{
@@ -230,22 +233,46 @@ class Tests extends CI_Controller {
 		allows(array('administrator'));
 		if($_POST){
 			$patient_test_id = $this->input->post('txt_patTesId');
-			$arr_ills_items = $this->input->post('txt_illItemId');
-			$arr_ills_items_values = $this->input->post('txt_illItemResult');
+			$arr_ills_items = ($this->input->post('txt_illItemId'))?$this->input->post('txt_illItemId'):NULL;
+			$arr_ills_items_values = ($this->input->post('txt_illItemResult'))?$this->input->post('txt_illItemResult'):NULL;
+			$arr_ills = ($this->input->post('txt_illId'))?$this->input->post('txt_illId'):NULL;
+			$arr_ills_values = ($this->input->post('txt_illResult'))?$this->input->post('txt_illResult'):NULL;
+			/*
 			var_dump($patient_test_id);
 			var_dump($arr_ills_items);
 			var_dump($arr_ills_items_values);
-			$arr_fiels = array('pat_tes_res_pat_tes_id','pat_tes_res_ill_ite_id','pat_tes_res_value');
-			$arr_data = array();
-			for($i = 0; $i < count($arr_ills_items); $i++){
-				array_push($arr_data,array($patient_test_id,$arr_ills_items[$i],$arr_ills_items_values[$i]));
+			var_dump($arr_ills);
+			var_dump($arr_ills_values);
+			exit;
+			 * 
+			 */
+			if($arr_ills_items != NULL & count($arr_ills_items) > 0){
+				$arr_ills_items_fiedls = array('pat_tes_res_pat_tes_id','pat_tes_res_ill_ite_id','pat_tes_res_value');
+				$arr_ills_items_data = array();
+				for($i = 0; $i < count($arr_ills_items); $i++){
+					array_push($arr_ills_items_data,array($patient_test_id,$arr_ills_items[$i],$arr_ills_items_values[$i]));
+				}
+				if($this->m_global->insert_multi(TBL_PREFEX.'patients_tests_results',$arr_ills_items_fiedls,$arr_ills_items_data)){
+					$this->m_global->update(TBL_PREFEX.'patients_tests',array('pat_tes_isResult'=>1),array('pat_tes_id'=>$patient_test_id));
+					$this->session->set_flashdata('msg_success','លទ្ធផល​តេស្ថ ត្រូវ​បាន​បញ្ចូល​ ដោយ​ជោគ​ជ័យ');
+				}else{
+					$this->session->set_flashdata('msg_success','បរា​ជ័យ ក្នុង​ការ​បញ្ចូលលទ្ធផល​តេស្ថ។ សូម​ព្យាយាម​ម្តង​ទៀត');
+				}
 			}
-			if($this->m_global->insert_multi(TBL_PREFEX.'patients_tests_results',$arr_fiels,$arr_data)){
-				$this->m_global->update(TBL_PREFEX.'patients_tests',array('pat_tes_isResult'=>1),array('pat_tes_id'=>$patient_test_id));
-				$this->session->set_flashdata('msg_success','លទ្ធផល​តេស្ថ ត្រូវ​បាន​បញ្ចូល​ ដោយ​ជោគ​ជ័យ');
-			}else{
-				$this->session->set_flashdata('msg_success','បរា​ជ័យ ក្នុង​ការ​បញ្ចូលលទ្ធផល​តេស្ថ។ សូម​ព្យាយាម​ម្តង​ទៀត');
+			if($arr_ills != NULL & count($arr_ills) > 0){
+				$arr_ills_fields = array('pat_tes_res_pat_tes_id','pat_tes_res_ill_id','pat_tes_res_value');
+				$arr_ills_data = array();
+				for($i = 0; $i < count($arr_ills); $i++){
+					array_push($arr_ills_data,array($patient_test_id,$arr_ills[$i],$arr_ills_values[$i]));
+				}
+				if($this->m_global->insert_multi(TBL_PREFEX.'patients_tests_results',$arr_ills_fields,$arr_ills_data)){
+					$this->m_global->update(TBL_PREFEX.'patients_tests',array('pat_tes_isResult'=>1),array('pat_tes_id'=>$patient_test_id));
+					$this->session->set_flashdata('msg_success','លទ្ធផល​តេស្ថ ត្រូវ​បាន​បញ្ចូល​ ដោយ​ជោគ​ជ័យ');
+				}else{
+					$this->session->set_flashdata('msg_success','បរា​ជ័យ ក្នុង​ការ​បញ្ចូលលទ្ធផល​តេស្ថ។ សូម​ព្យាយាម​ម្តង​ទៀត');
+				}
 			}
+				
 		}else{
 			$this->session->set_flashdata('msg_error','អ្នក​មិន​អាច ចូល​មក​កាន់​ទី​នេះ​ ដោយ​មធ្យោបាយ​បែប​នេះ​បាន​ទេ');
 		}
@@ -258,7 +285,10 @@ class Tests extends CI_Controller {
 		if($id!='' && is_numeric($id) && $check){
 			$this->data['title'] = 'ព្រីន​លទ្ធផល​តេស្ថ​ជំងឺ';
 			$this->data['patients_tests_data'] = $this->m_global->select_join(TBL_PREFEX.'patients_tests',array(TBL_PREFEX.'patients'=>array('pat_tes_pat_id'=>'pat_id')),'inner',array(TBL_PREFEX.'patients_tests.pat_tes_id'=>$id));
-			$this->data['patients_tests_results_data'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_views',array('pat_tes_res_pat_tes_id'=>$id));
+			//$this->data['patients_tests_results_data'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_views',array('pat_tes_res_pat_tes_id'=>$id));
+			$this->data['items_tests_data_ills'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_views_ills',array('pat_tes_id'=>$id));
+			$this->data['items_tests_data_ills_items'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_views_ills_items',array('pat_tes_id'=>$id));
+			$this->data['items_tests_data_ills_items_subs'] = $this->m_global->select_where(VIE_PREFEX.'patients_tests_results_views_ills_items_subs',array('pat_tes_id'=>$id));
 			$this->load->view(TEMPLATE,  $this->data);
 		}else{
 			$this->session->set_flashdata('msg_error','សូម​អភ័យ​ទោស តេស្ថ​ជំងឺ​ដែល​អ្នក​កំពុង​ព្យាយាមព្រីន មិន​មាន​នៅ​ក្នុង​ប្រព័ន្ធ ឬ​មិន​ទាន់​ត្រូវ​បាន​បញ្ចូល​លទ្ធផល។ សូម​​បញ្ចូល​​លទ្ធផល ហើយ​ព្យាយាម​ម្តង​ទៀត');

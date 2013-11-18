@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,7 +63,6 @@
                                         <span class="red">មន្ទីរ​ពិសោធន៍ វេជ្ជសាស្ត្រ</span>
                                         <span class="white">ប្រណីត</span>
                                     </h1>
-                                    <h3 class="red" style="font-size:40pt;">&#9829;&#9829;&#9829;&#9829;&#9829;</h3>
                                 </div>
                             </div>
 

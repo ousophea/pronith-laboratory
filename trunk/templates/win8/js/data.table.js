@@ -10,10 +10,10 @@ jQuery(function($) {
                     '<option value="50">50</option>' +
                     '<option value="-1">បង្ហាញទាំងអស់</option>' +
                     '</select> ជួរ',
-            "sZeroRecords": "គ្មានទិន្នន័យ",
-            "sInfo": "បង្ហាញពីជួរទី _START_ រហូរដល់ជួរទី _END_ នៃជួរសរុប _TOTAL_ ជួរ",
-            "sInfoEmpty": "បង្ហាញ 0 រហូរដល់ 0 នៃជួរសរុប 0 ជួរ",
-            "sInfoFiltered": "(បានស្វែងរកពីជួរសរុប _MAX_ ជួរទាំងអស់)",
+            "sZeroRecords": "គ្មានទិន្ន័យ",
+            "sInfo": "បង្ហាញពីជួរទី _START_ រហូតដល់ជួរទី _END_ នៃជួរសរុប _TOTAL_ ជួរ",
+            "sInfoEmpty": "បង្ហាញ 0 រហូតដល់ 0 នៃជួរសរុប 0 ជួរ",
+            "sInfoFiltered": "(បានស្វែងរកពីជួរសរុប _MAX_ នៃជួរទាំងអស់)",
             "sSearch": "ស្វែងរក:"
         }
     });

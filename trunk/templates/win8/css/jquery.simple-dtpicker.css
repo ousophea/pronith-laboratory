@@ -178,11 +178,6 @@
 	color:	#cccccc;
 }
 
-.datepicker > .datepicker_inner_container > .datepicker_calendar > .datepicker_table > tbody > tr > td.day_in_past {
-	cursor: default;
-	color: #cccccc;
-}
-
 .datepicker > .datepicker_inner_container > .datepicker_calendar > .datepicker_table > tbody > tr > td.active {
 	color: #ffffff;
 	background-color:	#808080;
@@ -285,11 +280,6 @@
 	cursor: pointer;
 }
 
-.datepicker > .datepicker_inner_container > .datepicker_timelist > div.timelist_item.time_in_past {
-	cursor: default;
-	color: #cccccc;
-}
-
 .datepicker > .datepicker_inner_container > .datepicker_timelist > div.timelist_item.active {
 	color: #ffffff;
 	background-color:	#808080;
@@ -299,3 +289,4 @@
 	color: #000000;
 	background-color:	#c8c8c8;
 }
+

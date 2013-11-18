@@ -6,22 +6,12 @@
 	}
 ?>
 <!-- apply for date time picker -->
-<script type="text/javascript" language="JavaScript" src="<?php echo site_url(JS.'jquery.simple-dtpicker.js') ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
-<style type="text/css" media="print">
-	#main-content{
-		margin-left: 0px !important;
-	}
-	.banner_header{
-		height: 100px;
-	}
-</style>
 <div class="page-header position-relative hidden-print">
     <h1>
-        បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាល​ ចេញ​វិក័យប័ត្រ
+        ព្រីន​លទ្ធផល​ នៃ​ការ​ធ្វើ​តេស្ថ
         <small>
             <i class="icon-double-angle-right"></i>
-            	សូម​ព្រីន​វិក័យ​ប័ត្រ មុន​នឹង​បន្ត​កិច្ច​ការ​របស់​អ្នក
+            	សូម​ព្រីនលទ្ធផល មុន​នឹង​បន្ត​កិច្ច​ការ​របស់​អ្នក
         </small>
     </h1>
     <?php
@@ -48,6 +38,14 @@
 	}
 	?>
 </div>
+<style type="text/css" media="print">
+	#main-content{
+		margin-left: 0px !important;
+	}
+	.banner_header{
+		height: 100px;
+	}
+</style>
 <div class="banner_header">&nbsp;</div>
 <div class="row-fluid">
 	<div class="invoice_test">
@@ -64,62 +62,152 @@
             </div>
             <div class="control-group">
           		<h3 style="text-align: center;">TESTS & RESULTATS</h3>
+          		<!--<label for="ill_selected_detail">Test Result of Ills</label>-->
+                <?php
+                if($items_tests_data_ills->num_rows() > 0){
+                ?>
+                <table class="table table-bordered">
+                	<tr>
+                		<th colspan="3" style="text-align: center;">
+                			Result of Ills
+                		</th>
+                	</tr>
+                	<tr>
+                		<th>Name</th>
+                		<th>Result</th>
+                		<th>Standard Dimention</th>
+                	</tr>
+                	<?php
+					$ill_groups = '';
+					foreach ($items_tests_data_ills->result() as $rows){
+						if($rows->groups_name != $ill_groups){
+					?>
+					<tr class="ills_groups">
+						<td colspan="4" class="warning" style="font-weight: bold;"><?php echo $rows->groups_name; ?></td>
+					</tr>
+					<?php
+							$ills_groups = $rows->groups_name;
+						}
+					?>
+					<tr>
+						<td><?php echo $rows->ills_name; ?></td>
+						<td><?php echo ($rows->pat_tes_res_value == '1')?'Positive':'Negative'; ?></td>
+						<td>+/-</td>
+					</tr>
+					<?php
+					}
+					
+					?>
+                </table>
+                <?php
+				}
+				if($items_tests_data_ills_items->num_rows() > 0){
+                ?>
 				<table class="table table-bordered">
+					<tr>
+                		<th colspan="4" style="text-align: center;">
+                			Result of Ill Items
+                		</th>
+                	</tr>
 					<tr class="success">
-						<th class="success">Description</th>
+						<th class="success">Name</th>
 						<th class="success">Result</th>
 						<th class="success">Dimention</th>
-						<th class="success">Valeur Normale - <?php echo strtoupper($patients_tests_data[0]['pat_sex']); ?></th>	
+						<th class="success">Standard<?php echo(($patients_tests_data[0]['pat_sex'] == 'm')?'Man':(($patients_tests_data[0]['pat_sex'] == 'f')?'Woman':'Unknown')); ?></th>	
 					</tr>
 					<?php
 					$ills_groups = '';
 					$ills = '';
-					if($patients_tests_results_data->num_rows() > 0){
-						foreach($patients_tests_results_data->result() as $rows){
-							if($rows->groups_name != $ills_groups){
+					
+					foreach($items_tests_data_ills_items->result() as $rows){
+						if($rows->groups_name != $ills_groups){
 					?>
 					<tr class="ills_groups">
-						<td colspan="4" class="warning"><b><?php echo $rows->groups_name; ?></b></td>
+						<td colspan="4" class="warning" style="font-weight: bold;"><?php echo $rows->groups_name; ?></td>
 					</tr>
 					<?php
-								$ills_groups = $rows->groups_name;
-							}
-							if($rows->ills_name != $ills){
+							$ills_groups = $rows->groups_name;
+						}
+						if($rows->ills_name != $ills){
 					?>
 					<tr class="ills">
-						<td colspan="4" class="warning"><b><i><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></i></b></td>
+						<td colspan="4" class="warning" style="font-style: italic;"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></td>
 					</tr>
 					<?php
-								$ills = $rows->ills_name;
-							}
+							$ills = $rows->ills_name;
+						}
 					?>
 					<tr>
-						<td><?php echo $rows->ill_ite_name; ?></td>
-						<td>
-						<?php
-						$arr_split = ($patients_tests_data[0]['pat_sex']=='m')?$rows->ill_ite_value_male:$rows->ill_ite_value_female;
-						$arr_split = explode('-', $arr_split);
-						//var_dump($arr_split);
-						
-						//if($rows->pat_tes_res_value < $arr_split[0] || $rows->pat_tes_res_value > $arr_split[1]){
-						?>
-							<!--<label for="value">=<span class="red"> <?php echo $rows->pat_tes_res_value; ?></span></label>-->
-						<?php
-						//}else{
-						?>
-							<label for="value">=<span class=""> <?php echo $rows->pat_tes_res_value; ?></span></label>
-						<?php
-						//}
-						?>
-						</td>
-						<td><?php echo $rows->ill_ite_dim_value; ?></td>
+						<td><?php echo $rows->ills_items_name; ?></td>
+						<td><?php echo $rows->pat_tes_res_value; ?></td>
+						<td><?php echo $rows->ill_ite_dimention; ?></td>
 						<td>(<?php echo (($patients_tests_data[0]['pat_sex'] == 'm')?$rows->ill_ite_value_male:(($patients_tests_data[0]['pat_sex'] == 'f')?$rows->ill_ite_value_female:'--')); ?>)</td>
 					</tr>
 					<?php
-						}
 					}
+					
 					?>
 				</table>
+				<?php
+				}
+				if($items_tests_data_ills_items_subs->num_rows() > 0){
+                ?>
+				<table class="table table-bordered">
+					<tr>
+                		<th colspan="4" style="text-align: center;">
+                			Result of Sub Ills Items
+                		</th>
+                	</tr>
+					<tr class="success">
+						<th class="success">Name</th>
+						<th class="success">Result</th>
+						<th class="success">Dimention</th>
+						<th class="success">Standard <?php echo(($patients_tests_data[0]['pat_sex'] == 'm')?'Male':(($patients_tests_data[0]['pat_sex'] == 'f')?'Female':'Unknown')); ?></th>	
+					</tr>
+					<?php
+					$ills_groups = '';
+					$ills = '';
+					$ills_items = '';
+					foreach($items_tests_data_ills_items_subs->result() as $rows){
+						if($rows->groups_name != $ills_groups){
+					?>
+					<tr class="ills_groups">
+						<td colspan="4" class="warning" style="font-weight: bold;"><?php echo $rows->groups_name; ?></td>
+					</tr>
+					<?php
+							$ills_groups = $rows->groups_name;
+						}
+						if($rows->ills_name != $ills){
+					?>
+					<tr class="ills">
+						<td colspan="4" class="warning" style="font-style: italic; font-weight: bold;"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></td>
+					</tr>
+					<?php
+							$ills = $rows->ills_name;
+						}
+						if($rows->ills_items_parents_name != $ills_items){
+					?>
+					<tr class="ills">
+						<td colspan="4" class="warning" style="font-style: italic;"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name.' &gt;&gt; '.$rows->ills_items_parents_name; ?></td>
+					</tr>
+					<?php
+							$ills_items = $rows->ills_items_parents_name;
+						}
+					?>
+					<tr>
+						<td><?php echo $rows->ills_items_name; ?></td>
+						<td><?php echo $rows->pat_tes_res_value; ?></td>
+						<td><?php echo $rows->ill_ite_dimention; ?></td>
+						<td>(<?php echo (($patients_tests_data[0]['pat_sex'] == 'm')?$rows->ill_ite_value_male:(($patients_tests_data[0]['pat_sex'] == 'f')?$rows->ill_ite_value_female:'--')); ?>)</td>
+					</tr>
+					<?php
+					}
+					
+					?>
+				</table>
+				<?php
+				}
+				?>
 				<div style="margin-bottom: 50px;margin-right: 20px;text-align: right;"><b>Signature du technicien</b></div>
             </div>
             <div class="form-actions hidden-print">
