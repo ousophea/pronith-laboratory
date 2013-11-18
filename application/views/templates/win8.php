@@ -45,19 +45,13 @@
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>ace.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>w8-responsive.min.css" />
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>w8-skins.min.css" />
-        
-        
-        
-        
+
         <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>laboratory.css" />
-
-
-
 
         <!--[if lte IE 8]>
           <link rel="stylesheet" href="<?php echo base_url() . CSS; ?>ace-ie.min.css" />
         <![endif]-->
-
+        
         <!--inline styles if any-->
         <script src="<?php echo base_url() . JS; ?>jquery.min.js"></script>
         		

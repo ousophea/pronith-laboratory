@@ -1,6 +1,4 @@
 <!-- apply for date time picker -->
-<script type="text/javascript" language="JavaScript" src="<?php echo site_url(JS.'jquery.simple-dtpicker.js') ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
 <div class="page-header position-relative hidden-print">
     <h1>
         បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាលបញ្ចប់

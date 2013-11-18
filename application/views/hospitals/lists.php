@@ -132,14 +132,6 @@
 </script>
 <script type="text/javascript">
     jQuery(function($) {
-        var oTable1 = $('#sample-table-2').dataTable({
-            "aoColumns": [
-                {"bSortable": false},
-                null, null, null,
-                {"bSortable": false}
-            ]});
-
-
         $('table th input:checkbox').on('click', function() {
             var that = this;
             $(this).closest('table').find('tr > td:first-child input:checkbox')
@@ -167,3 +159,4 @@
         }
     })
 </script>
+<script src="<?php echo base_url() . JS; ?>data.table.js"></script>

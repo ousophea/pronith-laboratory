@@ -54,7 +54,59 @@ if($patients_tests_data->num_rows() > 0){
             </div>
             <div class="control-group">
                 <label for="ill_selected_detail">បំ​ពេញ​លទ្ធផល លំអិត​ខាងក្រោម</label>
+                <?php
+                if($items_tests_data_ills->num_rows() > 0){
+                ?>
+                <table class="table table-bordered">
+                	<tr>
+                		<th colspan="3" style="text-align: center;">
+                			បញ្ចូល​លទ្ធផល​នៃ​ជំ​ងឺ
+                		</th>
+                	</tr>
+                	<tr>
+                		<th>ឈ្មោះ</th>
+                		<th>លទ្ធផល</th>
+                		<th>ខ្នាត</th>
+                	</tr>
+                	<?php
+					$ill_groups = '';
+					foreach ($items_tests_data_ills->result() as $rows){
+						if($rows->groups_name != $ill_groups){
+					?>
+					<tr class="ills_groups">
+						<td colspan="4" class="warning" style="font-weight: bold;"><?php echo $rows->groups_name; ?></td>
+					</tr>
+					<?php
+							$ills_groups = $rows->groups_name;
+						}
+					?>
+					<tr>
+						<td><?php echo $rows->ills_name; ?></td>
+						<td>
+							<input type="hidden" name="txt_illId[]" value="<?php echo $rows->ill_id; ?>" />
+							<select name="txt_illResult[]">
+								<option value="1">Positive</option>
+								<option value="0">Negative</option>
+							</select>
+						</td>
+						<td>+/-</td>
+					</tr>
+					<?php
+					}
+					
+					?>
+                </table>
+                <?php
+				}
+
+				if($items_tests_data_ills_items->num_rows() > 0){
+                ?>
 				<table class="table table-bordered">
+					<tr>
+                		<th colspan="4" style="text-align: center;">
+                			បញ្ចូល​លទ្ធផល​នៃ​ប្រភេទ​ជំ​ងឺ
+                		</th>
+                	</tr>
 					<tr class="success">
 						<th class="success">ឈ្មោះ</th>
 						<th class="success">លទ្ធផល</th>
@@ -64,24 +116,24 @@ if($patients_tests_data->num_rows() > 0){
 					<?php
 					$ills_groups = '';
 					$ills = '';
-					if($items_tests_data->num_rows() > 0){
-						foreach($items_tests_data->result() as $rows){
-							if($rows->groups_name != $ills_groups){
+					
+					foreach($items_tests_data_ills_items->result() as $rows){
+						if($rows->groups_name != $ills_groups){
 					?>
 					<tr class="ills_groups">
-						<td colspan="4" class="warning"><?php echo $rows->groups_name; ?></td>
+						<td colspan="4" class="warning" style="font-weight: bold;"><?php echo $rows->groups_name; ?></td>
 					</tr>
 					<?php
-								$ills_groups = $rows->groups_name;
-							}
-							if($rows->ills_name != $ills){
+							$ills_groups = $rows->groups_name;
+						}
+						if($rows->ills_name != $ills){
 					?>
 					<tr class="ills">
-						<td colspan="4" class="warning"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></td>
+						<td colspan="4" class="warning" style="font-style: italic;"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></td>
 					</tr>
 					<?php
-								$ills = $rows->ills_name;
-							}
+							$ills = $rows->ills_name;
+						}
 					?>
 					<tr>
 						<td><?php echo $rows->ill_ite_name; ?></td>
@@ -89,14 +141,78 @@ if($patients_tests_data->num_rows() > 0){
 							<input type="hidden" name="txt_illItemId[]" value="<?php echo $rows->ill_ite_id; ?>" />
 							<input type="text" required="required" minlength="1" name="txt_illItemResult[]" />
 						</td>
-						<td><?php echo $rows->ill_ite_dim_value; ?></td>
+						<td><?php echo $rows->ill_ite_dimention; ?></td>
 						<td>(<?php echo (($pat_sex == 'm')?$rows->ill_ite_value_male:(($pat_sex == 'f')?$rows->ill_ite_value_female:'--')); ?>)</td>
 					</tr>
 					<?php
-						}
 					}
+					
 					?>
 				</table>
+				<?php
+				}
+
+				if($items_tests_data_ills_items_subs->num_rows() > 0){
+                ?>
+				<table class="table table-bordered">
+					<tr>
+                		<th colspan="4" style="text-align: center;">
+                			បញ្ចូល​លទ្ធផល​នៃ​ប្រភេទ​ជំ​ងឺ ក្នុង​ប្រភេទ​ជំ​ងឺ
+                		</th>
+                	</tr>
+					<tr class="success">
+						<th class="success">ឈ្មោះ</th>
+						<th class="success">លទ្ធផល</th>
+						<th class="success">ខ្នាត</th>
+						<th class="success">តំលៃ​ធម្មតា<?php echo(($pat_sex == 'm')?'បុរស':(($pat_sex == 'f')?'ស្រ្តី':'មិន​ស្គាល់')); ?></th>	
+					</tr>
+					<?php
+					$ills_groups = '';
+					$ills = '';
+					$ills_items = '';
+					foreach($items_tests_data_ills_items_subs->result() as $rows){
+						if($rows->groups_name != $ills_groups){
+					?>
+					<tr class="ills_groups">
+						<td colspan="4" class="warning" style="font-weight: bold;"><?php echo $rows->groups_name; ?></td>
+					</tr>
+					<?php
+							$ills_groups = $rows->groups_name;
+						}
+						if($rows->ills_name != $ills){
+					?>
+					<tr class="ills">
+						<td colspan="4" class="warning" style="font-style: italic; font-weight: bold;"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name; ?></td>
+					</tr>
+					<?php
+							$ills = $rows->ills_name;
+						}
+						if($rows->ill_ite_name_parent != $ills_items){
+					?>
+					<tr class="ills">
+						<td colspan="4" class="warning" style="font-style: italic;"><?php echo $rows->groups_name.' &gt;&gt; '.$rows->ills_name.' &gt;&gt; '.$rows->ill_ite_name_parent; ?></td>
+					</tr>
+					<?php
+							$ills_items = $rows->ill_ite_name_parent;
+						}
+					?>
+					<tr>
+						<td><?php echo $rows->ill_ite_name; ?></td>
+						<td>
+							<input type="hidden" name="txt_illItemId[]" value="<?php echo $rows->ill_ite_id; ?>" />
+							<input type="text" required="required" minlength="1" name="txt_illItemResult[]" />
+						</td>
+						<td><?php echo $rows->ill_ite_dimention; ?></td>
+						<td>(<?php echo (($pat_sex == 'm')?$rows->ill_ite_value_male:(($pat_sex == 'f')?$rows->ill_ite_value_female:'--')); ?>)</td>
+					</tr>
+					<?php
+					}
+					
+					?>
+				</table>
+				<?php
+				}
+				?>
             </div>
             <div class="form-actions">
                 <button id="btn_input_result" class="btn btn-info" type="submit">

@@ -1,6 +1,4 @@
 <!-- apply for date time picker -->
-<script type="text/javascript" language="JavaScript" src="<?php echo site_url(JS.'jquery.simple-dtpicker.js') ?>"></script>
-<link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'jquery.simple-dtpicker.css') ?>" />
 <div class="page-header position-relative">
     <h1>
         បង្កើតតេស្ថ​ថ្មី : ដំ​ណាក់​កាល ទី២
@@ -79,9 +77,6 @@
 						<td align="right">តំលៃ​សរុប</td>
 						<td><b><?php echo number_format($total_price,0); ?>៛</b></td>
 					</tr>
-					<?php
-					
-					?>
 				</table>
             </div>
             <input type="hidden" name="txt_subTotal" value="<?php echo $total_price; ?>" />
@@ -89,9 +84,27 @@
                 <label class="control-label" for="receive_time">ថ្ងៃ​ខែ ត្រឡប់​មក​យក លទ្ធផល</label>
 
                 <div class="controls">
-                    <input type="text" name="txt_dateTimeReceived" />
+                    <!--<input type="text" name="txt_dateTimeReceived" value="<?php echo ($this->session->userdata('txt_dateTimeReceived'))?$this->session->userdata('txt_dateTimeReceived'):''; ?>" />-->
+					<div id="datetimepicker1" class="input-append">
+						<input name="txt_dateTimeReceived" value="<?php echo ($this->session->userdata('txt_dateTimeReceived'))?$this->session->userdata('txt_dateTimeReceived'):''; ?>" data-format="yyyy-MM-dd hh:mm:ss" type="text"></input>
+						<span class="add-on">
+						<i data-time-icon="icon-time" data-date-icon="icon-calendar">
+						</i>
+						</span>
+					</div>
+					<script type="text/javascript" language="JavaScript" src="<?php echo site_url(JS.'bootstrap-datetimepicker.min.js') ?>"></script>
+					<link rel="stylesheet" type="text/css" href="<?php echo site_url(CSS.'bootstrap-datetimepicker.min.css') ?>" />
+                    <script type="text/javascript">
+					  $(function() {
+						  $('#datetimepicker1').datetimepicker({
+						  	language: 'en'
+						  });
+					  });
+					</script>
                     <span class="help-inline"></span>
                 </div>
+                
+                <!--
                 <script type="text/javascript" language="JavaScript">
                 	$(document).ready(function(){
                 		$('*[name=txt_dateTimeReceived]').appendDtpicker({
@@ -107,6 +120,7 @@
                 	});
 						
 				</script>
+				-->
             </div>
             <div class="control-group">
                 <label class="control-label" for="discount">បញ្ចុះតំលៃ</label>
@@ -128,11 +142,11 @@
                 <div class="controls">
                 	<?php
                 	$owe = 0;
-                	if($this->session->userdata('txt_deposit')){
-                		
-                	}
+                	$deposit = ($this->session->userdata('txt_deposit'))?$this->session->userdata('txt_deposit'):0;
+					$discount = ($this->session->userdata('txt_discount'))?$this->session->userdata('txt_discount'):0;
+                	$owe = ($total_price-($total_price*$discount/100)) - $deposit;
                 	?>
-                    <input type="number" readonly="readonly" name="txt_owe" value="<?php echo ($this->session->userdata('txt_owe'))?$this->session->userdata('txt_owe'):$total_price; ?>" />
+                    <input type="number" readonly="readonly" name="txt_owe" value="<?php echo $owe; ?>" />
                     <span class="help-inline">៛</span>
                 </div>
             </div>
