@@ -29,12 +29,7 @@ foreach ($reference->result_array() as $value) {
         <table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
             <thead>
                 <tr role="row">
-                    <th class="center sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 56px;">
-                        <label>
-                            <input type="checkbox" class="ace">
-                            <span class="lbl"></span>
-                        </label>
-                    </th>
+                    <th class="center sorting_disabled">Nº</th>
                     <th>នាម</th>
                     <th>គោត្តនាម</th>
                     <th>ភេទ</th>
@@ -50,19 +45,13 @@ foreach ($reference->result_array() as $value) {
 
                 <?php
                 if ($data->num_rows()) {
+                    $i=1;
                     foreach ($data->result_array() as $row) {
                         //unset($row[USE_PASSWORD]); // remove password
                         ?>
 
                         <tr class="odd">
-                            <td class="center  sorting_1">
-                                <label>
-                                    <input type="checkbox" class="ace">
-                                    <span class="lbl"></span>
-                                </label>
-                                <?php echo form_hidden(USERS . USE_ID, json_encode(array('data' => $row))); ?>
-                            </td>
-
+                            <td class="center"><?php echo $i++; ?></td>
                             <td class=" "><?php echo $row['doc_firstName']; ?></td>
                             <td class=" "><?php echo $row['doc_lastName']; ?></td>
                             <td class=" "><?php echo (strtolower($row['doc_sex']) == 'm') ? 'Male' : 'Female'; ?></td>
