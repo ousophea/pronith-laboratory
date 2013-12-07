@@ -125,16 +125,24 @@
             </div>
             <div class="form-actions hidden-print">
                 &nbsp; &nbsp; &nbsp;
-                <button id="btn_print" class="btn btn-info" type="submit">
+                <button id="btn_print" class="btn btn-info" type="button">
                     <i class="icon-print bigger-110"></i>
                     	ព្រីន​វិក័យ​ប័ត្រ
                 </button>
+                &nbsp;
+                <a class="btn btn-info" href="<?php echo site_url('tests'); ?>">
+				<i class="icon-check bigger-110"></i>
+				បិទ
+				</a>
             </div>
         <?php echo form_close(); ?>
     </div><!--/.span-->
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
+    	$('#btn_print').click(function(){
+    		print();
+    	});
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];

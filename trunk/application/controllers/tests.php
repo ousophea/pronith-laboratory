@@ -237,15 +237,6 @@ class Tests extends CI_Controller {
 			$arr_ills_items_values = ($this->input->post('txt_illItemResult'))?$this->input->post('txt_illItemResult'):NULL;
 			$arr_ills = ($this->input->post('txt_illId'))?$this->input->post('txt_illId'):NULL;
 			$arr_ills_values = ($this->input->post('txt_illResult'))?$this->input->post('txt_illResult'):NULL;
-			/*
-			var_dump($patient_test_id);
-			var_dump($arr_ills_items);
-			var_dump($arr_ills_items_values);
-			var_dump($arr_ills);
-			var_dump($arr_ills_values);
-			exit;
-			 * 
-			 */
 			if($arr_ills_items != NULL & count($arr_ills_items) > 0){
 				$arr_ills_items_fiedls = array('pat_tes_res_pat_tes_id','pat_tes_res_ill_ite_id','pat_tes_res_value');
 				$arr_ills_items_data = array();
