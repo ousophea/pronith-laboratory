@@ -1,3 +1,8 @@
+<?php
+
+echo sha1(PASSWORD_PREFEX."12345");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
