@@ -19,8 +19,8 @@ class m_ill_items extends CI_Model {
         $this->db->join(ILLS, ILI_ILLID . '=' . ILL_ID, 'inner');
         $this->db->join(ILLGROUPS, ILG_ID . '=' . ILL_GROUPID, 'inner');
         $this->db->set(ILI_STATUS, 1);
+        $this->db->order_by(ILI_ID,"DESC");
         return $this->db->get();
-        ;
     }
 
     /**
@@ -150,7 +150,7 @@ class m_ill_items extends CI_Model {
         $this->db->where(ILG_ID, $data[ILG_ID]);
         $this->db->where(ILI_ILLID, $data[ILI_ILLID]);
         $this->db->from(ILLITEMS);
-        $this->db->join(TBL_PREFEX . 'ills_items_dimentions', TBL_PREFEX . 'ills_items' . '.ill_ite_ill_ite_dim_id=' . TBL_PREFEX . 'ills_items_dimentions' . '.ill_ite_dim_id', 'inner');
+        //$this->db->join(TBL_PREFEX . 'ills_items_dimentions', TBL_PREFEX . 'ills_items' . '.ill_ite_ill_ite_dim_id=' . TBL_PREFEX . 'ills_items_dimentions' . '.ill_ite_dim_id', 'inner');
         $this->db->join(ILLS, ILI_ILLID . '=' . ILL_ID, 'inner');
         $this->db->join(ILLGROUPS, ILG_ID . '=' . ILL_GROUPID, 'inner');
         $data = $this->db->get();
