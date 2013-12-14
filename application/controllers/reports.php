@@ -21,6 +21,7 @@ class reports extends CI_Controller {
     }
 
     function index() {
+    	allows(array('administrator'));
         $this->data['title'] = REPORT;
         $this->load->view(TEMPLATE, $this->data);
     }
@@ -35,6 +36,7 @@ class reports extends CI_Controller {
     }
 
     function doctor() {
+    	allows(array('administrator'));
         $this->data['title'] = REPORT . 'វេជ្ជ​បណ្ឌិត';
         allows(array('administrator'));
         $this->data['data'] = $this->m_reports->findDoctors();
@@ -42,15 +44,22 @@ class reports extends CI_Controller {
     }
 
     function test() {
-        $this->data['title'] = REPORT . 'គ្រូពេទ្យ';
+    	allows(array('administrator'));
+        $this->data['title'] = REPORT . 'តេស្ថ';
         $this->load->view(TEMPLATE, $this->data);
     }
 
     function income() {
-        $this->data['title'] = REPORT . 'គ្រូពេទ្យ';
+    	allows(array('administrator'));
+        $this->data['title'] = REPORT . 'ប្រាក់​ចំ​ណូល';
         $this->load->view(TEMPLATE, $this->data);
     }
+	
+	function expend(){
+		allows(array('administrator'));
+		$this->data['title'] = REPORT . 'ប្រាក់​ចំ​ណាយ';
+		$this->data['data'] = $this->m_global->select_all(VIE_PREFEX.'expends');
+        $this->load->view(TEMPLATE,  $this->data);
+	}
 
 }
-
-?>

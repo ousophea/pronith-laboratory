@@ -171,7 +171,6 @@
         <a href="<?php echo site_url('doctors_commissions/lists'); ?>" >
             <i class="icon-money"></i>
             <span>កំរៃ​​ជើង​សារ</span>
-            <b class="arrow icon-angle-down"></b>
         </a>
 <!--        
         <ul class="submenu">
@@ -189,7 +188,28 @@
             </li>
         </ul>-->
     </li>
-    
+    <li <?php echo (segment(1) == 'expends') ? 'class="active"' : '' ?>>
+        <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
+            <i class="icon-money"></i>
+            <span>ការ​ចំ​នាយ​ផ្សេងៗ</span>
+            <b class="arrow icon-angle-down"></b>
+        </a>
+        <ul class="submenu">
+            <li <?php echo (segment(1) == 'expends' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('expends/add'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    បញ្ចូល​ការ​ចំ​ណាយ
+                </a>
+            </li>
+
+            <li <?php echo (segment(1) == 'expends' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
+                <a href="<?php echo site_url('expends/lists'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    បង្ហាញ​​ការ​ចំ​ណាយ
+                </a>
+            </li>
+        </ul>
+    </li>
     <!--Report menu-->
     <li <?php echo (segment(1) == 'reports') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
@@ -198,26 +218,31 @@
             <b class="arrow icon-angle-down"></b>
         </a>
         <ul class="submenu">
-            <li <?php echo (segment(1) == 'reports' && segment(2) == 'add') ? 'class="active"' : '' ?>>
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'income') ? 'class="active"' : '' ?>>
                 <a href="<?php echo site_url('reports/income'); ?>">
                     <i class="icon-double-angle-right"></i>
-                    របាយ​ការណ៍​ប្រាក់​ចំណូល
+                    របាយ​ការណ៍​​ចំណូល
                 </a>
             </li>
-            
-            <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>> 
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'expend') ? 'class="active"' : '' ?>> 
+                <a href="<?php echo site_url('reports/expend'); ?>">
+                    <i class="icon-double-angle-right"></i>
+                    របាយ​ការណ៍​​ចំណាយ
+                </a>
+            </li>
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'test') ? 'class="active"' : '' ?>> 
                 <a href="<?php echo site_url('reports/test'); ?>">
                     <i class="icon-double-angle-right"></i>
                     របាយ​ការណ៍​តេស្ថ
                 </a>
             </li>
-            <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>> 
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'patient') ? 'class="active"' : '' ?>> 
                 <a href="<?php echo site_url('reports/patient'); ?>">
                     <i class="icon-double-angle-right"></i>
                     របាយ​ការណ៍​អ្នកជម្ងឺ
                 </a>
             </li>
-            <li <?php echo (segment(1) == 'reports' && segment(2) == 'lists') ? 'class="active"' : '' ?>> 
+            <li <?php echo (segment(1) == 'reports' && segment(2) == 'doctor') ? 'class="active"' : '' ?>> 
                 <a href="<?php echo site_url('reports/doctor'); ?>">
                     <i class="icon-double-angle-right"></i>
                     របាយ​ការណ៍​វេជ្ជ​បណ្ឌិត
@@ -227,7 +252,7 @@
     </li>
     
     
-    <li>
+    <li <?php echo (segment(1) == 'users') ? 'class="active"' : '' ?>>
         <a href="<?php echo base_url(); ?>" class="dropdown-toggle">
             <i class="icon-group"></i>
             <span>អ្នកប្រើប្រាស់</span>
@@ -243,9 +268,9 @@
                 </a>
             </li>
 
-            <li>
+            <li <?php echo (segment(1) == 'users' && segment(2) == 'lists') ? 'class="active"' : '' ?>>
                 <a class="" href="<?php echo base_url(); ?>users/lists">
-                    <i class="icon-th-list"></i>
+                    <i class="icon-double-angle-right"></i>
                     	បង្ហាញ​អ្នកប្រើប្រាស់
                 </a>
             </li>
