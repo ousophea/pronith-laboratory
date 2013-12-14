@@ -42,11 +42,10 @@
                         </label>
                     </th>
                     <th class="sorting_asc">លរ</th>
+                    <th>ថ្ងៃ​ខែ​បង្កើត</th>
                     <th class="sorting">ឈ្មោះ​​ការ​ចំ​ណាយ</th>
                     <th class="sorting">ចំ​នួន​</th>
                     <th class="sorting_disabled">បាន​បង់​ប្រាក់?</th>
-                    <th>ថ្ងៃ​ខែ​បង្កើត</th>
-                    <th>ថ្ងៃ​ខែ​កែ​ប្រែ</th>
                     <th class="sorting_disabled">ស្ថាន​ភាព</th>
                 </tr>
             </thead>
@@ -73,11 +72,10 @@
                                 <?php echo form_hidden(USERS . USE_ID, json_encode(array('data' => $row))); ?>
                             </td>
 							<td><?php echo $i++; ?></td>
+							<td class=" "><?php echo $row['dateCreated']; ?></td>
                             <td class=" "><?php echo $row['title']; ?></td>
                             <td class=" "><?php echo formatMoney($row['amount'], 2); ?>៛</td>
                             <td class=" "><input name="is_paid" <?php echo ($row['isPaid'])?'checked':''; ?> type="checkbox" placeholder="Is Paid?" class="ace ace-switch ace-switch-7 is_paid" /><span class="lbl"></span></td>
-                            <td class=" "><?php echo $row['dateCreated']; ?></td>
-                            <td class=" "><?php echo $row['dateModified']; ?></td>
                             <td class=" "><input data-user="<?php echo json_encode(array('data' => $row)); ?>" name="<?php echo 'status'; ?>" <?php echo ($row['status'])?'checked':''; ?> type="checkbox" id="<?php echo 'status'; ?>" placeholder="Status" class="ace ace-switch ace-switch-7" /><span class="lbl"></span></td>
                         </tr>
 
@@ -96,6 +94,10 @@
 				<tr>
 					<th style="text-align: right;">សរុប មិន​ទាន់​បាន​បង់</th>
 					<th><?php echo formatMoney($total_not_paid, 2); ?>៛</th>
+				</tr>
+				<tr>
+					<th style="text-align: right;">សរុប</th>
+					<th><?php echo formatMoney($total_paid + $total_not_paid, 2); ?>៛</th>
 				</tr>
         </table>
     </div>
