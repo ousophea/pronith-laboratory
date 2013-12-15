@@ -59,7 +59,7 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
-            <div class="control-group">
+            <div class="control-group ill_id" style="display:none;">
                 <label class="control-label" for="<?php echo ILI_ILLID; ?>">ជំងឺ</label>
 
                 <div class="controls">
@@ -67,8 +67,31 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
+            <!--==================-->
+            <div class="control-group option"  style='display: none;'>
+                <label class="control-label" for="option">ជម្រើស</label>
+
+                <div class="controls">
+                    <label>
+                        <input name="option" id="option" type="checkbox" class="ace">
+                        <span class="lbl"> សូមចុចត្រង់នេះប្រសិនបើធាតុជម្ងឺនេះស្ថិតក្នុងធាតុជម្ងឺផ្សេងទៀត</span>
+                    </label>
+                </div>
+            </div>
+
             
-            
+            <div class="control-group parentid" style='display: none;'>
+                <label class="control-label" for="<?php echo ILI_PARENTID; ?>">ស្ថិតក្នុងធាតុជំងឺ</label>
+                <?php
+                $parents = array("" => null);
+                ?>
+                <div class="controls">
+                    <?php echo form_dropdown(ILI_PARENTID, $parents, '') ?>
+                    <span class="help-inline"></span>
+                </div>
+            </div>
+
+            <!--==========================-->
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_DESCRIPTION; ?>">បរិយាយ</label>
 
@@ -113,13 +136,65 @@
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
-        // on change dropdown ill group
-        $('[name="<?php echo ILG_ID; ?>"]').on('change',function(){
-            var val = $(this).val();
-            if(val!=''){
+
+        
+        // change ill
+        $('[name="<?php echo ILI_ILLID; ?>"]').on('change', function() {
+            if ($(this).val() != "") {
+                $('[name="option"]').attr("checked", false);
+                $(".option").slideDown();
+                $(".parentid").slideUp();
+            }
+            else {
+                $(".option").slideUp();
+            }
+        });
+        // option
+        $('[name="option"]').on('change', function() {
+            if ($(this).prop("checked")) {
+                var object = {data: $('form[name="edit"]').toJSON()};
+                // load parents
+                
                 $.ajax({
                     type: 'POST',
-                    data: {<?php echo ILG_ID; ?>:val},
+                    data: object,
+                    dataType: 'json',
+                    url: uri[0] + 'ill_items/get_ill_item_parents'
+                }).done(function(data) {
+                    $('[name="<?php echo ILI_PARENTID; ?>"] option').remove();
+                    var html;
+                    console.log(data)
+                    $.each(data.result, function(val, text) {
+                        html = $('<option></option>').val(val).html(text);
+                        
+                        if (val == '')
+                            html.attr('selected', 'selected');
+                        $('[name="<?php echo ILI_PARENTID; ?>"]').append(html);
+                    });
+                    $('.parentid').slideDown();
+                    $('[name="<?php echo ILI_PARENTID; ?>"]').attr("required", "required");
+                });
+
+
+            }
+            else {
+                $('[name="<?php echo ILI_PARENTID; ?>"]').removeAttr("required");
+                $('.parentid').slideUp();
+            }
+        });
+
+        // on change dropdown ill group
+        $('[name="<?php echo ILG_ID; ?>"]').on('change', function() {
+            $(".option").slideUp();
+            $('.parentid').hide();
+            $('[name="option"]').attr("checked", false);
+
+            var val = $(this).val();
+            if (val != '') {
+                $(".ill_id").slideDown();
+                $.ajax({
+                    type: 'POST',
+                    data: {<?php echo ILG_ID; ?>: val},
                     dataType: 'json',
                     url: uri[0] + 'ill_items/get_ills_by_group_id'
                 }).done(function(data) {
@@ -127,13 +202,19 @@
                     var html;
                     $.each(data.result, function(val, text) {
                         html = $('<option></option>').val(val).html(text);
-                        if(val=='')
+                        if (val == '')
                             html.attr('selected', 'selected');
-                        $('[name="<?php echo ILI_ILLID; ?>"]').append(html);  
+                        $('[name="<?php echo ILI_ILLID; ?>"]').append(html);
                     });
                 });
             }
+            else {
+                $(".ill_id").slideUp();
+            }
         });
+        //----------------------------------
+
+
         // on submit form
         $('form[name="edit"]').find("input,select,textarea").not('[type="submit"]').jqBootstrapValidation(
                 {

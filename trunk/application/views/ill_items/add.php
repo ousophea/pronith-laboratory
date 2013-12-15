@@ -85,7 +85,7 @@
             <div class="control-group parentid" style='display: none;'>
                 <label class="control-label" for="<?php echo ILI_PARENTID; ?>">ស្ថិតក្នុងធាតុជំងឺ</label>
                 <?php
-                $parents = array("" => 'dddddd');
+                $parents = array("" => null);
                 ?>
                 <div class="controls">
                     <?php echo form_dropdown(ILI_PARENTID, $parents, '') ?>
@@ -206,7 +206,7 @@
                 $(".ill_id").slideUp();
             }
         });
-
+        //----------------------------------
         $('form[name="add"]').find("input,select,textarea").not('[type="submit"]').jqBootstrapValidation(
                 {
                     submitSuccess: function($form, event) {

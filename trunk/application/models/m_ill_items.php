@@ -19,7 +19,7 @@ class m_ill_items extends CI_Model {
         $this->db->join(ILLS, ILI_ILLID . '=' . ILL_ID, 'inner');
         $this->db->join(ILLGROUPS, ILG_ID . '=' . ILL_GROUPID, 'inner');
         $this->db->set(ILI_STATUS, 1);
-        $this->db->order_by(ILI_ID,"DESC");
+        $this->db->order_by(ILI_ID, "DESC");
         return $this->db->get();
     }
 
@@ -70,7 +70,7 @@ class m_ill_items extends CI_Model {
                 $data[ILI_STATUS] = 1;
             unset($data[ILG_ID]);
             unset($data['option']);
-			$data['ill_ite_dimention'] = substr($data['ill_ite_dimention'], 0,-4);
+            $data['ill_ite_dimention'] = substr($data['ill_ite_dimention'], 0, -4);
             if ($this->db->insert(ILLITEMS, $data)) {
                 return 1;
             }
@@ -105,7 +105,8 @@ class m_ill_items extends CI_Model {
             $this->db->where(ILI_ID, $data[ILI_ID]);
             unset($data[ILI_ID]);
             unset($data[ILG_ID]);
-			$data['ill_ite_dimention'] = substr($data['ill_ite_dimention'], 0,-4);
+            unset($data['option']);
+            $data['ill_ite_dimention'] = substr($data['ill_ite_dimention'], 0, -4);
             if ($this->db->update(ILLITEMS, $data))
                 return 1;
             else
