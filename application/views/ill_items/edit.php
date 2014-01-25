@@ -7,9 +7,9 @@
         </small>
     </h1>
 </div>
-<script type="text/javascript" src="<?php echo site_url(JS.'nicEdit.js'); ?>"></script>
+<script type="text/javascript" src="<?php echo site_url(JS . 'nicEdit.js'); ?>"></script>
 <script type="text/javascript">
-	new nicEditor({iconsPath : '<?php echo site_url(IMAGES."nicEditorIcons.gif");?>',buttonList : ['subscript','superscript']}).panelInstance('ite_dimention');
+    new nicEditor({iconsPath: '<?php echo site_url(IMAGES . "nicEditorIcons.gif"); ?>', buttonList: ['subscript', 'superscript']}).panelInstance('ite_dimention');
 </script>
 <div class="row-fluid">
     <div class="span12">
@@ -41,7 +41,7 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILI_VALUEFEMALE; ?>">តម្លៃធម្មតាស្រី</label>
 
@@ -50,16 +50,16 @@
                     <span class="help-inline"></span>
                 </div>
             </div>
-            
+
             <div class="control-group">
                 <label class="control-label" for="<?php echo ILG_ID; ?>">ប្រភេទ</label>
 
                 <div class="controls">
-                    <?php echo form_dropdown(ILG_ID, $ill_group,$data[ILI_ILLID], ' required="required"') ?>
+                    <?php echo form_dropdown(ILG_ID, $ill_group, $data[ILL_GROUPID], ' required="required"') ?>
                     <span class="help-inline"></span>
                 </div>
             </div>
-            <div class="control-group ill_id" style="display:none;">
+            <div class="control-group ill_id" style="display:block;">
                 <label class="control-label" for="<?php echo ILI_ILLID; ?>">ជំងឺ</label>
 
                 <div class="controls">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             <!--==================-->
-            <div class="control-group option"  style='display: none;'>
+            <div class="control-group option"  style='display: block;'>
                 <label class="control-label" for="option">ជម្រើស</label>
 
                 <div class="controls">
@@ -79,14 +79,11 @@
                 </div>
             </div>
 
-            
-            <div class="control-group parentid" style='display: none;'>
+
+            <div class="control-group parentid" style='display: block;'>
                 <label class="control-label" for="<?php echo ILI_PARENTID; ?>">ស្ថិតក្នុងធាតុជំងឺ</label>
-                <?php
-                $parents = array("" => null);
-                ?>
-                <div class="controls">
-                    <?php echo form_dropdown(ILI_PARENTID, $parents, '') ?>
+                <div class="controls" id="ill_item_parentsid" data-ill_item_parentsid="<?php echo $data[ILI_PARENTID]; ?>">
+                    <?php echo form_dropdown(ILI_PARENTID) ?>
                     <span class="help-inline"></span>
                 </div>
             </div>
@@ -105,17 +102,17 @@
                 <label class="control-label" for="<?php echo ILI_STATUS; ?>">ស្ថានភាព</label>
 
                 <div class="controls">
-                    <input name="<?php echo ILI_STATUS; ?>"  <?php echo ($data[ILG_STATUS])?'checked':''; ?>  type="checkbox" id="<?php echo ILI_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
+                    <input name="<?php echo ILI_STATUS; ?>"  <?php echo ($data[ILG_STATUS]) ? 'checked' : ''; ?>  type="checkbox" id="<?php echo ILI_STATUS; ?>" placeholder="Last name" class="ace ace-switch ace-switch-7">
                     <span class="lbl"></span>
                     <span class="help-inline"></span>
                 </div>
             </div>
             <div class="form-actions">
-                <a class="btn btn-info" href="<?php echo base_url().'ill_items/lists'; ?>">
+                <a class="btn btn-info" href="<?php echo base_url() . 'ill_items/lists'; ?>">
                     <i class="icon-backward bigger-110"></i>
                     ត្រឡប់ក្រោយ
                 </a>
-                 &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
                 <button class="btn btn-info" type="submit">
                     <i class="icon-ok bigger-110"></i>
                     កែប្រែ
@@ -133,17 +130,51 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function() {
+        // must be first line
         var uri = [$('[name="base_url"]').val(),
             $('[name="segment1"]').val(),
             $('[name="segment2"]').val()];
 
-        
+        /// get parants of ill item on page load
+        var object = {data: $('form[name="edit"]').toJSON()};
+        // load parents
+        $.ajax({
+            type: 'POST',
+            data: object,
+            dataType: 'json',
+            url: uri[0] + 'ill_items/get_ill_item_parents'
+        }).done(function(data) {
+            $('[name="<?php echo ILI_PARENTID; ?>"] option').remove();
+            var html;
+            var ill_item_parentid = $("#ill_item_parentsid").data('ill_item_parentsid');
+            if(ill_item_parentid != ""){
+                $("#option").attr("checked",true);
+            }
+            else{
+                $(".parentid").hide();
+            }
+            $.each(data.result, function(val, text) {
+                html = $('<option></option>').val(val).html(text);
+
+                if (val == ill_item_parentid)
+                    html.attr('selected', 'selected');
+                $('[name="<?php echo ILI_PARENTID; ?>"]').append(html);
+            });
+            $('[name="<?php echo ILI_PARENTID; ?>"]').attr("required", "required");
+        });
+        // ----------------------------
+
+
+
+
+
         // change ill
         $('[name="<?php echo ILI_ILLID; ?>"]').on('change', function() {
             if ($(this).val() != "") {
                 $('[name="option"]').attr("checked", false);
                 $(".option").slideDown();
                 $(".parentid").slideUp();
+                $("[name='<?php echo ILI_PARENTID; ?>']").val('');
             }
             else {
                 $(".option").slideUp();
@@ -154,7 +185,6 @@
             if ($(this).prop("checked")) {
                 var object = {data: $('form[name="edit"]').toJSON()};
                 // load parents
-                
                 $.ajax({
                     type: 'POST',
                     data: object,
@@ -163,10 +193,9 @@
                 }).done(function(data) {
                     $('[name="<?php echo ILI_PARENTID; ?>"] option').remove();
                     var html;
-                    console.log(data)
                     $.each(data.result, function(val, text) {
                         html = $('<option></option>').val(val).html(text);
-                        
+
                         if (val == '')
                             html.attr('selected', 'selected');
                         $('[name="<?php echo ILI_PARENTID; ?>"]').append(html);
@@ -180,6 +209,7 @@
             else {
                 $('[name="<?php echo ILI_PARENTID; ?>"]').removeAttr("required");
                 $('.parentid').slideUp();
+                $("[name='<?php echo ILI_PARENTID; ?>']").val('');
             }
         });
 
@@ -231,7 +261,7 @@
                             console.log(data.result)
                             //data.result 0:Invalid, 1:Success, 2: Could not create
                             if (data.result == 1) {
-                                
+
                                 //$('.message').html(message('Done! ', 'Modify ill successfully', 'success'));
                                 notify('Done! ', 'Modify successfully', 'gritter-success');
                                 $('.loader').fadeOut();

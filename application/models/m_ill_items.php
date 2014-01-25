@@ -22,6 +22,14 @@ class m_ill_items extends CI_Model {
         $this->db->order_by(ILI_ID, "DESC");
         return $this->db->get();
     }
+//    
+//    function item_array_name_by_ill($ill_id=0){
+//        $data[''] = '-- Select --';
+//        foreach ($this->lists()->result_array() as $row){
+//            $data[$row[ILI_ID]] = $row[ILI_NAME];
+//        }
+//        return $data;
+//    }
 
     /**
      * 
@@ -155,12 +163,11 @@ class m_ill_items extends CI_Model {
         $this->db->join(ILLS, ILI_ILLID . '=' . ILL_ID, 'inner');
         $this->db->join(ILLGROUPS, ILG_ID . '=' . ILL_GROUPID, 'inner');
         $data = $this->db->get();
+        $result[''] = DROPDOWN_DEFAULT;
         if ($data->num_rows() > 0) {
             $result = $this->m_global->get_dropdown_data($data, ILI_ID, ILI_NAME);
             return $result;
-        } else {
-            return array('' => DROPDOWN_DEFAULT);
-        }
+        } 
     }
 
 }
