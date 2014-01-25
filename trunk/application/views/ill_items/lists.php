@@ -18,8 +18,9 @@
                             <span class="lbl"></span>
                         </label>
                     </th>-->
-                    <th class="sorting">ធាតុ</th>
+                    <th class="sorting" style="min-width: 125px;">ធាតុ</th>
                     <th class="sorting">ខ្នាត</th>
+                    <th class="sorting">ក្នុងធាតុ</th>
                     <th class="sorting">ជំងឺ</th>
                     <th class="sorting">ព្រភេទ</th>
                     <th class="sorting">តម្លៃធម្មតាប្រុស</th>
@@ -33,8 +34,17 @@
             <tbody role="alert" aria-live="polite" aria-relevant="all">
 
                 <?php
+                
                 if ($data->num_rows()) {
+                    
+                    // get parent item id
+                    $parents_items = null;
+                    foreach ($data->result_array() as $parent_item) {
+                        $parent_items[$parent_item[ILI_ID]] = $parent_item[ILI_NAME];
+                    }
+                    // show list
                     foreach ($data->result_array() as $row) {
+                        
                         ?>
 
                         <tr class="odd object" data-object='<?php echo json_encode(array('data' => $row)); ?>'>
@@ -47,6 +57,7 @@
 
                             <td class=" "><?php echo $row[ILI_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILI_DIMENTION]; ?></td>
+                            <td class=" "><?php echo !empty($parent_items[$row[ILI_PARENTID]])?$parent_items[$row[ILI_PARENTID]]:''; ?></td>
                             <td class=" "><?php echo $row[ILL_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILG_NAME]; ?></td>
                             <td class=" "><?php echo $row[ILI_VALUEMALE]; ?></td>
