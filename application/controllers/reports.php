@@ -17,11 +17,13 @@ class reports extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-        $this->load->model(array('m_reports','m_ill'));
+        $this->load->model(array('m_reports', 'm_ill'));
+        $this->load->helper('tests');
+        $this->load->model('m_tests');
     }
 
     function index() {
-    	allows(array('administrator'));
+        allows(array('administrator'));
         $this->data['title'] = REPORT;
         $this->load->view(TEMPLATE, $this->data);
     }
@@ -36,7 +38,7 @@ class reports extends CI_Controller {
     }
 
     function doctor() {
-    	allows(array('administrator'));
+        allows(array('administrator'));
         $this->data['title'] = REPORT . 'វេជ្ជ​បណ្ឌិត';
         allows(array('administrator'));
         $this->data['data'] = $this->m_reports->findDoctors();
@@ -44,22 +46,58 @@ class reports extends CI_Controller {
     }
 
     function test() {
-    	allows(array('administrator'));
-        $this->data['title'] = REPORT . 'តេស្ថ';
-        $this->load->view(TEMPLATE, $this->data);
+        allows(array('administrator'));
+        if ($this->input->post('data'))
+            $this->load->view('tests/lists', $this->data);
+        else {
+            $this->data['title'] = 'បង្ហាញ​រាល់​ តេស្ថ​អ្នក​ជំងឺ';
+            $this->data['patients_tests_data'] = $this->m_global->select_all(VIE_PREFEX . 'patients_tests');
+            $this->load->view(TEMPLATE, $this->data);
+        }
+        $this->remove_session_test();
     }
 
     function income() {
-    	allows(array('administrator'));
+        allows(array('administrator'));
         $this->data['title'] = REPORT . 'ប្រាក់​ចំ​ណូល';
         $this->load->view(TEMPLATE, $this->data);
     }
-	
-	function expend(){
-		allows(array('administrator'));
-		$this->data['title'] = REPORT . 'ប្រាក់​ចំ​ណាយ';
-		$this->data['data'] = $this->m_global->select_all(VIE_PREFEX.'expends');
-        $this->load->view(TEMPLATE,  $this->data);
-	}
+
+    function expend() {
+        allows(array('administrator'));
+        $this->data['title'] = REPORT . 'ប្រាក់​ចំ​ណាយ';
+        $this->data['data'] = $this->m_global->select_all(VIE_PREFEX . 'expends');
+        $this->load->view(TEMPLATE, $this->data);
+    }
+    
+    
+    private function remove_session_test() {
+        allows(array('administrator'));
+        $arr_unset_session = array();
+        if ($this->session->userdata('txt_patId'))
+            $arr_unset_session['txt_patId'] = '';
+        if ($this->session->userdata('txt_isReceiveIll'))
+            $arr_unset_session['txt_isReceiveIll'] = '';
+        if ($this->session->userdata('txt_ills'))
+            $arr_unset_session['txt_ills'] = '';
+        if ($this->session->userdata('txt_dateTimeReceived'))
+            $arr_unset_session['txt_dateTimeReceived'] = '';
+        if ($this->session->userdata('txt_discount'))
+            $arr_unset_session['txt_discount'] = '';
+        if ($this->session->userdata('txt_deposit'))
+            $arr_unset_session['txt_deposit'] = '';
+        if ($this->session->userdata('txt_subTotal'))
+            $arr_unset_session['txt_subTotal'] = '';
+        if ($this->session->userdata('txt_owe'))
+            $arr_unset_session['txt_owe'] = '';
+        if ($this->session->userdata('txt_tax'))
+            $arr_unset_session['txt_tax'] = '';
+        if ($this->session->userdata('txt_payAll'))
+            $arr_unset_session['txt_payAll'] = '';
+        if ($this->session->userdata('txt_isPaid'))
+            $arr_unset_session['txt_isPaid'] = '';
+        return $this->session->unset_userdata($arr_unset_session);
+    }
+
 
 }
