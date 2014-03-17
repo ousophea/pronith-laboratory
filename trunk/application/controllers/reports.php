@@ -47,14 +47,8 @@ class reports extends CI_Controller {
 
     function test() {
         allows(array('administrator'));
-        if ($this->input->post('data'))
-            $this->load->view('tests/lists', $this->data);
-        else {
-            $this->data['title'] = 'បង្ហាញ​រាល់​ តេស្ថ​អ្នក​ជំងឺ';
-            $this->data['patients_tests_data'] = $this->m_global->select_all(VIE_PREFEX . 'patients_tests');
-            $this->load->view(TEMPLATE, $this->data);
-        }
-        $this->remove_session_test();
+        $this->data['data'] = $this->m_reports->test();
+        $this->load->view(TEMPLATE, $this->data);
     }
 
     function income() {
