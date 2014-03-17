@@ -11,6 +11,11 @@
  * @author sochy.choeun
  */
 class m_users extends CI_Model {
+    var $user = null;
+    function __construct() {
+        parent::__construct();
+        $this->user = $this->session->userdata(USERS);
+    }
 
     /**
      * 
@@ -79,6 +84,7 @@ class m_users extends CI_Model {
         try {
             $data = $this->input->post('data');
             $this->db->where(USE_ID, $data[USE_ID]);
+            $this->db->where(USE_ID."!=", $this->user[USE_ID]);
             if ($this->db->delete(USERS))
                 return 1;
             else
@@ -115,6 +121,7 @@ class m_users extends CI_Model {
                 $data[USE_STATUS] = 1;
             $this->db->set(USE_STATUS, $data[USE_STATUS]);
             $this->db->where(USE_ID, $data[USE_ID]);
+            $this->db->where(USE_ID."!=", $this->user[USE_ID]);
             if ($this->db->update(USERS))
                 return 1;
             else
