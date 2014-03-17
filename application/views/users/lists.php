@@ -1,3 +1,4 @@
+<?php $user = $this->session->userdata(USERS);?>
 <div class="page-header position-relative">
     <h1>
         តារាងអ្នកប្រើប្រាស់
@@ -47,7 +48,7 @@
                             <td class=" "><?php echo $row[USE_LASTNAME]; ?></td>
                             <td class=" "><?php echo $row[USE_USERNAME]; ?></td>
                             <td class=" "><?php echo $row[GRO_NAME]; ?></td>
-                            <td class=" "><input <?php echo ($row[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace status ace-switch ace-switch-7"><span class="lbl"></span></td>
+                            <td class=" "><?php if($user[USE_ID]!=$row[USE_ID]){ ?><input <?php echo ($row[USE_STATUS])?'checked':''; ?> type="checkbox" id="<?php echo USE_STATUS; ?>" placeholder="Last name" class="ace status ace-switch ace-switch-7"><span class="lbl"></span><?php } ?></td>
 
                             <td class=" ">
                                 <div class="hidden-phone visible-desktop action-buttons">
@@ -58,10 +59,11 @@
                                     <a class="green edit" href="<?php echo base_url(); ?>users/edit">
                                         <i class="icon-pencil bigger-130"></i>
                                     </a>
-
+                                     <?php if($user[USE_ID]!=$row[USE_ID]){ ?>
                                     <a class="red delete" href="<?php echo base_url(); ?>users/delete/">
                                         <i class="icon-trash bigger-130"></i>
                                     </a>
+                                     <?php } ?>
                                 </div>
                             </td>
                         </tr>
