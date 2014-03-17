@@ -56,6 +56,17 @@ class m_reports extends CI_Model {
         $this->db->join(DOCTOR,'pat_doc_id=doc_id','left');
         return $this->db->get();
     }
+    
+    function test(){
+        if ($this->input->post('date') && $this->input->post('date')!='') {
+            $date = explode(' to ', $this->input->post('date'));
+            $start = $date[0];
+            $end = $date[1];
+            $this->db->where('pat_tes_dateCreated >=', $start);
+            $this->db->where('pat_tes_dateCreated <=', $end);
+        }
+        return $this->db->get('vie_patients_tests');
+    }
 }
 
 ?>
